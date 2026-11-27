@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>立即測試</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>搜尋所有啟動方式</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>我已有的捷徑</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>新捷徑（接著新增步驟）</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>為新捷徑命名</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>你還沒有任何捷徑。</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>移除這個條件</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>新增條件</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>立即執行</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>先詢問我（通知含「執行」和「略過」）</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>執行時通知我</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>頻繁執行時不要暫停這個自動化</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>若錯過，則在 Automation Portal 下次啟動或電腦喚醒時執行</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>命令面板</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>輸入捷徑、設定或命令</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  執行或開啟      Ctrl+Enter  編輯      ↑ ↓  選擇      Esc  關閉</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>匯入捷徑</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>選擇備份</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>從空白開始</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>每天早上告訴我天氣並開啟 Outlook</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>建立草稿</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>瀏覽資源庫</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>或設定以文字描述（設定）</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>錄製新捷徑</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>操作一次，Automation Portal 會記下你的點擊和輸入</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>匯入…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>從 .autoportal 檔案新增捷徑。你會先看到它的用途，且不會取代任何現有內容。</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>在「設定」中管理</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>不要再詢問這個捷徑</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>永久刪除</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>以預設應用程式開啟</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>在資料夾中顯示</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>再執行一次</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>隨 Windows 啟動</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>變更圖示</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>刪除資料夾</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>準備就緒</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>設為預設</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>例如：gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>尋找模型</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>正在尋找模型…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>正在檢查…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>重新開啟這個自動化。請先檢查它會變更什麼，以免再次陷入迴圈。</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>立即測試</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>現在在暫存資料夾的範例檔案上執行一次捷徑</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>更多選項</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>開啟或關閉這個自動化</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>活動…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>查看這個自動化何時觸發、執行或略過</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>開啟捷徑</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>取得</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>開啟捷徑檔案</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>沒有符合搜尋的項目</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>請檢查拼字，或試試較短的字詞。你也可以到資源庫尋找現成的捷徑。</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>尚未釘選任何項目</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>釘選你最常用的捷徑。在捷徑上按一下滑鼠右鍵並選擇「釘選」。按一下時鐘旁的 Automation Portal 圖示時，也會顯示已釘選的捷徑。</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>這個資料夾是空的</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>從清單將捷徑拖曳到這裡，或建立新的捷徑。</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>讓事情自動發生吧</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>捷徑是一組步驟，Automation Portal 只要按一下就會替你完成。可從資源庫的現成捷徑開始，也可以自己建立。</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>不要再顯示</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>這是你的第一個捷徑。</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>設定快速鍵</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>移到資料夾</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>匯出捷徑</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>清除歷程記錄…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>選擇備份的儲存位置</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>選擇捷徑的存放位置</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>你的文字會顯示在這裡。</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>輸入內容</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>選擇要對它執行的捷徑</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Automation Portal 錄製</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>暫停自動化</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal 已在執行，但沒有回應。請在通知區域尋找，或從工作管理員重新啟動。</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal 的某個檔案發生問題</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>「隨 Windows 啟動」已關閉</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>請在「設定」的「一般」中重新開啟「隨 Windows 啟動」。</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal 無法使用該項目</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>這個捷徑已在執行。</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>連結無法執行捷徑</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>要開啟這個捷徑檔案嗎？</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>這是從連結開啟的，請只在信任來源時才新增。</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>這是透過 ap 命令傳送的。請只在你自己執行該命令時才新增。</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>這台電腦上的另一個程式傳送了這個捷徑。請只在信任該程式時才新增。</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>要新增這個捷徑嗎？</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>已新增捷徑</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>要保留這個捷徑嗎？</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>保留</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>對選取的文字執行</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>無法使用這個快速鍵。</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>選取的文字</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>詢問 AI</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>查看詳細資料</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>查看執行內容</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>「{0}」剛剛首次自動執行</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>執行順利，沒有問題。</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>查看發生的情況</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>編輯這個自動化</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>選擇其他觸發條件</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>選擇其他捷徑</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>我啟動的捷徑完成時播放音效</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>自 {0} 起</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>也要包含 Ctrl、Alt 或 Win</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>自 Automation Portal 啟動後這個自動化的執行情況，最新的在前。這裡的內容不會儲存到磁碟。</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>尚未發生任何事。這個自動化的觸發條件觸發時，會顯示在這裡。</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>新增自動化</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>編輯自動化</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>沒有符合搜尋的項目。</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>這個群組目前沒有任何項目。</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>僅在…時（選填）</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>新增條件，只在適當的時機執行。所有條件都必須成立。</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>發生時</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>設為 0 表示每次都執行。暫停對可能連續多次觸發的條件很有用。</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>一般而言，若自動化在 10 分鐘內執行超過 60 次，Automation Portal 會將它暫停，因為這通常表示發生了迴圈。</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>若在排定時間電腦已關機或睡眠，或 Automation Portal 未執行，則會在 Automation Portal 啟動或電腦喚醒時執行一次。只計算過去 24 小時內的時間，且在自動化暫停期間錯過的時間不會執行。</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>正在計算將執行的動作…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>沒有可還原的項目</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>從備份還原</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>描述需求</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>從現成的捷徑開始</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>選擇一個新增，再依需求修改。</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>要對這些項目執行捷徑嗎？</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>要執行這個捷徑嗎？</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>允許一次</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>最近刪除</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>使用這個捷徑的自動化會再次運作。</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>無法移除它在「最近刪除」中的複本，所以仍列在那裡。</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>清空「最近刪除」</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>有些捷徑仍在這裡</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>沒有開啟任何應用程式視窗。請開啟要示範的應用程式，然後再試一次。</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>要示範哪個應用程式？</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>開始錄製</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>新增這些步驟前可先變更內容。每個步驟都依名稱尋找控制項，所以視窗移動後仍可運作。</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>改為新增對他們按下之按鈕的點擊。</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>檢閱錄製內容</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>新增步驟</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>每次詢問我</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>無法顯示這張圖片。</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>拖曳以選擇區域。按 Esc 可取消。</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>按一下想要的位置。按 Esc 可取消。</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>你之後可以在編輯器中變更這些內容。</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>顯示將執行的動作</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>執行時機</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>選擇資料夾</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>請先選擇資料夾。</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>挑幾個開始使用</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>現在試試</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>打聲招呼</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>顯示通知</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>未能完成</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>隨手可用</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>隨處輸入即可執行任何捷徑。</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>同時按下這些按鍵，會開啟一個小列，輸入即可尋找並執行任何捷徑。</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>歡迎使用 Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>已釘選的捷徑</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal 捷徑</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>已新增到桌面</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>已新增到開始功能表</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>這個觸發條件已無法使用</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>剛剛執行</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>請選擇要由什麼來啟動。</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>請為新捷徑命名。</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>請選擇要執行的捷徑。</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>請選擇要由什麼來啟動自動化。</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>使用它的自動化會再次運作。</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>未知的步驟</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>如果不確定它會處理哪些應用程式和資料夾，請先檢查它的步驟。執行期間請不要操作這些應用程式。</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>這個捷徑已被刪除。請從資料庫的「最近刪除」還原後再執行。</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>這個捷徑已不存在，無法再次執行。</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>請選擇要執行這個捷徑的檔案。</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>這個捷徑需要處理對象，而執行歷程記錄不會保留。請改從資料庫或 Quick Run 執行。</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>再次執行這個捷徑。</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>如果 Windows 表示某個項目太大而無法放入資源回收筒，並詢問是否永久刪除，請選擇「否」以保留它。</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>這些變更已復原。</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>無法從這裡復原這些變更。請查看詳細資料了解變更內容。</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>復原會還原可安全還原的內容。其餘請查看詳細資料。</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>沒有覆寫任何內容。</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>顯示通知，不會變更電腦上的任何內容。</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>資料庫與備份</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>其他應用程式與連結</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>在系統匣中持續執行</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>捷徑圖格</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>我的位置</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>在滑鼠指標處顯示快速面板</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>捷徑的儲存位置</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>將捷徑保存在 OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>備份資料庫</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>以快速鍵啟動的捷徑完成時通知我</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>手機通知主題</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>顯示進階動作</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>整理下載</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>將一段時間前下載的檔案依類型或日期整理到資料夾。</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>會變更檔案</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>尋找資料夾中超過幾天（至少 1 天）的檔案，不包含未完成的下載</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>依類型或日期將它們移到資料夾</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>告訴你移動了多少個，並提供「復原」</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>轉換圖片</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>將你選取的圖片另存為 JPEG、PNG、GIF、BMP 或 TIFF。</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>會建立複本</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>取用你選取或傳送給它的圖片</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>將每張圖片儲存為新的檔案類型</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>放在原始檔案旁邊；若名稱已存在，則命名為 name (2)</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>設定我的工作區</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>一次開啟你的工作應用程式、資料夾和網頁。</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>不會變更檔案</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>開啟你選擇的應用程式</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>在檔案總管中開啟資料夾</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>開啟網頁</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>備份資料夾</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>每天或每週將資料夾複製到新的日期資料夾。</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>僅複製</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>在你選擇的時間，建立以日期命名的資料夾</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>將資料夾複製到其中</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>絕不刪除或取代備份中的任何內容</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>從試算表填寫表單</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>將 CSV 檔案的每一列輸入到另一個應用程式的表單中。</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>即將推出</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>錄製時，你只需填寫一次表單</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>它會逐步重複第 1 列，讓你檢查</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>已暫停，直到你繼續</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>發生錯誤。</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>備份未執行</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>每天固定時間</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>按下快速鍵時</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Windows 中的任何位置</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>我登入時</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>每次開始一天時</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>資料夾中出現檔案時</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>例如新的下載</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>應用程式開啟時</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>接著選擇應用程式</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>插入 USB 裝置時</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>或任何連接的裝置</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>所有捷徑</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>新增資料夾</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>執行歷程記錄</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>新增資料夾</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>資料夾名稱</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>重新命名資料夾</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>立即備份資料庫</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>從備份還原…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>匯入捷徑檔案…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>鍵盤快速鍵</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal 仍在執行</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>可在時鐘旁的系統匣圖示中找到。按一下滑鼠右鍵即可結束。</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>選擇 AI 動作和 Quick Run 要使用的 AI。你的金鑰會加密儲存在這台電腦上。</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>在這台電腦上（免費且私密）</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>正在檢查這台電腦…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>可以使用。免費、私密，且可離線運作。</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>這台電腦上可用。免費、私密，且可離線運作。</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows 正在準備裝置端 AI…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>可以使用。</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>已關閉。</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>在此貼上你的金鑰</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>金鑰已儲存。</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>金鑰已移除。</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>部署名稱</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>模型（留空則使用下方的「快速 / 智慧 / 最佳」選項）</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>這個自動化無法在這台電腦上執行。請編輯它，選擇其他觸發條件。</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>它所執行的捷徑已被刪除。請編輯自動化以選擇其他捷徑。</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>刪除自動化</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>要刪除這個自動化嗎？它所執行的捷徑不會被刪除。</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>測試未啟動</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>已在執行</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>測試成功</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>測試已取消</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>你在捷徑完成前就將它停止了。</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>測試未能完成</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>瀏覽和管理你的檔案。</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>切換電源計劃，並讓電腦保持喚醒。</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>來自同一開發者、可與 Automation Portal 搭配使用的其他應用程式。</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>它會做什麼</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>它的用途</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>未知的步驟</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>新增並排程…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>緯度必須是數字，例如 51.5。</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>經度必須是數字，例如 -0.12。</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>緯度必須介於 -90 和 90 之間。</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>經度必須介於 -180 和 180 之間。</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>第一次執行前</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>先開啟它</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>沒有資料夾</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>新增到桌面</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>重新命名捷徑</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>按下你想用來在任何位置執行這個捷徑的按鍵。請至少使用 Ctrl、Alt 或 Win 其中之一。</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>尚未提供</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>刪除捷徑</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>所有執行</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>你已停止</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>自行停止</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>所有來源</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>連結與其他應用程式</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>沒有相符的執行</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>尚未執行任何內容</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>請試試不同的搜尋，或顯示所有執行。</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>執行捷徑後，你會在這裡逐步看到發生的情況，方便找出某件事為何沒有成功。</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>再次執行…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>再次執行</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>這個捷徑已不存在。</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>開啟編輯器，並選取未完成的步驟。</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>在失敗的步驟開啟</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>復原檔案變更</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>還原這次執行所建立、移動、重新命名或取代的檔案。你會先看到清單。</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>複製詳細資料</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>複製這次執行的簡短摘要，不含你的檔案、密碼或金鑰。</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>已變更的檔案</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>這次執行沒有記錄哪個步驟失敗，因此未選取任何步驟。</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>捷徑在這次執行後已變更，其中已沒有該步驟。</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>清除執行歷程記錄</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>要刪除整個執行歷程記錄嗎？你的捷徑不受影響。</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>清除歷程記錄</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows 不允許 Automation Portal 使用你的位置。請在 Windows「設定」的「隱私權與安全性」&gt;「位置」中開啟，或在此輸入數值。</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>尚無應用程式。</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>僅限這個捷徑，不經詢問</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>資料庫已備份</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal 在這台電腦上找不到 OneDrive 資料夾。請先登入 OneDrive，或使用「變更…」選擇任何資料夾。</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>選擇其他資料夾</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>該資料夾位於目前的資料庫內。請選擇其他位置的資料夾。</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>選擇空的資料夾</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>變更資料庫位置</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal 將重新啟動</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>你的捷徑已在新位置就緒。Automation Portal 現在會重新啟動，讓一切從一開始就使用新位置。</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>刪除文字片段</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>日期格式</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>格式（例如 yyyy-MM-dd 或 dddd d MMMM）</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>詢問我</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows 不允許 Automation Portal 偵測你的點擊和輸入。請再試一次。</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>答案</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>按 Enter 複製答案</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>關於選取的文字</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>來自模擬錄製器的問候</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>按下 Enter</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>沒有可復原的項目</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>這次執行的檔案變更已復原。</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>這次執行沒有變更 Automation Portal 可復原的檔案，或其記錄已超過一週。</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>這次執行的檔案變更正在復原中。</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>輸入回覆</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>請填寫</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>按住 Ctrl 或 Shift 可選擇多個。</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>選擇檔案</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>另存新檔</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>時間（選填）</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>輸入數字，例如 12 或 3.5。</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>這看起來不像網址。</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>繼續自動化</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>輸入捷徑名稱</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>輸入捷徑名稱的幾個字</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>開啟編輯器</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run 無法執行</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>發生錯誤。請再試一次。</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>絕不會錄製密碼。</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>更多已釘選項目…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>開啟 Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>立即繼續</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>30 分鐘</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>1 小時</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>到明天</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>直到我繼續</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>結束 Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>按一下即可執行。</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>重新整理已連結的應用程式</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>開啟 {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>從 Microsoft Store 取得 {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>在桌前提供休息、專注和暫停提醒。</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>無法開啟 Power Plan Manager</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal 無法為測試建立範例檔案。未執行任何內容，你的檔案也沒有變更。請確認磁碟有可用空間，然後再試一次。</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>無法復原</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>還原時發生錯誤。請開啟執行歷程記錄查看變更了什麼。</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>找不到名為「{0}」的項目。請試試較短的字詞，或到資源庫尋找現成的捷徑。</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>第 {0} 步，共 {1} 步：{2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} / {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>目前已完成 {0:N0}</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>正在執行「{0}」</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>正在執行 {0} 個捷徑</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>「{0}」未能完成</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>下次：{0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>按 Enter 建立名為「{0}」的新捷徑</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>執行 (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>停止這次執行</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>執行 {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>停止 {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>編輯 {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>{0} 的更多選項</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>按一下以選取。按 Enter 或按兩下即可執行。按 Ctrl+E 編輯。</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>已釘選</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>執行過 1 次。上次：{1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>執行過 {0} 次。上次：{1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>今天 {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>昨天 {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>完成時播放輕柔的音效，發生問題時播放另一種。自動啟動的捷徑不會出聲，在「專注輔助」或全螢幕應用程式開啟時也一律靜音。</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus 與 Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>免費版</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>你使用的是免費版：最多 {0} 個捷徑。</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>你使用的是 Plus：最多 {0} 個捷徑。</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>你使用的是 Pro：捷徑數量不限，還有能自動執行捷徑的自動化。</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>你有 {0} 個捷徑，全都能繼續使用。新增捷徑需要更大的空間。</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus：最多 {0} 個捷徑。</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro：捷徑數量不限，另有依排程或事件發生時執行捷徑的自動化。</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>升級至 Pro：捷徑數量不限，另有自動化。你現有的一切都會保留。</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>取得 Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>取得 Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>升級至 Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0}，{1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>還原購買項目</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>再次向 Microsoft Store 查詢你購買的項目，例如在新電腦上。</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>正在向 Microsoft Store 確認…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>正在開啟 Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>謝謝你。你現在使用的是 {0}。</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store 無法完成購買。請檢查網際網路連線，然後再試一次。</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>你的購買項目已是最新。你使用的是 {0}。</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>你的購買項目已還原。你使用的是 {0}。</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>無法連線到 Microsoft Store，所以沒有任何變更。請檢查網際網路連線，然後再試一次。</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>建立更多捷徑</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>免費版可容納 {0} 個捷徑，你有 {1} 個，全都能繼續使用。若要建立更多，可取得 Plus（最多 {2} 個捷徑），或 Pro（捷徑數量不限，並含自動化）。</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus 可容納 {0} 個捷徑，你有 {1} 個，全都能繼續使用。若要建立更多，請升級至 Pro，捷徑數量不限，並含自動化。</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>自動化隨 Pro 提供</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>自動化會自動執行你的捷徑：依排程、檔案送達時、插入裝置時。你現有的自動化會繼續執行。</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>已新增「{0}」。它的排程需要 Pro，因此只會在你啟動時執行。</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>現在不要</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>開始 14 天免費試用(_S)</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>不需要信用卡。試用會在你按下按鈕時才開始，不會提前。</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>你的 14 天 Pro 試用已開始。Pro 的所有功能都可使用。</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>無法開始試用。沒有變更任何內容。</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Pro 試用：剩餘 {0} 天</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Pro 試用：剩餘 1 天</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>你的免費 Pro 試用。開啟「設定」可查看你的方案。</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>你的 Pro 試用將於明天結束</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>你建立的內容都會保留。試用結束後，新的捷徑和自動化會再依你的方案而定。</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>你的 Pro 試用已結束</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>已停止的功能：建立新的自動化，以及建立超過 {0} 個的新捷徑。</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>保留的內容：你所有的捷徑和自動化。它們會繼續執行，你仍可編輯、執行、開啟或關閉，以及刪除它們。</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>要用你拖放的項目執行「{0}」嗎？</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>會變更檔案或在其他應用程式中操作的步驟：{0}。</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>已拖放：</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0}（資料夾）</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…還有 {0} 個</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>已排除，因為「{0}」不接受這些項目：</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>「{0}」不接受你拖放的任何項目，因此未執行。</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>依你的估計，{0} 約節省了 {1}。</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>自 {0} 起</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>M月d日</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>本月</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 分鐘</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} 分鐘</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 小時</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} 小時</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>搜尋捷徑和資源庫</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>搜尋捷徑和資源庫 (Ctrl+F)。按 Ctrl+K 開啟命令面板。</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>執行 (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>編輯 (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>更多選項</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>更多選項</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>自動化</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>暫停所有自動化</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>在你關閉此項之前，停止所有自動化執行</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>新增自動化(_N)</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>新增自動化</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>所有自動化都已暫停。在你關閉此項之前，不會有任何內容自動執行。</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>查看詳細資料(_D)</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>查看詳細資料</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>讓事情自動發生</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>自動化會在某件事發生時替你執行捷徑，例如開啟應用程式、插入耳機，或是早上 8 點。</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>例如：插入耳機時，將音量設為 40%。</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>新增自動化(_A)</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>瀏覽資源庫(_B)</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>瀏覽資源庫</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>資源庫</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>現成的捷徑。新增你喜歡的，再改成自己的樣子。</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>顯示(_S)</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>顯示</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>尚無現成的捷徑</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>隨 Automation Portal 安裝的入門捷徑會顯示在這裡。在此之前，你可以自己建立，或開啟朋友給你的 .autoportal 檔案。</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>建立捷徑(_C)</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>建立捷徑</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>開啟 .autoportal 檔案…(_O)</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>開啟 .autoportal 檔案…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>所有捷徑</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>清除搜尋</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>最近刪除(_R)</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>最近刪除</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>還原過去 30 天內刪除的捷徑</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>新增捷徑(_N)</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>建立新捷徑 (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>復原(_U)</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>設定快速鍵</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>設定快速鍵</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>查看詳細資料(_D)</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>查看詳細資料</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>從這裡開始</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>查看資源庫(_G)</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>查看資源庫</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>隱藏(_H)</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>隱藏</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>隱藏這一列。資源庫一律在側邊欄中。</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>建立新捷徑</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>瀏覽資源庫(_B)</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>瀏覽資源庫</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>建立捷徑(_C)</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>建立捷徑</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>描述需求(_S)</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>描述你想要的捷徑</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>用一句話說明需求，即可取得草稿</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>執行歷程記錄</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>依名稱搜尋</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>顯示符合以下條件的執行</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>顯示由以下來源啟動的執行</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>更多：清除歷程記錄</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>尚未執行任何內容</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>執行捷徑後，你會在這裡逐步看到發生的情況，方便找出某件事為何沒有成功。</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>跳到某個區段</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>隨 Windows 啟動</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>登入時在系統匣中靜靜地開啟 Automation Portal，讓你的自動化隨時就緒。</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>隨 Windows 啟動</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>在系統匣中持續執行</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>關閉視窗時，Automation Portal 會在背景繼續運作。關閉此項則會在關閉視窗時結束。</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>在系統匣中持續執行</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>選擇淺色或深色，或跟隨 Windows。</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>與 Windows 相同</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>捷徑圖格</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>帶有彩色圖示的中性色卡片，或全彩圖格。</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>捷徑圖格樣式</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>中性色</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>漸層</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>我的位置</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>用於日出和日落觸發條件以及天氣警示。留空則由 Windows 自行判斷。</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>城市（選填）</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>家的城市</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>緯度</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>家的緯度，從負 90 到 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>經度</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>家的經度，從負 180 到 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>使用我目前的位置(_U)</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>使用我目前的位置</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>改為輸入座標(_E)</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>改為輸入座標</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>位置問題</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>鍵盤</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>在任何位置按下這些按鍵，即可搜尋並執行捷徑。</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>對選取的文字執行</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>在任何應用程式中選取一些文字，按下這些按鍵，然後選擇要對它執行的捷徑。</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>在滑鼠指標處顯示快速面板</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>按下這些按鍵，即可在滑鼠所在位置彈出你已釘選的捷徑。</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>資料庫與備份</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>捷徑的儲存位置</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>開啟(_O)</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>在檔案總管中顯示資料夾</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>變更…(_H)</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>變更…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>將捷徑保存在 OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>將你的資料庫複製到 OneDrive，讓它在你所有電腦上保持同步。</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>移至 OneDrive(_M)</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>移至 OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>備份資料庫</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>將你的捷徑、資料夾和自動化儲存到一個 zip 檔案。若要找回捷徑，請使用「從備份還原」。它們會新增在你目前已有的捷徑旁。</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>立即備份資料庫(_B)</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>立即備份資料庫</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>從備份還原…(_R)</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>從備份還原…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>將備份中的捷徑新增在你現有的捷徑旁。不會取代任何內容。</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>以快速鍵啟動的捷徑完成時通知我</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>以按鍵啟動的捷徑執行完畢後，顯示小型通知。</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>以快速鍵啟動的捷徑完成時通知</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>我啟動的捷徑完成時播放音效</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>我啟動的捷徑完成時播放音效</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>手機通知主題</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>供「傳送到我的手機」使用。請選擇私密且難以猜到的名稱，然後在手機的 ntfy 應用程式中訂閱。你傳送的訊息會經過 ntfy.sh 服務，所以任何知道該主題的人都能讀取。</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>手機通知主題</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>例如：my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>其他應用程式與連結</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>連結</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal:// 連結</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>網頁和其他應用程式可透過這些連結要求執行你的捷徑。依捷徑而定：連結會先詢問，但詳細資料中註明「連結可不經詢問直接執行」的捷徑除外。帶有檔案或看起來像檔案路徑之文字的連結一律會詢問。</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>automationportal 連結可執行的動作</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>永不</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>每次都詢問</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>依捷徑而定</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>已連結的應用程式</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>允許執行捷徑的應用程式</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>模型</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>模型等級：快速、智慧或最佳</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>「快速」成本最低、回應最快。「最佳」成本最高、耗時最長。所有提供者都會採用，除非你為它輸入模型名稱。</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>快速</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>智慧</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>最佳</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>進階</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>顯示進階動作</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>在動作清單中加入進階使用者動作，例如執行命令。</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>顯示進階動作</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>傳送當機報告以協助修正問題</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>若 Automation Portal 當機，會傳送錯誤詳細資料。絕不包含你的捷徑、檔案、剪貼簿和輸入的文字，且會移除檔案路徑、你的使用者名稱和電腦名稱。</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>傳送當機報告以協助修正問題</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal 在你的電腦上運作。除非你執行的捷徑有這麼做，否則不會將任何內容傳送到其他地方。</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>隱私權原則</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>開啟資料資料夾(_D)</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>開啟資料資料夾</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>開啟記錄資料夾(_L)</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>開啟記錄資料夾</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>再次顯示歡迎畫面(_S)</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>再次顯示歡迎畫面</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>文字片段</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>隨處輸入簡短代碼，Automation Portal 就會把它換成較長的文字。</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>新增文字片段(_N)</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>新增文字片段</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>搜尋文字片段</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>文字片段</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>開啟或關閉這個文字片段</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>已啟用</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>簡短代碼</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>簡短代碼</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>資料夾（選填）</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>取代為</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>要顯示的文字</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>取代文字</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>新增預留位置</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>今天的日期</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>日期格式…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>以你選擇的格式顯示今天的日期，例如 yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>目前時間</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>剪貼簿</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>你最後複製的內容</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>游標位置</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>文字出現後游標停留的位置</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>詢問我…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal 每次都會問你一個問題，並將你的答案放在這裡</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>預覽</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>大小寫須完全相符</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>關閉時，輸入 ;Hi 會讓首字母大寫，輸入 ;HI 則全部大寫。</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>刪除文字片段(_D)</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>刪除文字片段</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>少打一些字</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>建立像 ;addr 這樣的簡短代碼，每次輸入時都會變成你的完整地址。在任何應用程式中都有效。</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>新增 ;date 和 ;addr 開始使用</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>新增一個今天日期的文字片段和一個你的地址的文字片段</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>自行建立(_C)</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>自行建立</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal 快速面板</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>已釘選</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>自動化已暫停</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>尚未釘選任何項目</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>釘選你最愛的捷徑，它們就會顯示在這裡，一按即可執行。</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>開啟 Automation Portal(_O)</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>開啟 Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>Quick Run(_Q)</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>錄製(_R)</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>錄製</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>依據你的點擊和輸入錄製新捷徑</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>暫停自動化</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run 搜尋</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>輸入捷徑名稱</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>找不到項目。請試試其他字詞，或關閉此視窗，在主視窗中使用「新增捷徑」或「瀏覽資源庫」。</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>外觀</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>輔色</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>跟隨 Windows 輔色，或從十種顏色中選一種。</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>輔色</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows 輔色</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>視窗背景</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>選擇視窗背景的外觀。Windows 高對比一律使用純色。</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>視窗背景</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica（柔和，預設）</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>壓克力（霧面）</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>純色</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>圓角</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>按鈕、卡片和圖格的圓潤程度。</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>圓角</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>圓角（預設）</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>直角</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>超圓角</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>密度</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>文字周圍和列與列之間的間距大小。</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>密度</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>緊湊</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>標準（預設）</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>寬鬆</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>文字大小</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>在 Windows 文字大小設定之上，再放大或縮小文字。</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>文字大小</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>動態效果</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>項目出現和變更時，應用程式的動態程度。</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>動態效果</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>與 Windows 相同（預設）</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>減少</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>捷徑圖格</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>「卡片」顯示寬敞的圖格。「緊湊」會縮小圖格，讓畫面容納更多。</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>捷徑圖格大小</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>卡片（預設）</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>緊湊</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>重設外觀</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>將主題、輔色、背景、圓角、密度、文字大小、動態效果和圖格還原為預設值。</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>將外觀重設為預設值</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>藍色</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>靛藍色</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>紫羅蘭色</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>洋紅色</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>紅色</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>橙色</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>琥珀色</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>綠色</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>藍綠色</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>石板灰</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>忘記</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>未安裝 Portal AI Host。</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Portal AI Host 尚未允許 Automation Portal。請使用「允許」按鈕。</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>允許 Automation Portal 一次，之後 Portal AI Host 就會代它回答。資料不會離開你的電腦。</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host（在這台電腦上）</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>重新檢查</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>允許</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>使用 API 金鑰…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>使用你自己的 ChatGPT、Claude、Gemini 等帳戶。</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>你自己的 AI 帳戶</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>正在檢查…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>取得 Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>免費且私密。所有 Portal 應用程式共用這台電腦上的同一個 AI。</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>在這台電腦上執行 AI。資料不會離開你的電腦。</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>已就緒。資料不會離開你的電腦。</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>以文字描述和 AI 動作都需要有 AI 可以對話。請選擇一種方式來準備。</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>啟動 Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>正在啟動 Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>準備 AI</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>使用 Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>使用 Windows AI</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>正在等你在 Portal AI Host 中選擇允許…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>內建於這台電腦。免費且私密。</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows 裝置端 AI</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows 正在準備裝置端 AI…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>可以使用。資料不會離開你的電腦。模型：{0}。一次最多可讀取 {1} 個權杖。</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>可以使用。資料不會離開你的電腦。</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>語意相關</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>正在詢問 {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>相關</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>選擇 Quick Run 回答問題的方式</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C 複製      Esc 關閉</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>建立捷徑：{0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>設定 AI…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>詢問 AI：{0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>開啟草稿供檢查。不會儲存或執行任何內容。</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>詢問</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>已複製</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>複製答案</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>AI 回答</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} 個語意相關</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0}（相關）</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>傳送當機報告，讓我們能快速修正問題。內容絕不包含你的檔案或你輸入的內容。</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>傳送的內容</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>隱私權</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>當機報告</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>若應用程式當機，會傳送錯誤詳細資料，讓我們能修正問題。絕不包含你的捷徑、檔案、剪貼簿和輸入的文字，且會移除路徑、名稱和你的電腦名稱。關閉後會立即停止傳送。</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>傳送當機報告(_C)</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>傳送當機報告</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>傳送的內容</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>你好！讓我們替你處理那些無聊的事。</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal 能把小事變成一鍵或一個快速鍵：整理資料夾、查看天氣、記下筆記、批次重新命名檔案。</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>大約只需一分鐘。隨時可以略過。</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Automation Portal 閃電圖示，周圍環繞著彩色圓點</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>勾選你喜歡的項目。之後你可以隨時修改或移除。</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>需要時，可在資源庫找到現成的捷徑。</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>現在就試試看</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>捷徑是在你要求時執行的小工作。這個只會變更下方的文字，不會動到電腦上的任何內容。</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>讓它大聲說話</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>將文字轉換為大寫字母</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>要變更的文字</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>再執行一次</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>正在執行...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>未能完成。</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal 常駐在時鐘旁。關閉這個視窗後，你的快速鍵仍會繼續運作。</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>暫時略過</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>開始吧</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>開始使用</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>第 {0} 步，共 {1} 步</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>以建議的設定開始</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>開始使用 Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>建議</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>傳送當機報告</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>讓我們能快速修正問題。絕不包含你的檔案或你輸入的內容。</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>你之後可以在「設定」中變更這一切。</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>一按即可查看你所在城市的天氣。</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>一個步驟就能記下筆記。</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>聽取今天的日期和天氣，然後開啟你的第一批應用程式。</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>轉換距離、重量、溫度等單位。</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>一次關閉工作應用程式並整理環境。</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>貼上不含字型、色彩或連結的純文字。</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Automation Portal 有新版本可用。</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>開啟 Microsoft Store 頁面進行更新</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>稍後</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>隱藏此訊息，直到有更新的版本推出</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>新增內容</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>此版本已修正</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>此版本的新功能</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>知道了</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>帶我去看</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>開啟應用程式中與此相關的部分</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>關閉這個視窗</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>新增內容(_W)</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>新增內容</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>查看此版本有哪些變更</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>新增內容</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>探索 Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>略過導覽</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>開始使用 Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>帶我去看</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>關閉導覽並開啟應用程式的這個部分</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>前往上一站</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>前往下一站</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>關閉導覽。你可以從「設定」的「關於」再次開啟。</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>關閉導覽並開始使用應用程式</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>開始導覽</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>簡短了解 Automation Portal 能做什麼</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>先快速導覽一下</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>第 {0} 站，共 {1} 站</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>沒有可用的螢幕擷取畫面</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>探索 Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>探索 Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>探索(_E)</value>
+  </data>
+</root>

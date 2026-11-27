@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>अभी जाँचें</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>शुरू करने के सभी तरीके खोजें</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>एक शॉर्टकट जो मेरे पास पहले से है</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>एक नया शॉर्टकट (इसके चरण मैं अगले चरण में जोड़ूँगा)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>नए शॉर्टकट का नाम दें</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>आपके पास अभी कोई शॉर्टकट नहीं है।</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>यह शर्त हटाएँ</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>एक शर्त जोड़ें</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>इसे तुरंत चलाएँ</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>पहले मुझसे पूछें (चलाएँ और छोड़ें वाली सूचना)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>बताएँ कि यह कब चला</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>बार-बार चलने पर भी इस ऑटोमेशन को न रोकें</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>छूट जाने पर, Automation Portal अगली बार शुरू होने या PC जागने पर चलाएँ</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>कमांड पैलेट</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>शॉर्टकट, सेटिंग या कमांड लिखें</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  चलाएँ या खोलें      Ctrl+Enter  संपादित करें      ↑ ↓  चुनें      Esc  बंद करें</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>शॉर्टकट इंपोर्ट करें</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>एक बैकअप चुनें</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>खाली से शुरू करें</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>हर सुबह मौसम बताओ और Outlook खोलो</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>ड्राफ़्ट बनाएँ</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>गैलरी देखें</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>या शब्दों में वर्णन करने की सेटअप करें (सेटिंग्स)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>नया शॉर्टकट रिकॉर्ड करें</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>इसे एक बार करें, और Automation Portal आपके क्लिक और टाइपिंग लिख लेगा</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>इंपोर्ट करें…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>एक .autoportal फ़ाइल से शॉर्टकट जोड़ें। पहले आप देखेंगे कि वह क्या करता है, और कुछ भी बदला नहीं जाएगा।</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>सेटिंग्स में प्रबंधित करें</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>इस शॉर्टकट के लिए फिर से न पूछें</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>स्थायी रूप से हटाएँ</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>डिफ़ॉल्ट ऐप से खोलें</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>फ़ोल्डर में दिखाएँ</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>इसे चलाएँ</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>इसे फिर से चलाएँ</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Windows के साथ शुरू करें</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>आइकन बदलें</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>फ़ोल्डर हटाएँ</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>इसे तैयार करें</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>डिफ़ॉल्ट के रूप में उपयोग करें</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>उदाहरण के लिए: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>मॉडल खोजें</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>मॉडल खोजे जा रहे हैं…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>जाँचा जा रहा है…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>इस ऑटोमेशन को फिर से चालू करें। पहले जाँचें कि यह क्या बदलता है, ताकि यह फिर से लूप में न चले।</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>अभी जाँचें</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>अस्थायी फ़ोल्डर में नमूना फ़ाइलों पर शॉर्टकट को अभी एक बार चलाएँ</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>और विकल्प</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>इस ऑटोमेशन को चालू या बंद करें</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>गतिविधि…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>देखें कि यह ऑटोमेशन कब चला, चला या छोड़ा गया</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>शॉर्टकट खोलें</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>शॉर्टकट फ़ाइल खोलें</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>आपकी खोज से कुछ मेल नहीं खाता</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>वर्तनी जाँचें, या कोई छोटा शब्द आज़माएँ। आप गैलरी में तैयार शॉर्टकट भी खोज सकते हैं।</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>अभी कुछ भी पिन नहीं है</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>जो शॉर्टकट सबसे ज़्यादा उपयोग करते हैं उन्हें पिन करें। किसी शॉर्टकट पर राइट-क्लिक करके पिन चुनें। पिन किए शॉर्टकट घड़ी के पास Automation Portal आइकन पर क्लिक करने पर भी दिखते हैं।</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>यह फ़ोल्डर खाली है</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>सूची से शॉर्टकट यहाँ खींचें, या नया बनाएँ।</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>कुछ होने दें</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>शॉर्टकट चरणों का एक सेट है, जिसे Automation Portal एक क्लिक में आपके लिए करता है। गैलरी के तैयार शॉर्टकट से शुरू करें, या अपना खुद बनाएँ।</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>यह फिर न दिखाएँ</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>यह आपका पहला शॉर्टकट था।</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>इसे हॉटकी दें</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>फ़ोल्डर में ले जाएँ</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>शॉर्टकट एक्सपोर्ट करें</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>इतिहास साफ़ करें…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>बैकअप कहाँ सेव करना है, चुनें</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>अपने शॉर्टकट कहाँ रखने हैं, चुनें</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>आपका टेक्स्ट यहाँ दिखेगा।</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>इनपुट लिखें</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>इस पर चलाने के लिए एक शॉर्टकट चुनें</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Automation Portal रिकॉर्डिंग</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>ऑटोमेशन रोकें</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal पहले से चल रहा है, पर जवाब नहीं दे रहा। इसे सूचना क्षेत्र में खोजें, या टास्क मैनेजर से दोबारा शुरू करें।</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal को एक फ़ाइल में समस्या आई</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Windows के साथ शुरू करना बंद है</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>सेटिंग्स, सामान्य में जाकर Windows के साथ शुरू करना फिर से चालू करें।</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal वह उपयोग नहीं कर सका</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>यह शॉर्टकट पहले से चल रहा है।</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>लिंक शॉर्टकट नहीं चला सकते</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>यह शॉर्टकट फ़ाइल खोलें?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>यह एक लिंक से खोला गया है, इसलिए इसे तभी जोड़ें जब आप इसके स्रोत पर भरोसा करते हों।</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>यह ap कमांड से भेजा गया था। इसे तभी जोड़ें जब आपने वह कमांड खुद चलाया हो।</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>इस PC पर किसी दूसरे प्रोग्राम ने यह शॉर्टकट भेजा है। इसे तभी जोड़ें जब आप उस प्रोग्राम पर भरोसा करते हों।</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>यह शॉर्टकट जोड़ें?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>शॉर्टकट जोड़ा गया</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>यह शॉर्टकट रखें?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>रखें</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>चुने गए टेक्स्ट पर चलाएँ</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>यह हॉटकी उपयोग नहीं की जा सकती।</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>चुना गया टेक्स्ट</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>AI से पूछें</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>विवरण देखें</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>देखें कि इसने क्या किया</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" अभी पहली बार अपने आप चला</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>यह बिना किसी समस्या के चला।</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>देखें क्या हुआ</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>यह ऑटोमेशन संपादित करें</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>कोई और ट्रिगर चुनें</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>कोई और शॉर्टकट चुनें</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>मेरे शुरू किए शॉर्टकट के खत्म होने पर ध्वनि चलाएँ</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>आज</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>{0} से</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Ctrl, Alt या Win भी शामिल करें</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Automation Portal शुरू होने के बाद इस ऑटोमेशन ने क्या किया, नवीनतम पहले। यहाँ की कोई भी चीज़ डिस्क पर सेव नहीं होती।</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>अभी तक कुछ नहीं हुआ है। जब इस ऑटोमेशन का ट्रिगर चलेगा, तो यह यहाँ दिखेगा।</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>नया ऑटोमेशन</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>ऑटोमेशन संपादित करें</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>चालू करें</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>आपकी खोज से कुछ मेल नहीं खाता।</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>इस समूह में अभी कुछ नहीं है।</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>केवल अगर… (वैकल्पिक)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>केवल सही समय पर चलाने के लिए शर्तें जोड़ें। इन सभी का सही होना ज़रूरी है।</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>जब यह होता है</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>हर बार चलाने के लिए इसे 0 पर रहने दें। जो ट्रिगर एक के बाद एक कई बार चल सकते हैं, उनके लिए विराम उपयोगी है।</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>आम तौर पर Automation Portal ऐसे ऑटोमेशन को रोक देता है जो 10 मिनट में 60 से अधिक बार चलता है, क्योंकि इसका अर्थ आम तौर पर लूप होता है।</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>अगर निर्धारित समय पर PC बंद या स्लीप में था, या Automation Portal नहीं चल रहा था, तो यह Automation Portal शुरू होने या PC जागने पर एक बार चलता है। केवल पिछले 24 घंटों के समय गिने जाते हैं, और ऑटोमेशन रुके होने के दौरान बीते समय के लिए कुछ नहीं चलता।</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>पता लगाया जा रहा है कि यह क्या करेगा…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>पुनर्स्थापित करने के लिए कुछ नहीं है</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>बैकअप से पुनर्स्थापित करें</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>इन्हें जोड़ें</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>वर्णन करें</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>तैयार शॉर्टकट से शुरू करें</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>कोई एक जोड़ने के लिए चुनें, फिर उसे अपनी ज़रूरत के हिसाब से बदलें।</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>इन आइटम पर शॉर्टकट चलाएँ?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>यह शॉर्टकट चलाएँ?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>एक बार अनुमति दें</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>हाल में हटाए गए</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>इस शॉर्टकट का उपयोग करने वाले ऑटोमेशन फिर से काम करने लगे हैं।</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>हाल में हटाए गए में इसकी प्रति नहीं हटाई जा सकी, इसलिए वह वहाँ अभी भी सूचीबद्ध है।</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>हाल में हटाए गए खाली करें</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>कुछ शॉर्टकट अभी भी यहाँ हैं</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>कोई ऐप विंडो खुली नहीं है। जो ऐप दिखाना है उसे खोलें, फिर से कोशिश करें।</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>आप कौन सा ऐप दिखाएँगे?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>रिकॉर्डिंग शुरू करें</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>इन चरणों को जोड़ने से पहले कुछ भी बदलें। हर चरण अपने कंट्रोल को नाम से खोजता है, इसलिए विंडो हिलने पर भी यह काम करता है।</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>इसके बजाय, उन्होंने जो बटन दबाया उस पर क्लिक जोड़ें।</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>रिकॉर्डिंग की समीक्षा करें</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>चरण जोड़ें</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>हर बार मुझसे पूछें</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>यह चित्र दिखाया नहीं जा सका।</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>क्षेत्र चुनने के लिए खींचें। रद्द करने के लिए Esc दबाएँ।</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>जो जगह चाहिए वहाँ क्लिक करें। रद्द करने के लिए Esc दबाएँ।</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>बाद में आप संपादक में इनमें से कुछ भी बदल सकते हैं।</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>दिखाएँ कि यह क्या करेगा</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>चलने पर</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>एक फ़ोल्डर चुनें</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>पहले फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>शुरू करने के लिए कुछ चुनें</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>अभी एक आज़माएँ</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>नमस्ते कहें</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>एक सूचना दिखाता है</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>यह पूरा नहीं हुआ</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>इसे पास रखें</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>कहीं से भी, टाइप करके कुछ भी चलाएँ।</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>इन्हें एक साथ दबाएँ। एक छोटी पट्टी खुलेगी जहाँ आप टाइप करके कोई भी शॉर्टकट खोज और चला सकते हैं।</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Automation Portal में आपका स्वागत है</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>पिन किए शॉर्टकट</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal शॉर्टकट</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>आपके डेस्कटॉप पर जोड़ा गया</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>स्टार्ट मेन्यू में जोड़ा गया</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>यह ट्रिगर अब उपलब्ध नहीं है</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>अभी-अभी चला</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>चुनें कि इसे क्या शुरू करे।</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>नए शॉर्टकट को एक नाम दें।</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>चलाने के लिए एक शॉर्टकट चुनें।</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>चुनें कि ऑटोमेशन को क्या शुरू करे।</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>इसका उपयोग करने वाले ऑटोमेशन फिर से काम करने लगे हैं।</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>एक अज्ञात चरण</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>अगर आप पक्का नहीं जानते कि यह किन ऐप और फ़ोल्डर पर काम करता है, तो पहले इसके चरण जाँचें। चलते समय ऐप्स को अकेला छोड़ दें।</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>हर दिन</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>यह शॉर्टकट हटा दिया गया था। इसे फिर से चलाने के लिए अपनी लाइब्रेरी में हाल में हटाए गए से पुनर्स्थापित करें।</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>यह शॉर्टकट अब मौजूद नहीं है, इसलिए इसे फिर से नहीं चलाया जा सकता।</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>यह शॉर्टकट चलाने के लिए फ़ाइलें चुनें।</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>इस शॉर्टकट को काम करने के लिए कुछ चाहिए, और रन इतिहास वह नहीं रखता। इसे अपनी लाइब्रेरी से या Quick Run से चलाएँ।</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>यह शॉर्टकट फिर से चलाएँ।</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>अगर Windows कहे कि कोई आइटम रीसायकल बिन के लिए बहुत बड़ा है और उसे स्थायी रूप से हटाने को पूछे, तो उसे रखने के लिए नहीं चुनें।</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>ये बदलाव पहले ही पूर्ववत किए जा चुके हैं।</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>ये बदलाव यहाँ से पूर्ववत नहीं किए जा सकते। क्या बदला, यह जानने के लिए विवरण देखें।</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>पूर्ववत करें जितना सुरक्षित रूप से हो सकता है वापस रखता है। बाकी के लिए विवरण देखें।</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>कुछ भी ओवरराइट नहीं हुआ।</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>एक सूचना दिखाता है। आपके PC पर कुछ नहीं बदलता।</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>लाइब्रेरी और बैकअप</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>दूसरे ऐप्स और लिंक</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>ट्रे में चलता रहे</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>शॉर्टकट टाइल</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>मैं कहाँ हूँ</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>माउस पॉइंटर पर Quick Panel</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>आपके शॉर्टकट कहाँ सेव हैं</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>अपने शॉर्टकट OneDrive में रखें</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>अपनी लाइब्रेरी का बैकअप लें</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>बताएँ कि जब हॉटकी से शुरू किया गया शॉर्टकट खत्म हो</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>फ़ोन सूचनाएँ विषय</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>उन्नत कार्रवाइयाँ दिखाएँ</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>डाउनलोड व्यवस्थित करें</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>कुछ समय पहले डाउनलोड की गई फ़ाइलों को प्रकार या तारीख के अनुसार फ़ोल्डरों में छाँटता है।</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>फ़ाइलें बदलता है</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>फ़ोल्डर में कुछ दिनों से पुरानी (कम से कम 1) फ़ाइलें खोजें, अधूरे डाउनलोड छोड़कर</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>उन्हें प्रकार या तारीख के अनुसार फ़ोल्डरों में ले जाएँ</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>बताएँ कि कितनी ले जाई गईं, पूर्ववत करने के विकल्प के साथ</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>चित्र बदलें</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>आपके चुने चित्र JPEG, PNG, GIF, BMP या TIFF में सेव करता है।</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>प्रतियाँ बनाता है</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>आपके चुने या भेजे गए चित्र लेता है</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>हर एक को नए फ़ाइल प्रकार में सेव करें</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>मूल फ़ाइलों के पास, नाम पहले से हो तो name (2) के रूप में</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>मेरा वर्कस्पेस सेट करें</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>आपका काम का ऐप, एक फ़ोल्डर और एक वेब पेज एक साथ खोलता है।</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>कोई फ़ाइल बदलाव नहीं</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>आपका चुना हुआ ऐप खोलें</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>फ़ाइल एक्सप्लोरर में एक फ़ोल्डर खोलें</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>एक वेब पेज खोलें</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>एक फ़ोल्डर का बैकअप लें</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>हर दिन या हर हफ़्ते एक फ़ोल्डर को तारीख वाले नए फ़ोल्डर में कॉपी करता है।</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>केवल कॉपी करें</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>आपके चुने समय पर, तारीख के नाम वाला एक फ़ोल्डर बनाएँ</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>फ़ोल्डर को उसमें कॉपी करें</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>बैकअप में कभी कुछ न हटाएँ और न बदलें</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>स्प्रेडशीट से फ़ॉर्म भरें</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>CSV फ़ाइल की हर पंक्ति दूसरे ऐप के फ़ॉर्म में लिखता है।</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>जल्द आ रहा है</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>रिकॉर्ड होते समय आप फ़ॉर्म एक बार भरते हैं</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>यह पंक्ति 1 को चरण-दर-चरण दोहराता है ताकि आप जाँच सकें</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>फिर से शुरू करने तक रुका हुआ</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>कुछ गड़बड़ हो गई।</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>बैकअप नहीं चला</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>हर दिन एक समय पर</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>जब मैं हॉटकी दबाऊँ</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Windows में कहीं भी</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>जब मैं साइन इन करूँ</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>हर बार जब आप दिन शुरू करें</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>जब किसी फ़ोल्डर में फ़ाइल आए</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>जैसे कोई नया डाउनलोड</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>जब कोई ऐप खुले</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>अगला ऐप चुनें</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>जब कोई USB डिवाइस लगाया जाए</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>या कोई भी डिवाइस जो जुड़ता है</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>सभी शॉर्टकट</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>नया फ़ोल्डर</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>रन इतिहास</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>नया फ़ोल्डर</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>फ़ोल्डर का नाम</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>फ़ोल्डर का नाम बदलें</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>नया शॉर्टकट</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>अभी लाइब्रेरी का बैकअप लें</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>बैकअप से पुनर्स्थापित करें…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>शॉर्टकट फ़ाइल इंपोर्ट करें…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>कीबोर्ड शॉर्टकट</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal अभी भी चल रहा है</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>इसे घड़ी के पास ट्रे आइकन में खोजें। बंद करने के लिए उस पर राइट-क्लिक करें।</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>चुनें कि AI कार्रवाइयाँ और Quick Run कौन सा AI उपयोग करें। आपकी कुंजियाँ इस PC पर एन्क्रिप्ट करके सेव होती हैं।</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>इस PC पर (मुफ़्त और निजी)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>इस PC की जाँच हो रही है…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>उपयोग के लिए तैयार। मुफ़्त, निजी और ऑफ़लाइन काम करता है।</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>इस PC पर उपलब्ध। मुफ़्त, निजी और ऑफ़लाइन काम करता है।</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows डिवाइस पर AI तैयार कर रहा है…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>उपयोग के लिए तैयार।</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>बंद।</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>अपनी कुंजी यहाँ चिपकाएँ</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>कुंजी सेव हो गई।</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>कुंजी हटा दी गई।</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>डिप्लॉयमेंट का नाम</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>मॉडल (नीचे दिए तेज़ / स्मार्ट / सर्वश्रेष्ठ विकल्प के लिए खाली छोड़ें)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>यह ऑटोमेशन इस PC पर नहीं चल सकता। कोई दूसरा ट्रिगर चुनने के लिए इसे संपादित करें।</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>जो शॉर्टकट यह चलाता है वह हटा दिया गया है। कोई और चुनने के लिए ऑटोमेशन संपादित करें।</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>ऑटोमेशन हटाएँ</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>यह ऑटोमेशन हटाएँ? जो शॉर्टकट यह चलाता है, वह नहीं हटेगा।</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>जाँच शुरू नहीं हुई</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>पहले से चल रहा है</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>जाँच सफल रही</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>जाँच रद्द की गई</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>आपने शॉर्टकट पूरा होने से पहले रोक दिया।</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>जाँच पूरी नहीं हुई</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>अपनी फ़ाइलें देखें और प्रबंधित करें।</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>पावर प्लान बदलें और PC को जागा रखें।</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>उसी निर्माता के दूसरे ऐप्स जिनके साथ Automation Portal काम कर सकता है।</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>यह क्या करेगा</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>सेट अप करें</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>यह क्या करता है</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>अज्ञात चरण</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>शॉर्टकट जोड़ें</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>जोड़ें और शेड्यूल करें…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>अक्षांश एक संख्या होनी चाहिए, जैसे 51.5।</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>देशांतर एक संख्या होनी चाहिए, जैसे -0.12।</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>अक्षांश -90 और 90 के बीच होना चाहिए।</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>देशांतर -180 और 180 के बीच होना चाहिए।</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>पहले रन से पहले</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>पहले इसे खोलें</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>कोई फ़ोल्डर नहीं</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>डेस्कटॉप पर जोड़ें</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>शॉर्टकट का नाम बदलें</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>वे कुंजियाँ दबाएँ जिनसे यह शॉर्टकट कहीं से भी चलाना चाहते हैं। Ctrl, Alt या Win में से कम से कम एक शामिल करें।</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>अभी उपलब्ध नहीं है</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>शॉर्टकट हटाएँ</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>सभी रन</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>आपने इसे रोका</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>अपने आप रुक गया</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>सभी स्रोत</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>लिंक और दूसरे ऐप्स</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>कोई रन मेल नहीं खाता</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>अभी तक कुछ नहीं चला</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>कोई और खोज आज़माएँ, या सभी रन दिखाएँ।</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>जब आप कोई शॉर्टकट चलाएँगे, तो यहाँ चरण-दर-चरण दिखेगा कि क्या हुआ। इससे पता लगाना आसान होता है कि कुछ काम क्यों नहीं किया।</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>फिर से चलाएँ…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>फिर से चलाएँ</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>यह शॉर्टकट अब मौजूद नहीं है।</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>वह चरण चुनकर संपादक खोलें जो पूरा नहीं हुआ।</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>विफल चरण पर खोलें</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>फ़ाइल बदलाव पूर्ववत करें</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>इस रन में बनी, ले जाई, नाम बदली या बदली गई फ़ाइलें वापस रखें। पहले आप सूची देखेंगे।</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>विवरण कॉपी करें</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>इस रन का छोटा सारांश कॉपी करें, इसमें आपकी फ़ाइलें या कोई पासवर्ड या कुंजी शामिल नहीं होगी।</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>बदली गई फ़ाइलें</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>इस रन में दर्ज नहीं है कि कौन सा चरण विफल हुआ, इसलिए कोई चरण चुना नहीं गया है।</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>इस रन के बाद शॉर्टकट बदल गया है, और वह चरण अब उसमें नहीं है।</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>रन इतिहास साफ़ करें</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>पूरा रन इतिहास हटाएँ? आपके शॉर्टकट पर इसका असर नहीं होगा।</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>इतिहास साफ़ करें</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows Automation Portal को आपकी लोकेशन इस्तेमाल नहीं करने दे रहा। इसे Windows सेटिंग्स, गोपनीयता और सुरक्षा, लोकेशन में चालू करें, या यहाँ संख्याएँ लिखें।</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>अभी कोई ऐप नहीं है।</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>केवल यह शॉर्टकट, बिना पूछे</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>लाइब्रेरी का बैकअप लिया गया</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal को इस PC पर OneDrive फ़ोल्डर नहीं मिला। पहले OneDrive में साइन इन करें, या बदलें… से कोई भी फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>कोई और फ़ोल्डर चुनें</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>वह फ़ोल्डर आपकी मौजूदा लाइब्रेरी के अंदर है। कहीं और कोई फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>एक खाली फ़ोल्डर चुनें</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>लाइब्रेरी का स्थान बदलें</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal दोबारा शुरू होगा</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>आपके शॉर्टकट नई जगह पर तैयार हैं। Automation Portal अभी दोबारा शुरू होता है, ताकि शुरू से ही सब कुछ वहीं से चले।</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>स्निपेट हटाएँ</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>तारीख का प्रारूप</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>प्रारूप (उदाहरण के लिए yyyy-MM-dd, या dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>मुझसे पूछें</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>नया शॉर्टकट</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows ने Automation Portal को आपके क्लिक और टाइपिंग पकड़ने नहीं दिए। फिर से कोशिश करें।</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>जवाब</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter जवाब कॉपी करता है</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>तारीख</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>चुने गए टेक्स्ट के बारे में</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>नकली रिकॉर्डर की ओर से नमस्ते</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Enter दबाया गया</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>पूर्ववत करने के लिए कुछ नहीं है</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>इस रन के फ़ाइल बदलाव पहले ही पूर्ववत किए जा चुके हैं।</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>इस रन ने ऐसी कोई फ़ाइल नहीं बदली जिसे Automation Portal पूर्ववत कर सके, या इसका रिकॉर्ड एक हफ़्ते से पुराना है।</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>इस रन के फ़ाइल बदलाव अभी पूर्ववत किए जा रहे हैं।</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>जवाब लिखें</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>कृपया भरें</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>एक से अधिक चुनने के लिए Ctrl या Shift दबाए रखें।</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>फ़ाइलें चुनें</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>इस नाम से सेव करें</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>समय (वैकल्पिक)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>कोई संख्या लिखें, जैसे 12 या 3.5।</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>यह वेब पता नहीं लगता।</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>ऑटोमेशन फिर से शुरू करें</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>शॉर्टकट का नाम लिखें</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>शॉर्टकट नाम के कुछ अक्षर लिखें</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>संपादक खोलता है</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run यह नहीं कर सका</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>कुछ गड़बड़ हो गई। फिर से कोशिश करें।</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>पासवर्ड कभी रिकॉर्ड नहीं होते।</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>और पिन किए…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal खोलें</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>अभी फिर से शुरू करें</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>30 मिनट के लिए</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>1 घंटे के लिए</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>कल तक</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>जब तक मैं फिर से शुरू न करूँ</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Automation Portal से बाहर निकलें</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>चलाने के लिए क्लिक करें।</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>रीफ़्रेश करें</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>जुड़े ऐप्स रीफ़्रेश करें</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>खोलें</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>{0} खोलें</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>Microsoft Store से {0} प्राप्त करें</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>अपनी डेस्क पर ब्रेक, फ़ोकस और ठहराव की याद दिलाने वाली सूचनाएँ।</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Power Plan Manager नहीं खुल सका</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal जाँच के लिए नमूना फ़ाइलें नहीं बना सका। कुछ नहीं चला और आपकी फ़ाइलें नहीं बदली गईं। जाँचें कि डिस्क में जगह है, फिर से कोशिश करें।</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>पूर्ववत नहीं हो सका</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>चीज़ें वापस रखते समय कुछ गड़बड़ हो गई। देखने के लिए रन इतिहास खोलें कि क्या बदला गया।</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>"{0}" नाम का कुछ नहीं मिला। कोई छोटा शब्द आज़माएँ, या गैलरी में तैयार शॉर्टकट देखें।</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>चरण {0} / {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{1:N0} में से {0:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>अब तक {0:N0}</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>"{0}" चल रहा है</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>{0} शॉर्टकट चल रहे हैं</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" पूरा नहीं हुआ</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>अगला: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>“{0}” नाम का नया शॉर्टकट बनाने के लिए Enter दबाएँ</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>चलाएँ</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>रोकें</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>चलाएँ (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>इस रन को रोकें</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>{0} चलाएँ</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>{0} रोकें</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>{0} संपादित करें</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>{0} के लिए और विकल्प</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>चुनने के लिए क्लिक करें। चलाने के लिए Enter दबाएँ या डबल-क्लिक करें। संपादित करने के लिए Ctrl+E।</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>पिन किया गया</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>1 बार चला। आखिरी बार: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>{0} बार चला। आखिरी बार: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>आज {0} बजे</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>कल {0} बजे</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>पूरा होने के लिए एक हल्की ध्वनि और समस्या के लिए दूसरी। जो शॉर्टकट अपने आप शुरू होते हैं वे चुप रहते हैं, और फ़ोकस असिस्ट या फ़ुल-स्क्रीन ऐप चालू होने पर सब कुछ चुप रहता है।</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus और Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>मुफ़्त संस्करण</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>आपके पास मुफ़्त संस्करण है: {0} शॉर्टकट तक।</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>आपके पास Plus है: {0} शॉर्टकट तक।</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>आपके पास Pro है: जितने चाहें उतने शॉर्टकट, और ऐसे ऑटोमेशन जो उन्हें अपने आप चलाते हैं।</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>आपके पास {0} शॉर्टकट हैं। वे सब काम करते रहेंगे। नए शॉर्टकट के लिए ज़्यादा जगह चाहिए।</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: {0} शॉर्टकट तक।</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: जितने चाहें उतने शॉर्टकट, और ऐसे ऑटोमेशन जो उन्हें शेड्यूल पर या किसी घटना पर चलाते हैं।</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Pro में अपग्रेड करें: जितने चाहें उतने शॉर्टकट, और ऑटोमेशन। आपका सब कुछ बना रहता है।</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Plus लें</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Pro लें</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Pro में अपग्रेड करें</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{1} में {0}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>खरीदारी पुनर्स्थापित करें</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Microsoft Store में अपनी खरीदारी फिर से जाँचें, उदाहरण के लिए नए PC पर।</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Microsoft Store से जाँच हो रही है…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Microsoft Store खुल रहा है…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>धन्यवाद। अब आपके पास {0} है।</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store खरीदारी पूरी नहीं कर सका। अपना इंटरनेट कनेक्शन जाँचें, फिर से कोशिश करें।</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>आपकी खरीदारी अप-टू-डेट है। आपके पास {0} है।</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>आपकी खरीदारी वापस आ गई है। आपके पास {0} है।</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Microsoft Store तक नहीं पहुँच सका, इसलिए कुछ नहीं बदला। अपना इंटरनेट कनेक्शन जाँचें, फिर से कोशिश करें।</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>और शॉर्टकट बनाएँ</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>मुफ़्त संस्करण में {0} शॉर्टकट रखे जा सकते हैं और आपके पास {1} हैं। वे सब काम करते रहेंगे। और बनाने के लिए, {2} शॉर्टकट तक के लिए Plus लें, या जितने चाहें उतने शॉर्टकट और ऑटोमेशन के लिए Pro।</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus में {0} शॉर्टकट रखे जा सकते हैं और आपके पास {1} हैं। वे सब काम करते रहेंगे। और बनाने के लिए, जितने चाहें उतने शॉर्टकट और ऑटोमेशन के लिए Pro में अपग्रेड करें।</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>ऑटोमेशन Pro के साथ आते हैं</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>ऑटोमेशन आपके शॉर्टकट अपने आप चलाते हैं: शेड्यूल पर, फ़ाइल आने पर, कुछ लगाने पर। आपके पास जो ऑटोमेशन हैं वे चलते रहेंगे।</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" जोड़ दिया गया। इसके शेड्यूल के लिए Pro चाहिए, इसलिए यह केवल तब चलेगा जब आप इसे शुरू करेंगे।</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>अभी नहीं</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>बंद करें</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>14 दिन का मुफ़्त ट्रायल _शुरू करें</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>कार्ड की ज़रूरत नहीं। ट्रायल तभी शुरू होता है जब आप बटन दबाते हैं, उससे पहले नहीं।</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>आपका 14 दिन का Pro ट्रायल शुरू हो गया है। Pro की सभी सुविधाएँ अब आपके लिए खुली हैं।</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>ट्रायल शुरू नहीं हो सका। कुछ नहीं बदला गया।</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Pro ट्रायल: {0} दिन बचे हैं</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Pro ट्रायल: 1 दिन बचा है</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>आपका मुफ़्त Pro ट्रायल। अपना प्लान देखने के लिए सेटिंग्स खोलें।</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>आपका Pro ट्रायल कल खत्म होता है</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>आपने जो कुछ बनाया है वह रहेगा। ट्रायल के बाद नए शॉर्टकट और ऑटोमेशन फिर से आपके प्लान के अनुसार चलेंगे।</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>आपका Pro ट्रायल खत्म हो गया है</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>क्या बंद हुआ: नए ऑटोमेशन बनाना, और {0} से अधिक नए शॉर्टकट बनाना।</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>क्या रहेगा: आपके सभी शॉर्टकट और ऑटोमेशन। वे चलते रहेंगे, और आप अब भी उन्हें संपादित, चला, चालू या बंद और हटा सकते हैं।</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>जो आपने छोड़ा उसके साथ "{0}" चलाएँ?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>ऐसे चरण जो फ़ाइलें बदलते हैं या दूसरे ऐप्स में काम करते हैं: {0}।</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>छोड़ा गया:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (फ़ोल्डर)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…और {0} और</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>छोड़ा गया, क्योंकि "{0}" इन्हें नहीं लेता:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>चलाएँ</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" आपके छोड़े किसी भी आइटम को नहीं लेता, इसलिए यह नहीं चला।</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>आपके अनुमानों के अनुसार लगभग {0} में {1} बचे।</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>{0} से</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>इस महीने</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 मिनट</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} मिनट</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 घंटा</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} घंटे</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>शॉर्टकट और गैलरी खोजें</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>खोजें</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>शॉर्टकट और गैलरी खोजें (Ctrl+F)। Ctrl+K कमांड पैलेट खोलता है।</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>चलाएँ</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>चलाएँ</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>चलाएँ (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>संपादित करें (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>और विकल्प</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>और विकल्प</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>ऑटोमेशन</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>सभी ऑटोमेशन रोकें</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>इसे बंद करने तक हर ऑटोमेशन को चलने से रोकता है</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_नया ऑटोमेशन</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>नया ऑटोमेशन</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>सभी ऑटोमेशन रुके हुए हैं। इसे बंद करने तक कुछ भी अपने आप नहीं चलेगा।</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>_विवरण देखें</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>विवरण देखें</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>खारिज करें</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>खारिज करें</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>चीज़ों को अपने आप होने दें</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>ऑटोमेशन किसी घटना पर आपके लिए शॉर्टकट चलाता है, जैसे जब आप कोई ऐप खोलें, हेडफ़ोन लगाएँ, या सुबह के 8 बजे हों।</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>उदाहरण के लिए: जब मैं हेडफ़ोन लगाऊँ, वॉल्यूम 40% करें।</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>नया _ऑटोमेशन</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_गैलरी देखें</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>गैलरी देखें</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>गैलरी</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>तैयार शॉर्टकट। जो पसंद हों उन्हें जोड़ें, फिर उन्हें अपना बनाएँ।</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_दिखाएँ</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>दिखाएँ</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>खारिज करें</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>खारिज करें</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>अभी कोई तैयार शॉर्टकट नहीं है</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Automation Portal के साथ इंस्टॉल होने पर शुरुआती शॉर्टकट यहाँ दिखेंगे। तब तक आप अपना बना सकते हैं, या किसी दोस्त से मिली .autoportal फ़ाइल खोल सकते हैं।</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_शॉर्टकट बनाएँ</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>शॉर्टकट बनाएँ</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>.autoportal फ़ाइल _खोलें…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>.autoportal फ़ाइल खोलें…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>सभी शॉर्टकट</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>खोज साफ़ करें</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_हाल में हटाए गए</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>हाल में हटाए गए</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>पिछले 30 दिनों में हटाए गए शॉर्टकट पुनर्स्थापित करें</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_नया शॉर्टकट</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>नया शॉर्टकट</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>नया शॉर्टकट बनाएँ (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_पूर्ववत करें</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>पूर्ववत करें</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>इसे हॉटकी दें</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>इसे हॉटकी दें</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>_विवरण देखें</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>विवरण देखें</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>खारिज करें</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>खारिज करें</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>यहाँ से शुरू करें</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>_गैलरी देखें</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>गैलरी देखें</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_छिपाएँ</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>छिपाएँ</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>यह पंक्ति छिपाएँ। गैलरी हमेशा साइडबार में रहती है।</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>नया शॉर्टकट बनाएँ</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>नया शॉर्टकट</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_गैलरी देखें</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>गैलरी देखें</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_शॉर्टकट बनाएँ</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>शॉर्टकट बनाएँ</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>_वर्णन करें</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>वह शॉर्टकट बताएँ जो आप चाहते हैं</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>एक वाक्य में बताएँ कि आपको क्या चाहिए और एक ड्राफ़्ट पाएँ</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>रन इतिहास</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>नाम से खोजें</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>ऐसे रन दिखाएँ जो</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>इनके द्वारा शुरू किए गए रन दिखाएँ</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>और</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>और: इतिहास साफ़ करें</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>रन</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>अभी तक कुछ नहीं चला</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>जब आप कोई शॉर्टकट चलाएँगे, तो यहाँ चरण-दर-चरण दिखेगा कि क्या हुआ। इससे पता लगाना आसान होता है कि कुछ काम क्यों नहीं किया।</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>सेटिंग्स</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>किसी अनुभाग पर जाएँ</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>सामान्य</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Windows के साथ शुरू करें</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>साइन इन करने पर Automation Portal चुपचाप ट्रे में खुले, ताकि आपके ऑटोमेशन हमेशा तैयार रहें।</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Windows के साथ शुरू करें</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>ट्रे में चलता रहे</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>विंडो बंद करने पर Automation Portal पृष्ठभूमि में काम करता रहता है। बंद करने पर पूरी तरह बंद करने के लिए इसे बंद करें।</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>ट्रे में चलता रहे</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>थीम</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>लाइट या डार्क चुनें, या Windows का अनुसरण करें।</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>थीम</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Windows जैसा</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>लाइट</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>डार्क</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>शॉर्टकट टाइल</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>रंगीन आइकन वाले सादे कार्ड, या पूरे रंग की टाइलें।</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>शॉर्टकट टाइल शैली</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>सादा</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>ग्रेडिएंट</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>मैं कहाँ हूँ</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>सूर्योदय और सूर्यास्त ट्रिगर और मौसम अलर्ट के लिए उपयोग होता है। Windows को यह पता लगाने देने के लिए खाली छोड़ें।</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>शहर (वैकल्पिक)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>घर का शहर</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>अक्षांश</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>घर का अक्षांश, माइनस 90 से 90 तक</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>देशांतर</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>घर का देशांतर, माइनस 180 से 180 तक</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>मेरी मौजूदा लोकेशन का _उपयोग करें</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>मेरी मौजूदा लोकेशन का उपयोग करें</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>इसके बजाय निर्देशांक _लिखें</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>इसके बजाय निर्देशांक लिखें</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>लोकेशन में समस्या</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>कीबोर्ड</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>कहीं भी ये कुंजियाँ दबाएँ, शॉर्टकट खोजने और चलाने के लिए।</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>चुने गए टेक्स्ट पर चलाएँ</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>किसी भी ऐप में कुछ टेक्स्ट चुनें, ये कुंजियाँ दबाएँ, और उस पर चलाने के लिए एक शॉर्टकट चुनें।</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>माउस पॉइंटर पर Quick Panel</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>ये कुंजियाँ दबाएँ, ताकि आपके पिन किए शॉर्टकट ठीक माउस के पास खुल जाएँ।</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>लाइब्रेरी और बैकअप</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>आपके शॉर्टकट कहाँ सेव हैं</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_खोलें</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>खोलें</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>फ़ोल्डर फ़ाइल एक्सप्लोरर में दिखाएँ</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>_बदलें…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>बदलें…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>अपने शॉर्टकट OneDrive में रखें</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>आपकी लाइब्रेरी OneDrive में कॉपी करता है, ताकि आपके सभी PC पर वह सिंक में रहे।</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_OneDrive में ले जाएँ</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>OneDrive में ले जाएँ</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>अपनी लाइब्रेरी का बैकअप लें</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>आपके शॉर्टकट, फ़ोल्डर और ऑटोमेशन एक zip फ़ाइल में सेव करता है। शॉर्टकट वापस लाने के लिए बैकअप से पुनर्स्थापित करें का उपयोग करें। वे अभी के शॉर्टकट के साथ जोड़ दिए जाते हैं।</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>लाइब्रेरी का अभी _बैकअप लें</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>लाइब्रेरी का अभी बैकअप लें</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>बैकअप से _पुनर्स्थापित करें…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>बैकअप से पुनर्स्थापित करें…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>बैकअप के शॉर्टकट आपके मौजूदा शॉर्टकट के साथ जोड़ता है। कुछ भी बदला नहीं जाता।</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>सूचनाएँ</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>बताएँ कि जब हॉटकी से शुरू किया गया शॉर्टकट खत्म हो</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>कुंजी दबाकर शुरू किया गया शॉर्टकट चलने के बाद एक छोटी सूचना दिखाता है।</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>हॉटकी से शुरू किए शॉर्टकट खत्म होने पर सूचित करें</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>मेरे शुरू किए शॉर्टकट के खत्म होने पर ध्वनि चलाएँ</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>मेरे शुरू किए शॉर्टकट के खत्म होने पर ध्वनि चलाएँ</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>फ़ोन सूचनाएँ विषय</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>मेरे फ़ोन पर भेजें के लिए उपयोग होता है। एक निजी, अनुमान लगाने में कठिन नाम चुनें, फिर अपने फ़ोन पर ntfy ऐप में उसकी सदस्यता लें। आपका भेजा संदेश ntfy.sh सेवा से होकर जाता है, इसलिए जो भी विषय जानता है वह उसे पढ़ सकता है।</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>फ़ोन सूचनाएँ विषय</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>उदाहरण के लिए: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>दूसरे ऐप्स और लिंक</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>लिंक</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal:// लिंक</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>वेब पेज और दूसरे ऐप्स इन लिंकों से आपके शॉर्टकट चलाने की अनुमति माँग सकते हैं। हर शॉर्टकट के लिए: लिंक पहले पूछते हैं, सिवाय उन शॉर्टकट के जिनके विवरण में "लिंक बिना पूछे इसे चला सकते हैं" लिखा है। फ़ाइलें या फ़ाइल पथ जैसी दिखने वाली चीज़ें लाने वाले लिंक हमेशा पूछते हैं।</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>automationportal लिंक क्या कर सकते हैं</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>कभी नहीं</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>हर बार पूछें</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>हर शॉर्टकट के अनुसार</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>जुड़े ऐप्स</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>जिन ऐप्स को शॉर्टकट चलाने की अनुमति है</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>मॉडल</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>मॉडल स्तर: तेज़, स्मार्ट या सर्वश्रेष्ठ</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>तेज़ सबसे कम लागत में और सबसे जल्दी जवाब देता है। सर्वश्रेष्ठ सबसे अधिक लागत लेता है और सबसे ज़्यादा समय लेता है। हर प्रदाता इसी का उपयोग करता है, जब तक आप उसके लिए मॉडल का नाम न लिखें।</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>तेज़</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>स्मार्ट</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>सर्वश्रेष्ठ</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>उन्नत</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>उन्नत कार्रवाइयाँ दिखाएँ</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>कार्रवाई सूची में पावर-यूज़र कार्रवाइयाँ जोड़ता है, जैसे कमांड चलाना।</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>उन्नत कार्रवाइयाँ दिखाएँ</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>समस्याएँ ठीक करने में मदद के लिए क्रैश रिपोर्ट भेजें</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>अगर Automation Portal क्रैश हो, तो त्रुटि का विवरण भेजें। आपके शॉर्टकट, फ़ाइलें, क्लिपबोर्ड और टाइप किया टेक्स्ट कभी शामिल नहीं होते, और फ़ाइल पथ, आपका उपयोगकर्ता नाम और PC का नाम हटा दिए जाते हैं।</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>समस्याएँ ठीक करने में मदद के लिए क्रैश रिपोर्ट भेजें</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>के बारे में</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal आपके PC पर काम करता है। जब तक आपका चलाया शॉर्टकट ऐसा न करे, कुछ भी कहीं नहीं भेजा जाता।</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>गोपनीयता नीति</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>_डेटा फ़ोल्डर खोलें</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>डेटा फ़ोल्डर खोलें</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>_लॉग फ़ोल्डर खोलें</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>लॉग फ़ोल्डर खोलें</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>स्वागत संदेश फिर _दिखाएँ</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>स्वागत संदेश फिर दिखाएँ</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>स्निपेट</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>कहीं भी एक छोटा कोड लिखें, और Automation Portal उसे लंबे टेक्स्ट से बदल देता है।</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_नया स्निपेट</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>नया स्निपेट</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>स्निपेट खोजें</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>फ़ोल्डर</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>स्निपेट</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>इस स्निपेट को चालू या बंद करें</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>सक्षम</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>छोटा कोड</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>छोटा कोड</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>फ़ोल्डर (वैकल्पिक)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>इससे बदलें</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>वह टेक्स्ट जो दिखना चाहिए</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>बदला जाने वाला टेक्स्ट</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>एक प्लेसहोल्डर जोड़ें</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>तारीख</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>आज की तारीख</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>तारीख का प्रारूप…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>आपके चुने प्रारूप में आज की तारीख, जैसे yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>समय</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>वर्तमान समय</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>क्लिपबोर्ड</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>जो भी आपने आखिरी बार कॉपी किया</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>कर्सर की जगह</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>टेक्स्ट आने के बाद कर्सर जहाँ रुकता है</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>मुझसे पूछें…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal हर बार आपसे एक सवाल पूछता है और आपका जवाब यहाँ रखता है</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>पूर्वावलोकन</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>बड़े अक्षर बिल्कुल मिलाएँ</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>यह बंद होने पर ;Hi लिखने से पहला अक्षर बड़ा होता है, और ;HI लिखने से सभी अक्षर बड़े होते हैं।</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_स्निपेट हटाएँ</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>स्निपेट हटाएँ</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>थोड़ा टाइप करना बचाएँ</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>;addr जैसा छोटा कोड बनाएँ, जो आपके पूरे पते में बदल जाए जब भी आप इसे लिखें। यह किसी भी ऐप में काम करता है।</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>शुरू करने के लिए ;date और ;addr जोड़ें</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>आज की तारीख के लिए और आपके पते के लिए एक-एक स्निपेट जोड़ता है</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_अपना बनाएँ</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>अपना बनाएँ</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal Quick Panel</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>पिन किया गया</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>ऑटोमेशन रुके हुए हैं</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>अभी कुछ भी पिन नहीं है</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>अपने पसंदीदा शॉर्टकट पिन करें, वे यहाँ एक क्लिक की दूरी पर दिखेंगे।</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_Automation Portal खोलें</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Automation Portal खोलें</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_रिकॉर्ड करें</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>रिकॉर्ड करें</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>अपने क्लिक और टाइपिंग से नया शॉर्टकट रिकॉर्ड करें</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>ऑटोमेशन रोकें</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run खोज</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>शॉर्टकट का नाम लिखें</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>कुछ नहीं मिला। कोई और शब्द आज़माएँ, या इसे बंद करके मुख्य विंडो में नया शॉर्टकट या गैलरी देखें उपयोग करें।</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>दिखावट</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>एक्सेंट रंग</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>अपने Windows एक्सेंट का अनुसरण करें, या दस रंगों में से कोई एक चुनें।</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>एक्सेंट रंग</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows एक्सेंट</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>विंडो की पृष्ठभूमि</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>विंडो की पृष्ठभूमि कैसी दिखे, चुनें। Windows हाई कंट्रास्ट में हमेशा ठोस पृष्ठभूमि होती है।</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>विंडो की पृष्ठभूमि</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (नरम, डिफ़ॉल्ट)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Acrylic (धुंधला)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>ठोस</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>कोने</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>बटन, कार्ड और टाइल कितने गोल हों।</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>कोने</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>गोल (डिफ़ॉल्ट)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>चौकोर</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>और ज़्यादा गोल</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>घनत्व</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>टेक्स्ट के आसपास और पंक्तियों के बीच कितनी जगह हो।</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>घनत्व</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>संक्षिप्त</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>सामान्य (डिफ़ॉल्ट)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>आरामदायक</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>टेक्स्ट का आकार</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Windows टेक्स्ट आकार सेटिंग के ऊपर टेक्स्ट को बड़ा या छोटा करता है।</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>टेक्स्ट का आकार</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>गति</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>चीज़ें आने और बदलने पर ऐप कितना हिले।</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>गति</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Windows जैसा (डिफ़ॉल्ट)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>कम</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>बंद</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>शॉर्टकट टाइल</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>कार्ड खुली टाइलें दिखाते हैं। संक्षिप्त में वे छोटी होती हैं, ताकि स्क्रीन पर ज़्यादा आ सकें।</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>शॉर्टकट टाइल का आकार</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>कार्ड (डिफ़ॉल्ट)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>संक्षिप्त</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>दिखावट रीसेट करें</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>थीम, एक्सेंट, पृष्ठभूमि, कोने, घनत्व, टेक्स्ट का आकार, गति और टाइल वापस डिफ़ॉल्ट पर ले जाता है।</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>रीसेट करें</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>दिखावट को डिफ़ॉल्ट पर रीसेट करें</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>नीला</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>गहरा नीला</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>बैंगनी</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>मैजेंटा</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>लाल</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>नारंगी</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>अंबर</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>हरा</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>टील</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>स्लेट</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>भूल जाएँ</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host इंस्टॉल नहीं है।</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal को अभी Portal AI Host में अनुमति नहीं है। अनुमति बटन उपयोग करें।</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Automation Portal को एक बार अनुमति दें, और Portal AI Host उसके लिए जवाब देगा। कुछ भी आपके PC से बाहर नहीं जाता।</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (इस PC पर)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>फिर से जाँचें</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>अनुमति दें</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>API कुंजी उपयोग करें…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>ChatGPT, Claude, Gemini और दूसरों के साथ अपना खाता उपयोग करें।</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>आपका अपना AI खाता</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>जाँचा जा रहा है…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>बंद करें</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Portal AI Host प्राप्त करें</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>मुफ़्त और निजी। इस PC पर एक AI, जिसे सभी Portal ऐप्स साझा करते हैं।</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>इस PC पर AI चलाता है। कुछ भी आपके कंप्यूटर से बाहर नहीं जाता।</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>तैयार। कुछ भी आपके PC से बाहर नहीं जाता।</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>बताएँ कि आप क्या चाहते हैं, और AI कार्रवाइयों को बात करने के लिए एक AI चाहिए। तैयार करने का एक तरीका चुनें।</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Portal AI Host शुरू करें</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Portal AI Host शुरू हो रहा है…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>AI तैयार करें</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Portal AI Host उपयोग करें</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Windows AI उपयोग करें</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Portal AI Host में आपकी हाँ का इंतज़ार है…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>इस PC में बना हुआ। मुफ़्त और निजी।</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows डिवाइस पर AI</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows डिवाइस पर AI तैयार कर रहा है…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>उपयोग के लिए तैयार। कुछ भी आपके PC से बाहर नहीं जाता। मॉडल: {0}। एक बार में {1} टोकन तक पढ़ता है।</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>उपयोग के लिए तैयार। कुछ भी आपके PC से बाहर नहीं जाता।</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>अर्थ के आधार पर संबंधित</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>{0} से पूछा जा रहा है…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>संबंधित</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>सेट अप करें</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>चुनें कि Quick Run सवालों के जवाब कैसे दे</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C कॉपी करें      Esc बंद करें</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>शॉर्टकट बनाएँ: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>AI सेट अप करें…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>AI से पूछें: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>जाँचने के लिए एक ड्राफ़्ट खोलता है। कुछ सेव या चलाया नहीं जाता।</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>पूछें</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>कॉपी हो गया</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>कॉपी करें</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>जवाब कॉपी करें</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>वर्णन करें</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>AI जवाब</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>अर्थ के आधार पर {0} संबंधित</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (संबंधित)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>समस्याएँ जल्दी ठीक कर सकें, इसके लिए क्रैश रिपोर्ट भेजें। इनमें आपकी फ़ाइलें या आपका टाइप किया टेक्स्ट कभी शामिल नहीं होता।</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>क्या भेजा जाता है</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>गोपनीयता</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>क्रैश रिपोर्ट</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>ऐप क्रैश होने पर त्रुटि का विवरण भेजा जाता है, ताकि हम उसे ठीक कर सकें। आपके शॉर्टकट, फ़ाइलें, क्लिपबोर्ड और टाइप किया टेक्स्ट कभी शामिल नहीं होते, और पथ, नाम और आपके PC का नाम हटा दिए जाते हैं। इसे बंद करने पर भेजना तुरंत रुक जाता है।</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>_क्रैश रिपोर्ट भेजें</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>क्रैश रिपोर्ट भेजें</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>क्या भेजा जाता है</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>नमस्ते! उबाऊ हिस्से आपके लिए हम करते हैं।</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal छोटे काम को एक क्लिक या एक हॉटकी में बदल देता है: फ़ोल्डर व्यवस्थित करना, मौसम जाँचना, नोट लिखना, फ़ाइलों का समूह बदलना।</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>इसमें लगभग एक मिनट लगता है। कभी भी छोड़ सकते हैं।</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>रंगीन बिंदुओं से घिरी Automation Portal की बिजली की चमक</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>जो पसंद हों उन्हें चिह्नित करें। आप उन्हें बाद में बदल या हटा सकते हैं।</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>तैयार शॉर्टकट जब चाहें तब गैलरी में मिलेंगे।</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>अभी एक आज़माएँ</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>शॉर्टकट एक छोटा काम है जो आपके कहने पर चलता है। यह केवल नीचे का टेक्स्ट बदलता है। आपके PC पर कुछ नहीं छूता।</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>इसे ज़ोर से बोलो</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>टेक्स्ट को बड़े अक्षरों में बदलता है</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>बदलने वाला टेक्स्ट</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>इसे चलाएँ</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>इसे फिर से चलाएँ</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>चल रहा है...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>परिणाम</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>यह पूरा नहीं हुआ।</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal घड़ी के पास रहता है। यह विंडो बंद करने पर भी आपकी हॉटकी काम करती रहती हैं।</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>अभी छोड़ें</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>वापस</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>आगे</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>चलिए</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>शुरू करें</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>चरण {0} / {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>अनुशंसित सेटिंग्स से शुरू करें</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Automation Portal उपयोग शुरू करें</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>अनुशंसित</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>क्रैश रिपोर्ट भेजें</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>ताकि हम समस्याएँ जल्दी ठीक कर सकें। आपकी फ़ाइलें या आपका टाइप किया टेक्स्ट कभी शामिल नहीं होता।</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>यह सब आप बाद में सेटिंग्स में बदल सकते हैं।</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>हो गया</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>अपने शहर का मौसम एक क्लिक में देखें।</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>एक चरण में नोट लिखें।</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>आज की तारीख और मौसम सुनें, फिर अपने पहले ऐप्स खोलें।</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>दूरी, वज़न, तापमान और बहुत कुछ बदलें।</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>अपने काम के ऐप्स बंद करें और एक साथ व्यवस्थित करें।</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>फ़ॉन्ट, रंग या लिंक के बिना टेक्स्ट चिपकाएँ।</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Automation Portal का नया संस्करण तैयार है।</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>अपडेट करें</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>अपडेट के लिए Microsoft Store पेज खोलें</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>बाद में</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>नया संस्करण आने तक यह छिपाएँ</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>नया क्या है</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>इस संस्करण में ठीक किया गया</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>इस संस्करण में नया</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>मुझे दिखाएँ</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>ऐप का वह हिस्सा खोलें जिसके बारे में यह है</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>यह विंडो बंद करें</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_नया क्या है</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>नया क्या है</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>देखें कि इस संस्करण में क्या बदला</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>नया क्या है</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Automation Portal देखें</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>वापस</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>आगे</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>टूर छोड़ें</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Automation Portal उपयोग शुरू करें</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>मुझे दिखाएँ</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>टूर बंद करें और ऐप का यह हिस्सा खोलें</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>पिछले पड़ाव पर जाएँ</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>अगले पड़ाव पर जाएँ</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>टूर बंद करें। आप इसे सेटिंग्स, के बारे में से फिर खोल सकते हैं।</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>टूर बंद करें और ऐप का उपयोग शुरू करें</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>टूर देखें</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Automation Portal क्या कर सकता है, इसकी एक छोटी झलक</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>पहले एक छोटा टूर लें</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>पड़ाव {0} / {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>स्क्रीनशॉट उपलब्ध नहीं है</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Automation Portal देखें</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Automation Portal देखें</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_देखें</value>
+  </data>
+</root>

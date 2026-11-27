@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>เลือกทางลัดที่จะเรียกใช้</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>ตั้งชื่อตัวแปร</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>ตั้งชื่อค่าที่บันทึกไว้</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>เพิ่มคำถามอย่างน้อยหนึ่งข้อ</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>ไม่มีอะไรให้เลือก รายการว่างเปล่า</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>รูปแบบ '{0}' ไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>รูปแบบใช้เวลาตรวจสอบนานเกินไป ลองใช้รูปแบบที่ง่ายกว่า</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>ไม่รู้จักการเปรียบเทียบ '{0}'</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>ใส่การกระทำไว้ในตัวเลือกใดตัวเลือกหนึ่งของเมนู</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' ไม่มีข้อมูลกลุ่ม ลบแล้วเพิ่มใหม่อีกครั้ง</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' ไม่สามารถอยู่ในกลุ่มได้</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>If มี 'Otherwise' ได้เพียงครั้งเดียว</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>บล็อก Repeat ไม่มีส่วนแยก ลบรายการนี้</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>พบ {0} โดยไม่มีจุดเริ่มต้นที่ตรงกัน ลบออกหรือเพิ่มจุดเริ่มต้นกลับมา</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>ไม่มีทางลัดนั้นแล้ว อาจถูกลบไปแล้ว</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>ทางลัดซ้อนกันลึกเกินไป (มากกว่า {0} ระดับ) ตรวจสอบว่ามีทางลัดที่เรียกตัวเองหรือไม่</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>ทางลัดทำงานพร้อมกันมากเกินไป ({0}) ให้รอให้เสร็จหรือยกเลิกอันหนึ่งก่อน แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>เกิดข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>ขั้นตอนนี้ใช้การกระทำที่ Automation Portal ไม่รู้จัก ('{0}') ลบออกหรืออัปเดต Automation Portal</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run ต้องระบุชื่อของทางลัด</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input ต้องมีข้อความ</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import ต้องมีไฟล์ .autoportal</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>ลิงก์นั้นไม่ใช่ลิงก์ Automation Portal ที่ถูกต้อง</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>ลิงก์นั้นไม่ได้ระบุว่าจะเรียกใช้ทางลัดใด</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>ลิงก์นั้นไม่ได้ระบุว่าจะนำเข้าไฟล์ใด</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>ไม่สามารถแสดงตัวอย่าง {0} ได้ เพราะเป็นรายการจากเว็บที่ไม่ได้ดาวน์โหลดมาแสดงตัวอย่าง</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>ดาวน์โหลด {0} ไม่สำเร็จ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตและลิงก์ ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>เงื่อนไขใช้ได้เฉพาะในตำแหน่งที่ต้องใช้การเปรียบเทียบเท่านั้น</value>
+  </data>
+</root>

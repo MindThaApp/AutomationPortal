@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>शॉर्टकट का विवरण</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>शॉर्टकट का नाम</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>उदाहरण के लिए gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>यह शॉर्टकट क्या करता है?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>कॉपी नहीं हो सका</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>सवाल, उदाहरण के लिए: कौन सा फ़ोल्डर साफ़ करना है?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>सुझाया गया जवाब (वैकल्पिक)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>एक आइकन चुनें</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>आइकन खोजें (उदाहरण के लिए sun, mail, music)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>कोई आइकन नहीं मिला। कोई सरल शब्द आज़माएँ।</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>उदाहरण के लिए: हर सुबह मौसम बताओ और Outlook खोलो</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>सेटिंग्स › AI में AI सेट अप करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>ड्राफ़्ट बनाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>इस रन को रोकें (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>यह शॉर्टकट चलाएँ (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>यह कार्रवाई चीज़ें बदल या मिटा सकती है। चलाने से पहले दोबारा जाँच लें।</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>यह चरण AI ने जोड़ा है और यह चीज़ें बदल या मिटा सकता है। शॉर्टकट चलाने से पहले इसे जाँचें।</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>यह कार्रवाई बंद है और शॉर्टकट चलने पर इसे छोड़ दिया जाता है।</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>इस मेनू विकल्प का टेक्स्ट</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>यहाँ कोई कार्रवाई जोड़ें</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>आपकी प्रतीक्षा है। यह चरण चलाने के लिए अगला चरण दबाएँ।</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>यहाँ चलाने पर यह चरण रुक जाता है</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>अगर यह विफल हो</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>फ़ाइल एक्सप्लोरर में दिखाएँ</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>कीबोर्ड शॉर्टकट</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>किसी पिछली कार्रवाई का परिणाम, क्लिपबोर्ड और बहुत कुछ उपयोग करें</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>शॉर्टकट चलने पर हर बार यह मान पूछा जाए</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>या डिक्शनरी की कुंजी लिखें (उदाहरण के लिए city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>शॉर्टकट चलने पर हर बार आपसे यह मान पूछा जाएगा।</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>कार्रवाइयाँ खोजें</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>इस रन में बनी, ले जाई, नाम बदली या बदली गई फ़ाइलें वापस रखें। पहले आप सूची देखेंगे।</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>परिणाम और वेरिएबल दिखाएँ या छिपाएँ</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>किसी पिछले चरण का परिणाम उपयोग करें</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>कोई संख्या लिखें, जैसे 5 या 2.5।</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>ऐप का नाम या प्रोग्राम फ़ाइल</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>खोज परिणाम</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>संस्करण इतिहास</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>पुनर्स्थापित करते समय मौजूदा हॉटकी, Quick Run नाम और Send To सेटिंग रखें</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>सभी कार्रवाइयाँ</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run नाम</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>शॉर्टकट जल्दी शुरू करने के लिए Quick Run में यह लिखें।</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>यह कहाँ दिखता है</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>पिन करें</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>इसे ट्रे मेनू और Quick Panel में दिखाएँ।</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Quick Run में दिखाएँ</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Quick Run खोलने पर नाम से इसे खोजें।</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>फ़ाइल एक्सप्लोरर में चुनी गई फ़ाइलों पर इसे चलाएँ।</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>इनपुट के रूप में यह क्या ले सकता है</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>चुनें कि यह शॉर्टकट किन चीज़ों के साथ काम कर सकता है। कुछ नहीं चाहिए तो सभी अचिह्नित रहने दें।</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>इसके बिना आगे बढ़ें</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>फ़ाइलें चुनने के लिए मुझसे पूछें</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>क्लिपबोर्ड पर जो है उसका उपयोग करें</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>रुकें और मुझे बताएँ</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>अगर कोई इनपुट नहीं है</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>किसी के जोड़ने पर पूछे जाने वाले सवाल</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>जब यह शॉर्टकट इंपोर्ट किया जाए या गैलरी से लिया जाए, तब ये सवाल पूछे जाते हैं और जवाब कार्रवाइयों में भर जाते हैं।</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>सवाल जोड़ें</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>इसे कहीं और से चलाएँ</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>इस शॉर्टकट को टर्मिनल, वेब पेज, डेस्कटॉप या किसी दूसरे ऐप से शुरू करें।</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>कमांड कॉपी करें</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>इसे टर्मिनल में लिखें, या किसी स्क्रिप्ट में उपयोग करें।</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>लिंक कॉपी करें</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>इसे किसी वेब पेज, नोट या लॉन्चर में चिपकाएँ।</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>लिंक बिना पूछे इसे चला सकते हैं</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>कभी न चलाएँ</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>हर बार मुझसे पूछें</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>बिना पूछे चलाएँ</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>जब कोई लिंक इस शॉर्टकट को चलाना चाहे</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>जब कोई automationportal:// लिंक इस शॉर्टकट को चलाना चाहे</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>जो लिंक फ़ाइलें या फ़ाइल पथ सौंपते हैं, वे हमेशा पहले पूछते हैं। नए शॉर्टकट सेटिंग्स › लिंक में दिए विकल्प से शुरू होते हैं।</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>लिंक सेटिंग्स में, लिंक के अंतर्गत दी गई सेटिंग का पालन करते हैं।</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>डेस्कटॉप पर जोड़ें</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>स्टार्ट मेन्यू में जोड़ें</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>यह सवाल हटाएँ</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>हॉटकी साफ़ करें</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>जो कुंजियाँ चाहिए उन्हें दबाएँ…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Ctrl, Alt, Shift या Windows कुंजी शामिल करें</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>विकल्प 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>विकल्प 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>शॉर्टकट इनपुट</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>वर्तमान तारीख</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>डिवाइस विवरण</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>वेरिएबल गायब है</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>यह ऑटोमेशन जोड़ें?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>आप कैसे शुरू करना चाहते हैं?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>चरण-दर-चरण खुद बनाएँ, या एक वाक्य में बताएँ कि आपको क्या चाहिए और जाँचने व बदलने के लिए पहला ड्राफ़्ट पाएँ।</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>खाली से शुरू करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>वर्णन करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>कोई बदलाव बताएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>शॉर्टकट का वर्णन करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>क्या बदलना चाहिए?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>बताएँ कि इसे क्या करना चाहिए। आपको जाँचने के लिए एक ड्राफ़्ट मिलेगा, और जब तक आप चलाएँ न दबाएँ, कुछ नहीं चलेगा।</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>आपका ड्राफ़्ट लिखा जा रहा है…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>बदलाव करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>कुछ भी रिकॉर्ड नहीं हुआ</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>फिर से शुरू करें, आपके चुने ऐप में बटन क्लिक करें या फ़ील्ड में लिखें, फिर रोकें दबाएँ।</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>हर चरण ऐप में अपना बटन या फ़ील्ड नाम से खोजता है, इसलिए विंडो हिलने पर भी यह काम करता है। यह चलते समय ऐप का खुला होना ज़रूरी है। जाँचने के लिए इसे एक बार चलाएँ।</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>यह ड्राफ़्ट सेव करें?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>आपका ड्राफ़्ट अभी सेव नहीं हुआ है। इसे शॉर्टकट के रूप में सेव करें?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>ड्राफ़्ट सेव करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>ड्राफ़्ट हटाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>चलने पर</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>जब आप इस पर क्लिक करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>हॉटकी जोड़ें</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>ऑटोमेशन जोड़ें</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>अभी जाँचें</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>चरण जोड़ें, फिर इन फ़ाइलों पर आज़माने के लिए चलाएँ दबाएँ। अभी तक कुछ नहीं चला है, और फ़ाइलें केवल चलाएँ दबाने पर उपयोग होती हैं।</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>चरण-दर-चरण चलाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>चुने हुए चरण से चलाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>फ़ाइल बदलावों का पूर्वावलोकन करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>वर्णन करें…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>कोई बदलाव बताएँ…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>शॉर्टकट की प्रति बनाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>संस्करण इतिहास…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>रन परिणाम साफ़ करें</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>बिना सेव किए बदलाव</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>मेरे बदलाव हटाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>मेरे बदलाव रखें</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>अपनी पहली कार्रवाई जोड़ें</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>दाईं ओर की सूची से कोई कार्रवाई चुनें, या उसे यहाँ खींचें। हर चरण ऊपर से नीचे चलता है।</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>आपके बदलाव सेव नहीं हो सके।</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>बंद करें और उन्हें खो दें</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>संपादन जारी रखें</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>पसंदीदा से हटाएँ</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>पसंदीदा में जोड़ें</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>यह चरण जाँचें</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>इस कार्रवाई के और विकल्प</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>यह कार्रवाई उपलब्ध नहीं है</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>और विकल्प</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>विकल्प जोड़ें</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>Otherwise जोड़ें</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>यह चरण पूरा हुआ</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>यह चरण विफल हुआ</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>पूरा ब्लॉक हटाएँ</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>ब्लॉक की प्रति बनाएँ</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>ब्लॉक कॉपी करें</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>चालू करें</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>बंद करें</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>परिणाम का नाम बदलें…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>यहाँ से चलाएँ</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>यहाँ रोकें</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>परिणाम का नाम बदलें</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>इस कार्रवाई के परिणाम को ऐसा नाम दें जिसे वेरिएबल चुनते समय आसानी से पहचाना जा सके।</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>आइटम जोड़ें</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>आइटम हटाएँ</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>शर्त जोड़ें</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>कोई वेरिएबल चुनें या मान लिखें</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>यह शर्त हटाएँ</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>पिछले चरण से कुछ नहीं निकला।</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>इंटरनेट कनेक्शन चाहिए</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>चीज़ें बदल या मिटा सकता है। चलाने से पहले दोबारा जाँच लें</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>उन्नत कार्रवाई</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>ऐप में कहीं भी</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>यह शीट दिखाएँ</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>शॉर्टकट और गैलरी खोजें</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>नया शॉर्टकट</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>सभी शॉर्टकट, पिन किए हुए, ऑटोमेशन, स्निपेट, गैलरी, रन इतिहास</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>लाइब्रेरी में</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>चुना हुआ शॉर्टकट चलाएँ</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>चुना हुआ शॉर्टकट संपादित करें</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>इसकी प्रति बनाएँ</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>इसका नाम बदलें</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>इसे हटाएँ (पूर्ववत करें से वापस आ जाएगा)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>आखिरी हटाना पूर्ववत करें</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>संपादक में</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>शॉर्टकट चलाएँ</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>रोकें</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>कार्रवाइयाँ खोजें</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>चुने हुए चरणों की प्रति बनाएँ</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>सभी चरण चुनें</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>चुने हुए चरण हटाएँ</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>चुने हुए चरण ले जाएँ</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>चुने हुए चरण का मेनू खोलें</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>चयन साफ़ करें</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>Quick Run में</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>पहले शॉर्टकट को कुछ टेक्स्ट दें</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>वेरिएबल उपयोग करें</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>हर बार पूछें</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>इसके बजाय मान लिखें</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>कोई और चुनें</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>हाँ / नहीं</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>पूरा मान</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>जैसा है वैसा</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>सभी आइटम</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>पहला आइटम</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>आखिरी आइटम</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>कोई भी एक आइटम</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>इसमें बदलें</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>वेरिएबल हटाएँ</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>यह चरण अब मौजूद नहीं है। कोई और वेरिएबल चुनने के लिए क्लिक करें।</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>कोई कार्रवाई मेल नहीं खाती।</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>रन का विवरण देखें</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>फ़ाइल बदलाव पूर्ववत करें</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>यह देखने के लिए शॉर्टकट चलाएँ कि यह क्या बनाता है। आखिरी चरण का परिणाम यहाँ दिखेगा।</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>यह पूरा नहीं हुआ</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>कुछ गड़बड़ हो गई।</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>शॉर्टकट चलाने पर हर चरण का परिणाम और आपके सेट किए गए हर वेरिएबल यहाँ लाइव दिखेंगे।</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>विकल्प लोड हो रहे हैं…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>कोई फ़ोल्डर चुनें…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>कोई फ़ाइल चुनें…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>पहले बनाया गया कोई चुनें या नया नाम लिखें।</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>कुछ भी मेल नहीं खाता।</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>चलने पर पूछें</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>अभी कोई पुराना संस्करण नहीं है। जब भी आप यह शॉर्टकट बदलते हैं, एक संस्करण रखा जाता है।</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>प्रति के रूप में खोलें</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>यह संस्करण पुनर्स्थापित करें…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>यह संस्करण पुनर्स्थापित करें?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>सेव नहीं हुआ</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>यहाँ से चल रहा है…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>एक-एक चरण करके आज़माएँ?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>रिकॉर्डिंग का पहला रन देखते हुए चलाना सबसे सुरक्षित है। हर चरण हाइलाइट होता है और आपका इंतज़ार करता है: आगे बढ़ने के लिए अगला चरण चुनें, या रोकने के लिए रोकें।</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>एक-एक चरण चलाएँ</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>अभी नहीं</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>हाथ से यह काम लगभग (मिनट) लेता है</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>वैकल्पिक। रन इतिहास इन अनुमानों को जोड़ता है, इसलिए बचा हुआ समय आपका अपना अनुमान है, ऐप का अंदाज़ा नहीं।</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>समझाएँ</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>बताएँ कि क्या गड़बड़ हुई</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>ठीक करें…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>इस शॉर्टकट के लिए सुधार सुझाएँ</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>देखा जा रहा है कि क्या हुआ…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>सुझाया गया सुधार लिखा जा रहा है…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>कॉपी करें</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>स्पष्टीकरण</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>सेटिंग्स में AI सेट अप करें</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>सेटिंग्स में AI सेट अप करें, AI पेज</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>सुझाया गया सुधार एक नई संपादक विंडो में खोला गया। कुछ सेव या चलाया नहीं गया, और आपका शॉर्टकट बदला नहीं है।</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>सुझाया गया सुधार — सेव करने से पहले जाँचें</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (सुझाया गया सुधार)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>स्पष्टीकरण नहीं मिल सका। फिर से कोशिश करें।</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>इससे सुधार नहीं बन सका। फिर से कोशिश करें, या शॉर्टकट खोलकर चरण खुद बदलें।</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>AI तक नहीं पहुँच सका।</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>यह शॉर्टकट समझाएँ…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>यह शॉर्टकट क्या करता है</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>बंद करें</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>चरण पढ़े जा रहे हैं…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>वह शॉर्टकट बताएँ जो आप चाहते हैं</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>आपका अनुरोध जाँचा जा रहा है…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>इससे ड्राफ़्ट नहीं बन सका। इसे किसी और तरीके से बताएँ, या खाली से शुरू करें।</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>ड्राफ़्ट नहीं बन सका:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>कुछ छोटे सवाल</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>सुझाव रखें या बदलें। अभी कुछ बनाया या बदला नहीं गया है।</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>छोड़ें और बनाएँ</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>ड्राफ़्ट बनाएँ</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>चुनें…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>कोई फ़ोल्डर चुनें</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>कोई फ़ाइल चुनें</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>अभी तक नहीं चुना गया</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>हाँ</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>नहीं</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>यह रहा आपका ड्राफ़्ट</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>अभी कुछ सेव या चलाया नहीं गया है। देखें, फिर संपादक में खोलें।</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>ड्राफ़्ट के चरण</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>संपादक में खोलें</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>फिर से शुरू करें</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>फ़ाइलें बदलता है</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>प्रतियाँ बनाता है</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>कोई फ़ाइल बदलाव नहीं</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>दूसरे ऐप्स में क्लिक और टाइप करता है</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Microsoft Store संस्करण में स्टार्ट मेन्यू लिंक या Send to नहीं है, और डार्क मोड चरण सेटिंग्स खोलता है।</value>
+  </data>
+</root>

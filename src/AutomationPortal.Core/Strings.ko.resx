@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>실행할 바로 가기를 선택하세요.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>변수에 이름을 지정하세요.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>저장된 값에 이름을 지정하세요.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>물어볼 질문을 하나 이상 추가하세요.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>선택할 항목이 없습니다. 목록이 비어 있습니다.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>패턴 '{0}'이(가) 올바르지 않습니다. 확인한 다음 다시 시도하세요.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>패턴을 확인하는 데 너무 오래 걸렸습니다. 더 간단한 패턴을 사용하세요.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>알 수 없는 비교 '{0}'.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>동작을 메뉴 옵션 중 하나 안에 넣으세요.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}'에 그룹 정보가 없습니다. 삭제한 다음 다시 추가하세요.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}'은(는) 그룹에 포함될 수 없습니다.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>If에는 '그렇지 않으면'을 하나만 둘 수 있습니다.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>반복 블록에는 별도의 부분이 없습니다. 이 항목을 제거하세요.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>짝이 되는 시작이 없는 {0}을(를) 찾았습니다. 삭제하거나 시작을 다시 추가하세요.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>그 바로 가기가 더 이상 없습니다. 삭제되었을 수 있습니다.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>바로 가기가 너무 깊게 중첩되어 있습니다({0}단계 초과). 바로 가기가 자기 자신을 실행하는지 확인하세요.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>너무 많은 바로 가기가 동시에 실행 중입니다({0}개). 하나를 끝내거나 취소한 다음 다시 시도하세요.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>문제가 발생했습니다: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>이 단계는 Automation Portal이 알지 못하는 동작('{0}')을 사용합니다. 삭제하거나 Automation Portal을 업데이트하세요.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run에는 바로 가기 이름이 필요합니다.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input에는 텍스트가 필요합니다.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import에는 .autoportal 파일이 필요합니다.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>그 링크는 올바른 Automation Portal 링크가 아닙니다.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>그 링크에 실행할 바로 가기가 지정되어 있지 않습니다.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>그 링크에 가져올 파일이 지정되어 있지 않습니다.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>{0}을(를) 미리 볼 수 없습니다. 웹 항목이며 미리 보기에서는 다운로드되지 않습니다.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>{0}을(를) 다운로드할 수 없습니다. 인터넷 연결과 링크를 확인하세요. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>조건은 비교가 필요한 곳에서만 사용할 수 있습니다.</value>
+  </data>
+</root>

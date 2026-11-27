@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Çalıştırılacak kısayolu seçin.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Değişkene bir ad verin.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Kaydedilen değere bir ad verin.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Sorulacak en az bir soru ekleyin.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Seçilecek bir şey yok. Liste boş.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>'{0}' deseni geçerli değil. Kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Desen denetlenirken çok uzun sürdü. Daha basit bir desen deneyin.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>Bilinmeyen karşılaştırma '{0}'.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Eylemleri menü seçeneklerinden birinin içine koyun.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' için grup bilgisi eksik. Silin ve yeniden ekleyin.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' bir grubun parçası olamaz.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Bir Eğer bloğunda yalnızca bir 'Aksi halde' olabilir.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Yinele bloklarının ayrı bölümleri yoktur. Bu öğeyi kaldırın.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>Eşleşen başlangıcı olmayan {0} bulundu. Silin veya başlangıcı geri ekleyin.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Bu kısayol artık yok. Silinmiş olabilir.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Kısayollar çok fazla iç içe ({0} düzeyden fazla). Bir kısayolun kendini çalıştırıp çalıştırmadığını kontrol edin.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Aynı anda çok fazla kısayol çalışıyor ({0}). Birini bitirin veya iptal edin, sonra yeniden deneyin.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Bir sorun oluştu: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Bu adım, Automation Portal'ın tanımadığı bir eylemi kullanıyor ('{0}'). Silin veya Automation Portal'ı güncelleyin.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run, bir kısayolun adını gerektirir.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input, biraz metin gerektirir.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import, bir .autoportal dosyası gerektirir.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Bu bağlantı geçerli bir Automation Portal bağlantısı değil.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Bu bağlantı hangi kısayolun çalıştırılacağını belirtmiyor.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Bu bağlantı hangi dosyanın içe aktarılacağını belirtmiyor.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>{0} önizlenemiyor: Bu bir web öğesi ve önizleme için indirilmez.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>{0} indirilemedi. İnternet bağlantınızı ve bağlantıyı kontrol edin. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Koşullar yalnızca bir karşılaştırma beklenen yerlerde kullanılabilir.</value>
+  </data>
+</root>

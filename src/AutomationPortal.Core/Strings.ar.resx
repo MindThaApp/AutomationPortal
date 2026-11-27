@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>اختر الاختصار المراد تشغيله.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>امنح المتغير اسمًا.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>امنح القيمة المحفوظة اسمًا.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>أضف سؤالًا واحدًا على الأقل.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>لا يوجد ما يمكن اختياره. القائمة فارغة.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>النمط '{0}' غير صالح. تحقق منه وحاول مرة أخرى.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>استغرق التحقق من النمط وقتًا طويلًا. جرّب نمطًا أبسط.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>مقارنة غير معروفة '{0}'.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>ضع الإجراءات داخل أحد خيارات القائمة.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' تنقصه معلومات المجموعة. احذفه وأضفه مرة أخرى.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>لا يمكن أن يكون '{0}' جزءًا من مجموعة.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>يمكن أن يحتوي "إذا" على "وإلا" واحد فقط.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>كتل التكرار ليس لها أجزاء منفصلة. أزل هذا العنصر.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>تم العثور على {0} بدون بداية مطابقة. احذفه أو أعد إضافة البداية.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>هذا الاختصار لم يعد موجودًا. ربما تم حذفه.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>الاختصارات متداخلة بعمق كبير (أكثر من {0} مستويات). تحقق مما إذا كان اختصار يشغّل نفسه.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>عدد الاختصارات قيد التشغيل كبير جدًا ({0}). أنهِ أحدها أو ألغه ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>حدث خطأ: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>تستخدم هذه الخطوة إجراءً لا يعرفه Automation Portal ('{0}'). احذفه أو حدّث Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>يحتاج --run إلى اسم اختصار.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>يحتاج --input إلى نص.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>يحتاج --import إلى ملف .autoportal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>هذا الرابط ليس رابط Automation Portal صالحًا.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>لا يحدد هذا الرابط الاختصار المراد تشغيله.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>لا يحدد هذا الرابط الملف المراد استيراده.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>تعذرت معاينة {0}: إنه عنصر ويب ولا يتم تنزيله في المعاينة.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>تعذر تنزيل {0}. تحقق من اتصالك بالإنترنت ومن الرابط. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>لا يمكن استخدام الشروط إلا حيث تُتوقع مقارنة.</value>
+  </data>
+</root>

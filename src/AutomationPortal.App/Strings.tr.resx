@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Şimdi dene</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Başlatmanın tüm yollarında ara</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>Zaten sahip olduğum bir kısayol</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>Yeni bir kısayol (adımlarını sonra ekleyeceğim)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Yeni kısayola bir ad verin</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Henüz hiç kısayolunuz yok.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Bu koşulu kaldır</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Koşul ekle</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Hemen çalıştır</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Önce bana sor (Çalıştır ve Atla düğmeli bir bildirim)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Çalıştığında bana bildir</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Sık çalışırsa bu otomasyonu duraklatma</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Kaçırılırsa, Automation Portal bir sonraki açılışta veya bilgisayar uyandığında çalıştır</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Komut paleti</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Bir kısayol, ayar veya komut yazın</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  çalıştır veya aç      Ctrl+Enter  düzenle      ↑ ↓  seç      Esc  kapat</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Kısayol içe aktar</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Bir yedek seçin</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Boş başlat</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Her sabah bana hava durumunu söyle ve Outlook'u aç</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Taslak oluştur</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>Galeri'ye göz atın</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Ya da kelimelerle anlatmayı ayarlayın (Ayarlar)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Yeni bir kısayol kaydet</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Bir kez yapın; Automation Portal tıklamalarınızı ve yazdıklarınızı kaydeder</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>İçe aktar…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Bir .autoportal dosyasından kısayol ekleyin. Önce ne yaptığını görürsünüz ve hiçbir şey değiştirilmez.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>Ayarlar'dan yönet</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Bu kısayol için bir daha sorma</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Kalıcı olarak sil</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Varsayılan uygulamayla aç</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>Klasörde göster</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Yeniden çalıştır</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Windows ile başlat</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Simgeyi değiştir</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Klasörü sil</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Hazır hale getirin</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Varsayılan olarak kullan</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>örneğin: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Modelleri bul</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Modeller aranıyor…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Denetleniyor…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Bu otomasyonu yeniden açın. Önce neyi değiştirdiğini kontrol edin; böylece yeniden döngüye girmez.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Şimdi dene</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Kısayolu geçici bir klasördeki örnek dosyalarda şimdi bir kez çalıştır</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Diğer seçenekler</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Bu otomasyonu aç veya kapat</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Etkinlik…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Bu otomasyonun ne zaman tetiklendiğini, çalıştığını veya atlandığını görün</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>Kısayolu aç</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Bir kısayol dosyası aç</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Aramanızla eşleşen bir şey yok</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Yazımı kontrol edin veya daha kısa bir sözcük deneyin. Galeri'de hazır bir kısayol da arayabilirsiniz.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Henüz sabitlenmiş bir şey yok</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>En çok kullandığınız kısayolları sabitleyin. Bir kısayola sağ tıklayıp Sabitle'yi seçin. Sabitlenen kısayollar, saatin yanındaki Automation Portal simgesine tıkladığınızda da görünür.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Bu klasör boş</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Kısayolları listeden buraya sürükleyin veya yeni bir tane oluşturun.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Bir şeyler yapalım</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>Kısayol, Automation Portal'ın tek tıklamayla sizin için yaptığı adımlar kümesidir. Galeri'den hazır bir kısayolla başlayın ya da kendi kısayolunuzu oluşturun.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Bunu bir daha gösterme</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Bu, ilk kısayolunuzdu.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Bir kısayol tuşu verin</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>Klasöre taşı</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Kısayolu dışa aktar</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Geçmişi temizle…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Yedeğin kaydedileceği yeri seçin</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Kısayollarınızın saklanacağı yeri seçin</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Metniniz burada görünür.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Girdiyi yazın</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Üzerinde çalıştırılacak bir kısayol seçin</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Automation Portal kaydı</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Otomasyonları duraklat</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal zaten çalışıyor ama yanıt vermedi. Bildirim alanında arayın veya Görev Yöneticisi'nden yeniden başlatın.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal bir dosyada sorunla karşılaştı</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Windows ile başlat kapalı</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Ayarlar, Genel bölümünden Windows ile başlat'ı yeniden açın.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal bunu kullanamadı</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Bu kısayol zaten çalışıyor.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Bağlantılar kısayolları çalıştıramaz</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Bu kısayol dosyası açılsın mı?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Bu bir bağlantıdan açıldı; yalnızca nereden geldiğine güveniyorsanız ekleyin.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Bu, ap komutuyla gönderildi. Yalnızca bu komutu kendiniz çalıştırdıysanız ekleyin.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Bu bilgisayardaki başka bir program bu kısayolu gönderdi. Yalnızca o programa güveniyorsanız ekleyin.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Bu kısayol eklensin mi?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Kısayol eklendi</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Bu kısayol tutulsun mu?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Tut</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Kaldır</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Seçili metinde çalıştır</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Bu kısayol tuşu kullanılamıyor.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Seçili metin</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>Yapay zekâya sor</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Ayrıntıları gör</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Ne yaptığını gör</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" ilk kez kendi kendine çalıştı</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Sorunsuz çalıştı.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Ne olduğunu gör</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Bu otomasyonu düzenle</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Başka bir tetikleyici seçin</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Başka bir kısayol seçin</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Başlattığım bir kısayol bittiğinde ses çal</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Bugün</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>{0} tarihinden beri</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Ayrıca Ctrl, Alt veya Win ekleyin</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Automation Portal başladığından beri bu otomasyonun yaptıkları, en yeniden en eskiye. Buradaki hiçbir şey diske kaydedilmez.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Henüz bir şey olmadı. Bu otomasyonun tetikleyicisi çalıştığında burada görünür.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Yeni otomasyon</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Otomasyonu düzenle</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Aramanızla eşleşen bir şey yok.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>Bu grupta henüz bir şey yok.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Yalnızca… (isteğe bağlı)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Yalnızca doğru anlarda çalışması için koşullar ekleyin. Hepsinin doğru olması gerekir.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>Olduğunda</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Her seferinde çalışması için 0 olarak bırakın. Arka arkaya birçok kez tetiklenebilen tetikleyiciler için duraklatma kullanışlıdır.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Automation Portal normalde 10 dakikada 60 kereden fazla çalışan bir otomasyonu duraklatır, çünkü bu genellikle bir döngü anlamına gelir.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>Planlanan zamanda bilgisayar kapalıysa veya uykudaysa ya da Automation Portal çalışmıyorsa, Automation Portal başladığında veya bilgisayar uyandığında bir kez çalışır. Yalnızca son 24 saatteki zamanlar dikkate alınır; otomasyonlar duraklatılmışken geçen zamanlar için hiçbir şey çalışmaz.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Ne yapacağı hesaplanıyor…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Geri yüklenecek bir şey yok</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Bir yedekten geri yükle</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Bunları ekle</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Anlatın</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Hazır bir kısayoldan başlayın</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Eklemek için birini seçin, sonra kendinize göre değiştirin.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Bu öğeler üzerinde bir kısayol çalıştırılsın mı?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Bu kısayol çalıştırılsın mı?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Bir kez izin ver</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Yakında silinenler</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Bu kısayolu kullanan otomasyonlar yeniden çalışır.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>Yakında silinenlerdeki kopyası kaldırılamadı, bu yüzden hâlâ orada listeleniyor.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Yakında silinenleri boşalt</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Bazı kısayollar hâlâ burada</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Açık uygulama penceresi yok. Göstermek istediğiniz uygulamayı açıp yeniden deneyin.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Hangi uygulamayı göstereceksiniz?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Kaydı başlat</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Bu adımları eklemeden önce istediğinizi değiştirin. Her adım denetimini adına göre bulur; böylece pencere taşındığında da çalışır.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Bunun yerine basılan düğmeye tıklama ekleyin.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>Kaydı gözden geçirin</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Adımları ekle</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Her seferinde sor</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Bu resim gösterilemedi.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Bir alan seçmek için sürükleyin. İptal etmek için Esc'ye basın.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>İstediğiniz yere tıklayın. İptal etmek için Esc'ye basın.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Bunların hepsini daha sonra düzenleyicide değiştirebilirsiniz.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Ne yapacağını göster</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>Çalıştığında</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Bir klasör seçin</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Önce klasörü seçin.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Başlamak için birkaçını seçin</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Şimdi birini deneyin</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Merhaba deyin</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Bir bildirim gösterir</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Tamamlanamadı</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Elinizin altında tutun</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Nereden olursa olsun, yazarak her şeyi çalıştırın.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Bu tuşlara birlikte basın. Herhangi bir kısayolu bulup çalıştırmak için yazabileceğiniz küçük bir çubuk açılır.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Automation Portal'a hoş geldiniz</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Sabitlenmiş kısayollar</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal kısayolu</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Masaüstünüze eklendi</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Başlat menüsüne eklendi</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Bu tetikleyici artık kullanılamıyor</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Az önce çalıştı</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Bunu neyin başlatacağını seçin.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Yeni kısayola bir ad verin.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Çalıştırılacak bir kısayol seçin.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Otomasyonu neyin başlatacağını seçin.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Bunu kullanan otomasyonlar yeniden çalışır.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>bilinmeyen bir adım</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Hangi uygulamalarda ve klasörlerde çalıştığından emin değilseniz önce adımlarını kontrol edin. Çalışırken uygulamalara dokunmayın.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Her gün</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Bu kısayol silindi. Yeniden çalıştırmak için kitaplığınızdaki Yakında silinenler bölümünden geri yükleyin.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Bu kısayol artık yok, bu yüzden yeniden çalıştırılamaz.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Bu kısayolun çalıştırılacağı dosyaları seçin.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Bu kısayolun üzerinde çalışacağı bir şey gerekiyor ve Çalıştırma geçmişi bunu saklamaz. Bunun yerine kitaplığınızdan veya Quick Run'dan çalıştırın.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Bu kısayolu yeniden çalıştırın.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Windows bir öğenin Geri Dönüşüm Kutusu için çok büyük olduğunu ve kalıcı olarak silinmesini isterse, tutmak için Hayır'ı seçin.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>Bu değişiklikler zaten geri alındı.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>Bu değişiklikler buradan geri alınamaz. Neyin değiştiğini görmek için ayrıntılara bakın.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Geri al, güvenle yapılabilenleri geri koyar. Geri kalanı için ayrıntılara bakın.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Hiçbir şeyin üzerine yazılmadı.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Bir bildirim gösterir. Bilgisayarınızda hiçbir şeyi değiştirmez.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Kitaplık ve yedekleme</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Diğer uygulamalar ve bağlantılar</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Sistem tepsisinde çalışmaya devam et</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Kısayol kutucukları</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Bulunduğum yer</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Quick Panel fare imlecinde</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Kısayollarınızın kaydedildiği yer</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Kısayollarınızı OneDrive'da tutun</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Kitaplığınızı yedekleyin</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Kısayol tuşuyla başlattığım bir kısayol bittiğinde bana bildir</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Telefon bildirimleri konusu</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Gelişmiş eylemleri göster</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>İndirilenleri Düzenle</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Bir süre önce indirdiğiniz dosyaları türüne veya tarihine göre klasörlere ayırır.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Dosyaları değiştirir</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Klasördeki, birkaç günden eski (en az 1) dosyaları bulur; tamamlanmamış indirmeler hariç</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Bunları türüne veya tarihine göre klasörlere taşır</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Kaç dosyanın taşındığını, Geri al seçeneğiyle birlikte bildirir</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Resimleri Dönüştür</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Seçtiğiniz resimleri JPEG, PNG, GIF, BMP veya TIFF olarak kaydeder.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Kopyalar oluşturur</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Seçtiğiniz veya gönderdiğiniz resimleri alır</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Her birini yeni dosya türünde kaydeder</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Özgün dosyaların yanına; ad kullanılıyorsa ad (2) olarak</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Çalışma Alanımı Kur</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>İş uygulamanızı, bir klasörü ve bir web sayfasını tek seferde açar.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Dosya değişikliği yok</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Seçtiğiniz uygulamayı açar</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Dosya Gezgini'nde bir klasör açar</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Bir web sayfası açar</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Bir Klasörü Yedekle</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Her gün veya her hafta bir klasörü tarihli yeni bir klasöre kopyalar.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Yalnızca kopyala</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>Seçtiğiniz zamanda tarihle adlandırılmış bir klasör oluşturur</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Klasörü buraya kopyalar</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>Yedekte hiçbir şeyi silmez veya değiştirmez</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Bir Formu Elektronik Tablodan Doldur</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Bir CSV dosyasındaki her satırı başka bir uygulamadaki bir forma yazar.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Yakında</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Kayıt sırasında formu bir kez doldurursunuz</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Kontrol edebilmeniz için 1. satırı adım adım tekrarlar</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Devam ettirene kadar duraklatıldı</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Bir sorun oluştu.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Yedekleme çalışmadı</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Her gün belirli bir saatte</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>Bir kısayol tuşuna bastığımda</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Windows'un her yerinde</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>Oturum açtığımda</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Gün her başladığında</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>Bir klasöre bir dosya geldiğinde</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Örneğin yeni bir indirme</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>Bir uygulama açıldığında</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Sonra uygulamayı seçin</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>Bir USB aygıtı takıldığında</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Ya da bağlanan herhangi bir aygıt</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Tüm kısayollar</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Yeni klasör</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Çalıştırma geçmişi</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Yeni klasör</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Klasör adı</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Klasörü yeniden adlandır</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Yeni kısayol</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Kitaplığı şimdi yedekle</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Bir yedekten geri yükle…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Bir kısayol dosyası içe aktar…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Klavye kısayolları</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal hâlâ çalışıyor</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Saatin yanındaki sistem tepsisi simgelerinde bulun. Çıkmak için sağ tıklayın.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Yapay zekâ eylemlerinin ve Quick Run'ın hangi yapay zekâyı kullanacağını seçin. Anahtarlarınız bu bilgisayarda şifreli olarak saklanır.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>Bu bilgisayarda (ücretsiz ve özel)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Bu bilgisayar denetleniyor…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Kullanıma hazır. Ücretsiz, özel ve çevrimdışı çalışır.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Bu bilgisayarda kullanılabilir. Ücretsiz, özel ve çevrimdışı çalışır.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows, cihaz üzerinde yapay zekâyı hazırlıyor…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Kullanıma hazır.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Kapalı.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Anahtarınızı buraya yapıştırın</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Anahtar kaydedildi.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>Anahtar kaldırıldı.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Dağıtım adı</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Model (aşağıdaki Hızlı / Akıllı / En iyi seçimini kullanmak için boş bırakın)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Bu otomasyon bu bilgisayarda çalışamaz. Farklı bir tetikleyici seçmek için düzenleyin.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>Çalıştırdığı kısayol silindi. Başka bir kısayol seçmek için otomasyonu düzenleyin.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Otomasyonu sil</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Bu otomasyon silinsin mi? Çalıştırdığı kısayol silinmez.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>Deneme başlamadı</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Zaten çalışıyor</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>Deneme başarılı oldu</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>Deneme iptal edildi</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Kısayol bitmeden durdurdunuz.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>Deneme tamamlanamadı</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Dosyalarınıza göz atın ve bunları yönetin.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Güç planlarını değiştirin ve bilgisayarınızı uyanık tutun.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Aynı geliştiricinin, Automation Portal'ın çalışabileceği diğer uygulamaları.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Ne yapacağı</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Kur</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Ne yaptığı</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Bilinmeyen adım</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Kısayol ekle</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Ekle ve zamanla…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Enlem, 51,5 gibi bir sayı olmalıdır.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Boylam, -0,12 gibi bir sayı olmalıdır.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Enlem -90 ile 90 arasında olmalıdır.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Boylam -180 ile 180 arasında olmalıdır.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>İlk çalıştırmadan önce</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Önce aç</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Klasör yok</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Masaüstüne ekle</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Kısayolu yeniden adlandır</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Bu kısayolu her yerden çalıştırmak için kullanmak istediğiniz tuşlara basın. Ctrl, Alt veya Win tuşlarından en az birini kullanın.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Henüz kullanılamıyor</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Kısayolu sil</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Tüm çalıştırmalar</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Siz durdurdunuz</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Kendiliğinden durdu</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Tüm kaynaklar</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Bağlantılar ve diğer uygulamalar</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Eşleşen çalıştırma yok</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Henüz hiçbir şey çalıştırılmadı</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Farklı bir arama deneyin veya tüm çalıştırmaları gösterin.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>Bir kısayolu çalıştırdığınızda burada neler olduğunu adım adım göreceksiniz. Böylece bir şeyin neden çalışmadığını kolayca bulabilirsiniz.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Yeniden çalıştır…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Yeniden çalıştır</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Bu kısayol artık yok.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>Düzenleyiciyi, tamamlanamayan adım seçili olacak şekilde açın.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Başarısız adımda aç</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Dosya değişikliklerini geri al</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Bu çalıştırmanın oluşturduğu, taşıdığı, yeniden adlandırdığı veya değiştirdiği dosyaları geri koyun. Önce listeyi görürsünüz.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Ayrıntıları kopyala</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Bu çalıştırmanın kısa özetini kopyalayın; dosyalarınız ile parola veya anahtarlar dahil edilmez.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>Değişen dosyalar</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Bu çalıştırma hangi adımın başarısız olduğunu kaydetmemiş, bu yüzden hiçbir adım seçili değil.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>Bu çalıştırmadan beri kısayol değişti ve bu adım artık kısayolda yok.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Çalıştırma geçmişini temizle</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>Tüm çalıştırma geçmişi silinsin mi? Kısayollarınız etkilenmez.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Geçmişi temizle</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows, Automation Portal'ın konumunuzu kullanmasına izin vermiyor. Windows Ayarlar, Gizlilik ve güvenlik, Konum bölümünde açın veya sayıları buraya yazın.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Henüz uygulama yok.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Yalnızca bu kısayol, sormadan</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Kitaplık yedeklendi</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal bu bilgisayarda bir OneDrive klasörü bulamadı. Önce OneDrive'da oturum açın veya herhangi bir klasörü seçmek için Değiştir… seçeneğini kullanın.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Başka bir klasör seçin</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Bu klasör geçerli kitaplığınızın içinde. Başka bir yer seçin.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Boş bir klasör seçin</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Kitaplık konumunu değiştir</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal yeniden başlatılacak</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Kısayollarınız yeni konumda hazır. Her şeyin baştan itibaren bunu kullanması için Automation Portal şimdi yeniden başlatılıyor.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Parçacığı sil</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Tarih biçimi</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Biçim (örneğin yyyy-MM-dd veya dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Bana sor</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Yeni Kısayol</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows, Automation Portal'ın tıklamalarınızı ve yazdıklarınızı algılamasına izin vermedi. Yeniden deneyin.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Yanıt</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter yanıtı kopyalar</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>Seçili metin hakkında</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Sahte kaydediciden merhaba</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Enter tuşuna basma</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Geri alınacak bir şey yok</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>Bu çalıştırmanın dosya değişiklikleri zaten geri alındı.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Bu çalıştırma, Automation Portal'ın geri alabileceği hiçbir dosyayı değiştirmedi veya kaydı bir haftadan eski.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>Bu çalıştırmanın dosya değişiklikleri zaten geri alınıyor.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Bir yanıt yazın</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Lütfen doldurun</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Birden fazla seçmek için Ctrl veya Shift tuşunu basılı tutun.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Dosyaları seçin</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Farklı kaydet</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Saat (isteğe bağlı)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>12 veya 3,5 gibi bir sayı yazın.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Bu bir web adresine benzemiyor.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Otomasyonlara devam et</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Bir kısayol adı yazın</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Bir kısayol adının birkaç harfini yazın</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Düzenleyiciyi açar</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run bunu yapamadı</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Bir sorun oluştu. Yeniden deneyin.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Parolalar hiçbir zaman kaydedilmez.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Diğer sabitlenmişler…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal'ı aç</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Şimdi devam et</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>30 dakika boyunca</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>1 saat boyunca</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>Yarına kadar</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Ben devam ettirene kadar</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Automation Portal'dan çık</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Çalıştırmak için tıklayın.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Yenile</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Bağlı uygulamaları yenile</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>{0} aç</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>{0} uygulamasını Microsoft Store'dan al</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Masanızda mola, odaklanma ve duraklatma hatırlatıcıları.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Power Plan Manager açılamadı</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal, deneme için örnek dosyaları oluşturamadı. Hiçbir şey çalıştırılmadı ve dosyalarınız değiştirilmedi. Diskte boş alan olup olmadığını kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Geri alınamadı</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Şeyleri geri koyarken bir sorun oluştu. Neyin değiştiğini görmek için Çalıştırma geçmişi'ni açın.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>"{0}" adında bir şey yok. Daha kısa bir sözcük deneyin veya Galeri'de hazır bir kısayol arayın.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Adım {0} / {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} / {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>Şimdiye kadar {0:N0}</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>"{0}" çalışıyor</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>{0} kısayol çalışıyor</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" tamamlanamadı</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Sonraki: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>“{0}” adında yeni bir kısayol oluşturmak için Enter'a basın</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Durdur</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Çalıştır (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Bu çalıştırmayı durdur</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>{0} çalıştır</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>{0} durdur</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>{0} düzenle</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>{0} için diğer seçenekler</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Seçmek için tıklayın. Çalıştırmak için Enter'a basın veya çift tıklayın. Düzenlemek için Ctrl+E.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Sabitlendi</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>1 kez çalıştı. Son: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>{0} kez çalıştı. Son: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>bugün saat {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>dün saat {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Tamamlanma için yumuşak bir ses, sorun için başka bir ses. Kendiliğinden başlayan kısayollar sessiz kalır; Odak yardımı veya tam ekran bir uygulama açıkken her şey de sessiz kalır.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus ve Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>ücretsiz sürüm</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>Ücretsiz sürümü kullanıyorsunuz: en fazla {0} kısayol.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Plus kullanıyorsunuz: en fazla {0} kısayol.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Pro kullanıyorsunuz: istediğiniz kadar kısayol ve bunları kendiliğinden çalıştıran otomasyonlar.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>{0} kısayolunuz var. Hepsi çalışmaya devam eder. Yeni olanlar için daha fazla alan gerekir.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: en fazla {0} kısayol.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: istediğiniz kadar kısayol ve bunları bir zamanlamaya göre veya bir şey olduğunda çalıştıran otomasyonlar.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Pro'ya yükseltin: istediğiniz kadar kısayol ve otomasyonlar. Sahip olduğunuz her şeyi korursunuz.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Plus'ı al</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Pro'yu al</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Pro'ya yükselt</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Satın alımları geri yükle</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Yeni bir bilgisayarda olduğu gibi, satın aldıklarınız için Microsoft Store'u yeniden kontrol edin.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Microsoft Store ile denetleniyor…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Microsoft Store açılıyor…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Teşekkürler. Artık {0} sürümüne sahipsiniz.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store satın almayı tamamlayamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Satın alımlarınız güncel. {0} sürümüne sahipsiniz.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Satın alımlarınız geri yüklendi. {0} sürümüne sahipsiniz.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Microsoft Store'a ulaşılamadı, bu yüzden hiçbir şey değişmedi. İnternet bağlantınızı kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Daha fazla kısayol oluşturun</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>Ücretsiz sürüm {0} kısayola izin verir ve sizde {1} kısayol var. Hepsi çalışmaya devam eder. Daha fazla oluşturmak için en fazla {2} kısayol için Plus'ı ya da istediğiniz kadar kısayol ve otomasyonlar için Pro'yu alın.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus {0} kısayola izin verir ve sizde {1} kısayol var. Hepsi çalışmaya devam eder. Daha fazla oluşturmak için istediğiniz kadar kısayol ve otomasyonlar için Pro'ya yükseltin.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Otomasyonlar Pro ile birlikte gelir</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Otomasyonlar kısayollarınızı kendiliğinden çalıştırır: bir zamanlamaya göre, bir dosya geldiğinde, bir şeyi taktığınızda. Sahip olduğunuz otomasyonlar çalışmaya devam eder.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" eklendi. Zamanlaması Pro gerektirir, bu yüzden yalnızca siz başlattığınızda çalışır.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Şimdi değil</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>14 günlük ücretsiz denemeyi _başlat</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Kart gerekmez. Deneme, düğmeye bastığınızda başlar, daha önce değil.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>14 günlük Pro denemeniz başladı. Pro'daki her şey sizin için açık.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>Deneme başlatılamadı. Hiçbir şey değiştirilmedi.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Pro deneme: {0} gün kaldı</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Pro deneme: 1 gün kaldı</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Ücretsiz Pro denemeniz. Planınızı görmek için Ayarlar'ı açın.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Pro denemeniz yarın bitiyor</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Oluşturduğunuz her şey kalır. Denemeden sonra yeni kısayollar ve otomasyonlar yeniden planınızı izler.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Pro deneme süreniz sona erdi</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Durdurulanlar: yeni otomasyon oluşturma ve {0} sınırını aşan yeni kısayol oluşturma.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Kalanlar: sahip olduğunuz her kısayol ve otomasyon. Çalışmaya devam ederler; düzenleyebilir, çalıştırabilir, açabilir, kapatabilir ve silebilirsiniz.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>Bıraktığınızla "{0}" çalıştırılsın mı?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Dosyaları değiştiren veya başka uygulamalarda çalışan adımlar: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Bırakılanlar:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (klasör)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…ve {0} tane daha</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>"{0}" bunları kabul etmediği için dışarıda bırakıldı:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}", bıraktığınız öğelerin hiçbirini kabul etmiyor, bu yüzden çalıştırılmadı.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>Tahminlerinize göre yaklaşık {0} {1} kazandırdı.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>{0} tarihinden beri</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>bu ay</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 dakika</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} dakika</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 saat</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} saat</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Kısayollarda ve galeride ara</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Kısayollarda ve galeride ara (Ctrl+F). Komut paleti için Ctrl+K.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Çalıştır (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Düzenle (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Diğer seçenekler</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Diğer seçenekler</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Otomasyonlar</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Tüm otomasyonları duraklat</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Bunu kapatana kadar her otomasyonun çalışmasını durdurur</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Yeni otomasyon</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Yeni otomasyon</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Tüm otomasyonlar duraklatıldı. Bunu kapatana kadar hiçbir şey kendiliğinden çalışmaz.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>_Ayrıntıları gör</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Ayrıntıları gör</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Şeylerin kendiliğinden olmasını sağlayın</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>Bir şey olduğunda, örneğin bir uygulamayı açtığınızda, kulaklık taktığınızda veya saat sekizde, otomasyon sizin için bir kısayol çalıştırır.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Örneğin: Kulaklığımı taktığımda ses düzeyini %40'a ayarla.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>Yeni _otomasyon</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>Galeri'ye _göz atın</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Galeri'ye göz atın</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Galeri</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Hazır kısayollar. Beğendiklerinizi ekleyin, sonra kendinize göre düzenleyin.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Göster</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Göster</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Henüz hazır kısayol yok</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Başlangıç kısayolları, Automation Portal ile yüklendiğinde burada görünür. Bu arada kendi kısayolunuzu oluşturabilir veya bir arkadaşınızdan aldığınız bir .autoportal dosyasını açabilirsiniz.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>Bir kısayol _oluştur</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Bir kısayol oluştur</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>.autoportal dosyası _aç…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>.autoportal dosyası aç…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Tüm kısayollar</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Aramayı temizle</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_Yakında silinenler</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Yakında silinenler</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Son 30 günde sildiğiniz kısayolları geri yükleyin</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Yeni kısayol</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Yeni kısayol</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Yeni bir kısayol oluştur (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Geri al</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Geri al</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Bir kısayol tuşu verin</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Bir kısayol tuşu verin</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>_Ayrıntıları gör</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Ayrıntıları gör</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Buradan başlayın</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>_Galeri'yi gör</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>Galeri'yi gör</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Gizle</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Gizle</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Bu satırı gizleyin. Galeri her zaman kenar çubuğunda bulunur.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Yeni bir kısayol oluşturun</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Yeni kısayol</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>Galeri'ye _göz atın</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Galeri'ye göz atın</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>Bir kısayol _oluştur</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Bir kısayol oluştur</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>_Anlatın</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>İstediğiniz kısayolu anlatın</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>İstediğinizi bir cümleyle anlatın ve bir taslak alın</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Çalıştırma geçmişi</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Ada göre ara</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Şunları gösteren çalıştırmalar</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Şunlar tarafından başlatılan çalıştırmalar</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Daha fazla</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Daha fazla: geçmişi temizle</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Çalıştırmalar</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Henüz hiçbir şey çalıştırılmadı</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>Bir kısayolu çalıştırdığınızda burada neler olduğunu adım adım göreceksiniz. Böylece bir şeyin neden çalışmadığını kolayca bulabilirsiniz.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Bir bölüme geç</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Windows ile başlat</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Oturum açtığınızda Automation Portal'ı sessizce sistem tepsisinde açın; böylece otomasyonlarınız her zaman hazır olur.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Windows ile başlat</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Sistem tepsisinde çalışmaya devam et</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>Pencereyi kapattığınızda Automation Portal arka planda çalışmaya devam eder. Kapatınca çıkmak için bunu kapatın.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Sistem tepsisinde çalışmaya devam et</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Açık veya koyu seçin ya da Windows'u izleyin.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Windows ile aynı</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Koyu</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Kısayol kutucukları</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Renkli simgeli nötr kartlar veya tam renkli kutucuklar.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Kısayol kutucuk stili</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Nötr</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Degradeler</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Bulunduğum yer</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Gün doğumu ve batımı tetikleyicileri ile hava durumu uyarıları için kullanılır. Windows'un bulmasını istiyorsanız boş bırakın.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Şehir (isteğe bağlı)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Ana şehir</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Enlem</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Ana enlem, eksi 90 ile 90 arası</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Boylam</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Ana boylam, eksi 180 ile 180 arası</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>Mevcut konumumu _kullan</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Mevcut konumumu kullan</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>Bunun yerine koordinatları _girin</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Bunun yerine koordinatları girin</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Konum sorunu</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Klavye</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Bir kısayol aramak ve çalıştırmak için bu tuşlara herhangi bir yerde basın.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Seçili metinde çalıştır</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Herhangi bir uygulamada bir metin seçin, bu tuşlara basın ve üzerinde çalıştırmak için bir kısayol seçin.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Quick Panel fare imlecinde</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Sabitlenmiş kısayollarınızı tam fare imlecinin olduğu yerde açmak için bu tuşlara basın.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Kitaplık ve yedekleme</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Kısayollarınızın kaydedildiği yer</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Aç</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>Klasörü Dosya Gezgini'nde göster</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>_Değiştir…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Değiştir…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Kısayollarınızı OneDrive'da tutun</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Kitaplığınızı, tüm bilgisayarlarınızda eşitli kalması için OneDrive'a kopyalar.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_OneDrive'a taşı</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>OneDrive'a taşı</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Kitaplığınızı yedekleyin</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Kısayollarınızı, klasörlerinizi ve otomasyonlarınızı tek bir zip dosyasında saklar. Kısayolları geri getirmek için Bir yedekten geri yükle seçeneğini kullanın. Bunlar şu anki kısayollarınızın yanına eklenir.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>Kitaplığı _şimdi yedekle</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Kitaplığı şimdi yedekle</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_Bir yedekten geri yükle…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Bir yedekten geri yükle…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Bir yedekteki kısayolları mevcut kısayollarınızın yanına ekler. Hiçbiri değiştirilmez.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Bildirimler</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Kısayol tuşuyla başlattığım bir kısayol bittiğinde bana bildir</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Bir tuşa basarak başlattığınız bir kısayol çalıştıktan sonra küçük bir bildirim gösterir.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Kısayol tuşuyla başlatılan kısayollar bittiğinde bildir</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Başlattığım bir kısayol bittiğinde ses çal</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Başlattığım bir kısayol bittiğinde ses çal</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Telefon bildirimleri konusu</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Telefoma Gönder tarafından kullanılır. Özel, tahmin edilmesi zor bir ad seçin, sonra telefonunuzdaki ntfy uygulamasında buna abone olun. Gönderdiğiniz mesaj ntfy.sh hizmetinden geçer; bu yüzden konuyu bilen herkes okuyabilir.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Telefon bildirimleri konusu</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>örneğin: benim-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Diğer uygulamalar ve bağlantılar</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Bağlantılar</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal:// bağlantıları</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Web sayfaları ve diğer uygulamalar bu bağlantılarla kısayollarınızın çalıştırılmasını isteyebilir. Kısayol başına: bağlantılar önce sorar; ayrıntılarında "Bağlantılar bunu sormadan çalıştırabilir" yazan kısayollar hariç. Dosya veya dosya yoluna benzeyen metin taşıyan bağlantılar her zaman sorar.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>automationportal bağlantılarının neler yapabileceği</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Hiçbir zaman</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Her seferinde sor</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Kısayola göre</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Bağlı uygulamalar</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Kısayol çalıştırmasına izin verilen uygulamalar</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Modeller</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Model düzeyi: Hızlı, Akıllı veya En iyi</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Hızlı en az maliyetlidir ve en hızlı yanıt verir. En iyi en pahalıdır ve en uzun sürer. Bir model adı yazmadığınız sürece her sağlayıcı tarafından kullanılır.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Hızlı</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Akıllı</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>En iyi</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Gelişmiş</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Gelişmiş eylemleri göster</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Eylem listesine, komut çalıştırma gibi uzman kullanıcı eylemleri ekler.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Gelişmiş eylemleri göster</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Sorunları çözmeye yardımcı olmak için çökme raporlarını gönderin</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Automation Portal çökerse hata ayrıntılarını gönderin. Kısayollarınız, dosyalarınız, panonuz ve yazdığınız metin hiçbir zaman dahil edilmez; dosya yolları, kullanıcı adınız ve bilgisayar adınız kaldırılır.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Sorunları çözmeye yardımcı olmak için çökme raporlarını gönderin</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal bilgisayarınızda çalışır. Çalıştırdığınız bir kısayol bunu yapmadıkça hiçbir yere bir şey gönderilmez.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Gizlilik politikası</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>_Veri klasörünü aç</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Veri klasörünü aç</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>_Günlük klasörünü aç</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Günlük klasörünü aç</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_Karşılamayı yeniden göster</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Karşılamayı yeniden göster</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Parçacıklar</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Herhangi bir yere kısa bir kod yazın; Automation Portal bunu daha uzun bir metinle değiştirir.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Yeni parçacık</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Yeni parçacık</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Parçacıklarda ara</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Parçacıklar</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Bu parçacığı açın veya kapatın</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Etkin</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Kısa kod</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Kısa kod</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Klasör (isteğe bağlı)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Bununla değiştir</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>Görünmesi gereken metin</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Değiştirme metni</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Yer tutucu ekleyin</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>Bugünün tarihi</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Tarih biçimi…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>Bugünün tarihi, seçtiğiniz bir biçimde, örneğin yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Saat</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>Geçerli saat</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Pano</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>En son kopyaladığınız şey</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>İmleç yeri</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Metin göründükten sonra imlecin geleceği yer</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Bana sor…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal her seferinde size bir soru sorar ve yanıtınızı buraya koyar</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Önizleme</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Büyük harfleri tam olarak eşleştir</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>Bu kapalıyken ;Hi yazmak ilk harfi büyük, ;HI yazmak ise tümünü büyük harfle verir.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>Parçacığı _sil</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Parçacığı sil</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Yazmaktan tasarruf edin</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>;addr gibi kısa bir kod oluşturun; yazdığınızda tam adresinize dönüşür. Her uygulamada çalışır.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>Başlamak için ;date ve ;addr ekleyin</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Bugünün tarihi ve adresiniz için birer parçacık ekler</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Kendiniz oluşturun</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Kendiniz oluşturun</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal Hızlı Panel</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Sabitlenmiş</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Otomasyonlar duraklatıldı</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Henüz hiçbir şey sabitlenmedi</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>En sevdiğiniz kısayolları sabitleyin; tek tıkla burada görünürler.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal'ı _aç</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Automation Portal'ı aç</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Kaydet</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Fare ve yazdıklarınızdan yeni bir kısayol kaydedin</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Otomasyonları duraklat</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run araması</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Bir kısayol adı yazın</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Bir şey bulunamadı. Başka bir sözcük deneyin ya da bunu kapatıp ana penceredeki Yeni kısayol veya Galeri'ye göz atın seçeneğini kullanın.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Görünüm</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Vurgu rengi</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Windows vurgu renginizi izleyin ya da on renkten birini seçin.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Vurgu rengi</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows vurgusu</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Pencere arka planı</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Pencere arka planlarının nasıl görüneceğini seçin. Windows yüksek karşıtlık her zaman düz bir arka plan kullanır.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Pencere arka planı</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (yumuşak, varsayılan)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Akrilik (buzlu)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Düz</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Köşeler</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Düğmelerin, kartların ve kutucukların ne kadar yuvarlak olduğu.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Köşeler</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Yuvarlak (varsayılan)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Kare</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Daha yuvarlak</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Yoğunluk</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Metin çevresinde ve satırlar arasında ne kadar boşluk olduğu.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Yoğunluk</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Sıkı</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Standart (varsayılan)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Rahat</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Metin boyutu</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Windows metin boyutu ayarına ek olarak metni büyütür veya küçültür.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Metin boyutu</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Hareket</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Şeyler göründüğünde ve değiştiğinde uygulamanın ne kadar hareket ettiği.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Hareket</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Windows ile aynı (varsayılan)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Azaltılmış</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Kısayol kutucukları</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Kartlar geniş kutucuklar gösterir. Sıkı mod bunları küçültür; böylece ekrana daha fazlası sığar.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Kısayol kutucuk boyutu</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Kartlar (varsayılan)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Sıkı</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Görünümü sıfırla</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Tema, vurgu, arka plan, köşeler, yoğunluk, metin boyutu, hareket ve kutucukları varsayılanlara döndürür.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Sıfırla</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Görünümü varsayılanlara sıfırla</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Mavi</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Çivit mavisi</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Mor</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Macenta</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Kırmızı</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Turuncu</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Kehribar</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Yeşil</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Turkuaz</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Arduvaz</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Unut</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host yüklü değil.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal henüz Portal AI Host içinde izinli değil. İzin ver düğmesini kullanın.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Automation Portal'a bir kez izin verin, Portal AI Host onun adına yanıt verir. Hiçbir şey bilgisayarınızdan çıkmaz.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (bu bilgisayarda)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Yeniden denetle</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>İzin ver</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Bir API anahtarı kullan…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>ChatGPT, Claude, Gemini ve diğerleriyle kendi hesabınızı kullanın.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Kendi yapay zekâ hesabınız</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Denetleniyor…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Portal AI Host'u al</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Ücretsiz ve özel. Bu bilgisayarda, tüm Portal uygulamalarının paylaştığı tek bir yapay zekâ.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Bu bilgisayarda yapay zekâ çalıştırır. Hiçbir şey bilgisayarınızdan çıkmaz.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Hazır. Hiçbir şey bilgisayarınızdan çıkmaz.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Tarif edin; yapay zekâ eylemlerinin konuşacağı bir yapay zekâ gerekir. Hazırlamak için bir yol seçin.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Portal AI Host'u başlat</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Portal AI Host başlatılıyor…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>Yapay zekâyı hazırlayın</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Portal AI Host'u kullan</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Windows yapay zekâsını kullan</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Portal AI Host'ta onaylamanız bekleniyor…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Bu bilgisayara yerleşik. Ücretsiz ve özel.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows cihaz üzerinde yapay zekâ</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows, cihaz üzerinde yapay zekâyı hazırlıyor…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Kullanıma hazır. Hiçbir şey bilgisayarınızdan çıkmaz. Model: {0}. Seferinde en fazla {1} belirteç okur.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Kullanıma hazır. Hiçbir şey bilgisayarınızdan çıkmaz.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Anlam olarak ilgili</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>{0} soruluyor…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>ilgili</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Kur</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Quick Run'ın sorulara nasıl yanıt verebileceğini seçin</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C kopyala      Esc kapat</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Bir kısayol oluşturun: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>Yapay zekâyı kur…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>Yapay zekâya sor: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Kontrol etmeniz için bir taslak açar. Hiçbir şey kaydedilmez veya çalıştırılmaz.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Sor</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Kopyalandı</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Yanıtı kopyala</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Anlatın</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>Yapay zekâ yanıtı</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>Anlam olarak ilgili: {0}</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (ilgili)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Sorunları hızla düzeltebilmemiz için çökme raporlarını gönderin. Dosyalarınızı veya yazdıklarınızı hiçbir zaman içermez.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Gönderilenler</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Gizlilik</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Çökme raporları</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Uygulama çökerse, düzeltebilmemiz için hata ayrıntıları gönderilir. Kısayollarınız, dosyalarınız, panonuz ve yazdığınız metin hiçbir zaman dahil edilmez; yollar, adlar ve bilgisayar adınız kaldırılır. Bunu kapatmak gönderimi hemen durdurur.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>_Çökme raporları gönder</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Çökme raporları gönder</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Gönderilenler</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Merhaba! Sıkıcı kısımları sizin yerinize yapalım.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal küçük işleri tek tıkla veya tek kısayol tuşuyla yapılabilir hale getirir: bir klasörü düzenleyin, hava durumuna bakın, not alın, bir grup dosyayı yeniden adlandırın.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Yaklaşık bir dakika sürer. İstediğiniz zaman atlayabilirsiniz.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Renkli noktalarla çevrili bir Automation Portal şimşeği</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Beğendiklerinizi işaretleyin. Daha sonra değiştirebilir veya kaldırabilirsiniz.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Hazır kısayollar, istediğiniz zaman Galeri'de.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Şimdi bir tanesini deneyin</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>Kısayol, istediğinizde çalışan küçük bir iştir. Bu yalnızca aşağıdaki metni değiştirir. Bilgisayarınızda hiçbir şeye dokunmaz.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>Bağır</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Metni BÜYÜK HARFLERE çevirir</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Değiştirilecek metin</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Yeniden çalıştır</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Çalışıyor...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Sonuç</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Tamamlanamadı.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal saatin yanında yaşar. Bu pencereyi kapatmak kısayol tuşlarınızın çalışmaya devam etmesini sağlar.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Şimdilik atla</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>İleri</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Hadi başlayalım</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Başlayın</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Adım {0} / {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Önerilen ayarlarla başlayın</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Automation Portal'ı kullanmaya başlayın</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Önerilen</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Çökme raporlarını gönder</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Sorunları hızla düzeltebilmemiz için. Dosyalarınızı veya yazdıklarınızı hiçbir zaman içermez.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Bütün bunları daha sonra Ayarlar'dan değiştirebilirsiniz.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Şehrinizin hava durumunu tek tıkla görün.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Tek adımda kısa bir not alın.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Bugünün tarihini ve hava durumunu duyun, sonra ilk uygulamalarınızı açın.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Mesafeleri, ağırlıkları, sıcaklıkları ve daha fazlasını dönüştürün.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>İş uygulamalarınızı kapatın ve tek seferde düzenleyin.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Metni yazı tiplerinden, renklerden veya bağlantılardan arındırarak yapıştırın.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Automation Portal'ın yeni bir sürümü hazır.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Güncellemek için Microsoft Store sayfasını açar</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Sonra</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Daha yeni bir sürüm çıkana kadar bunu gizle</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Yenilikler</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>Bu sürümde düzeltilenler</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Bu sürümdeki yenilikler</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Anladım</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Göster</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Bunun ilgili olduğu uygulama bölümünü açın</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Bu pencereyi kapatın</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Yenilikler</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Yenilikler</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Bu sürümde neyin değiştiğini görün</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Yenilikler</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Automation Portal'ı keşfedin</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>İleri</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Turu atla</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Automation Portal'ı kullanmaya başlayın</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Göster</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>Turu kapatın ve uygulamanın bu bölümünü açın</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Önceki durağa git</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Sonraki durağa git</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>Turu kapatın. Ayarlar, Hakkında bölümünden tekrar açabilirsiniz.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>Turu kapatın ve uygulamayı kullanmaya başlayın</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Turu başlat</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Automation Portal'ın neler yapabildiğine kısa bir bakış</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Önce kısa bir tur atın</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Durak {0} / {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Ekran görüntüsü kullanılamıyor</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Automation Portal'ı keşfedin</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Automation Portal'ı keşfedin</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Keşfet</value>
+  </data>
+</root>

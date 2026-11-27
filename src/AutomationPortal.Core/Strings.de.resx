@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Wählen Sie aus, welche Verknüpfung ausgeführt werden soll.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Geben Sie der Variablen einen Namen.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Geben Sie dem gespeicherten Wert einen Namen.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Fügen Sie mindestens eine Frage hinzu.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Es gibt nichts zur Auswahl. Die Liste ist leer.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>Das Muster '{0}' ist nicht gültig. Überprüfen Sie es und versuchen Sie es erneut.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Die Überprüfung des Musters hat zu lange gedauert. Versuchen Sie ein einfacheres Muster.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>Unbekannter Vergleich '{0}'.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Fügen Sie die Aktionen in eine der Menüoptionen ein.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>Für '{0}' fehlen die Gruppeninformationen. Löschen Sie es und fügen Sie es erneut hinzu.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' kann nicht Teil einer Gruppe sein.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Ein „Wenn“-Block kann nur einen „Sonst“-Teil haben.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Wiederholungsblöcke haben keine getrennten Teile. Entfernen Sie dieses Element.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>{0} ohne passenden Anfang gefunden. Löschen Sie es oder fügen Sie den Anfang wieder hinzu.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Diese Verknüpfung gibt es nicht mehr. Sie wurde möglicherweise gelöscht.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Verknüpfungen sind zu tief verschachtelt (mehr als {0} Ebenen). Prüfen Sie, ob sich eine Verknüpfung selbst ausführt.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Es laufen zu viele Verknüpfungen gleichzeitig ({0}). Beenden oder brechen Sie eine ab und versuchen Sie es erneut.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Etwas ist schiefgelaufen: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Dieser Schritt verwendet eine Aktion, die Automation Portal nicht kennt ('{0}'). Löschen Sie sie oder aktualisieren Sie Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run benötigt den Namen einer Verknüpfung.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input benötigt einen Text.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import benötigt eine .autoportal-Datei.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Dieser Link ist kein gültiger Automation Portal-Link.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Dieser Link gibt nicht an, welche Verknüpfung ausgeführt werden soll.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Dieser Link gibt nicht an, welche Datei importiert werden soll.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>{0} kann nicht angezeigt werden: Es ist ein Webelement und wird in der Vorschau nicht heruntergeladen.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>{0} konnte nicht heruntergeladen werden. Überprüfen Sie Ihre Internetverbindung und den Link. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Bedingungen können nur dort verwendet werden, wo ein Vergleich erwartet wird.</value>
+  </data>
+</root>

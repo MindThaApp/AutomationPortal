@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>Chi tiết phím tắt</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>Tên phím tắt</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>Ví dụ gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>Phím tắt này làm gì?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>Không thể sao chép</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>Câu hỏi, ví dụ: Thư mục nào cần dọn?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>Câu trả lời gợi ý (tùy chọn)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>Chọn một biểu tượng</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>Tìm biểu tượng (ví dụ mặt trời, thư, nhạc)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>Không có biểu tượng nào khớp. Hãy thử một từ đơn giản hơn.</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>Ví dụ: mỗi sáng, cho tôi biết thời tiết và mở Outlook</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>Thiết lập AI trong Cài đặt › AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>Tạo bản nháp</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>Dừng lượt chạy này (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>Chạy phím tắt này (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>Hành động này có thể thay đổi hoặc xóa dữ liệu. Hãy kiểm tra kỹ trước khi chạy.</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>AI đã thêm bước này và nó có thể thay đổi hoặc xóa dữ liệu. Hãy kiểm tra trước khi chạy phím tắt.</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>Hành động này đang tắt và sẽ được bỏ qua khi phím tắt chạy.</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>Nội dung của mục menu này</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>Thêm một hành động ở đây</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>Đang chờ bạn. Nhấn Bước tiếp theo để chạy bước này.</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>Bước này tạm dừng khi bạn chạy nó ở đây</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>Nếu bước này lỗi</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>Hiện trong File Explorer</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>Phím tắt bàn phím</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>Dùng kết quả của một hành động trước đó, clipboard và nhiều thứ khác</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>Được hỏi giá trị này mỗi lần phím tắt chạy</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>Hoặc nhập một khóa từ điển (ví dụ thành phố)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>Bạn sẽ được hỏi giá trị này mỗi lần phím tắt chạy.</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>Tìm hành động</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>Khôi phục các tệp mà lượt chạy này đã tạo, di chuyển, đổi tên hoặc thay thế. Bạn xem danh sách trước.</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>Hiện hoặc ẩn kết quả và biến</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>Dùng kết quả từ một bước trước đó</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>Nhập một số, ví dụ 5 hoặc 2.5.</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>Tên ứng dụng hoặc tệp chương trình</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>Kết quả tìm kiếm</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>Lịch sử phiên bản</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>Khi khôi phục, giữ phím nóng, tên Quick Run và cài đặt Gửi đến hiện tại</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>Tất cả hành động</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Tên Quick Run</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Nhập nội dung này trong Quick Run để khởi chạy phím tắt nhanh.</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>Nơi nó hiện ra</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>Ghim nó</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>Hiện nó trong menu khay và Bảng nhanh.</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Hiện trong Quick Run</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Tìm theo tên khi bạn mở Quick Run.</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>Chạy trên các tệp bạn chọn trong File Explorer.</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>Những gì nó có thể nhận làm đầu vào</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>Đánh dấu những gì phím tắt này có thể làm việc cùng. Để trống tất cả nếu không cần gì.</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>Tiếp tục không có nó</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>Hỏi tôi để chọn tệp</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>Dùng nội dung trên clipboard</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>Dừng lại và báo cho tôi</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>Nếu không có đầu vào</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>Câu hỏi khi ai đó thêm phím tắt</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>Khi phím tắt này được nhập hoặc lấy từ thư viện mẫu, các câu hỏi này sẽ được hỏi và câu trả lời sẽ điền vào các hành động.</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>Thêm câu hỏi</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>Chạy nó từ nơi khác</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>Khởi chạy phím tắt này từ terminal, trang web, màn hình nền hoặc ứng dụng khác.</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>Sao chép lệnh</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>Gõ nội dung này trong terminal, hoặc dùng trong một tập lệnh.</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>Sao chép liên kết</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Dán nó vào trang web, ghi chú hoặc trình khởi chạy.</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>Liên kết có thể chạy việc này mà không cần hỏi</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>Không bao giờ chạy</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>Hỏi mỗi lần</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>Chạy mà không hỏi</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>Khi một liên kết muốn chạy phím tắt này</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>Khi một liên kết automationportal:// muốn chạy phím tắt này</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>Liên kết chuyển tệp hoặc đường dẫn tệp luôn hỏi trước. Phím tắt mới bắt đầu với lựa chọn trong Cài đặt › Liên kết.</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>Liên kết theo cài đặt trong Cài đặt, mục Liên kết.</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>Thêm vào màn hình nền</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>Thêm vào menu Start</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>Xóa câu hỏi này</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>Xóa phím nóng</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>Nhấn các phím bạn muốn…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Bao gồm Ctrl, Alt, Shift hoặc phím Windows</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>Tùy chọn 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>Tùy chọn 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>Đầu vào phím tắt</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>Ngày hiện tại</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>Chi tiết thiết bị</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>Biến bị thiếu</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>Thêm tự động hóa này?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>Bạn muốn bắt đầu thế nào?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>Tự xây dựng từng bước, hoặc mô tả điều bạn muốn trong một câu để nhận bản nháp đầu tiên để kiểm tra và chỉnh sửa.</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>Bắt đầu trống</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>Mô tả thay đổi</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>Mô tả phím tắt</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>Điều gì nên thay đổi?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>Hãy nói nó nên làm gì. Bạn sẽ nhận được một bản nháp để kiểm tra, và không có gì chạy cho đến khi bạn nhấn Chạy.</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>Đang viết bản nháp…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>Thực hiện thay đổi</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>Chưa ghi lại gì</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>Bắt đầu lại, nhấp nút hoặc gõ vào ô trong ứng dụng bạn đã chọn, rồi nhấn Dừng.</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>Mỗi bước tìm nút hoặc ô của nó theo tên trong ứng dụng, nên vẫn hoạt động khi cửa sổ di chuyển. Ứng dụng phải đang mở khi chạy. Chạy thử một lần để kiểm tra.</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>Lưu bản nháp này?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>Bản nháp của bạn chưa được lưu. Lưu nó thành phím tắt?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>Lưu bản nháp</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>Hủy bản nháp</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>Khi nó chạy</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>Khi bạn nhấp vào nó</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>Thêm phím nóng</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>Thêm tự động hóa</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>Thử ngay</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>Thêm các bước, rồi nhấn Chạy để thử trên các tệp này. Chưa có gì chạy, và các tệp chỉ được dùng khi bạn nhấn Chạy.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>Chạy từng bước</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>Chạy từ bước đã chọn</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>Xem trước thay đổi tệp</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>Mô tả…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>Mô tả thay đổi…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>Nhân bản phím tắt</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>Lịch sử phiên bản…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>Xóa kết quả chạy</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>Thay đổi chưa lưu</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>Hủy thay đổi của tôi</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>Giữ thay đổi của tôi</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>Thêm hành động đầu tiên của bạn</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>Chọn một hành động từ danh sách bên phải, hoặc kéo vào đây. Mỗi bước chạy từ trên xuống dưới.</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>Không thể lưu thay đổi của bạn.</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>Đóng và bỏ thay đổi</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>Tiếp tục chỉnh sửa</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>Xóa khỏi mục yêu thích</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>Thêm vào mục yêu thích</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>Kiểm tra bước này</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>Tùy chọn khác cho hành động này</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>Hành động này không khả dụng</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>Tùy chọn khác</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>Thêm tùy chọn</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>Thêm Otherwise</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>Bước này đã hoàn tất</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>Bước này bị lỗi</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>Xóa toàn bộ khối</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>Nhân bản khối</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>Sao chép khối</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>Đổi tên kết quả…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>Chạy từ đây</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>Tạm dừng tại đây</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>Đổi tên kết quả</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>Đặt tên cho kết quả của hành động này cho dễ nhận ra khi chọn biến.</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>Thêm mục</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>Xóa mục</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>Thêm điều kiện</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>Chọn một biến hoặc nhập giá trị</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>Xóa điều kiện này</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>Không có gì ra từ bước trước.</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>Cần kết nối Internet</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>Có thể thay đổi hoặc xóa dữ liệu. Hãy kiểm tra lại trước khi chạy</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>Hành động nâng cao</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>Ở bất cứ đâu trong ứng dụng</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>Hiện bảng này</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Tìm phím tắt và Thư viện mẫu</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>Phím tắt mới</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>Tất cả phím tắt, Đã ghim, Tự động hóa, Đoạn mẫu, Thư viện mẫu, Lịch sử chạy</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>Trong thư viện</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>Chạy phím tắt đã chọn</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>Chỉnh sửa phím tắt đã chọn</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>Nhân bản nó</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>Đổi tên nó</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>Xóa nó (Hoàn tác sẽ khôi phục)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>Hoàn tác lần xóa gần nhất</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>Trong trình chỉnh sửa</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>Chạy phím tắt</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>Dừng nó</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>Tìm hành động</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>Nhân bản các bước đã chọn</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>Chọn tất cả các bước</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>Xóa các bước đã chọn</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>Di chuyển các bước đã chọn</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>Mở menu của bước đã chọn</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>Bỏ chọn</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>Trong Quick Run</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>Thêm một đoạn văn bản cho phím tắt trước</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>Dùng một biến</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>Hỏi mỗi lần</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>Nhập giá trị thay thế</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>Chọn cái khác</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>Có / Không</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>Toàn bộ giá trị</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>Giữ nguyên</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>Tất cả mục</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>Mục đầu tiên</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>Mục cuối cùng</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>Mục ngẫu nhiên</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>Chuyển thành</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>Xóa biến</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>Bước này không còn tồn tại. Nhấp để chọn biến khác.</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>Không có hành động nào khớp.</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>Xem chi tiết lượt chạy</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>Hoàn tác thay đổi tệp</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>Chạy phím tắt để xem nó tạo ra gì. Kết quả của bước cuối cùng sẽ hiện ở đây.</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>Chưa hoàn tất</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>Đã xảy ra lỗi.</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>Chạy phím tắt và kết quả của mọi bước cùng mọi biến bạn đặt sẽ hiện ở đây theo thời gian thực.</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>Đang tải các lựa chọn…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>Chọn một thư mục…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>Chọn một tệp…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>Chọn một cái bạn đã tạo trước đó hoặc nhập tên mới.</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>Không có gì khớp.</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>Hỏi khi chạy</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>Chưa có phiên bản cũ nào. Mỗi lần bạn thay đổi phím tắt này, một bản sẽ được giữ lại.</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>Mở dưới dạng bản sao</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>Khôi phục phiên bản này…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>Khôi phục phiên bản này?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>Chưa lưu</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>Đang chạy từ đây…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>Thử từng bước một?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>Lần chạy đầu tiên của một bản ghi là an toàn nhất khi bạn theo dõi. Mỗi bước được tô sáng và chờ bạn: chọn Bước tiếp theo để tiếp tục, hoặc Dừng để kết thúc.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>Chạy từng bước một</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>Để sau</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>Làm bằng tay mất khoảng (phút)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>Không bắt buộc. Lịch sử chạy cộng các ước tính này, nên thời gian tiết kiệm là con số của bạn, không phải do ứng dụng đoán.</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>Giải thích</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>Giải thích điều gì đã sai</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>Sửa nó…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>Gợi ý cách sửa cho phím tắt này</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>Đang đọc điều đã xảy ra…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>Đang viết gợi ý sửa…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>Giải thích</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>Thiết lập AI trong Cài đặt</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>Thiết lập AI trong Cài đặt, trang AI</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>Đã mở một gợi ý sửa trong cửa sổ trình chỉnh sửa mới. Không có gì được lưu hoặc chạy, và phím tắt của bạn không đổi.</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>Gợi ý sửa — kiểm tra trước khi lưu</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (gợi ý sửa)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>Không lấy được giải thích. Hãy thử lại.</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>Không thể tạo bản sửa từ đó. Hãy thử lại, hoặc mở phím tắt và tự thay đổi bước.</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>Không kết nối được với AI.</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>Giải thích phím tắt này…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>Phím tắt này làm gì</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>Đang đọc các bước…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>Mô tả phím tắt bạn muốn</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>Đang kiểm tra yêu cầu của bạn…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>Không thể tạo bản nháp từ đó. Hãy thử mô tả theo cách khác, hoặc bắt đầu trống.</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>Không thể tạo bản nháp:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>Vài câu hỏi nhanh</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>Giữ gợi ý hoặc thay đổi chúng. Chưa có gì được tạo hoặc thay đổi.</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>Bỏ qua và tạo</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>Tạo bản nháp</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>Chọn…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>Chọn một thư mục</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>Chọn một tệp</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>Chưa chọn</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>Đây là bản nháp của bạn</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>Chưa lưu hay chạy gì cả. Xem lại, rồi mở trong trình chỉnh sửa.</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>Các bước trong bản nháp</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>Mở trong trình chỉnh sửa</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>Bắt đầu lại</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>Thay đổi tệp</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>Tạo bản sao</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>Không thay đổi tệp</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>Nhấp và gõ trong các ứng dụng khác</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Phiên bản Microsoft Store không có liên kết menu Start hay Gửi đến, và bước chế độ tối mở Cài đặt thay thế.</value>
+  </data>
+</root>

@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>جرّبه الآن</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>البحث في كل طرق البدء</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>اختصار لدي بالفعل</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>اختصار جديد (سأضيف خطواته لاحقًا)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>سمِّ الاختصار الجديد</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>ليس لديك أي اختصارات بعد.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>إزالة هذا الشرط</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>إضافة شرط</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>تشغيله فورًا</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>اسألني أولًا (إشعار مع تشغيل وتخطي)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>أخبرني عند تشغيله</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>لا توقف هذه الأتمتة مؤقتًا عندما تعمل كثيرًا</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>إذا فاته الموعد، شغّله عند بدء Automation Portal التالي أو عند استيقاظ الكمبيوتر</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>لوحة الأوامر</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>اكتب اختصارًا أو إعدادًا أو أمرًا</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  تشغيل أو فتح      Ctrl+Enter  تحرير      ↑ ↓  اختيار      Esc  إغلاق</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>استيراد اختصار</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>اختيار نسخة احتياطية</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>البدء من فراغ</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>كل صباح، أخبرني بحالة الطقس وافتح Outlook</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>إنشاء مسودة</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>استعراض المعرض</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>أو أعدّ الوصف بالكلمات (الإعدادات)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>تسجيل اختصار جديد</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>نفّذه مرة واحدة ويدوّن Automation Portal نقراتك وكتابتك</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>استيراد…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>أضف اختصارًا من ملف .autoportal. سترى ما يفعله أولًا، ولن يُستبدل شيء.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>إدارة في الإعدادات</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>عدم السؤال مرة أخرى لهذا الاختصار</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>حذف نهائي</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>فتحه بالتطبيق الافتراضي</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>إظهار في المجلد</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>تشغيله</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>تشغيله مرة أخرى</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>البدء مع Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>تغيير الأيقونة</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>حذف المجلد</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>تجهيزه</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>استخدام كافتراضي</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>مثال: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>البحث عن النماذج</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>جارٍ البحث عن النماذج…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>جارٍ التحقق…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>أعد تشغيل هذه الأتمتة. تحقق أولًا مما تغيّره حتى لا تعمل في حلقة مرة أخرى.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>اختبار الآن</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>شغّل الاختصار مرة واحدة الآن على ملفات نموذجية في مجلد مؤقت</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>خيارات إضافية</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>تشغيل هذه الأتمتة أو إيقافها</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>النشاط…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>اعرض متى تم تشغيل هذه الأتمتة أو تنفيذها أو تخطيها</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>فتح الاختصار</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>الحصول عليه</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>فتح ملف اختصار</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>لا شيء يطابق بحثك</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>تحقق من الإملاء أو جرّب كلمة أقصر. يمكنك أيضًا البحث عن اختصار جاهز في المعرض.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>لا شيء مثبّت بعد</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>ثبّت الاختصارات التي تستخدمها أكثر. انقر بزر الماوس الأيمن على اختصار واختر تثبيت. تظهر الاختصارات المثبّتة أيضًا عند النقر على أيقونة Automation Portal قرب الساعة.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>هذا المجلد فارغ</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>اسحب الاختصارات إلى هنا من القائمة، أو أنشئ اختصارًا جديدًا.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>لنجعل شيئًا يحدث</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>الاختصار مجموعة خطوات ينفذها Automation Portal عنك بنقرة واحدة. ابدأ باختصار جاهز من المعرض، أو أنشئ اختصارك الخاص.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>عدم إظهار هذا مرة أخرى</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>كان هذا أول اختصار لك.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>امنحه مفتاح اختصار</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>نقل إلى مجلد</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>تصدير الاختصار</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>مسح المحفوظات…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>اختر مكان حفظ النسخة الاحتياطية</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>اختر مكان الاحتفاظ باختصاراتك</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>سيظهر نصك هنا.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>اكتب المدخلات</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>اختر اختصارًا لتشغيله عليها</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>تسجيل Automation Portal</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>إيقاف الأتمتة مؤقتًا</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal قيد التشغيل بالفعل لكنه لم يستجب. ابحث عنه في منطقة الإشعارات، أو أعد تشغيله من إدارة المهام.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>واجه Automation Portal مشكلة في ملف</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>البدء مع Windows متوقف</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>أعد تشغيل "البدء مع Windows" في الإعدادات، عام.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>تعذر على Automation Portal استخدام ذلك</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>هذا الاختصار قيد التشغيل بالفعل.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>لا يمكن للروابط تشغيل الاختصارات</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>فتح ملف الاختصار هذا؟</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>تم فتح هذا من رابط، لذا لا تضفه إلا إذا كنت تثق بمصدره.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>تم إرسال هذا بالأمر ap. لا تضفه إلا إذا شغّلت هذا الأمر بنفسك.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>أرسل برنامج آخر على هذا الكمبيوتر هذا الاختصار. لا تضفه إلا إذا كنت تثق بهذا البرنامج.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>إضافة هذا الاختصار؟</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>تمت إضافة الاختصار</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>الاحتفاظ بهذا الاختصار؟</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>الاحتفاظ به</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>إزالته</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>تشغيل على النص المحدد</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>لا يمكن استخدام مفتاح الاختصار هذا.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>النص المحدد</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>اسأل الذكاء الاصطناعي</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>عرض ما فعله</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" عمل للتو من تلقاء نفسه لأول مرة</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>عمل دون مشاكل.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>عرض ما حدث</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>تحرير هذه الأتمتة</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>اختيار مشغّل آخر</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>اختيار اختصار آخر</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>تشغيل صوت عند انتهاء اختصار بدأته</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>اليوم</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>منذ {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>أدرج أيضًا Ctrl أو Alt أو Win</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>ما فعلته هذه الأتمتة منذ بدء Automation Portal، الأحدث أولًا. لا يُحفظ شيء هنا على القرص.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>لم يحدث شيء بعد. عندما يعمل مشغّل هذه الأتمتة، سيظهر هنا.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>أتمتة جديدة</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>تحرير الأتمتة</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>لا شيء يطابق بحثك.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>لا يوجد شيء في هذه المجموعة بعد.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>فقط إذا… (اختياري)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>أضف شروطًا للتشغيل في اللحظات المناسبة فقط. يجب أن تتحقق جميعها.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>عند حدوثه</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>اتركه عند 0 للتشغيل في كل مرة. الإيقاف المؤقت مفيد للمشغّلات التي قد تعمل مرات كثيرة متتالية.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>عادةً يوقف Automation Portal مؤقتًا أي أتمتة تعمل أكثر من 60 مرة خلال 10 دقائق، لأن ذلك يعني غالبًا وجود حلقة.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>إذا كان الكمبيوتر مغلقًا أو في وضع السكون، أو لم يكن Automation Portal يعمل، في الوقت المجدول، فسيعمل مرة واحدة عند بدء Automation Portal أو استيقاظ الكمبيوتر. تُحتسب الأوقات من آخر 24 ساعة فقط، ولا يعمل شيء لوقت مضى أثناء إيقاف الأتمتة مؤقتًا.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>جارٍ تحديد ما سيفعله…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>لا شيء للاستعادة</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>الاستعادة من نسخة احتياطية</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>إضافتها</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>صفه</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>البدء من اختصار جاهز</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>اختر واحدًا لإضافته، ثم عدّله ليناسبك.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>تشغيل اختصار على هذه العناصر؟</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>تشغيل هذا الاختصار؟</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>السماح مرة واحدة</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>المحذوفة مؤخرًا</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>تعمل الأتمتة التي تستخدم هذا الاختصار مرة أخرى.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>تعذرت إزالة نسخته في المحذوفة مؤخرًا، لذا لا يزال مدرجًا هناك.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>إفراغ المحذوفة مؤخرًا</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>بعض الاختصارات لا تزال هنا</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>لا توجد نوافذ تطبيقات مفتوحة. افتح التطبيق الذي تريد عرضه ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>أي تطبيق ستعرض؟</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>بدء التسجيل</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>غيّر ما تشاء قبل إضافة هذه الخطوات. تجد كل خطوة عنصر التحكم الخاص بها بالاسم، لذا تظل تعمل عند تحريك النافذة.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>أضف نقرة على الزر الذي ضغطوه بدلًا من ذلك.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>مراجعة التسجيل</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>إضافة الخطوات</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>اسألني في كل مرة</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>تعذر عرض هذه الصورة.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>اسحب لاختيار منطقة. اضغط Esc للإلغاء.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>انقر على الموضع الذي تريده. اضغط Esc للإلغاء.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>يمكنك تغيير أي من هذا لاحقًا في المحرر.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>إظهار ما سيفعله</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>عند تشغيله</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>اختيار مجلد</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>اختر المجلد أولًا.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>اختر بعضها للبدء</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>جرّب واحدًا الآن</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>قل مرحبًا</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>يعرض إشعارًا</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>لم ينتهِ</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>أبقه في متناول يدك</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>شغّل أي شيء بالكتابة، من أي مكان.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>اضغط عليها معًا. يفتح شريط صغير تكتب فيه للعثور على أي اختصار وتشغيله.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>مرحبًا بك في Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>الاختصارات المثبّتة</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>اختصار Automation Portal</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>تمت الإضافة إلى سطح المكتب</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>تمت الإضافة إلى قائمة ابدأ</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>هذا المشغّل لم يعد متاحًا</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>عمل للتو</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>اختر ما يجب أن يبدأه.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>امنح الاختصار الجديد اسمًا.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>اختر اختصارًا لتشغيله.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>اختر ما يجب أن يبدأ الأتمتة.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>تعمل الأتمتة التي تستخدمه مرة أخرى.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>خطوة غير معروفة</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>راجع خطواته أولًا إن لم تكن متأكدًا من التطبيقات والمجلدات التي يعمل عليها. لا تستخدم التطبيقات أثناء تشغيله.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>كل يوم</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>تم حذف هذا الاختصار. استعده من المحذوفة مؤخرًا في مكتبتك لتشغيله مرة أخرى.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>هذا الاختصار لم يعد موجودًا، لذا لا يمكن تشغيله مرة أخرى.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>اختر الملفات لتشغيل هذا الاختصار عليها.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>يحتاج هذا الاختصار إلى شيء يعمل عليه، ولا تحتفظ محفوظات التشغيل بذلك. شغّله من مكتبتك أو من Quick Run بدلًا من ذلك.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>تشغيل هذا الاختصار مرة أخرى.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>إذا قال Windows إن عنصرًا أكبر من أن يوضع في سلة المحذوفات وطلب حذفه نهائيًا، فاختر لا للاحتفاظ به.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>تم التراجع عن هذه التغييرات بالفعل.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>لا يمكن التراجع عن هذه التغييرات من هنا. اعرض التفاصيل لمعرفة ما تغيّر.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>يعيد التراجع ما يمكنه إعادته بأمان. اعرض التفاصيل لمعرفة الباقي.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>لم يتم استبدال أي شيء.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>يعرض إشعارًا. لا يغيّر شيئًا على الكمبيوتر.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>المكتبة والنسخ الاحتياطي</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>التطبيقات الأخرى والروابط</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>الاستمرار في العمل في علبة النظام</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>بلاطات الاختصارات</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>أين أنا</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>اللوحة السريعة عند مؤشر الماوس</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>مكان حفظ اختصاراتك</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>الاحتفاظ باختصاراتك في OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>نسخ مكتبتك احتياطيًا</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>أخبرني عند انتهاء اختصار بدأ بمفتاح اختصار</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>موضوع إشعارات الهاتف</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>إظهار الإجراءات المتقدمة</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>ترتيب التنزيلات</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>يرتب الملفات التي نزّلتها منذ فترة في مجلدات حسب النوع أو التاريخ.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>يغيّر الملفات</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>البحث عن ملفات في المجلد أقدم من بضعة أيام (يوم واحد على الأقل)، مع استثناء التنزيلات غير المكتملة</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>نقلها إلى مجلدات حسب النوع أو التاريخ</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>إخبارك بعدد ما نُقل، مع التراجع</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>تحويل الصور</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>يحفظ الصور التي تختارها بصيغة JPEG أو PNG أو GIF أو BMP أو TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>ينشئ نسخًا</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>أخذ الصور التي تختارها أو ترسلها إليه</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>حفظ كل واحدة بنوع الملف الجديد</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>بجانب الأصلية، باسم name (2) إذا كان الاسم مستخدمًا</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>إعداد مساحة عملي</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>يفتح تطبيق عملك ومجلدًا وصفحة ويب دفعة واحدة.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>لا تغييرات في الملفات</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>فتح التطبيق الذي تختاره</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>فتح مجلد في مستكشف الملفات</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>فتح صفحة ويب</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>نسخ مجلد احتياطيًا</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>ينسخ مجلدًا إلى مجلد جديد يحمل التاريخ، كل يوم أو كل أسبوع.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>نسخ فقط</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>في الوقت الذي تختاره، إنشاء مجلد باسم التاريخ</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>نسخ المجلد إليه</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>عدم حذف أو استبدال أي شيء في النسخة الاحتياطية أبدًا</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>ملء نموذج من جدول بيانات</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>يكتب كل صف من ملف CSV في نموذج داخل تطبيق آخر.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>قريبًا</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>تملأ النموذج مرة واحدة أثناء التسجيل</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>يكرر الصف 1 خطوة بخطوة لتتحقق منه</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>متوقف مؤقتًا حتى تستأنف</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>حدث خطأ.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>لم يعمل النسخ الاحتياطي</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>كل يوم في وقت محدد</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>عندما أضغط على مفتاح اختصار</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>في أي مكان في Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>عندما أسجّل الدخول</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>في كل مرة تبدأ فيها يومك</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>عندما يظهر ملف في مجلد</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>مثل تنزيل جديد</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>عندما يفتح تطبيق</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>اختر التطبيق لاحقًا</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>عندما يُوصَل جهاز USB</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>أو أي جهاز يتصل</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>كل الاختصارات</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>مجلد جديد</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>محفوظات التشغيل</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>مجلد جديد</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>اسم المجلد</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>إعادة تسمية المجلد</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>اختصار جديد</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>نسخ المكتبة احتياطيًا الآن</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>الاستعادة من نسخة احتياطية…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>استيراد ملف اختصار…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>اختصارات لوحة المفاتيح</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal لا يزال قيد التشغيل</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>ستجده في أيقونات علبة النظام قرب الساعة. انقر عليه بزر الماوس الأيمن للإنهاء.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>اختر الذكاء الاصطناعي الذي تستخدمه إجراءات الذكاء الاصطناعي وQuick Run. تُخزَّن مفاتيحك مشفّرة على هذا الكمبيوتر.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>على هذا الكمبيوتر (مجاني وخاص)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>جارٍ فحص هذا الكمبيوتر…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>جاهز للاستخدام. مجاني وخاص ويعمل دون اتصال.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>متاح على هذا الكمبيوتر. مجاني وخاص ويعمل دون اتصال.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>يجهّز Windows الذكاء الاصطناعي على الجهاز…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>جاهز للاستخدام.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>متوقف.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>الصق مفتاحك هنا</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>تم حفظ المفتاح.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>تمت إزالة المفتاح.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>اسم النشر</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>النموذج (اتركه فارغًا لاستخدام الخيار سريع / ذكي / الأفضل أدناه)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>لا يمكن تشغيل هذه الأتمتة على هذا الكمبيوتر. حرّرها لاختيار مشغّل مختلف.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>تم حذف الاختصار الذي تشغّله. حرّر الأتمتة لاختيار اختصار آخر.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>حذف الأتمتة</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>حذف هذه الأتمتة؟ لا يُحذف الاختصار الذي تشغّله.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>لم يبدأ الاختبار</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>قيد التشغيل بالفعل</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>نجح الاختبار</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>تم إلغاء الاختبار</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>أوقفت الاختصار قبل أن ينتهي.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>لم ينتهِ الاختبار</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>تصفح ملفاتك وأدرها.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>بدّل خطط الطاقة وأبقِ الكمبيوتر مستيقظًا.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>تطبيقات أخرى من الجهة نفسها يمكن لـ Automation Portal العمل معها.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>ما الذي سيفعله</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>الإعداد</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>ماذا يفعل</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>خطوة غير معروفة</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>إضافة اختصار</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>إضافة وجدولة…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>يجب أن يكون خط العرض رقمًا، مثل 51.5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>يجب أن يكون خط الطول رقمًا، مثل -0.12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>يجب أن يكون خط العرض بين -90 و90.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>يجب أن يكون خط الطول بين -180 و180.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>قبل أول تشغيل</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>افتحه أولًا</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>بلا مجلد</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>إضافة إلى سطح المكتب</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>إعادة تسمية الاختصار</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>اضغط على المفاتيح التي تريد استخدامها لتشغيل هذا الاختصار من أي مكان. استخدم واحدًا على الأقل من Ctrl أو Alt أو Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>غير متاح بعد</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>حذف الاختصار</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>كل عمليات التشغيل</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>أوقفته أنت</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>توقف من تلقاء نفسه</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>كل المصادر</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>الروابط والتطبيقات الأخرى</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>لا توجد عمليات تشغيل مطابقة</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>لم يعمل شيء بعد</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>جرّب بحثًا مختلفًا أو اعرض كل عمليات التشغيل.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>عندما تشغّل اختصارًا، سترى هنا ما حدث خطوة بخطوة. وهذا يسهّل معرفة سبب عدم نجاح شيء ما.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>تشغيل مرة أخرى…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>تشغيل مرة أخرى</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>هذا الاختصار لم يعد موجودًا.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>افتح المحرر مع تحديد الخطوة التي لم تنتهِ.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>فتح عند الخطوة الفاشلة</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>التراجع عن تغييرات الملفات</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>أعد الملفات التي أنشأها هذا التشغيل أو نقلها أو أعاد تسميتها أو استبدلها. ستظهر لك القائمة أولًا.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>نسخ التفاصيل</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>انسخ ملخصًا قصيرًا لهذا التشغيل، بدون ملفاتك أو أي كلمات مرور أو مفاتيح.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>الملفات المتغيرة</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>لم يسجّل هذا التشغيل أي خطوة فشلت، لذا لم تُحدَّد أي خطوة.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>تغيّر الاختصار منذ هذا التشغيل ولم تعد هذه الخطوة فيه.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>مسح محفوظات التشغيل</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>حذف محفوظات التشغيل بالكامل؟ لا تتأثر اختصاراتك.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>مسح المحفوظات</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>لا يسمح Windows لـ Automation Portal باستخدام موقعك. شغّله في إعدادات Windows، الخصوصية والأمان، الموقع، أو اكتب الأرقام هنا.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>لا توجد تطبيقات بعد.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>هذا الاختصار فقط، دون سؤال</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>تم نسخ المكتبة احتياطيًا</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>تعذر على Automation Portal العثور على مجلد OneDrive على هذا الكمبيوتر. سجّل الدخول إلى OneDrive أولًا، أو استخدم تغيير… لاختيار أي مجلد.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>اختر مجلدًا آخر</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>هذا المجلد داخل مكتبتك الحالية. اختر مجلدًا في مكان آخر.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>اختر مجلدًا فارغًا</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>تغيير موقع المكتبة</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>سيُعاد تشغيل Automation Portal</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>اختصاراتك جاهزة في المكان الجديد. يُعاد تشغيل Automation Portal الآن ليستخدمه كل شيء منذ اللحظة الأولى.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>حذف المقتطف</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>تنسيق التاريخ</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>التنسيق (مثال: yyyy-MM-dd، أو dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>اسألني</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>اختصار جديد</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>لم يسمح Windows لـ Automation Portal بملاحظة نقراتك وكتابتك. حاول مرة أخرى.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>الإجابة</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>يؤدي Enter إلى نسخ الإجابة</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>حول النص المحدد</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>مرحبًا من المسجّل التجريبي</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>الضغط على Enter</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>لا شيء للتراجع عنه</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>تم التراجع عن تغييرات ملفات هذا التشغيل بالفعل.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>لم يغيّر هذا التشغيل أي ملفات يمكن لـ Automation Portal التراجع عنها، أو أن سجله أقدم من أسبوع.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>يجري بالفعل التراجع عن تغييرات ملفات هذا التشغيل.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>اكتب ردًا</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>يرجى الملء</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>اضغط مع الاستمرار على Ctrl أو Shift لاختيار أكثر من واحد.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>اختيار ملفات</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>حفظ باسم</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>الوقت (اختياري)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>اكتب رقمًا، مثل 12 أو 3.5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>لا يبدو هذا عنوان ويب.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>استئناف الأتمتة</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>اكتب اسم اختصار</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>اكتب بضعة أحرف من اسم اختصار</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>يفتح المحرر</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>تعذر على Quick Run تنفيذ ذلك</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>حدث خطأ. حاول مرة أخرى.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>لا تُسجَّل كلمات المرور أبدًا.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>المزيد من المثبّتة…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>فتح Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>استئناف الآن</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>لمدة 30 دقيقة</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>لمدة ساعة</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>حتى الغد</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>حتى أستأنف</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>إنهاء Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>انقر للتشغيل.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>تحديث التطبيقات المتصلة</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>فتح</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>فتح {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>احصل على {0} من Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>تذكيرات الاستراحة والتركيز والإيقاف المؤقت عند مكتبك.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>تعذر فتح Power Plan Manager</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>تعذر على Automation Portal إنشاء الملفات النموذجية للاختبار. لم يعمل شيء ولم تتغير ملفاتك. تحقق من وجود مساحة خالية على القرص ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>تعذر التراجع</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>حدث خطأ أثناء إعادة الأشياء. افتح محفوظات التشغيل لمعرفة ما تغيّر.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>لا شيء باسم "{0}". جرّب كلمة أقصر، أو ابحث في المعرض عن اختصار جاهز.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>الخطوة {0} من {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} من {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} حتى الآن</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>جارٍ تشغيل "{0}"</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>جارٍ تشغيل {0} اختصارات</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>لم ينتهِ "{0}"</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>التالي: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>اضغط Enter لإنشاء اختصار جديد باسم “{0}”</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>إيقاف</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>تشغيل (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>إيقاف هذا التشغيل</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>تشغيل {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>إيقاف {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>تحرير {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>خيارات إضافية لـ {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>انقر للتحديد. اضغط Enter أو انقر نقرًا مزدوجًا للتشغيل. Ctrl+E للتحرير.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>مثبّت</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>عمل مرة واحدة. آخر مرة: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>عمل {0} مرات. آخر مرة: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>اليوم في {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>أمس في {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>صوت هادئ عند الانتهاء وآخر عند حدوث مشكلة. تظل الاختصارات التي تبدأ من تلقاء نفسها صامتة، وكذلك كل شيء أثناء تفعيل مساعد التركيز أو وجود تطبيق بملء الشاشة.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus وPro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>النسخة المجانية</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>لديك النسخة المجانية: حتى {0} اختصارًا.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>لديك Plus: حتى {0} اختصارًا.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>لديك Pro: عدد غير محدود من الاختصارات، وأتمتة تشغّلها من تلقاء نفسها.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>لديك {0} اختصارًا. جميعها تعمل كما هي. أما الجديدة فتحتاج إلى مساحة أكبر.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: حتى {0} اختصارًا.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: عدد غير محدود من الاختصارات، إضافةً إلى أتمتة تشغّلها حسب جدول أو عند حدوث شيء.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>الترقية إلى Pro: عدد غير محدود من الاختصارات، إضافةً إلى الأتمتة. وتحتفظ بكل ما لديك.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>الحصول على Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>الحصول على Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>الترقية إلى Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} مقابل {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>استعادة المشتريات</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>تحقق من Microsoft Store مرة أخرى لمعرفة ما اشتريته، مثلًا على كمبيوتر جديد.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>جارٍ التحقق مع Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>جارٍ فتح Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>شكرًا لك. لديك الآن {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>تعذر على Microsoft Store إتمام الشراء. تحقق من اتصالك بالإنترنت ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>مشترياتك محدّثة. لديك {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>عادت مشترياتك. لديك {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>تعذر الوصول إلى Microsoft Store، لذا لم يتغير شيء. تحقق من اتصالك بالإنترنت ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>إنشاء المزيد من الاختصارات</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>تتسع النسخة المجانية لـ {0} اختصارًا ولديك {1}. جميعها تعمل كما هي. لإنشاء المزيد، احصل على Plus لما يصل إلى {2} اختصارًا، أو Pro لعدد غير محدود إضافةً إلى الأتمتة.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>تتسع Plus لـ {0} اختصارًا ولديك {1}. جميعها تعمل كما هي. لإنشاء المزيد، قم بالترقية إلى Pro لعدد غير محدود إضافةً إلى الأتمتة.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>الأتمتة متوفرة مع Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>تشغّل الأتمتة اختصاراتك من تلقاء نفسها: حسب جدول، أو عند وصول ملف، أو عند توصيل شيء. الأتمتة الموجودة لديك تستمر في العمل.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>تمت إضافة "{0}". جدوله يحتاج إلى Pro، لذا يعمل فقط عندما تبدأه.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>ليس الآن</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_ابدأ تجربة مجانية لمدة 14 يومًا</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>لا حاجة إلى بطاقة. تبدأ التجربة عند الضغط على الزر، وليس قبل ذلك.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>بدأت تجربة Pro لمدة 14 يومًا. كل ما في Pro متاح لك.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>تعذر بدء التجربة. لم يتغير شيء.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>تجربة Pro: متبقٍ {0} أيام</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>تجربة Pro: متبقٍ يوم واحد</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>تجربة Pro المجانية. افتح الإعدادات لعرض خطتك.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>تنتهي تجربة Pro غدًا</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>يبقى كل ما أنشأته. بعد التجربة، تتبع الاختصارات والأتمتة الجديدة خطتك مرة أخرى.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>انتهت تجربة Pro</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>ما توقف: إنشاء أتمتة جديدة، وإنشاء اختصارات جديدة تتجاوز {0}.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>ما يبقى: كل اختصار وأتمتة لديك. تستمر في العمل، ويمكنك تحريرها وتشغيلها وتفعيلها أو إيقافها وحذفها.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>تشغيل "{0}" بما أسقطته؟</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>خطوات تغيّر الملفات أو تعمل في تطبيقات أخرى: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>ما أسقطته:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (مجلد)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…و{0} أخرى</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>تم استبعادها لأن "{0}" لا يقبلها:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>لا يقبل "{0}" أيًا من العناصر التي أسقطتها، لذا لم يعمل.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>وفّر {0} نحو {1}، بحسب تقديراتك.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>منذ {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>هذا الشهر</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>دقيقة واحدة</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} دقائق</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>ساعة واحدة</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} ساعات</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>البحث في الاختصارات والمعرض</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>البحث في الاختصارات والمعرض (Ctrl+F). يفتح Ctrl+K لوحة الأوامر.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>تشغيل (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>تحرير</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>تحرير</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>تحرير (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>خيارات إضافية</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>خيارات إضافية</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>الأتمتة</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>إيقاف كل الأتمتة مؤقتًا</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>يمنع كل أتمتة من العمل حتى توقف هذا الخيار</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>أتمتة _جديدة</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>أتمتة جديدة</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>كل الأتمتة متوقفة مؤقتًا. لن يعمل شيء من تلقاء نفسه حتى توقف هذا الخيار.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>عرض ال_تفاصيل</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>اجعل الأشياء تحدث من تلقاء نفسها</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>تشغّل الأتمتة اختصارًا عنك عندما يحدث شيء، مثل فتح تطبيق أو توصيل سماعات أو حلول الساعة 8 صباحًا.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>مثال: عندما أوصّل سماعات، اضبط مستوى الصوت على 40%.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>أتمتة _جديدة</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_استعراض المعرض</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>استعراض المعرض</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>المعرض</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>اختصارات جاهزة. أضف ما يعجبك ثم اجعله خاصًا بك.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_إظهاره</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>إظهاره</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>لا توجد اختصارات جاهزة بعد</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>ستظهر اختصارات البداية هنا عند تثبيتها مع Automation Portal. وفي الأثناء يمكنك إنشاء اختصاراتك، أو فتح ملف .autoportal وصلك من صديق.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_إنشاء اختصار</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>إنشاء اختصار</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>_فتح ملف .autoportal…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>فتح ملف .autoportal…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>كل الاختصارات</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>مسح البحث</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>ال_محذوفة مؤخرًا</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>المحذوفة مؤخرًا</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>استعادة الاختصارات التي حذفتها خلال آخر 30 يومًا</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>اختصار _جديد</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>اختصار جديد</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>إنشاء اختصار جديد (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_تراجع</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>تراجع</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>امنحه مفتاح اختصار</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>امنحه مفتاح اختصار</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>عرض ال_تفاصيل</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>ابدأ من هنا</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>عرض ال_معرض</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>عرض المعرض</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_إخفاء</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>إخفاء</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>إخفاء هذا الصف. المعرض موجود دائمًا في الشريط الجانبي.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>إنشاء اختصار جديد</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>اختصار جديد</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_استعراض المعرض</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>استعراض المعرض</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_إنشاء اختصار</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>إنشاء اختصار</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>_صفه</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>صف الاختصار الذي تريده</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>اذكر ما تريده في جملة واحدة واحصل على مسودة</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>محفوظات التشغيل</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>البحث بالاسم</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>إظهار عمليات التشغيل التي</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>إظهار عمليات التشغيل التي بدأها</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>المزيد: مسح المحفوظات</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>عمليات التشغيل</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>لم يعمل شيء بعد</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>عندما تشغّل اختصارًا، سترى هنا ما حدث خطوة بخطوة. وهذا يسهّل معرفة سبب عدم نجاح شيء ما.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>الانتقال إلى قسم</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>عام</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>البدء مع Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>افتح Automation Portal بهدوء في علبة النظام عند تسجيل الدخول، لتكون أتمتتك جاهزة دائمًا.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>البدء مع Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>الاستمرار في العمل في علبة النظام</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>عند إغلاق النافذة، يواصل Automation Portal العمل في الخلفية. أوقف هذا الخيار للإنهاء عند الإغلاق.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>الاستمرار في العمل في علبة النظام</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>المظهر</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>اختر فاتحًا أو داكنًا، أو اتبع Windows.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>المظهر</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>مثل Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>فاتح</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>داكن</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>بلاطات الاختصارات</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>بطاقات محايدة بأيقونة ملونة، أو بلاطات كاملة الألوان.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>نمط بلاطات الاختصارات</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>محايد</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>تدرجات</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>أين أنا</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>يُستخدم لمشغّلات شروق الشمس وغروبها وتنبيهات الطقس. اتركه فارغًا ليحدده Windows.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>المدينة (اختياري)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>مدينة الإقامة</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>خط العرض</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>خط عرض مكان الإقامة، من سالب 90 إلى 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>خط الطول</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>خط طول مكان الإقامة، من سالب 180 إلى 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_استخدام موقعي الحالي</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>استخدام موقعي الحالي</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_إدخال الإحداثيات بدلًا من ذلك</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>إدخال الإحداثيات بدلًا من ذلك</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>مشكلة في الموقع</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>لوحة المفاتيح</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>اضغط على هذه المفاتيح في أي مكان للبحث عن اختصار وتشغيله.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>تشغيل على النص المحدد</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>حدد نصًا في أي تطبيق، واضغط على هذه المفاتيح، واختر اختصارًا لتشغيله عليه.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>اللوحة السريعة عند مؤشر الماوس</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>اضغط على هذه المفاتيح لإظهار اختصاراتك المثبّتة حيث يوجد الماوس.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>المكتبة والنسخ الاحتياطي</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>مكان حفظ اختصاراتك</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_فتح</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>فتح</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>إظهار المجلد في مستكشف الملفات</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>_تغيير…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>تغيير…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>الاحتفاظ باختصاراتك في OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>ينسخ مكتبتك إلى OneDrive لتبقى متزامنة على كل أجهزتك.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_نقل إلى OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>نقل إلى OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>نسخ مكتبتك احتياطيًا</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>يحفظ اختصاراتك ومجلداتك وأتمتتك في ملف مضغوط واحد. لاسترجاع الاختصارات، استخدم الاستعادة من نسخة احتياطية. تُضاف بجانب الاختصارات التي لديك الآن.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_نسخ المكتبة احتياطيًا الآن</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>نسخ المكتبة احتياطيًا الآن</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_الاستعادة من نسخة احتياطية…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>الاستعادة من نسخة احتياطية…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>يضيف الاختصارات الموجودة في نسخة احتياطية بجانب اختصاراتك. لا يُستبدل شيء.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>أخبرني عند انتهاء اختصار بدأ بمفتاح اختصار</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>يعرض إشعارًا صغيرًا بعد تشغيل اختصار بدأته بضغطة مفتاح.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>إشعار عند انتهاء الاختصارات التي بدأت بمفتاح اختصار</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>تشغيل صوت عند انتهاء اختصار بدأته</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>تشغيل صوت عند انتهاء اختصار بدأته</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>موضوع إشعارات الهاتف</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>يستخدمه "إرسال إلى هاتفي". اختر اسمًا خاصًا يصعب تخمينه، ثم اشترك فيه في تطبيق ntfy على هاتفك. تمر الرسالة التي ترسلها عبر خدمة ntfy.sh، لذا يمكن لأي شخص يعرف الموضوع قراءتها.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>موضوع إشعارات الهاتف</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>مثال: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>التطبيقات الأخرى والروابط</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>الروابط</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>روابط automationportal://</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>يمكن لصفحات الويب والتطبيقات الأخرى طلب تشغيل اختصاراتك بهذه الروابط. لكل اختصار: تسأل الروابط أولًا، إلا الاختصارات التي تقول تفاصيلها "يمكن للروابط تشغيله دون سؤال". الروابط التي تحمل ملفات أو نصًا يشبه مسار ملف تسأل دائمًا.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>ما يمكن لروابط automationportal فعله</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>أبدًا</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>السؤال في كل مرة</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>حسب الاختصار</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>التطبيقات المتصلة</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>التطبيقات المسموح لها بتشغيل الاختصارات</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>النماذج</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>مستوى النموذج: سريع أو ذكي أو الأفضل</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>السريع أقل تكلفة وأسرع إجابة. الأفضل أعلى تكلفة وأبطأ. يُستخدم مع كل مزوّد ما لم تكتب له اسم نموذج.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>سريع</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>ذكي</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>الأفضل</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>متقدم</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>إظهار الإجراءات المتقدمة</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>يضيف إجراءات للمستخدمين المتمرسين، مثل تشغيل الأوامر، إلى قائمة الإجراءات.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>إظهار الإجراءات المتقدمة</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>إرسال تقارير الأعطال للمساعدة في إصلاح المشكلات</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>إذا تعطل Automation Portal، أرسل تفاصيل الخطأ. لا تُضمَّن أبدًا اختصاراتك أو ملفاتك أو الحافظة أو النص الذي تكتبه، وتُزال مسارات الملفات واسم المستخدم واسم الكمبيوتر.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>إرسال تقارير الأعطال للمساعدة في إصلاح المشكلات</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>حول</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>يعمل Automation Portal على جهازك. لا يُرسَل شيء إلى أي مكان ما لم يفعل ذلك اختصار تشغّله.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>فتح مجلد ال_بيانات</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>فتح مجلد البيانات</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>فتح مجلد ال_سجل</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>فتح مجلد السجل</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_إظهار الترحيب مرة أخرى</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>إظهار الترحيب مرة أخرى</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>المقتطفات</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>اكتب رمزًا قصيرًا في أي مكان ويستبدله Automation Portal بنص أطول.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>مقتطف _جديد</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>مقتطف جديد</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>البحث في المقتطفات</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>المقتطفات</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>تشغيل هذا المقتطف أو إيقافه</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>مفعّل</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>الرمز القصير</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>الرمز القصير</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>المجلد (اختياري)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>استبداله بـ</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>النص الذي يجب أن يظهر</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>نص الاستبدال</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>إضافة عنصر نائب</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>تاريخ اليوم</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>تنسيق التاريخ…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>تاريخ اليوم بتنسيق تختاره، مثل yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>الوقت</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>الوقت الحالي</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>الحافظة</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>آخر ما نسخته</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>موضع المؤشر</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>المكان الذي يستقر فيه المؤشر بعد ظهور النص</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>اسألني…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>يسألك Automation Portal سؤالًا في كل مرة ويضع إجابتك هنا</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>معاينة</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>مطابقة الأحرف الكبيرة تمامًا</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>عند إيقاف هذا الخيار، تؤدي كتابة ;Hi إلى حرف أول كبير، وتؤدي ;HI إلى أحرف كبيرة كلها.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_حذف المقتطف</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>حذف المقتطف</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>وفّر على نفسك بعض الكتابة</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>أنشئ رمزًا قصيرًا مثل ;addr يتحول إلى عنوانك الكامل كلما كتبته. يعمل في أي تطبيق.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>إضافة ;date و;addr للبدء</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>يضيف مقتطفًا لتاريخ اليوم وآخر لعنوانك</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_أنشئ مقتطفك</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>أنشئ مقتطفك</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>اللوحة السريعة لـ Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>المثبّتة</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>الأتمتة متوقفة مؤقتًا</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>لا شيء مثبّت بعد</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>ثبّت اختصاراتك المفضلة وستظهر هنا، على بعد نقرة واحدة.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_فتح Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>فتح Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_تسجيل</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>تسجيل اختصار جديد من نقراتك وكتابتك</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>إيقاف الأتمتة مؤقتًا</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>بحث Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>اكتب اسم اختصار</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>لم يتم العثور على شيء. جرّب كلمة أخرى، أو أغلق هذا واستخدم اختصار جديد أو استعراض المعرض في النافذة الرئيسية.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>المظهر</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>لون التمييز</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>اتبع لون تمييز Windows، أو اختر واحدًا من عشرة ألوان.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>لون التمييز</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>لون تمييز Windows</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>خلفية النافذة</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>اختر شكل خلفيات النوافذ. يستخدم التباين العالي في Windows دائمًا خلفية صلبة.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>خلفية النافذة</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (ناعمة، افتراضية)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Acrylic (مصنفرة)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>صلبة</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>الزوايا</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>مدى استدارة الأزرار والبطاقات والبلاطات.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>الزوايا</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>مستديرة (افتراضي)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>مربعة</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>شديدة الاستدارة</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>الكثافة</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>مقدار المساحة حول النص وبين الصفوف.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>الكثافة</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>مدمجة</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>قياسية (افتراضي)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>مريحة</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>حجم النص</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>يجعل النص أكبر أو أصغر، إضافةً إلى إعداد حجم النص في Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>حجم النص</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>الحركة</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>مقدار حركة التطبيق عند ظهور الأشياء وتغيّرها.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>الحركة</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>مثل Windows (افتراضي)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>مخفضة</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>إيقاف</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>بلاطات الاختصارات</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>تعرض البطاقات بلاطات واسعة. يجعلها المدمج أصغر ليتسع المزيد على الشاشة.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>حجم بلاطة الاختصار</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>بطاقات (افتراضي)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>مدمجة</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>إعادة تعيين المظهر</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>يعيد المظهر ولون التمييز والخلفية والزوايا والكثافة وحجم النص والحركة والبلاطات إلى قيمها الافتراضية.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>إعادة تعيين</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>إعادة تعيين المظهر إلى الإعدادات الافتراضية</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>أزرق</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>نيلي</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>بنفسجي</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>أرجواني</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>أحمر</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>برتقالي</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>كهرماني</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>أخضر</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>أزرق مخضر</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>رمادي أردوازي</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>نسيان</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host غير مثبّت.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>لم يُسمح لـ Automation Portal في Portal AI Host بعد. استخدم الزر سماح.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>اسمح لـ Automation Portal مرة واحدة ويجيب Portal AI Host نيابةً عنه. لا يغادر شيء جهازك.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (على هذا الكمبيوتر)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>التحقق مرة أخرى</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>سماح</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>استخدام مفتاح API…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>استخدم حسابك الخاص مع ChatGPT وClaude وGemini وغيرها.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>حسابك الخاص للذكاء الاصطناعي</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>جارٍ التحقق…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>الحصول على Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>مجاني وخاص. ذكاء اصطناعي واحد على هذا الكمبيوتر تشترك فيه كل تطبيقات Portal.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>يشغّل الذكاء الاصطناعي على هذا الكمبيوتر. لا يغادر شيء جهازك.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>جاهز. لا يغادر شيء جهازك.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>تحتاج ميزة "صفه" وإجراءات الذكاء الاصطناعي إلى ذكاء اصطناعي للتحدث معه. اختر طريقة واحدة لتجهيزه.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>تشغيل Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>جارٍ تشغيل Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>تجهيز الذكاء الاصطناعي</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>استخدام Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>استخدام ذكاء Windows الاصطناعي</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>في انتظار موافقتك في Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>مدمج في هذا الكمبيوتر. مجاني وخاص.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>الذكاء الاصطناعي على جهاز Windows</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>يجهّز Windows الذكاء الاصطناعي على الجهاز…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>جاهز للاستخدام. لا يغادر شيء جهازك. النموذج: {0}. يقرأ حتى {1} رمزًا في المرة الواحدة.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>جاهز للاستخدام. لا يغادر شيء جهازك.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>مرتبط بالمعنى</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>جارٍ سؤال {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>مرتبط</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>إعداد</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>اختر كيف يمكن لـ Quick Run الإجابة عن الأسئلة</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C نسخ      Esc إغلاق</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>إنشاء اختصار: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>إعداد الذكاء الاصطناعي…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>اسأل الذكاء الاصطناعي: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>يفتح مسودة لمراجعتها. لا يُحفظ أو يُشغَّل شيء.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>اسأل</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>تم النسخ</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>نسخ</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>نسخ الإجابة</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>وصف</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>إجابة الذكاء الاصطناعي</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} مرتبطة بالمعنى</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (مرتبط)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>أرسل تقارير الأعطال لنتمكن من إصلاح المشكلات بسرعة. لا تتضمن أبدًا ملفاتك أو ما تكتبه.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>ما الذي يُرسَل</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>الخصوصية</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>تقارير الأعطال</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>إذا تعطل التطبيق، تُرسَل تفاصيل الخطأ لنتمكن من إصلاحه. لا تُضمَّن أبدًا اختصاراتك أو ملفاتك أو الحافظة أو النص الذي تكتبه، وتُزال المسارات والأسماء واسم الكمبيوتر. يؤدي إيقاف هذا الخيار إلى إيقاف الإرسال فورًا.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>إرسال تقارير ال_أعطال</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>إرسال تقارير الأعطال</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>ما الذي يُرسَل</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>مرحبًا! دعنا نتولى الأعمال المملة عنك.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>يحوّل Automation Portal المهام الصغيرة إلى نقرة واحدة أو مفتاح اختصار واحد: ترتيب مجلد، أو معرفة الطقس، أو تدوين ملاحظة، أو إعادة تسمية مجموعة ملفات.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>يستغرق نحو دقيقة. يمكنك التخطي في أي وقت.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>صاعقة Automation Portal تحيط بها نقاط ملونة</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>حدد ما يعجبك. يمكنك تغييرها أو إزالتها لاحقًا.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>الاختصارات الجاهزة في المعرض متى شئت.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>جرّب واحدًا الآن</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>الاختصار مهمة صغيرة تعمل عندما تطلب. هذا الاختصار لا يغيّر سوى النص أدناه. ولا يمسّ شيئًا على جهازك.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>اجعله يصرخ</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>يحوّل النص إلى أحرف كبيرة</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>النص المراد تغييره</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>تشغيله</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>تشغيله مرة أخرى</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>جارٍ التشغيل...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>النتيجة</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>لم ينتهِ.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>يعيش Automation Portal قرب الساعة. يُبقي إغلاق هذه النافذة مفاتيح الاختصار تعمل.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>تخطي الآن</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>هيا بنا</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>ابدأ</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>الخطوة {0} من {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>البدء بالإعدادات الموصى بها</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>البدء في استخدام Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>موصى به</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>إرسال تقارير الأعطال</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>لنتمكن من إصلاح المشكلات بسرعة. لا تتضمن أبدًا ملفاتك أو ما تكتبه.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>يمكنك تغيير كل هذا لاحقًا في الإعدادات.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>تم</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>اعرف الطقس في مدينتك بنقرة واحدة.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>دوّن ملاحظة في خطوة واحدة.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>استمع إلى تاريخ اليوم والطقس، ثم افتح أول تطبيقاتك.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>حوّل المسافات والأوزان ودرجات الحرارة وغيرها.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>أغلق تطبيقات العمل ورتّب كل شيء دفعة واحدة.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>الصق النص دون خطوط أو ألوان أو روابط.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>إصدار جديد من Automation Portal جاهز.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>افتح صفحة Microsoft Store للتحديث</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>لاحقًا</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>إخفاء هذا حتى يصدر إصدار أحدث</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>الجديد</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>تم إصلاحه في هذا الإصدار</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>جديد في هذا الإصدار</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>فهمت</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>أرني</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>افتح الجزء من التطبيق الذي يتعلق به هذا</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>إغلاق هذه النافذة</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>ال_جديد</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>الجديد</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>اعرف ما تغيّر في هذا الإصدار</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>الجديد</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>استكشاف Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>تخطي الجولة</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>البدء في استخدام Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>أرني</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>إغلاق الجولة وفتح هذا الجزء من التطبيق</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>الانتقال إلى المحطة السابقة</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>الانتقال إلى المحطة التالية</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>إغلاق الجولة. يمكنك فتحها مرة أخرى من الإعدادات، حول.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>إغلاق الجولة والبدء في استخدام التطبيق</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>بدء الجولة</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>نظرة سريعة على ما يمكن لـ Automation Portal فعله</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>ابدأ بجولة سريعة</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>المحطة {0} من {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>لقطة الشاشة غير متاحة</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>استكشاف Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>استكشاف Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_استكشاف</value>
+  </data>
+</root>

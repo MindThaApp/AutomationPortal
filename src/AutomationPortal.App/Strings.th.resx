@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>ทดสอบตอนนี้</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>ค้นหาทุกวิธีในการเริ่มต้น</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>ทางลัดที่มีอยู่แล้ว</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>ทางลัดใหม่ (จะเพิ่มขั้นตอนในภายหลัง)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>ตั้งชื่อทางลัดใหม่</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>ยังไม่มีทางลัดเลย</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>ลบเงื่อนไขนี้</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>เพิ่มเงื่อนไข</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>เรียกใช้ทันที</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>ถามฉันก่อน (มีการแจ้งเตือนพร้อมปุ่มเรียกใช้และข้าม)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>แจ้งฉันเมื่อทำงาน</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>ไม่หยุดการทำงานอัตโนมัตินี้เมื่อทำงานบ่อย</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>หากพลาดการทำงาน ให้เรียกใช้เมื่อ Automation Portal เริ่มทำงานครั้งต่อไปหรือเมื่อพีซีตื่น</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>แถบคำสั่ง</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>พิมพ์ทางลัด การตั้งค่า หรือคำสั่ง</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  เรียกใช้หรือเปิด      Ctrl+Enter  แก้ไข      ↑ ↓  เลือก      Esc  ปิด</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>นำเข้าทางลัด</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>เลือกการสำรองข้อมูล</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>เริ่มจากว่าง</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>ทุกเช้า บอกฉันสภาพอากาศและเปิด Outlook</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>สร้างฉบับร่าง</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>เรียกดูแกลเลอรี</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>หรือตั้งค่าโดยอธิบายเป็นคำพูด (การตั้งค่า)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>บันทึกทางลัดใหม่</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>ทำครั้งเดียว แล้ว Automation Portal จะบันทึกการคลิกและการพิมพ์ของคุณ</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>นำเข้า…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>เพิ่มทางลัดจากไฟล์ .autoportal คุณจะเห็นว่ามันทำอะไรก่อน และจะไม่มีอะไรถูกแทนที่</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>จัดการในการตั้งค่า</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>ไม่ต้องถามอีกสำหรับทางลัดนี้</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>ลบถาวร</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>เปิดด้วยแอปเริ่มต้น</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>แสดงในโฟลเดอร์</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>เรียกใช้</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>เรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>เริ่มต้นพร้อม Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>เปลี่ยนไอคอน</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>ลบโฟลเดอร์</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>เตรียมให้พร้อมใช้งาน</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>ใช้เป็นค่าเริ่มต้น</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>เช่น: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>ค้นหาโมเดล</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>กำลังค้นหาโมเดล…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>กำลังตรวจสอบ…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>เปิดการทำงานอัตโนมัตินี้อีกครั้ง ตรวจสอบก่อนว่ามันเปลี่ยนอะไร เพื่อไม่ให้ทำงานวนซ้ำอีก</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>ทดสอบตอนนี้</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>เรียกใช้ทางลัดหนึ่งครั้งตอนนี้กับไฟล์ตัวอย่างในโฟลเดอร์ชั่วคราว</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>ตัวเลือกเพิ่มเติม</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>เปิดหรือปิดการทำงานอัตโนมัตินี้</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>กิจกรรม…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>ดูว่าการทำงานอัตโนมัตินี้ถูกเรียกใช้ ทำงาน หรือถูกข้ามเมื่อใด</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>เปิดทางลัด</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>เปิดไฟล์ทางลัด</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>ไม่มีรายการที่ตรงกับการค้นหาของคุณ</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>ตรวจสอบการสะกด หรือลองคำที่สั้นกว่า คุณยังค้นหาทางลัดสำเร็จรูปในแกลเลอรีได้ด้วย</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>ยังไม่ได้ปักหมุดอะไร</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>ปักหมุดทางลัดที่คุณใช้บ่อยที่สุด คลิกขวาทางลัดแล้วเลือกปักหมุด ทางลัดที่ปักหมุดจะแสดงเมื่อคุณคลิกไอคอน Automation Portal ใกล้นาฬิกาด้วย</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>โฟลเดอร์นี้ว่างเปล่า</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>ลากทางลัดจากรายการมาวางที่นี่ หรือสร้างใหม่</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>มาสร้างอะไรให้เกิดขึ้นกันเถอะ</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>ทางลัดคือชุดขั้นตอนที่ Automation Portal ทำให้คุณด้วยการคลิกเพียงครั้งเดียว เริ่มจากทางลัดสำเร็จรูปในแกลเลอรี หรือสร้างของคุณเอง</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>ไม่ต้องแสดงอีก</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>นั่นคือทางลัดแรกของคุณ</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>กำหนดปุ่มลัด</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>ย้ายไปโฟลเดอร์</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>ส่งออกทางลัด</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>ล้างประวัติ…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>เลือกตำแหน่งที่จะบันทึกการสำรองข้อมูล</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>เลือกตำแหน่งที่จะเก็บทางลัดของคุณ</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>ข้อความของคุณจะแสดงที่นี่</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>พิมพ์ข้อมูลนำเข้า</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>เลือกทางลัดที่จะเรียกใช้กับข้อมูลนี้</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>การบันทึกของ Automation Portal</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>หยุดการทำงานอัตโนมัติชั่วคราว</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal กำลังทำงานอยู่แล้ว แต่ไม่ตอบสนอง ดูในพื้นที่แจ้งเตือน หรือเริ่มใหม่จาก Task Manager</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal พบปัญหากับไฟล์</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>ปิดการเริ่มต้นพร้อม Windows อยู่</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>เปิดการเริ่มต้นพร้อม Windows อีกครั้งในการตั้งค่า ทั่วไป</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal ใช้สิ่งนั้นไม่ได้</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>ทางลัดนี้กำลังทำงานอยู่แล้ว</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>ลิงก์ไม่สามารถเรียกใช้ทางลัดได้</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>เปิดไฟล์ทางลัดนี้หรือไม่?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>ไฟล์นี้ถูกเปิดจากลิงก์ ดังนั้นให้เพิ่มเฉพาะเมื่อคุณไว้ใจแหล่งที่มา</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>ไฟล์นี้ถูกส่งด้วยคำสั่ง ap เพิ่มเฉพาะเมื่อคุณเป็นคนรันคำสั่งนั้นเอง</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>โปรแกรมอื่นบนพีซีเครื่องนี้ส่งทางลัดนี้มา เพิ่มเฉพาะเมื่อคุณไว้ใจโปรแกรมนั้น</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>เพิ่มทางลัดนี้หรือไม่?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>เพิ่มทางลัดแล้ว</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>เก็บทางลัดนี้ไว้หรือไม่?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>เก็บไว้</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>ลบออก</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>เรียกใช้กับข้อความที่เลือก</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>ไม่สามารถใช้ปุ่มลัดนี้ได้</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>ข้อความที่เลือก</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>ถาม AI</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>ดูรายละเอียด</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>ดูว่ามันทำอะไรไปบ้าง</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" เพิ่งทำงานด้วยตัวเองเป็นครั้งแรก</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>ทำงานโดยไม่มีปัญหา</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>ดูว่าเกิดอะไรขึ้น</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>แก้ไขการทำงานอัตโนมัตินี้</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>เลือกทริกเกอร์อื่น</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>เลือกทางลัดอื่น</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>เล่นเสียงเมื่อทางลัดที่ฉันเรียกใช้ทำงานเสร็จ</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>วันนี้</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>ตั้งแต่ {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>ใส่ Ctrl, Alt หรือ Win ด้วย</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>สิ่งที่การทำงานอัตโนมัตินี้ทำตั้งแต่ Automation Portal เริ่มทำงาน เรียงจากใหม่สุด ไม่มีอะไรในนี้ถูกบันทึกลงดิสก์</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>ยังไม่มีอะไรเกิดขึ้น เมื่อทริกเกอร์ของการทำงานอัตโนมัตินี้ทำงาน จะแสดงที่นี่</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>การทำงานอัตโนมัติใหม่</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>แก้ไขการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>ไม่มีรายการที่ตรงกับการค้นหาของคุณ</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>ยังไม่มีอะไรในกลุ่มนี้</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>เฉพาะเมื่อ… (ไม่บังคับ)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>เพิ่มเงื่อนไขเพื่อให้ทำงานเฉพาะในจังหวะที่เหมาะสม ทุกเงื่อนไขต้องเป็นจริง</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>เมื่อมันเกิดขึ้น</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>ตั้งเป็น 0 เพื่อให้ทำงานทุกครั้ง การหยุดชั่วคราวมีประโยชน์กับทริกเกอร์ที่อาจทำงานติดกันหลายครั้ง</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>โดยปกติ Automation Portal จะหยุดการทำงานอัตโนมัติที่ทำงานมากกว่า 60 ครั้งใน 10 นาที เพราะมักหมายถึงการวนซ้ำ</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>หากพีซีปิดหรือสลีปอยู่ หรือ Automation Portal ไม่ได้ทำงานเมื่อถึงเวลาที่กำหนด มันจะทำงานหนึ่งครั้งเมื่อ Automation Portal เริ่มทำงานหรือเมื่อพีซีตื่น นับเฉพาะเวลาใน 24 ชั่วโมงที่ผ่านมา และจะไม่ทำงานสำหรับเวลาที่ผ่านไปขณะการทำงานอัตโนมัติถูกหยุดชั่วคราว</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>กำลังคำนวณว่าจะทำอะไร…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>ไม่มีอะไรให้กู้คืน</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>กู้คืนจากการสำรองข้อมูล</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>เพิ่มทั้งหมด</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>อธิบายด้วยคำพูด</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>เริ่มจากทางลัดสำเร็จรูป</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>เลือกหนึ่งรายการเพื่อเพิ่ม แล้วปรับแต่งให้เหมาะกับคุณ</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>เรียกใช้ทางลัดกับรายการเหล่านี้หรือไม่?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>เรียกใช้ทางลัดนี้หรือไม่?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>อนุญาตครั้งเดียว</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>ที่ลบล่าสุด</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>การทำงานอัตโนมัติที่ใช้ทางลัดนี้กลับมาทำงานได้แล้ว</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>สำเนาในที่ลบล่าสุดลบไม่สำเร็จ จึงยังแสดงอยู่ที่นั่น</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>ล้างที่ลบล่าสุด</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>ทางลัดบางรายการยังอยู่ที่นี่</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>ไม่มีหน้าต่างแอปที่เปิดอยู่ เปิดแอปที่ต้องการแสดงแล้วลองอีกครั้ง</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>คุณจะแสดงแอปไหน?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>เริ่มการบันทึก</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>เปลี่ยนอะไรก็ได้ก่อนเพิ่มขั้นตอนเหล่านี้ แต่ละขั้นตอนค้นหาการควบคุมด้วยชื่อ จึงยังทำงานได้แม้หน้าต่างจะถูกย้าย</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>เพิ่มการคลิกที่ปุ่มที่พวกเขากดแทน</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>ตรวจสอบการบันทึก</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>เพิ่มขั้นตอน</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>ถามฉันทุกครั้ง</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>ไม่สามารถแสดงภาพนี้ได้</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>ลากเพื่อเลือกพื้นที่ กด Esc เพื่อยกเลิก</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>คลิกจุดที่ต้องการ กด Esc เพื่อยกเลิก</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>คุณเปลี่ยนแปลงอะไรก็ได้ภายหลังในตัวแก้ไข</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>แสดงว่ามันจะทำอะไร</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>เมื่อทำงาน</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>เลือกโฟลเดอร์</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>เลือกโฟลเดอร์ก่อน</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>เลือกสักสองสามรายการเพื่อเริ่มต้น</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>ลองหนึ่งรายการตอนนี้</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>ทักทาย</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>แสดงการแจ้งเตือน</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>ทำงานไม่เสร็จ</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>เก็บไว้ให้พร้อมใช้</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>เรียกใช้อะไรก็ได้ด้วยการพิมพ์ จากที่ไหนก็ได้</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>กดปุ่มเหล่านี้พร้อมกัน แถบเล็กจะเปิดขึ้นให้คุณพิมพ์เพื่อค้นหาและเรียกใช้ทางลัดใดก็ได้</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>ยินดีต้อนรับสู่ Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>ทางลัดที่ปักหมุด</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>ทางลัด Automation Portal</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>เพิ่มลงในเดสก์ท็อปแล้ว</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>เพิ่มลงในเมนูเริ่มแล้ว</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>ทริกเกอร์นี้ไม่พร้อมใช้งานแล้ว</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>เพิ่งทำงานไปเมื่อสักครู่</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>เลือกสิ่งที่จะเริ่มการทำงานนี้</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>ตั้งชื่อทางลัดใหม่</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>เลือกทางลัดที่จะเรียกใช้</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>เลือกสิ่งที่จะเริ่มการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>การทำงานอัตโนมัติที่ใช้มันกลับมาทำงานได้แล้ว</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>ขั้นตอนที่ไม่รู้จัก</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>หากไม่แน่ใจว่ามันทำงานกับแอปและโฟลเดอร์ใด ให้ตรวจสอบขั้นตอนก่อน ระหว่างที่ทำงานอย่าไปยุ่งกับแอปเหล่านั้น</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>ทุกวัน</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>ทางลัดนี้ถูกลบไปแล้ว กู้คืนจากที่ลบล่าสุดในคลังของคุณเพื่อเรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>ทางลัดนี้ไม่มีอยู่แล้ว จึงเรียกใช้อีกครั้งไม่ได้</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>เลือกไฟล์ที่จะใช้เรียกทางลัดนี้</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>ทางลัดนี้ต้องมีสิ่งที่จะทำงานด้วย ซึ่งประวัติการเรียกใช้ไม่ได้เก็บไว้ ให้เรียกใช้จากคลังหรือ Quick Run แทน</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>เรียกใช้ทางลัดนี้อีกครั้ง</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>หาก Windows แจ้งว่ารายการใหญ่เกินไปสำหรับถังรีไซเคิลและถามว่าจะลบถาวรหรือไม่ ให้เลือกไม่ เพื่อเก็บไว้</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>การเปลี่ยนแปลงเหล่านี้ถูกเลิกทำไปแล้ว</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>การเปลี่ยนแปลงเหล่านี้เลิกทำจากที่นี่ไม่ได้ ดูรายละเอียดเพื่อดูว่ามีอะไรเปลี่ยนไป</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>การเลิกทำจะคืนสิ่งที่ทำได้อย่างปลอดภัย ดูรายละเอียดสำหรับส่วนที่เหลือ</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>ไม่มีอะไรถูกเขียนทับ</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>แสดงการแจ้งเตือน ไม่เปลี่ยนแปลงอะไรในพีซีของคุณ</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>คลังและการสำรองข้อมูล</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>แอปอื่นและลิงก์</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>ทำงานต่อในถาดระบบ</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>ไทล์ทางลัด</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>ตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>แผงด่วนที่ตำแหน่งตัวชี้เมาส์</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>ตำแหน่งที่บันทึกทางลัดของคุณ</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>เก็บทางลัดของคุณไว้ใน OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>สำรองคลังของคุณ</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>แจ้งฉันเมื่อทางลัดที่เริ่มด้วยปุ่มลัดทำงานเสร็จ</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>หัวข้อการแจ้งเตือนบนโทรศัพท์</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>แสดงการกระทำขั้นสูง</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>จัดระเบียบดาวน์โหลด</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>จัดไฟล์ที่คุณดาวน์โหลดไว้นานแล้วลงในโฟลเดอร์ตามประเภทหรือวันที่</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>เปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>ค้นหาไฟล์ในโฟลเดอร์ที่เก่ากว่าไม่กี่วัน (อย่างน้อย 1 วัน) โดยไม่รวมไฟล์ดาวน์โหลดที่ยังไม่เสร็จ</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>ย้ายเข้าโฟลเดอร์ตามประเภทหรือวันที่</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>แจ้งว่าย้ายไปกี่รายการ พร้อมปุ่มเลิกทำ</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>แปลงรูปภาพ</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>บันทึกรูปภาพที่คุณเลือกเป็น JPEG, PNG, GIF, BMP หรือ TIFF</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>สร้างสำเนา</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>รับรูปภาพที่คุณเลือกหรือส่งมายังทางลัดนี้</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>บันทึกแต่ละรายการเป็นชนิดไฟล์ใหม่</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>วางไว้ข้างไฟล์ต้นฉบับ เป็นชื่อ name (2) หากชื่อซ้ำ</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>ตั้งค่าพื้นที่ทำงานของฉัน</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>เปิดแอปงาน โฟลเดอร์ และหน้าเว็บของคุณในครั้งเดียว</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>ไม่มีการเปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>เปิดแอปที่คุณเลือก</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>เปิดโฟลเดอร์ใน File Explorer</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>เปิดหน้าเว็บ</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>สำรองโฟลเดอร์</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>คัดลอกโฟลเดอร์ไปยังโฟลเดอร์ใหม่ที่มีวันที่ ทุกวันหรือทุกสัปดาห์</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>คัดลอกอย่างเดียว</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>ในเวลาที่คุณเลือก สร้างโฟลเดอร์ที่ตั้งชื่อตามวันที่</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>คัดลอกโฟลเดอร์ลงไป</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>ไม่ลบหรือแทนที่อะไรในการสำรองข้อมูลเลย</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>กรอกแบบฟอร์มจากสเปรดชีต</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>พิมพ์แต่ละแถวของไฟล์ CSV ลงในแบบฟอร์มในแอปอื่น</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>เร็ว ๆ นี้</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>คุณกรอกแบบฟอร์มหนึ่งครั้งขณะที่กำลังบันทึก</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>ระบบจะทำซ้ำแถวที่ 1 ทีละขั้นตอน เพื่อให้คุณตรวจสอบได้</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>หยุดชั่วคราวจนกว่าคุณจะเริ่มใหม่</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>เกิดข้อผิดพลาด</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>การสำรองข้อมูลไม่ได้ทำงาน</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>ทุกวันเวลาหนึ่ง</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>เมื่อฉันกดปุ่มลัด</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>ที่ไหนก็ได้ใน Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>เมื่อฉันลงชื่อเข้าใช้</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>ทุกครั้งที่คุณเริ่มต้นวัน</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>เมื่อมีไฟล์ปรากฏในโฟลเดอร์</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>เช่น ไฟล์ดาวน์โหลดใหม่</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>เมื่อแอปเปิดขึ้น</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>เลือกแอปถัดไป</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>เมื่อเสียบอุปกรณ์ USB</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>หรืออุปกรณ์ใดก็ตามที่เชื่อมต่อ</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>ทางลัดทั้งหมด</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>โฟลเดอร์ใหม่</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>ประวัติการเรียกใช้</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>โฟลเดอร์ใหม่</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>ชื่อโฟลเดอร์</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>เปลี่ยนชื่อโฟลเดอร์</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>ทางลัดใหม่</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>สำรองคลังตอนนี้</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>กู้คืนจากการสำรองข้อมูล…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>นำเข้าไฟล์ทางลัด…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>ปุ่มลัด</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal ยังทำงานอยู่</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>ค้นหาได้ในไอคอนถาดระบบใกล้นาฬิกา คลิกขวาเพื่อออก</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>เลือก AI ที่การกระทำ AI และ Quick Run จะใช้ คีย์ของคุณจะถูกเก็บแบบเข้ารหัสบนพีซีเครื่องนี้</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>บนพีซีเครื่องนี้ (ฟรีและเป็นส่วนตัว)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>กำลังตรวจสอบพีซีเครื่องนี้…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>พร้อมใช้งาน ฟรี เป็นส่วนตัว และใช้งานแบบออฟไลน์ได้</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>ใช้ได้บนพีซีเครื่องนี้ ฟรี เป็นส่วนตัว และใช้งานแบบออฟไลน์ได้</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows กำลังเตรียม AI บนอุปกรณ์…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>พร้อมใช้งาน</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>ปิดอยู่</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>วางคีย์ของคุณที่นี่</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>บันทึกคีย์แล้ว</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>ลบคีย์แล้ว</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>ชื่อการปรับใช้</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>โมเดล (เว้นว่างเพื่อใช้ตัวเลือก Fast / Smart / Best ด้านล่าง)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>การทำงานอัตโนมัตินี้เรียกใช้บนพีซีเครื่องนี้ไม่ได้ แก้ไขเพื่อเลือกทริกเกอร์อื่น</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>ทางลัดที่มันเรียกใช้ถูกลบไปแล้ว แก้ไขการทำงานอัตโนมัติเพื่อเลือกอันอื่น</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>ลบการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>ลบการทำงานอัตโนมัตินี้หรือไม่? ทางลัดที่มันเรียกใช้จะไม่ถูกลบ</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>การทดสอบเริ่มไม่สำเร็จ</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>กำลังทำงานอยู่แล้ว</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>การทดสอบสำเร็จ</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>ยกเลิกการทดสอบแล้ว</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>คุณหยุดทางลัดก่อนที่จะทำงานเสร็จ</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>การทดสอบยังไม่เสร็จ</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>เรียกดูและจัดการไฟล์ของคุณ</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>สลับแผนการใช้พลังงานและทำให้พีซีตื่นอยู่</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>แอปอื่นจากผู้พัฒนาเดียวกันที่ Automation Portal ทำงานร่วมกันได้</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>สิ่งที่มันจะทำ</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>ตั้งค่า</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>สิ่งที่มันทำ</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>ขั้นตอนที่ไม่รู้จัก</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>เพิ่มทางลัด</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>เพิ่มและกำหนดเวลา…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>ละติจูดต้องเป็นตัวเลข เช่น 51.5</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>ลองจิจูดต้องเป็นตัวเลข เช่น -0.12</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>ละติจูดต้องอยู่ระหว่าง -90 ถึง 90</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>ลองจิจูดต้องอยู่ระหว่าง -180 ถึง 180</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>ก่อนการเรียกใช้ครั้งแรก</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>เปิดก่อน</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>ไม่มีโฟลเดอร์</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>เพิ่มลงเดสก์ท็อป</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>เปลี่ยนชื่อทางลัด</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>กดปุ่มที่คุณต้องการใช้เพื่อเรียกใช้ทางลัดนี้จากที่ไหนก็ได้ ใช้อย่างน้อยหนึ่งปุ่มจาก Ctrl, Alt หรือ Win</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>ยังไม่พร้อมใช้งาน</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>ลบทางลัด</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>การเรียกใช้ทั้งหมด</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>คุณหยุดแล้ว</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>หยุดด้วยตัวเอง</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>แหล่งทั้งหมด</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>ลิงก์และแอปอื่น</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>ไม่มีการเรียกใช้ที่ตรงกัน</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>ยังไม่มีการเรียกใช้เลย</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>ลองค้นหาด้วยคำอื่น หรือแสดงการเรียกใช้ทั้งหมด</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>เมื่อคุณเรียกใช้ทางลัด คุณจะเห็นที่นี่ว่าเกิดอะไรขึ้นทีละขั้นตอน ทำให้หาสาเหตุได้ง่ายว่าทำไมบางอย่างไม่ทำงาน</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>เรียกใช้อีกครั้ง…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>เรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>ทางลัดนี้ไม่มีอยู่แล้ว</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>เปิดตัวแก้ไขพร้อมเลือกขั้นตอนที่ยังไม่เสร็จ</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>เปิดที่ขั้นตอนที่ล้มเหลว</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>เลิกทำการเปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>คืนไฟล์ที่การเรียกใช้นี้สร้าง ย้าย เปลี่ยนชื่อ หรือแทนที่ คุณจะเห็นรายการก่อน</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>คัดลอกรายละเอียด</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>คัดลอกสรุปสั้น ๆ ของการเรียกใช้นี้ โดยไม่รวมไฟล์ของคุณ รหัสผ่าน หรือคีย์ใด ๆ</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>ไฟล์ที่เปลี่ยนแปลง</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>การเรียกใช้นี้ไม่ได้บันทึกว่าขั้นตอนใดล้มเหลว จึงไม่มีขั้นตอนที่ถูกเลือก</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>ทางลัดเปลี่ยนไปตั้งแต่การเรียกใช้นี้ และขั้นตอนนั้นไม่ได้อยู่ในทางลัดแล้ว</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>ล้างประวัติการเรียกใช้</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>ลบประวัติการเรียกใช้ทั้งหมดหรือไม่? ทางลัดของคุณจะไม่ได้รับผลกระทบ</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>ล้างประวัติ</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows ไม่อนุญาตให้ Automation Portal ใช้ตำแหน่งของคุณ เปิดได้ที่การตั้งค่า Windows &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; ตำแหน่ง หรือพิมพ์ตัวเลขที่นี่</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>ยังไม่มีแอป</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>เฉพาะทางลัดนี้ โดยไม่ถาม</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>สำรองคลังแล้ว</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal หาโฟลเดอร์ OneDrive บนพีซีเครื่องนี้ไม่พบ ลงชื่อเข้าใช้ OneDrive ก่อน หรือใช้เปลี่ยน… เพื่อเลือกโฟลเดอร์ใดก็ได้</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>เลือกโฟลเดอร์อื่น</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>โฟลเดอร์นั้นอยู่ในคลังปัจจุบันของคุณ เลือกโฟลเดอร์ที่อยู่ที่อื่น</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>เลือกโฟลเดอร์ว่าง</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>เปลี่ยนตำแหน่งคลัง</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal จะเริ่มทำงานใหม่</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>ทางลัดของคุณพร้อมแล้วในตำแหน่งใหม่ Automation Portal จะเริ่มใหม่ตอนนี้ เพื่อให้ทุกอย่างใช้ตำแหน่งนี้ตั้งแต่แรก</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>ลบข้อความลัด</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>รูปแบบวันที่</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>รูปแบบ (เช่น yyyy-MM-dd หรือ dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>ถามฉัน</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>ทางลัดใหม่</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows ไม่อนุญาตให้ Automation Portal ตรวจจับการคลิกและการพิมพ์ของคุณ ลองอีกครั้ง</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>คำตอบ</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter คัดลอกคำตอบ</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>วันที่</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>เกี่ยวกับข้อความที่เลือก</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>สวัสดีจากเครื่องบันทึกจำลอง</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>การกด Enter</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>ไม่มีอะไรให้เลิกทำ</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>การเปลี่ยนแปลงไฟล์ของการเรียกใช้นี้ถูกเลิกทำไปแล้ว</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>การเรียกใช้นี้ไม่ได้เปลี่ยนไฟล์ใดที่ Automation Portal เลิกทำได้ หรือบันทึกของมันเก่ากว่าหนึ่งสัปดาห์</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>กำลังเลิกทำการเปลี่ยนแปลงไฟล์ของการเรียกใช้นี้อยู่</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>พิมพ์การตอบกลับ</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>โปรดกรอกข้อมูลใน</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>กด Ctrl หรือ Shift ค้างไว้เพื่อเลือกมากกว่าหนึ่งรายการ</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>เลือกไฟล์</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>บันทึกเป็น</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>เวลา (ไม่บังคับ)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>พิมพ์ตัวเลข เช่น 12 หรือ 3.5</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>ดูเหมือนจะไม่ใช่ที่อยู่เว็บ</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>เริ่มการทำงานอัตโนมัติอีกครั้ง</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>พิมพ์ชื่อทางลัด</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>พิมพ์ตัวอักษรไม่กี่ตัวของชื่อทางลัด</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>เปิดตัวแก้ไข</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run ทำแบบนั้นไม่ได้</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>เกิดข้อผิดพลาด ลองอีกครั้ง</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>รหัสผ่านจะไม่ถูกบันทึกเลย</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>ปักหมุดเพิ่มเติม…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>เปิด Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>เริ่มทำงานต่อทันที</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>30 นาที</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>1 ชั่วโมง</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>จนถึงพรุ่งนี้</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>จนกว่าฉันจะเริ่มทำงานต่อ</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>ออกจาก Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>คลิกเพื่อเรียกใช้</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>รีเฟรช</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>รีเฟรชแอปที่เชื่อมต่อ</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>เปิด {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>รับ {0} จาก Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>การเตือนพักสายตา พักเบรก และหยุดงานที่โต๊ะทำงาน</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>เปิด Power Plan Manager ไม่สำเร็จ</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal สร้างไฟล์ตัวอย่างสำหรับการทดสอบไม่ได้ ไม่มีการเรียกใช้อะไรและไฟล์ของคุณไม่ถูกเปลี่ยน ตรวจสอบว่าดิสก์มีพื้นที่ว่าง แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>เลิกทำไม่สำเร็จ</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดขณะคืนสิ่งต่าง ๆ เปิดประวัติการเรียกใช้เพื่อดูว่ามีอะไรเปลี่ยนไป</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>ไม่พบอะไรชื่อ "{0}" ลองใช้คำที่สั้นกว่า หรือดูทางลัดสำเร็จรูปในแกลเลอรี</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>ขั้นตอน {0} จาก {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} จาก {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} แล้ว</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>กำลังเรียกใช้ "{0}"</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>กำลังเรียกใช้ทางลัด {0} รายการ</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" ไม่เสร็จ</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>ถัดไป: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>กด Enter เพื่อสร้างทางลัดใหม่ชื่อ “{0}”</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>เรียกใช้</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>หยุด</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>เรียกใช้ (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>หยุดการเรียกใช้นี้</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>เรียกใช้ {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>หยุด {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>แก้ไข {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>ตัวเลือกเพิ่มเติมสำหรับ {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>คลิกเพื่อเลือก กด Enter หรือดับเบิลคลิกเพื่อเรียกใช้ Ctrl+E เพื่อแก้ไข</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>ปักหมุดแล้ว</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>เรียกใช้ 1 ครั้ง ล่าสุด: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>เรียกใช้ {0} ครั้ง ล่าสุด: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>วันนี้ เวลา {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>เมื่อวานนี้ เวลา {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>เสียงนุ่มสำหรับงานเสร็จ และอีกเสียงสำหรับปัญหา ทางลัดที่เริ่มเองจะเงียบ และทุกอย่างจะเงียบเมื่อเปิดผู้ช่วยโฟกัสหรือแอปเต็มหน้าจอ</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus และ Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>เวอร์ชันฟรี</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>คุณใช้เวอร์ชันฟรี: ได้สูงสุด {0} ทางลัด</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>คุณใช้ Plus: ได้สูงสุด {0} ทางลัด</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>คุณใช้ Pro: มีทางลัดได้ไม่จำกัด และการทำงานอัตโนมัติที่เรียกใช้ทางลัดเหล่านั้นด้วยตัวเอง</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>คุณมี {0} ทางลัด ทุกอันยังคงใช้งานได้ ทางลัดใหม่ต้องใช้พื้นที่เพิ่ม</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: ได้สูงสุด {0} ทางลัด</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: มีทางลัดได้ไม่จำกัด และการทำงานอัตโนมัติที่เรียกใช้ตามกำหนดเวลาหรือเมื่อมีเหตุการณ์</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>อัปเกรดเป็น Pro: มีทางลัดได้ไม่จำกัด และการทำงานอัตโนมัติ คุณยังคงทุกอย่างที่มีอยู่</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>รับ Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>รับ Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>อัปเกรดเป็น Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} ราคา {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>กู้คืนการซื้อ</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>ตรวจสอบกับ Microsoft Store อีกครั้งว่าคุณซื้ออะไรไว้ เช่น บนพีซีเครื่องใหม่</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>กำลังตรวจสอบกับ Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>กำลังเปิด Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>ขอบคุณ ตอนนี้คุณมี {0} แล้ว</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store ไม่สามารถทำการซื้อให้เสร็จได้ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>การซื้อของคุณเป็นปัจจุบันแล้ว คุณมี {0}</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>การซื้อของคุณกลับมาแล้ว คุณมี {0}</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>เข้าถึง Microsoft Store ไม่ได้ จึงไม่มีอะไรเปลี่ยนแปลง ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>สร้างทางลัดเพิ่ม</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>เวอร์ชันฟรีรองรับ {0} ทางลัด และคุณมี {1} ทุกอันยังคงใช้งานได้ หากต้องการสร้างเพิ่ม รับ Plus สำหรับได้สูงสุด {2} ทางลัด หรือ Pro สำหรับไม่จำกัดพร้อมการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus รองรับ {0} ทางลัด และคุณมี {1} ทุกอันยังคงใช้งานได้ หากต้องการสร้างเพิ่ม อัปเกรดเป็น Pro สำหรับไม่จำกัดพร้อมการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>การทำงานอัตโนมัติมาพร้อม Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>การทำงานอัตโนมัติจะเรียกใช้ทางลัดของคุณด้วยตัวเอง ตามกำหนดเวลา เมื่อไฟล์มาถึง หรือเมื่อคุณเสียบอุปกรณ์ การทำงานอัตโนมัติที่คุณมีอยู่แล้วจะยังคงทำงานต่อ</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>เพิ่ม "{0}" แล้ว กำหนดเวลาต้องใช้ Pro จึงจะเรียกใช้เฉพาะเมื่อคุณเริ่มเอง</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>ไว้ก่อน</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_เริ่มทดลองใช้ฟรี 14 วัน</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>ไม่ต้องใช้บัตร การทดลองใช้เริ่มเมื่อคุณกดปุ่ม ไม่ใช่ก่อนหน้านั้น</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>การทดลองใช้ Pro 14 วันของคุณเริ่มแล้ว คุณใช้ทุกอย่างใน Pro ได้</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>ไม่สามารถเริ่มการทดลองใช้ได้ ไม่มีอะไรเปลี่ยนแปลง</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>การทดลองใช้ Pro: เหลืออีก {0} วัน</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>การทดลองใช้ Pro: เหลืออีก 1 วัน</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>การทดลองใช้ Pro ฟรีของคุณ เปิดการตั้งค่าเพื่อดูแผนของคุณ</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>การทดลองใช้ Pro ของคุณจะสิ้นสุดพรุ่งนี้</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>ทุกอย่างที่คุณสร้างไว้จะยังอยู่ หลังการทดลองใช้ ทางลัดและการทำงานอัตโนมัติใหม่จะเป็นไปตามแผนของคุณอีกครั้ง</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>การทดลองใช้ Pro ของคุณสิ้นสุดแล้ว</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>สิ่งที่หยุดลง: การสร้างการทำงานอัตโนมัติใหม่ และการสร้างทางลัดใหม่เกิน {0} ทางลัด</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>สิ่งที่ยังคงอยู่: ทางลัดและการทำงานอัตโนมัติทุกอันที่คุณมี ทุกอันยังคงทำงานต่อ และคุณยังแก้ไข เรียกใช้ เปิดหรือปิด และลบได้</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>ตกลง</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>เรียกใช้ "{0}" ด้วยสิ่งที่คุณวางไว้หรือไม่?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>ขั้นตอนที่เปลี่ยนแปลงไฟล์หรือทำงานในแอปอื่น: {0}</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>ที่วางไว้:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (โฟลเดอร์)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…และอีก {0} รายการ</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>ไม่ได้รวม เพราะ "{0}" ไม่รับรายการเหล่านี้:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>เรียกใช้</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" ไม่รับรายการใดที่คุณวางไว้ จึงไม่ได้เรียกใช้</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>ประมาณว่า {0} ประหยัดเวลาได้ {1} ตามการประเมินของคุณ</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>ตั้งแต่ {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>เดือนนี้</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 นาที</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} นาที</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 ชั่วโมง</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} ชั่วโมง</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>ค้นหาทางลัดและแกลเลอรี</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>ค้นหาทางลัดและแกลเลอรี (Ctrl+F) Ctrl+K เปิดแถบคำสั่ง</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>เรียกใช้</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>เรียกใช้</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>เรียกใช้ (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>แก้ไข (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>ตัวเลือกเพิ่มเติม</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>ตัวเลือกเพิ่มเติม</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>การทำงานอัตโนมัติ</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>หยุดการทำงานอัตโนมัติทั้งหมด</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>หยุดไม่ให้การทำงานอัตโนมัติทุกอันทำงาน จนกว่าคุณจะปิดตัวเลือกนี้</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_สร้างการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>สร้างการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>การทำงานอัตโนมัติทั้งหมดถูกหยุดชั่วคราว จะไม่มีอะไรทำงานเองจนกว่าคุณจะปิดตัวเลือกนี้</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>ดู_รายละเอียด</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>ดูรายละเอียด</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>ทำให้สิ่งต่าง ๆ เกิดขึ้นเอง</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>การทำงานอัตโนมัติจะเรียกใช้ทางลัดให้คุณเมื่อมีบางอย่างเกิดขึ้น เช่น เมื่อคุณเปิดแอป เสียบหูฟัง หรือถึงเวลา 8 โมงเช้า</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>ตัวอย่างเช่น: เมื่อฉันเสียบหูฟัง ตั้งระดับเสียงเป็น 40%</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>สร้าง_การทำงานอัตโนมัติ</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_เรียกดูแกลเลอรี</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>เรียกดูแกลเลอรี</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>แกลเลอรี</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>ทางลัดสำเร็จรูป เพิ่มอันที่คุณชอบ แล้วปรับแต่งให้เป็นของคุณ</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_แสดง</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>แสดง</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>ยังไม่มีทางลัดสำเร็จรูป</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>ทางลัดเริ่มต้นจะแสดงที่นี่เมื่อติดตั้งพร้อม Automation Portal ระหว่างนี้คุณสร้างของตัวเองได้ หรือเปิดไฟล์ .autoportal ที่เพื่อนส่งมาให้</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_สร้างทางลัด</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>สร้างทางลัด</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>_เปิดไฟล์ .autoportal…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>เปิดไฟล์ .autoportal…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>ทางลัดทั้งหมด</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>ล้างการค้นหา</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_ที่ลบล่าสุด</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>ที่ลบล่าสุด</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>กู้คืนทางลัดที่คุณลบในช่วง 30 วันที่ผ่านมา</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_ทางลัดใหม่</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>ทางลัดใหม่</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>สร้างทางลัดใหม่ (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_เลิกทำ</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>เลิกทำ</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>กำหนดปุ่มลัด</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>กำหนดปุ่มลัด</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>ดู_รายละเอียด</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>ดูรายละเอียด</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>เริ่มที่นี่</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>ดู_แกลเลอรี</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>ดูแกลเลอรี</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_ซ่อน</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>ซ่อน</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>ซ่อนแถวนี้ แกลเลอรีจะอยู่ในแถบด้านข้างเสมอ</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>สร้างทางลัดใหม่</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>ทางลัดใหม่</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_เรียกดูแกลเลอรี</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>เรียกดูแกลเลอรี</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_สร้างทางลัด</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>สร้างทางลัด</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>อธิบาย_ด้วยคำพูด</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>อธิบายทางลัดที่คุณต้องการ</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>บอกสิ่งที่คุณต้องการเป็นประโยคเดียวแล้วรับฉบับร่าง</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>ประวัติการเรียกใช้</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>ค้นหาตามชื่อ</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>แสดงการเรียกใช้ที่</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>แสดงการเรียกใช้ที่เริ่มโดย</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>เพิ่มเติม</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>เพิ่มเติม: ล้างประวัติ</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>การเรียกใช้</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>ยังไม่มีการเรียกใช้เลย</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>เมื่อคุณเรียกใช้ทางลัด คุณจะเห็นที่นี่ว่าเกิดอะไรขึ้นทีละขั้นตอน ทำให้หาสาเหตุได้ง่ายว่าทำไมบางอย่างไม่ทำงาน</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>ไปยังส่วน</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>ทั่วไป</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>เริ่มต้นพร้อม Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>เปิด Automation Portal อย่างเงียบ ๆ ในถาดระบบเมื่อคุณลงชื่อเข้าใช้ เพื่อให้การทำงานอัตโนมัติของคุณพร้อมเสมอ</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>เริ่มต้นพร้อม Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>ทำงานต่อในถาดระบบ</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>เมื่อคุณปิดหน้าต่าง Automation Portal จะทำงานต่อในเบื้องหลัง ปิดตัวเลือกนี้เพื่อออกเมื่อปิดหน้าต่าง</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>ทำงานต่อในถาดระบบ</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>ธีม</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>เลือกสว่างหรือมืด หรือทำตาม Windows</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>ธีม</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>เหมือน Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>สว่าง</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>มืด</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>ไทล์ทางลัด</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>การ์ดสีกลางพร้อมไอคอนสี หรือไทล์สีเต็ม</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>รูปแบบไทล์ทางลัด</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>กลาง</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>ไล่เฉด</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>ตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>ใช้สำหรับทริกเกอร์พระอาทิตย์ขึ้นและตกและการแจ้งเตือนสภาพอากาศ เว้นว่างไว้เพื่อให้ Windows คำนวณเอง</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>เมือง (ไม่บังคับ)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>เมืองบ้าน</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>ละติจูด</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>ละติจูดบ้าน ตั้งแต่ลบ 90 ถึง 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>ลองจิจูด</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>ลองจิจูดบ้าน ตั้งแต่ลบ 180 ถึง 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_ใช้ตำแหน่งปัจจุบันของฉัน</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>ใช้ตำแหน่งปัจจุบันของฉัน</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_ป้อนพิกัดแทน</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>ป้อนพิกัดแทน</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>ปัญหาตำแหน่ง</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>แป้นพิมพ์</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>กดปุ่มเหล่านี้ที่ไหนก็ได้เพื่อค้นหาทางลัดและเรียกใช้</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>เรียกใช้กับข้อความที่เลือก</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>เลือกข้อความในแอปใดก็ได้ กดปุ่มเหล่านี้ แล้วเลือกทางลัดเพื่อเรียกใช้กับข้อความนั้น</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>แผงด่วนที่ตำแหน่งตัวชี้เมาส์</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>กดปุ่มเหล่านี้เพื่อแสดงทางลัดที่ปักหมุดไว้ตรงตำแหน่งเมาส์</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>คลังและการสำรองข้อมูล</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>ตำแหน่งที่บันทึกทางลัดของคุณ</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_เปิด</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>แสดงโฟลเดอร์ใน File Explorer</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>เปลี่ยน_แปลง…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>เปลี่ยน…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>เก็บทางลัดของคุณไว้ใน OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>คัดลอกคลังของคุณไปยัง OneDrive เพื่อให้ซิงก์ในทุกพีซีของคุณ</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_ย้ายไป OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>ย้ายไป OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>สำรองคลังของคุณ</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>บันทึกทางลัด โฟลเดอร์ และการทำงานอัตโนมัติของคุณไว้ในไฟล์ zip ไฟล์เดียว หากต้องการนำทางลัดกลับมา ให้ใช้กู้คืนจากการสำรองข้อมูล ทางลัดเหล่านั้นจะถูกเพิ่มไว้ข้างทางลัดที่คุณมีอยู่ตอนนี้</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_สำรองคลังตอนนี้</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>สำรองคลังตอนนี้</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_กู้คืนจากการสำรองข้อมูล…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>กู้คืนจากการสำรองข้อมูล…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>เพิ่มทางลัดในการสำรองข้อมูลไว้ข้างทางลัดที่คุณมีอยู่ ไม่มีอะไรถูกแทนที่</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>การแจ้งเตือน</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>แจ้งฉันเมื่อทางลัดที่เริ่มด้วยปุ่มลัดทำงานเสร็จ</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>แสดงการแจ้งเตือนเล็ก ๆ หลังทางลัดที่คุณเริ่มด้วยการกดปุ่มทำงานเสร็จ</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>แจ้งเตือนเมื่อทางลัดที่เริ่มด้วยปุ่มลัดทำงานเสร็จ</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>เล่นเสียงเมื่อทางลัดที่ฉันเริ่มทำงานเสร็จ</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>เล่นเสียงเมื่อทางลัดที่ฉันเริ่มทำงานเสร็จ</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>หัวข้อการแจ้งเตือนบนโทรศัพท์</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>ใช้โดย "ส่งไปยังโทรศัพท์ของฉัน" เลือกชื่อส่วนตัวที่เดายาก แล้วสมัครรับในแอป ntfy บนโทรศัพท์ของคุณ ข้อความที่คุณส่งจะผ่านบริการ ntfy.sh ดังนั้นใครก็ตามที่รู้หัวข้อนี้สามารถอ่านได้</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>หัวข้อการแจ้งเตือนบนโทรศัพท์</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>เช่น: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>แอปอื่นและลิงก์</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>ลิงก์</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>ลิงก์ automationportal://</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>เว็บเพจและแอปอื่นสามารถขอให้เรียกใช้ทางลัดของคุณด้วยลิงก์เหล่านี้ ต่อทางลัด: ลิงก์จะถามก่อน ยกเว้นทางลัดที่รายละเอียดระบุว่า "ลิงก์เรียกใช้ได้โดยไม่ต้องถาม" ลิงก์ที่มาพร้อมไฟล์หรือข้อความที่ดูเหมือนพาธไฟล์จะถามเสมอ</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>ลิงก์ automationportal ทำอะไรได้บ้าง</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>ไม่อนุญาต</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>ถามทุกครั้ง</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>ต่อทางลัด</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>แอปที่เชื่อมต่อ</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>แอปที่อนุญาตให้เรียกใช้ทางลัด</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>โมเดล</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>ระดับโมเดล: Fast, Smart หรือ Best</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Fast มีค่าใช้จ่ายต่ำสุดและตอบเร็วที่สุด Best มีค่าใช้จ่ายสูงสุดและใช้เวลานานที่สุด ใช้โดยทุกผู้ให้บริการ เว้นแต่คุณจะพิมพ์ชื่อโมเดลสำหรับผู้ให้บริการนั้น</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Fast</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Smart</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Best</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>ขั้นสูง</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>แสดงการกระทำขั้นสูง</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>เพิ่มการกระทำสำหรับผู้ใช้ขั้นสูง เช่น การเรียกใช้คำสั่ง ไปยังรายการการกระทำ</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>แสดงการกระทำขั้นสูง</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>ส่งรายงานข้อขัดข้องเพื่อช่วยแก้ปัญหา</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>หาก Automation Portal ขัดข้อง ระบบจะส่งรายละเอียดข้อผิดพลาด ทางลัด ไฟล์ คลิปบอร์ด และข้อความที่พิมพ์ของคุณจะไม่ถูกรวมไว้เลย และพาธไฟล์ ชื่อผู้ใช้ และชื่อพีซีจะถูกลบออก</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>ส่งรายงานข้อขัดข้องเพื่อช่วยแก้ปัญหา</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>เกี่ยวกับ</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal ทำงานบนพีซีของคุณ จะไม่มีอะไรถูกส่งไปที่ใดเลย เว้นแต่ทางลัดที่คุณเรียกใช้จะทำเช่นนั้น</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>นโยบายความเป็นส่วนตัว</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>เปิดโฟลเดอร์_ข้อมูล</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>เปิดโฟลเดอร์ข้อมูล</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>เปิดโฟลเดอร์_บันทึก</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>เปิดโฟลเดอร์บันทึก</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_แสดงหน้าต้อนรับอีกครั้ง</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>แสดงหน้าต้อนรับอีกครั้ง</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>ข้อความลัด</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>พิมพ์รหัสสั้น ๆ ที่ไหนก็ได้ แล้ว Automation Portal จะแทนที่ด้วยข้อความที่ยาวกว่า</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_ข้อความลัดใหม่</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>ข้อความลัดใหม่</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>ค้นหาข้อความลัด</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>โฟลเดอร์</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>ข้อความลัด</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>เปิดหรือปิดข้อความลัดนี้</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>เปิดใช้งาน</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>รหัสสั้น</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>รหัสสั้น</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>โฟลเดอร์ (ไม่บังคับ)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>แทนที่ด้วย</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>ข้อความที่ควรแสดง</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>ข้อความแทนที่</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>เพิ่มตัวยึดตำแหน่ง</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>วันที่</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>วันที่วันนี้</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>รูปแบบวันที่…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>วันที่วันนี้ในรูปแบบที่คุณเลือก เช่น yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>เวลา</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>เวลาปัจจุบัน</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>คลิปบอร์ด</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>สิ่งที่คุณคัดลอกล่าสุด</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>ตำแหน่งเคอร์เซอร์</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>ตำแหน่งที่เคอร์เซอร์ไปอยู่หลังจากข้อความปรากฏ</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>ถามฉัน…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal จะถามคุณทุกครั้ง และใส่คำตอบของคุณไว้ที่นี่</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>ตัวอย่าง</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>ตรงตามตัวพิมพ์ใหญ่-เล็กทุกตัวอักษร</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>เมื่อปิดตัวเลือกนี้ การพิมพ์ ;Hi จะได้ตัวอักษรแรกเป็นตัวพิมพ์ใหญ่ และ ;HI จะได้ตัวพิมพ์ใหญ่ทั้งหมด</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_ลบข้อความลัด</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>ลบข้อความลัด</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>ช่วยประหยัดการพิมพ์</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>สร้างรหัสสั้นเช่น ;addr ที่จะกลายเป็นที่อยู่เต็มของคุณทุกครั้งที่พิมพ์ ใช้ได้ในทุกแอป</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>เพิ่ม ;date และ ;addr เพื่อเริ่มต้น</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>เพิ่มข้อความลัดสำหรับวันที่วันนี้ และอีกอันสำหรับที่อยู่ของคุณ</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_สร้างของคุณเอง</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>สร้างของคุณเอง</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>แผงด่วน Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>ปักหมุดแล้ว</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>หยุดการทำงานอัตโนมัติชั่วคราว</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>ยังไม่ได้ปักหมุดอะไร</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>ปักหมุดทางลัดที่คุณชอบ แล้วจะแสดงที่นี่ ห่างเพียงคลิกเดียว</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_เปิด Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>เปิด Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_บันทึก</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>บันทึกทางลัดใหม่จากการคลิกและการพิมพ์ของคุณ</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>หยุดการทำงานอัตโนมัติชั่วคราว</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Quick Run ของ Automation Portal</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>ค้นหา Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>พิมพ์ชื่อทางลัด</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>ไม่พบอะไร ลองใช้คำอื่น หรือปิดหน้าต่างนี้แล้วใช้ ทางลัดใหม่ หรือ เรียกดูแกลเลอรี ในหน้าต่างหลัก</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>ลักษณะที่ปรากฏ</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>สีเน้น</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>ใช้สีเน้นของ Windows หรือเลือกหนึ่งในสิบสี</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>สีเน้น</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>สีเน้นของ Windows</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>พื้นหลังหน้าต่าง</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>เลือกลักษณะพื้นหลังของหน้าต่าง ความคมชัดสูงของ Windows จะใช้พื้นหลังทึบเสมอ</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>พื้นหลังหน้าต่าง</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (นุ่ม ค่าเริ่มต้น)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Acrylic (ฝ้า)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>ทึบ</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>มุม</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>ปุ่ม การ์ด และไทล์มีความโค้งมนแค่ไหน</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>มุม</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>โค้งมน (ค่าเริ่มต้น)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>สี่เหลี่ยม</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>โค้งมนพิเศษ</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>ความหนาแน่น</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>มีพื้นที่ว่างรอบข้อความและระหว่างแถวมากเพียงใด</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>ความหนาแน่น</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>กะทัดรัด</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>มาตรฐาน (ค่าเริ่มต้น)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>สบายตา</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>ขนาดข้อความ</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>ทำให้ข้อความใหญ่หรือเล็กลง โดยซ้อนทับการตั้งค่าขนาดข้อความของ Windows</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>ขนาดข้อความ</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>การเคลื่อนไหว</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>แอปเคลื่อนไหวมากหรือน้อยเพียงใดเมื่อสิ่งต่าง ๆ ปรากฏและเปลี่ยนแปลง</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>การเคลื่อนไหว</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>เหมือน Windows (ค่าเริ่มต้น)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>ลดลง</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>ไทล์ทางลัด</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>การ์ดแสดงไทล์ขนาดใหญ่ กะทัดรัดทำให้เล็กลงเพื่อให้พอดีกับหน้าจอมากขึ้น</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>ขนาดไทล์ทางลัด</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>การ์ด (ค่าเริ่มต้น)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>กะทัดรัด</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>รีเซ็ตลักษณะที่ปรากฏ</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>คืนค่าธีม สีเน้น พื้นหลัง มุม ความหนาแน่น ขนาดข้อความ การเคลื่อนไหว และไทล์กลับเป็นค่าเริ่มต้น</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>รีเซ็ต</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>รีเซ็ตลักษณะที่ปรากฏเป็นค่าเริ่มต้น</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>น้ำเงิน</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>คราม</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>ม่วง</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>ม่วงแดง</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>แดง</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>ส้ม</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>อำพัน</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>เขียว</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>เขียวอมฟ้า</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>เทาอมน้ำเงิน</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>ลืม</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>ยังไม่ได้ติดตั้ง Portal AI Host</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal ยังไม่ได้รับอนุญาตใน Portal AI Host ใช้ปุ่มอนุญาต</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>อนุญาต Automation Portal ครั้งเดียว แล้ว Portal AI Host จะตอบให้ ไม่มีอะไรออกจากพีซีของคุณ</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (บนพีซีเครื่องนี้)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>ตรวจสอบอีกครั้ง</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>อนุญาต</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>ใช้คีย์ API…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>ใช้บัญชีของคุณเองกับ ChatGPT, Claude, Gemini และอื่น ๆ</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>บัญชี AI ของคุณเอง</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>กำลังตรวจสอบ…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>รับ Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>ฟรีและเป็นส่วนตัว AI เพียงตัวเดียวบนพีซีเครื่องนี้ที่แอป Portal ทั้งหมดใช้ร่วมกัน</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>ทำงาน AI บนพีซีเครื่องนี้ ไม่มีอะไรออกจากคอมพิวเตอร์ของคุณ</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>พร้อมแล้ว ไม่มีอะไรออกจากพีซีของคุณ</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>เมื่อคุณอธิบาย การกระทำ AI ต้องมี AI ให้คุยด้วย เลือกหนึ่งวิธีเพื่อเตรียมให้พร้อม</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>เริ่ม Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>กำลังเริ่ม Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>เตรียม AI ให้พร้อม</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>ใช้ Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>ใช้ AI ของ Windows</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>กำลังรอให้คุณตอบรับใน Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>มีในตัวพีซีเครื่องนี้ ฟรีและเป็นส่วนตัว</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>AI บนอุปกรณ์ของ Windows</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows กำลังเตรียม AI บนอุปกรณ์…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>พร้อมใช้งาน ไม่มีอะไรออกจากพีซีของคุณ โมเดล: {0} อ่านได้สูงสุด {1} โทเค็นต่อครั้ง</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>พร้อมใช้งาน ไม่มีอะไรออกจากพีซีของคุณ</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>เกี่ยวข้องตามความหมาย</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>กำลังถาม {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>ที่เกี่ยวข้อง</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>ตั้งค่า</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>เลือกวิธีที่ Quick Run จะตอบคำถาม</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C  คัดลอก      Esc  ปิด</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>สร้างทางลัด: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>ตั้งค่า AI…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>ถาม AI: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>เปิดฉบับร่างให้ตรวจสอบ ไม่มีอะไรถูกบันทึกหรือเรียกใช้</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>ถาม</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>คัดลอกแล้ว</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>คัดลอก</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>คัดลอกคำตอบ</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>อธิบาย</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>คำตอบจาก AI</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} ที่เกี่ยวข้องตามความหมาย</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (ที่เกี่ยวข้อง)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>ส่งรายงานข้อขัดข้องเพื่อให้เราแก้ปัญหาได้รวดเร็ว จะไม่รวมไฟล์หรือข้อความที่คุณพิมพ์เลย</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>สิ่งที่ถูกส่ง</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>ความเป็นส่วนตัว</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>รายงานข้อขัดข้อง</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>หากแอปขัดข้อง ระบบจะส่งรายละเอียดข้อผิดพลาดเพื่อให้เราแก้ไข ทางลัด ไฟล์ คลิปบอร์ด และข้อความที่พิมพ์ของคุณจะไม่ถูกรวมไว้เลย และพาธ ชื่อ และชื่อพีซีของคุณจะถูกลบออก การปิดตัวเลือกนี้จะหยุดการส่งทันที</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>ส่ง_รายงานข้อขัดข้อง</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>ส่งรายงานข้อขัดข้อง</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>สิ่งที่ถูกส่ง</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>สวัสดี! มาจัดการเรื่องน่าเบื่อให้คุณกันเถอะ</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal เปลี่ยนงานเล็ก ๆ ให้เป็นการคลิกเดียวหรือปุ่มลัดเดียว: จัดระเบียบโฟลเดอร์ ดูสภาพอากาศ จดบันทึก เปลี่ยนชื่อไฟล์ทีละกลุ่ม</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>ใช้เวลาประมาณหนึ่งนาที ข้ามได้ทุกเมื่อ</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>ไอคอนสายฟ้าของ Automation Portal ล้อมรอบด้วยจุดสี</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>ทำเครื่องหมายอันที่คุณชอบ เป็นของคุณที่จะเปลี่ยนหรือลบภายหลังได้</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>ทางลัดสำเร็จรูปอยู่ในแกลเลอรี เมื่อใดที่คุณต้องการ</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>ลองหนึ่งอันตอนนี้</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>ทางลัดคืองานเล็ก ๆ ที่ทำงานเมื่อคุณขอ อันนี้เปลี่ยนเฉพาะข้อความด้านล่างเท่านั้น ไม่แตะอะไรบนพีซีของคุณ</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>ทำให้เป็นตัวพิมพ์ใหญ่</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>เปลี่ยนข้อความเป็นตัวพิมพ์ใหญ่ทั้งหมด</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>ข้อความที่จะเปลี่ยน</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>เรียกใช้</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>เรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>กำลังเรียกใช้...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>ผลลัพธ์</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>ทำงานไม่เสร็จ</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal อยู่กับนาฬิกา การปิดหน้าต่างนี้จะยังคงให้ปุ่มลัดของคุณทำงานต่อ</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>ข้ามไปก่อน</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>ย้อนกลับ</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>ไปกันเลย</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>เริ่มต้นใช้งาน</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>ขั้นตอน {0} จาก {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>เริ่มด้วยการตั้งค่าที่แนะนำ</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>เริ่มใช้ Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>แนะนำ</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>ส่งรายงานข้อขัดข้อง</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>เพื่อให้เราแก้ปัญหาได้รวดเร็ว จะไม่รวมไฟล์หรือข้อความที่คุณพิมพ์เลย</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>คุณเปลี่ยนทุกอย่างนี้ได้ภายหลังในการตั้งค่า</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>เสร็จ</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>ดูสภาพอากาศของเมืองคุณได้ด้วยการคลิกเดียว</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>จดบันทึกได้ในขั้นตอนเดียว</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>ฟังวันที่และสภาพอากาศของวันนี้ แล้วเปิดแอปแรกของคุณ</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>แปลงระยะทาง น้ำหนัก อุณหภูมิ และอื่น ๆ</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>ปิดแอปงานของคุณและจัดระเบียบในครั้งเดียว</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>วางข้อความโดยไม่มีฟอนต์ สี หรือลิงก์</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>มีเวอร์ชันใหม่ของ Automation Portal แล้ว</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>อัปเดต</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>เปิดหน้า Microsoft Store เพื่ออัปเดต</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>ภายหลัง</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>ซ่อนไว้จนกว่าจะมีเวอร์ชันใหม่กว่าออกมา</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>มีอะไรใหม่</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>แก้ไขแล้วในเวอร์ชันนี้</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>ใหม่ในเวอร์ชันนี้</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>เข้าใจแล้ว</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>แสดงให้ฉันดู</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>เปิดส่วนของแอปที่เกี่ยวข้องนี้</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>ปิดหน้าต่างนี้</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_มีอะไรใหม่</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>มีอะไรใหม่</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>ดูสิ่งที่เปลี่ยนแปลงในเวอร์ชันนี้</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>มีอะไรใหม่</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>สำรวจ Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>ย้อนกลับ</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>ข้ามการแนะนำ</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>เริ่มใช้ Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>แสดงให้ฉันดู</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>ปิดการแนะนำและเปิดส่วนนี้ของแอป</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>ไปยังจุดก่อนหน้า</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>ไปยังจุดถัดไป</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>ปิดการแนะนำ คุณเปิดใหม่ได้จากการตั้งค่า เกี่ยวกับ</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>ปิดการแนะนำและเริ่มใช้แอป</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>เริ่มการแนะนำ</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>ดูคร่าว ๆ ว่า Automation Portal ทำอะไรได้บ้าง</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>เริ่มด้วยการแนะนำแบบย่อก่อน</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>จุดที่ {0} จาก {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>ไม่มีภาพหน้าจอ</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>สำรวจ Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>สำรวจ Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_สำรวจ</value>
+  </data>
+</root>

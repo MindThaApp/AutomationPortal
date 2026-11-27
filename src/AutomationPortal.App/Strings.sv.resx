@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Testa nu</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Sök alla sätt att starta</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>En genväg jag redan har</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>En ny genväg (jag lägger till stegen sedan)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Namnge den nya genvägen</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Du har inga genvägar än.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Ta bort det här villkoret</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Lägg till ett villkor</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Kör direkt</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Fråga mig först (en avisering med Kör och Hoppa över)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Meddela mig när den körs</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Pausa inte den här automatiseringen när den körs ofta</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Om den missas körs den när Automation Portal startas nästa gång eller datorn vaknar</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Kommandopalett</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Skriv en genväg, en inställning eller ett kommando</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Retur  kör eller öppna      Ctrl+Retur  redigera      ↑ ↓  välj      Esc  stäng</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Importera en genväg</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Välj en säkerhetskopia</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Börja tomt</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Berätta vädret och öppna Outlook varje morgon</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Skapa utkast</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>Bläddra i galleriet</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Eller ställ in genom att beskriva med ord (Inställningar)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Spela in en ny genväg</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Gör det en gång, så antecknar Automation Portal dina klick och din skrivning</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>Importera…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Lägg till en genväg från en .autoportal-fil. Du ser först vad den gör, och inget ersätts.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>Hantera i Inställningar</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Fråga inte igen för den här genvägen</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Ta bort permanent</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Öppna med standardappen</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>Visa i mapp</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Kör den</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Kör igen</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Starta med Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Byt ikon</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Ta bort mapp</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Förbered den</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Använd som standard</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>till exempel: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Hitta modeller</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Söker efter modeller…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Kontrollerar…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Slå på den här automatiseringen igen. Kontrollera först vad den ändrar, så att den inte körs i en loop igen.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Testa nu</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Kör genvägen en gång nu på exempelfiler i en tillfällig mapp</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Fler alternativ</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Slå på eller av den här automatiseringen</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Aktivitet…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Se när den här automatiseringen utlöstes, kördes eller hoppades över</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>Öppna genvägen</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Hämta</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Öppna en genvägsfil</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Inget matchar din sökning</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Kontrollera stavningen eller prova ett kortare ord. Du kan också leta efter en färdig genväg i galleriet.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Inget har fästs än</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>Fäst de genvägar du använder mest. Högerklicka på en genväg och välj Fäst. Fästa genvägar visas också när du klickar på Automation Portal-ikonen vid klockan.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Den här mappen är tom</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Dra genvägar hit från listan, eller skapa en ny.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Låt oss få något att hända</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>En genväg är en uppsättning steg som Automation Portal gör åt dig med ett klick. Börja med en färdig från galleriet, eller bygg din egen.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Visa inte det här igen</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Det var din första genväg.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Ge den en snabbtangent</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>Flytta till mapp</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Exportera genväg</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Rensa historik…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Välj var säkerhetskopian ska sparas</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Välj var dina genvägar ska sparas</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Din text visas här.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Skriv indata</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Välj en genväg att köra på det</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Inspelning i Automation Portal</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Pausa automatiseringar</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal körs redan, men svarar inte. Leta efter den i aviseringsområdet, eller starta om den från Aktivitetshanteraren.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal hade ett problem med en fil</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Starta med Windows är av</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Slå på Starta med Windows igen under Inställningar, Allmänt.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal kunde inte använda det</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Den här genvägen körs redan.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Länkar kan inte köra genvägar</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Öppna den här genvägsfilen?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Den här öppnades från en länk, så lägg bara till den om du litar på källan.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Den här skickades med ap-kommandot. Lägg bara till den om du körde kommandot själv.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Ett annat program på den här datorn skickade den här genvägen. Lägg bara till den om du litar på programmet.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Lägg till den här genvägen?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Genväg tillagd</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Behåll den här genvägen?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Behåll</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Kör på markerad text</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Den här snabbtangenten kan inte användas.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Markerad text</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>Fråga AI</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Visa detaljer</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Se vad den gjorde</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" körde precis av sig själv för första gången</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Den kördes utan problem.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Se vad som hände</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Redigera den här automatiseringen</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Välj en annan utlösare</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Välj en annan genväg</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Spela upp ett ljud när en genväg jag startade är klar</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Idag</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>Sedan {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Inkludera även Ctrl, Alt eller Win</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Vad den här automatiseringen gjorde sedan Automation Portal startades, nyast först. Inget här sparas på disk.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Inget har hänt än. När automatiseringens utlösare aktiveras visas den här.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Ny automatisering</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Redigera automatisering</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Slå på</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Inget matchar din sökning.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>Det finns inget i den här gruppen än.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Bara om… (valfritt)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Lägg till villkor så att den bara körs vid rätt tillfällen. Alla måste vara sanna.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>När det händer</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Lämna på 0 för att köra varje gång. En paus är bra för utlösare som kan aktiveras många gånger i rad.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Normalt pausar Automation Portal en automatisering som körs fler än 60 gånger på 10 minuter, eftersom det oftast betyder en loop.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>Om datorn var avstängd eller i viloläge, eller Automation Portal inte kördes, vid den schemalagda tiden, körs den en gång när Automation Portal startar eller datorn vaknar. Bara tider från de senaste 24 timmarna räknas, och inget körs för en tid som passerade medan automatiseringar var pausade.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Räknar ut vad den skulle göra…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Inget att återställa</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Återställ från en säkerhetskopia</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Lägg till dem</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Beskriv den</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Börja från en färdig genväg</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Välj en att lägga till och ändra den efter dina behov.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Kör en genväg på de här objekten?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Kör den här genvägen?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Tillåt en gång</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Nyligen borttagna</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Automatiseringar som använder den här genvägen fungerar igen.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>Kopian i Nyligen borttagna kunde inte tas bort, så den finns kvar där.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Töm Nyligen borttagna</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Vissa genvägar finns kvar här</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Inga appfönster är öppna. Öppna appen du vill visa och försök igen.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Vilken app vill du visa?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Starta inspelning</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Ändra vad som helst innan du lägger till stegen. Varje steg hittar sin kontroll med namn, så det fungerar även när fönstret flyttas.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Lägg i stället till ett klick på knappen de tryckte på.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>Granska inspelningen</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Lägg till steg</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Fråga mig varje gång</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Bilden kunde inte visas.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Dra för att välja ett område. Tryck på Esc för att avbryta.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>Klicka på platsen du vill ha. Tryck på Esc för att avbryta.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Du kan ändra allt detta senare i redigeraren.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Visa vad den skulle göra</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>När den körs</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Välj en mapp</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Välj mappen först.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Välj några att börja med</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Prova en nu</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Säg hej</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Visar en avisering</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Den blev inte klar</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Ha den till hands</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Kör vad som helst genom att skriva, var som helst.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Tryck på dessa samtidigt. Ett litet fält öppnas där du skriver för att hitta och köra en genväg.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Välkommen till Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Fästa genvägar</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal-genväg</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Tillagd på skrivbordet</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Tillagd i startmenyn</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Den här utlösaren finns inte längre</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Kördes nyss</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Välj vad som ska starta den.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Ge den nya genvägen ett namn.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Välj en genväg att köra.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Välj vad som ska starta automatiseringen.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Automatiseringar som använder den fungerar igen.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>ett okänt steg</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Kontrollera stegen först om du inte är säker på vilka appar och mappar den arbetar med. Lämna apparna ifred medan den körs.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Varje dag</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Den här genvägen togs bort. Återställ den från Nyligen borttagna i biblioteket för att köra den igen.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Den här genvägen finns inte längre, så den kan inte köras igen.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Välj filerna som genvägen ska köras på.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Genvägen behöver något att arbeta med, och körningshistoriken sparar inte det. Kör den från biblioteket eller Quick Run i stället.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Kör den här genvägen igen.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Om Windows säger att ett objekt är för stort för Papperskorgen och frågar om det ska tas bort permanent, välj Nej för att behålla det.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>De här ändringarna har redan ångrats.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>De här ändringarna kan inte ångras härifrån. Visa detaljer för vad som ändrades.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Ångra återställer det som går på ett säkert sätt. Visa detaljer för resten.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Inget skrevs över.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Visar en avisering. Ändrar ingenting på datorn.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Bibliotek och säkerhetskopia</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Andra appar och länkar</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Fortsätt köra i aviseringsområdet</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Genvägsrutor</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Min plats</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Snabbpanelen vid muspekaren</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Var dina genvägar sparas</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Spara dina genvägar i OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Säkerhetskopiera ditt bibliotek</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Meddela mig när en genväg som startades med snabbtangent är klar</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Ämne för telefonaviseringar</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Visa avancerade åtgärder</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>Städa Hämtade filer</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Sorterar filer du laddade ner för en tid sedan i mappar efter typ eller datum.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Ändrar filer</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Hittar filer i mappen som är äldre än några dagar (minst 1), utan ofullständiga nedladdningar</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Flyttar dem till mappar efter typ eller datum</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Berättar hur många som flyttades, med Ångra</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Konvertera bilder</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Sparar de bilder du väljer som JPEG, PNG, GIF, BMP eller TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Gör kopior</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Tar de bilder du väljer eller skickar till den</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Spara var och en i den nya filtypen</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Bredvid originalen, som namn (2) om namnet är upptaget</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Konfigurera min arbetsyta</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>Öppnar din arbetsapp, en mapp och en webbsida på en gång.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Inga filändringar</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Öppna appen du väljer</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Öppna en mapp i Utforskaren</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Öppna en webbsida</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Säkerhetskopiera en mapp</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Kopierar en mapp till en ny mapp med datum, varje dag eller varje vecka.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Endast kopiera</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>Vid den tid du väljer skapas en mapp med datum som namn</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Kopiera mappen dit</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>Ta aldrig bort eller ersätt något i säkerhetskopian</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Fyll i ett formulär från ett kalkylblad</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Skriver varje rad i en CSV-fil i ett formulär i en annan app.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Kommer snart</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Du fyller i formuläret en gång medan det spelas in</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Den upprepar rad 1 steg för steg så att du kan kontrollera</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Pausad tills du återupptar</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Något gick fel.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Säkerhetskopieringen kördes inte</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Varje dag vid en tid</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>När jag trycker på en snabbtangent</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Var som helst i Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>När jag loggar in</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Varje gång du startar dagen</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>När en fil visas i en mapp</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Till exempel en ny nedladdning</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>När en app öppnas</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Välj appen nästa</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>När en USB-enhet ansluts</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Eller någon enhet som ansluts</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Alla genvägar</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Körningshistorik</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Mappnamn</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Byt namn på mapp</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Ny genväg</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Säkerhetskopiera biblioteket nu</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Återställ från en säkerhetskopia…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Importera en genvägsfil…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Kortkommandon</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal körs fortfarande</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Hitta den bland ikonerna i aviseringsområdet vid klockan. Högerklicka på den för att avsluta.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Välj vilken AI som AI-åtgärderna och Quick Run använder. Dina nycklar lagras krypterade på den här datorn.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>På den här datorn (gratis och privat)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Kontrollerar den här datorn…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Redo att användas. Gratis, privat och fungerar offline.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Tillgänglig på den här datorn. Gratis, privat och fungerar offline.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows förbereder AI på enheten…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Redo att användas.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Avstängd.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Klistra in din nyckel här</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Nyckeln sparades.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>Nyckeln togs bort.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Distributionsnamn</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Modell (lämna tomt för att använda valet Snabb / Smart / Bäst nedan)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Den här automatiseringen kan inte köras på den här datorn. Redigera den för att välja en annan utlösare.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>Genvägen den kör togs bort. Redigera automatiseringen för att välja en annan.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Ta bort automatisering</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Ta bort den här automatiseringen? Genvägen den kör tas inte bort.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>Testet startade inte</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Körs redan</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>Testet lyckades</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>Testet avbröts</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Du stoppade genvägen innan den blev klar.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>Testet blev inte klart</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Bläddra och hantera dina filer.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Byt energiplaner och håll datorn vaken.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Andra appar från samma utvecklare som Automation Portal kan samarbeta med.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Vad den gör</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Konfigurera</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Vad den gör</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Okänt steg</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Lägg till genväg</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Lägg till och schemalägg…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Latitud måste vara ett tal, till exempel 51.5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Longitud måste vara ett tal, till exempel -0.12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Latitud måste vara mellan -90 och 90.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Longitud måste vara mellan -180 och 180.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>Innan första körningen</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Öppna den först</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Ingen mapp</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Lägg till på skrivbordet</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Byt namn på genväg</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Tryck på de tangenter du vill använda för att köra den här genvägen var som helst. Använd minst en av Ctrl, Alt eller Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Inte tillgänglig än</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Ta bort genväg</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Alla körningar</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Du stoppade den</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Stoppade sig själv</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Alla källor</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Länkar och andra appar</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Inga körningar matchar</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Ingenting har körts än</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Prova en annan sökning eller visa alla körningar.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>När du kör en genväg ser du här vad som hände, steg för steg. Så blir det enkelt att ta reda på varför något inte fungerade.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Kör igen…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Kör igen</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Den här genvägen finns inte längre.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>Öppna redigeraren med steget som inte blev klart markerat.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Öppna vid steget som misslyckades</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Ångra filändringar</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Återställ filerna som den här körningen skapade, flyttade, bytte namn på eller ersatte. Du ser listan först.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Kopiera detaljer</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Kopiera en kort sammanfattning av den här körningen, utan dina filer eller några lösenord eller nycklar.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>Ändrade filer</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Den här körningen sparade inte vilket steg som misslyckades, så inget steg är markerat.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>Genvägen har ändrats sedan den här körningen, och det steget finns inte längre i den.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Rensa körningshistoriken</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>Ta bort hela körningshistoriken? Dina genvägar påverkas inte.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Rensa historik</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows låter inte Automation Portal använda din plats. Slå på den under Inställningar, Integritet och säkerhet, Plats, eller skriv in siffrorna här.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Inga appar än.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Bara den här genvägen, utan att fråga</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Biblioteket säkerhetskopierades</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal hittade ingen OneDrive-mapp på den här datorn. Logga in i OneDrive först, eller använd Ändra… för att välja valfri mapp.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Välj en annan mapp</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Mappen ligger inuti ditt nuvarande bibliotek. Välj en mapp någon annanstans.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Välj en tom mapp</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Ändra plats för biblioteket</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal startas om</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Dina genvägar är klara på den nya platsen. Automation Portal startas om nu så att allt använder den från första stund.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Ta bort textsnutt</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Datumformat</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Format (till exempel yyyy-MM-dd, eller dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Fråga mig</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Ny genväg</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows tillät inte Automation Portal att se dina klick och din skrivning. Försök igen.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Svaret</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Retur kopierar svaret</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>Datumet</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>Om den markerade texten</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Hej från den falska inspelaren</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Tryck på Retur</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Inget att ångra</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>De här körningens filändringar har redan ångrats.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Den här körningen ändrade inga filer som Automation Portal kan ångra, eller så är dess post äldre än en vecka.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>De här körningens filändringar ångras redan.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Skriv ett svar</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Fyll i</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Håll ned Ctrl eller Shift för att välja fler än en.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Välj filer</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Spara som</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Tid (valfritt)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>Skriv ett tal, till exempel 12 eller 3.5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Det ser inte ut som en webbadress.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Återuppta automatiseringar</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Skriv ett genvägsnamn</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Skriv några bokstäver från ett genvägsnamn</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Öppnar redigeraren</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run kunde inte göra det</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Något gick fel. Försök igen.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Lösenord spelas aldrig in.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Fler fästa…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Öppna Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Återuppta nu</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>I 30 minuter</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>I 1 timme</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>Till i morgon</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Tills jag återupptar</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Avsluta Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Klicka för att köra.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Uppdatera anslutna appar</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Öppna</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>Öppna {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>Hämta {0} från Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Påminnelser om pauser, fokus och paus vid skrivbordet.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Kunde inte öppna Power Plan Manager</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal kunde inte skapa exempelfilerna för testet. Ingenting kördes och dina filer ändrades inte. Kontrollera att disken har ledigt utrymme och försök igen.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Kunde inte ångra</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Något gick fel när saker återställdes. Öppna körningshistoriken för att se vad som ändrades.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>Inget heter "{0}". Prova ett kortare ord, eller leta efter en färdig genväg i galleriet.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Steg {0} av {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} av {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} hittills</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>Kör "{0}"</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>Kör {0} genvägar</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" blev inte klar</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Nästa: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Tryck på Retur för att skapa en ny genväg som heter “{0}”</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Kör</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Stoppa</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Kör (Retur)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Stoppa den här körningen</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>Kör {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>Stoppa {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>Redigera {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>Fler alternativ för {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Klicka för att markera. Tryck på Retur eller dubbelklicka för att köra. Ctrl+E för att redigera.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Fäst</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>Kördes 1 gång. Senast: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>Kördes {0} gånger. Senast: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>idag kl. {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>igår kl. {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Ett mjukt ljud för klar och ett annat för ett problem. Genvägar som startar av sig själva är tysta, och så är allt medan Fokusassistent eller en helskärmsapp är på.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus och Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>den kostnadsfria versionen</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>Du har den kostnadsfria versionen: upp till {0} genvägar.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Du har Plus: upp till {0} genvägar.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Du har Pro: hur många genvägar du vill, och automatiseringar som kör dem av sig själva.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>Du har {0} genvägar. De fungerar alla som vanligt. Nya kräver mer utrymme.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: upp till {0} genvägar.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: hur många genvägar du vill, plus automatiseringar som kör dem enligt schema eller när något händer.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Uppgradera till Pro: hur många genvägar du vill, plus automatiseringar. Du behåller allt du har.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Hämta Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Hämta Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Uppgradera till Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} för {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Återställ köp</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Kontrollera Microsoft Store igen för det du har köpt, till exempel på en ny dator.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Kontrollerar med Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Öppnar Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Tack. Du har nu {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store kunde inte slutföra köpet. Kontrollera din internetanslutning och försök igen.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Dina köp är uppdaterade. Du har {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Dina köp är tillbaka. Du har {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Kunde inte nå Microsoft Store, så inget ändrades. Kontrollera din internetanslutning och försök igen.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Skapa fler genvägar</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>Den kostnadsfria versionen rymmer {0} genvägar och du har {1}. De fungerar alla som vanligt. För att skapa fler, hämta Plus för upp till {2} genvägar, eller Pro för hur många du vill plus automatiseringar.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus rymmer {0} genvägar och du har {1}. De fungerar alla som vanligt. För att skapa fler, uppgradera till Pro för hur många du vill plus automatiseringar.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Automatiseringar ingår i Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Automatiseringar kör dina genvägar av sig själva: enligt schema, när en fil kommer, när du ansluter något. Automatiseringar du redan har fortsätter att köras.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" har lagts till. Dess schema kräver Pro, så den körs bara när du startar den.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Inte nu</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_Starta 14 dagars gratis provperiod</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Inget kort behövs. Provperioden startar när du trycker på knappen, inte före.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>Din 14 dagars provperiod av Pro har startat. Allt i Pro är öppet för dig.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>Provperioden kunde inte startas. Inget ändrades.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Provperiod för Pro: {0} dagar kvar</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Provperiod för Pro: 1 dag kvar</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Din kostnadsfria provperiod av Pro. Öppna Inställningar för att se din plan.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Din provperiod av Pro går ut i morgon</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Allt du skapat finns kvar. Efter provperioden följer nya genvägar och automatiseringar din plan igen.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Din provperiod av Pro har gått ut</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Vad som slutade: att skapa nya automatiseringar, och att skapa nya genvägar utöver {0}.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Vad som finns kvar: alla genvägar och automatiseringar du har. De fortsätter att köras, och du kan fortfarande redigera, köra, slå på eller av och ta bort dem.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>Kör "{0}" med det du släppte?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Steg som ändrar filer eller arbetar i andra appar: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Släppt:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (mapp)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…och {0} till</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>Utelämnade, eftersom "{0}" inte tar emot dem:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Kör</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" tar inte emot något av de objekt du släppte, så den kördes inte.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>Ungefär {0} sparad {1}, enligt dina uppskattningar.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>sedan {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>den här månaden</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 minut</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} minuter</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 timme</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} timmar</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Sök genvägar och galleriet</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Sök genvägar och galleriet (Ctrl+F). Ctrl+K öppnar kommandopaletten.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Kör</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Kör</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Kör (Retur)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Redigera (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Fler alternativ</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Fler alternativ</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Automatiseringar</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Pausa alla automatiseringar</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Stoppar alla automatiseringar från att köras tills du slår av det här</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Ny automatisering</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Ny automatisering</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Alla automatiseringar är pausade. Inget körs av sig självt tills du slår av det här.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>Visa _detaljer</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Visa detaljer</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Avfärda</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Avfärda</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Låt saker hända av sig själva</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>En automatisering kör en genväg åt dig när något händer, till exempel när du öppnar en app, ansluter hörlurar eller när klockan är 8 på morgonen.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Till exempel: När jag ansluter hörlurar, ställ volymen på 40 %.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>Ny _automatisering</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Bläddra i galleriet</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Bläddra i galleriet</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Galleri</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Färdiga genvägar. Lägg till dem du gillar och anpassa dem sedan.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Visa den</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Visa den</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Avfärda</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Avfärda</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Inga färdiga genvägar än</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Startgenvägar visas här när de installeras med Automation Portal. Under tiden kan du bygga egna, eller öppna en .autoportal-fil du fått av en vän.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Skapa en genväg</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Skapa en genväg</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>_Öppna en .autoportal-fil…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>Öppna en .autoportal-fil…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Alla genvägar</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Rensa sökningen</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_Nyligen borttagna</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Nyligen borttagna</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Återställ genvägar du tog bort de senaste 30 dagarna</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Ny genväg</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Ny genväg</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Skapa en ny genväg (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Ångra</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Ångra</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Ge den en snabbtangent</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Ge den en snabbtangent</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>Visa _detaljer</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Visa detaljer</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Avfärda</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Avfärda</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Börja här</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>Se _galleriet</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>Se galleriet</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Dölj</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Dölj</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Dölj den här raden. Galleriet finns alltid i sidofältet.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Skapa en ny genväg</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Ny genväg</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Bläddra i galleriet</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Bläddra i galleriet</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Skapa en genväg</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Skapa en genväg</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>Be_skriv den</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>Beskriv genvägen du vill ha</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>Skriv vad du vill i en mening och få ett utkast</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Körningshistorik</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Sök efter namn</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Visa körningar som</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Visa körningar startade av</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Fler</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Fler: rensa historik</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Körningar</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Ingenting har körts än</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>När du kör en genväg ser du här vad som hände, steg för steg. Så blir det enkelt att ta reda på varför något inte fungerade.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Hoppa till ett avsnitt</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Allmänt</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Starta med Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Öppna Automation Portal tyst i aviseringsområdet när du loggar in, så att dina automatiseringar alltid är redo.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Starta med Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Fortsätt köra i aviseringsområdet</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>När du stänger fönstret fortsätter Automation Portal att arbeta i bakgrunden. Slå av det här för att avsluta när du stänger det.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Fortsätt köra i aviseringsområdet</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Välj ljust eller mörkt, eller följ Windows.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Samma som Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Ljust</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Mörkt</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Genvägsrutor</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Neutrala kort med en färgad ikon, eller helfärgade rutor.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Stil för genvägsrutor</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Neutral</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Toningar</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Min plats</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Används för soluppgångs- och solnedgångsutlösare samt väderlarm. Lämna tomt för att låta Windows räkna ut det.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Stad (valfritt)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Hemstad</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Latitud</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Hemlatitud, från minus 90 till 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Longitud</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Hemlongitud, från minus 180 till 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_Använd min nuvarande plats</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Använd min nuvarande plats</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_Ange koordinater i stället</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Ange koordinater i stället</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Problem med platsen</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Tangentbord</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Tryck på dessa tangenter var som helst för att söka efter en genväg och köra den.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Kör på markerad text</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Markera lite text i valfri app, tryck på dessa tangenter och välj en genväg att köra på den.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Snabbpanelen vid muspekaren</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Tryck på dessa tangenter för att visa dina fästa genvägar precis där muspekaren är.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Bibliotek och säkerhetskopia</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Var dina genvägar sparas</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Öppna</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Öppna</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>Visa mappen i Utforskaren</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>Änd_ra…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Ändra…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Spara dina genvägar i OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Kopierar ditt bibliotek till OneDrive så att det synkas på alla dina datorer.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_Flytta till OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>Flytta till OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Säkerhetskopiera ditt bibliotek</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Sparar dina genvägar, mappar och automatiseringar i en zip-fil. För att få tillbaka genvägar, använd Återställ från en säkerhetskopia. De läggs till bredvid dem du har nu.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_Säkerhetskopiera biblioteket nu</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Säkerhetskopiera biblioteket nu</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_Återställ från en säkerhetskopia…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Återställ från en säkerhetskopia…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Lägger till genvägarna i en säkerhetskopia bredvid dem du har. Inget ersätts.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Aviseringar</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Meddela mig när en genväg som startades med snabbtangent är klar</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Visar en liten avisering när en genväg du startade med en tangentnedtryckning har körts.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Meddela när genvägar som startats med snabbtangent är klara</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Spela upp ett ljud när en genväg jag startade är klar</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Spela upp ett ljud när en genväg jag startade är klar</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Ämne för telefonaviseringar</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Används av Skicka till min telefon. Välj ett privat namn som är svårt att gissa, och prenumerera sedan på det i ntfy-appen på telefonen. Meddelandet du skickar går via tjänsten ntfy.sh, så alla som känner till ämnet kan läsa det.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Ämne för telefonaviseringar</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>till exempel: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Andra appar och länkar</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Länkar</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal://-länkar</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Webbsidor och andra appar kan be att köra dina genvägar med de här länkarna. Per genväg: länkar frågar först, utom för genvägar vars Detaljer säger "Länkar kan köra den här utan att fråga". Länkar som bär filer eller text som ser ut som en sökväg frågar alltid.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>Vad automationportal-länkar får göra</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Aldrig</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Fråga varje gång</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Per genväg</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Anslutna appar</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Appar som får köra genvägar</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Modeller</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Modellnivå: Snabb, Smart eller Bäst</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Snabb kostar minst och svarar snabbast. Bäst kostar mest och tar längst tid. Används av alla leverantörer om du inte skriver ett modellnamn för den.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Snabb</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Smart</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Bäst</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Avancerat</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Visa avancerade åtgärder</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Lägger till avancerade åtgärder, som att köra kommandon, i åtgärdslistan.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Visa avancerade åtgärder</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Skicka kraschrapporter för att hjälpa till att åtgärda problem</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Om Automation Portal kraschar skickas felinformationen. Dina genvägar, filer, urklipp och skriven text tas aldrig med, och sökvägar till filer, ditt användarnamn och datornamnet tas bort.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Skicka kraschrapporter för att hjälpa till att åtgärda problem</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal arbetar på din dator. Inget skickas någonstans om inte en genväg du kör gör det.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Integritetspolicy</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>Öppna _datamappen</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Öppna datamappen</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>Öppna _loggmappen</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Öppna loggmappen</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_Visa välkomsten igen</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Visa välkomsten igen</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Textsnuttar</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Skriv en kort kod var som helst så ersätter Automation Portal den med längre text.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Ny textsnutt</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Ny textsnutt</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Sök textsnuttar</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Textsnuttar</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Slå på eller av den här textsnutten</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Aktiverad</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Kort kod</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Kort kod</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Mapp (valfritt)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Ersätt den med</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>Texten som ska visas</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Ersättningstext</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Lägg till en platshållare</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>Dagens datum</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Datumformat…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>Dagens datum i ett format du väljer, till exempel yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Tid</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>Aktuell tid</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Urklipp</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>Det du kopierade senast</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>Markörplats</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Var markören hamnar efter att texten visas</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Fråga mig…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal frågar dig varje gång och lägger ditt svar här</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Förhandsgranskning</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Matcha versaler exakt</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>När det här är av ger ;Hi en stor första bokstav och ;HI ger bara versaler.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_Ta bort textsnutt</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Ta bort textsnutt</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Spara lite skrivarbete</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>Skapa en kort kod som ;addr som blir din fullständiga adress när du skriver den. Den fungerar i alla appar.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>Lägg till ;date och ;addr för att börja</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Lägger till en textsnutt för dagens datum och en för din adress</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Skapa egna</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Skapa egna</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal snabbpanel</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Fäst</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Automatiseringar pausade</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Inget har fästs än</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>Fäst dina favoritgenvägar så visas de här, ett klick bort.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_Öppna Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Öppna Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Spela in</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Spela in</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Spela in en ny genväg från dina klick och din skrivning</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Pausa automatiseringar</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run-sökning</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Skriv ett genvägsnamn</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Inget hittades. Prova ett annat ord, eller stäng det här och använd Ny genväg eller Bläddra i galleriet i huvudfönstret.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Utseende</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Accentfärg</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Följ din Windows-accent, eller välj en av tio färger.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Accentfärg</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows-accent</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Fönsterbakgrund</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Välj hur fönsterbakgrunder ser ut. Windows högkontrast använder alltid en enfärgad.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Fönsterbakgrund</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (mjuk, förval)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Akryl (mattglas)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Enfärgad</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Hörn</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Hur runda knappar, kort och rutor är.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Hörn</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Rundade (förval)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Kantiga</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Extra runda</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Täthet</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Hur mycket utrymme det finns runt text och mellan rader.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Täthet</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Kompakt</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Standard (förval)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Luftig</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Textstorlek</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Gör texten större eller mindre, utöver inställningen för textstorlek i Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Textstorlek</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Rörelse</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Hur mycket appen rör sig när saker visas och ändras.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Rörelse</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Samma som Windows (förval)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Reducerad</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Av</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Genvägsrutor</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Kort visar rymliga rutor. Kompakt gör dem mindre så att fler får plats på skärmen.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Storlek på genvägsrutor</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Kort (förval)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Kompakt</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Återställ utseendet</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Återställer tema, accent, bakgrund, hörn, täthet, textstorlek, rörelse och rutor till standardinställningarna.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Återställ utseendet till standardinställningarna</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Blå</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Violett</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Magenta</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Röd</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Bärnsten</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Grön</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Turkos</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Skiffer</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Glöm</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host är inte installerat.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal får ännu inte använda Portal AI Host. Använd knappen Tillåt.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Tillåt Automation Portal en gång, så svarar Portal AI Host för den. Inget lämnar din dator.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (på den här datorn)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Kontrollera igen</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>Tillåt</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Använd en API-nyckel…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>Använd ditt eget konto med ChatGPT, Claude, Gemini och andra.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Ditt eget AI-konto</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Kontrollerar…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Hämta Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Gratis och privat. En AI på den här datorn som alla Portal-appar delar.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Kör AI på den här datorn. Inget lämnar din dator.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Redo. Inget lämnar din dator.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Beskriv den, så behöver AI-åtgärderna en AI att prata med. Välj ett sätt att göra den redo.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Starta Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Startar Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>Gör AI redo</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Använd Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Använd Windows AI</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Väntar på att du godkänner i Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Inbyggt i den här datorn. Gratis och privat.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows AI på enheten</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows förbereder AI på enheten…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Redo att användas. Inget lämnar din dator. Modell: {0}. Läser upp till {1} token åt gången.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Redo att användas. Inget lämnar din dator.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Relaterade efter betydelse</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>Frågar {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>relaterad</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Konfigurera</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Välj hur Quick Run kan svara på frågor</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C kopiera      Esc stäng</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Skapa en genväg: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>Konfigurera AI…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>Fråga AI: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Öppnar ett utkast att kontrollera. Inget sparas eller körs.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Fråga</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Kopierat</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Kopiera</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Kopiera svaret</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Beskriv</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>AI-svar</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} relaterade efter betydelse</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (relaterad)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Skicka kraschrapporter så att vi snabbt kan åtgärda problem. De innehåller aldrig dina filer eller vad du skriver.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Vad som skickas</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Integritet</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Kraschrapporter</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Om appen kraschar skickas felinformationen så att vi kan åtgärda den. Dina genvägar, filer, urklipp och skriven text tas aldrig med, och sökvägar, namn och datornamnet tas bort. Om du stänger av det slutar skickandet direkt.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>Skicka _kraschrapporter</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Skicka kraschrapporter</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Vad som skickas</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Hej! Låt oss ta hand om de tråkiga delarna åt dig.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal gör små uppgifter till ett klick eller en snabbtangent: städa en mapp, kolla vädret, skriva en anteckning, byta namn på en hel samling filer.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Det tar ungefär en minut. Hoppa över när du vill.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Automation Portal-blixt omgiven av färgade prickar</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Bocka i dem du gillar. De är dina att ändra eller ta bort senare.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Färdiga genvägar finns i galleriet när du vill ha dem.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Prova en nu</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>En genväg är ett litet jobb som körs när du ber om det. Den här ändrar bara texten nedan. Den rör inget på datorn.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>Gör det högljutt</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Gör text till VERSALER</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Text att ändra</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Kör den</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Kör igen</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Kör…</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Resultat</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Den blev inte klar.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal finns vid klockan. Om du stänger det här fönstret fungerar dina snabbtangenter fortfarande.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Hoppa över för nu</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Kör igång</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Kom igång</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Steg {0} av {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Börja med rekommenderade inställningar</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Börja använda Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Rekommenderat</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Skicka kraschrapporter</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Så att vi snabbt kan åtgärda problem. Innehåller aldrig dina filer eller vad du skriver.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Du kan ändra allt detta senare i Inställningar.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Klar</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Se vädret för din stad med ett klick.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Skriv en anteckning på ett steg.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Hör dagens datum och väder, och öppna sedan dina första appar.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Konvertera avstånd, vikter, temperaturer och mer.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>Stäng dina arbetsappar och städa upp på en gång.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Klistra in text utan typsnitt, färger eller länkar.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>En ny version av Automation Portal är klar.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Öppna Microsoft Store-sidan för att uppdatera</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Senare</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Dölj tills en nyare version kommer</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Nyheter</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>Åtgärdat i den här versionen</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Nytt i den här versionen</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Okej</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Visa mig</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Öppna den del av appen som det handlar om</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Stäng det här fönstret</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Nyheter</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Nyheter</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Se vad som ändrats i den här versionen</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Nyheter</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Utforska Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Hoppa över rundturen</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Börja använda Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Visa mig</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>Stäng rundturen och öppna den här delen av appen</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Gå till föregående stopp</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Gå till nästa stopp</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>Stäng rundturen. Du kan öppna den igen under Inställningar, Om.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>Stäng rundturen och börja använda appen</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Gör rundturen</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>En kort titt på vad Automation Portal kan göra</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Gör en snabb rundtur först</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Stopp {0} av {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Skärmbilden finns inte</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Utforska Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Utforska Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Utforska</value>
+  </data>
+</root>

@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>今すぐテスト</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>開始方法をすべて検索</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>既にあるショートカット</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>新しいショートカット (手順は次に追加します)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>新しいショートカットの名前</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>ショートカットがまだありません。</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>この条件を削除</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>条件を追加</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>すぐに実行する</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>先に確認する (実行とスキップの通知)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>実行時に通知する</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>頻繁に実行されてもこの自動化を一時停止しない</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>実行を逃した場合は、Automation Portal の次回起動時または PC の復帰時に実行する</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>コマンド パレット</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>ショートカット、設定、コマンドを入力</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  実行または開く      Ctrl+Enter  編集      ↑ ↓  選択      Esc  閉じる</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>ショートカットをインポート</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>バックアップを選択</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>空から始める</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>毎朝、天気を教えて Outlook を開く</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>下書きを作成</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>ギャラリーを見る</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>または言葉で説明する機能を設定 (設定)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>新しいショートカットを記録</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>一度操作すると、Automation Portal がクリックと入力を書き留めます</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>インポート…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>.autoportal ファイルからショートカットを追加します。先に内容を確認でき、何も置き換えられません。</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>設定で管理</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>このショートカットでは今後確認しない</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>完全に削除</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>既定のアプリで開く</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>フォルダーで表示</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>もう一度実行</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Windows 起動時に開始</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>アイコンを変更</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>フォルダーを削除</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>準備する</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>既定として使用</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>例: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>モデルを検索</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>モデルを検索しています…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>確認しています…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>この自動化を再びオンにします。再びループしないよう、先に何を変更するか確認してください。</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>今すぐテスト</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>一時フォルダー内のサンプル ファイルで、ショートカットを 1 回実行します</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>その他のオプション</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>この自動化をオンまたはオフにする</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>アクティビティ…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>この自動化がいつ発動、実行、スキップされたかを確認します</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>ショートカットを開く</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>入手</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>ショートカット ファイルを開く</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>検索に一致するものがありません</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>スペルを確認するか、もっと短い言葉をお試しください。ギャラリーで既成のショートカットを探すこともできます。</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>ピン留めされたものはまだありません</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>よく使うショートカットをピン留めしましょう。ショートカットを右クリックして [ピン留め] を選びます。ピン留めしたショートカットは、時計の近くの Automation Portal アイコンをクリックしたときにも表示されます。</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>このフォルダーは空です</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>一覧からショートカットをここにドラッグするか、新しく作成してください。</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>何かを動かしてみましょう</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>ショートカットとは、Automation Portal がワンクリックで実行してくれる一連の手順です。ギャラリーの既成のものから始めるか、自分で作成してください。</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>今後表示しない</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>最初のショートカットができました。</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>ホットキーを設定</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>フォルダーに移動</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>ショートカットをエクスポート</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>履歴をクリア…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>バックアップの保存先を選択</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>ショートカットの保管先を選択</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>テキストがここに表示されます。</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>入力を入力</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>これに対して実行するショートカットを選択</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Automation Portal の記録</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>自動化を一時停止</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal は既に実行中ですが、応答がありません。通知領域を確認するか、タスク マネージャーから再起動してください。</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal でファイルに問題が発生しました</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Windows 起動時の開始はオフです</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>設定の [全般] で、Windows 起動時の開始を再びオンにしてください。</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal はそれを使用できませんでした</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>このショートカットは既に実行中です。</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>リンクからショートカットを実行できません</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>このショートカット ファイルを開きますか?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>リンクから開かれました。入手元が信頼できる場合のみ追加してください。</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>ap コマンドで送信されました。ご自身でそのコマンドを実行した場合のみ追加してください。</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>この PC 上の別のプログラムがこのショートカットを送信しました。そのプログラムが信頼できる場合のみ追加してください。</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>このショートカットを追加しますか?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>ショートカットを追加しました</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>このショートカットを保持しますか?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>保持する</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>削除する</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>選択したテキストに対して実行</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>このホットキーは使用できません。</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>選択したテキスト</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>AI に質問</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>詳細を表示</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>実行内容を表示</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" が初めて自動的に実行されました</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>問題なく実行されました。</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>何が起きたかを表示</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>この自動化を編集</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>別のトリガーを選択</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>別のショートカットを選択</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>自分で開始したショートカットが終了したときに音を鳴らす</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>今日</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>{0} 以降</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Ctrl、Alt、または Win も含めてください</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Automation Portal の起動後にこの自動化が行ったことを、新しい順に表示します。ここの内容はディスクに保存されません。</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>まだ何も起きていません。この自動化のトリガーが発動すると、ここに表示されます。</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>新しい自動化</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>自動化を編集</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>オンにする</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>検索に一致するものがありません。</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>このグループにはまだ何もありません。</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>条件 (省略可)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>条件を追加すると、適切なタイミングでのみ実行されます。すべての条件を満たす必要があります。</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>発生したとき</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>0 のままにすると毎回実行されます。続けて何度も発動するトリガーには、一時停止が便利です。</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>通常、10 分間に 60 回を超えて実行される自動化は、ループの可能性が高いため、Automation Portal が一時停止します。</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>予定の時刻に PC の電源が切れていたりスリープ中だったり、Automation Portal が実行されていなかったりした場合は、Automation Portal の起動時または PC の復帰時に 1 回実行されます。対象は過去 24 時間以内の時刻のみで、自動化の一時停止中に過ぎた時刻の分は実行されません。</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>実行内容を確認しています…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>復元するものがありません</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>バックアップから復元</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>追加する</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>説明して作る</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>既成のショートカットから始める</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>追加するものを選んで、好みに合わせて変更してください。</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>これらの項目に対してショートカットを実行しますか?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>このショートカットを実行しますか?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>今回のみ許可</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>最近削除した項目</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>このショートカットを使う自動化が再び動作します。</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>[最近削除した項目] にあるコピーを削除できなかったため、そこに引き続き表示されます。</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>最近削除した項目を空にする</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>一部のショートカットが残っています</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>開いているアプリ ウィンドウがありません。見せたいアプリを開いて、もう一度お試しください。</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>どのアプリを見せますか?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>記録を開始</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>手順を追加する前に、必要に応じて変更してください。各手順はコントロールを名前で探すため、ウィンドウが動いても動作します。</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>代わりに、押されたボタンのクリックを追加します。</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>記録を確認</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>手順を追加</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>毎回尋ねる</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>この画像を表示できませんでした。</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>ドラッグして範囲を選択します。Esc キーでキャンセルします。</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>目的の位置をクリックします。Esc キーでキャンセルします。</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>これらはすべて、後でエディターで変更できます。</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>実行内容を表示</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>実行されるとき</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>フォルダーを選択</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>先にフォルダーを選択してください。</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>始めにいくつか選択</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>今すぐ試す</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>あいさつする</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>通知を表示します</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>完了しませんでした</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>すぐ使えるようにする</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>どこからでも、入力するだけで何でも実行できます。</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>これらのキーを同時に押します。小さなバーが開き、入力してショートカットを検索して実行できます。</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Automation Portal へようこそ</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>ピン留めしたショートカット</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal ショートカット</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>デスクトップに追加しました</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>スタート メニューに追加しました</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>このトリガーは利用できなくなりました</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>たった今実行されました</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>開始のきっかけを選択してください。</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>新しいショートカットに名前を付けてください。</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>実行するショートカットを選択してください。</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>自動化を開始するきっかけを選択してください。</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>これを使う自動化が再び動作します。</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>不明な手順</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>どのアプリやフォルダーに対して動作するか不明な場合は、先に手順を確認してください。実行中はアプリを操作しないでください。</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>毎日</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>このショートカットは削除されました。再び実行するには、ライブラリの [最近削除した項目] から復元してください。</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>このショートカットは存在しないため、もう一度実行できません。</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>このショートカットを実行するファイルを選択してください。</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>このショートカットには処理対象が必要ですが、実行履歴には保存されません。代わりにライブラリまたは Quick Run から実行してください。</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>このショートカットをもう一度実行します。</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>項目がごみ箱に入れるには大きすぎ、完全に削除するか尋ねられた場合は、[いいえ] を選ぶと保持されます。</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>これらの変更は既に元に戻されています。</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>これらの変更はここから元に戻せません。変更内容は詳細を確認してください。</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>元に戻すと、安全に戻せるものが復元されます。それ以外は詳細を確認してください。</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>上書きされたものはありません。</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>通知を表示します。PC には何も変更を加えません。</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>ライブラリとバックアップ</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>その他のアプリとリンク</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>トレイで実行を続ける</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>ショートカット タイル</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>現在地</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>マウス ポインターの位置にクイック パネルを表示</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>ショートカットの保存場所</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>ショートカットを OneDrive に保管</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>ライブラリをバックアップ</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>ホットキーで開始したショートカットが終了したときに通知する</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>スマートフォン通知のトピック</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>高度なアクションを表示</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>ダウンロードを整理</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>しばらく前にダウンロードしたファイルを、種類または日付ごとにフォルダーへ振り分けます。</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>ファイルを変更します</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>フォルダー内で数日以上前 (1 日以上) のファイルを探します。未完了のダウンロードは除きます</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>種類または日付ごとにフォルダーへ移動します</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>移動した数を、元に戻すと一緒に通知します</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>画像を変換</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>選んだ画像を JPEG、PNG、GIF、BMP、TIFF として保存します。</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>コピーを作成します</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>選んだ、または送られた画像を受け取ります</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>それぞれを新しいファイルの種類で保存します</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>元のファイルの隣に保存し、同名がある場合は 名前 (2) になります</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>作業環境を準備</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>仕事用アプリ、フォルダー、Web ページをまとめて開きます。</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>ファイルは変更しません</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>選んだアプリを開く</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>エクスプローラーでフォルダーを開く</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Web ページを開く</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>フォルダーをバックアップ</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>毎日または毎週、日付付きの新しいフォルダーにフォルダーをコピーします。</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>コピーのみ</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>指定した時刻に、日付の名前のフォルダーを作成します</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>そこにフォルダーをコピーします</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>バックアップ内のものは削除も置換もしません</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>スプレッドシートからフォームに入力</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>CSV ファイルの各行を、他のアプリのフォームに入力します。</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>近日公開</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>記録中に、フォームを 1 回入力します</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>確認できるよう、1 行目を 1 手順ずつ繰り返します</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>再開するまで一時停止中</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>問題が発生しました。</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>バックアップが実行されませんでした</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>毎日決まった時刻</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>ホットキーを押したとき</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Windows のどこからでも</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>サインインしたとき</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>1 日の始まりのたびに</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>フォルダーにファイルが現れたとき</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>新しいダウンロードなど</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>アプリが開いたとき</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>次にアプリを選択します</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>USB デバイスが接続されたとき</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>または、接続されるあらゆるデバイス</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>すべてのショートカット</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>新しいフォルダー</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>実行履歴</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>新しいフォルダー</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>フォルダー名</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>フォルダーの名前を変更</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>新しいショートカット</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>今すぐライブラリをバックアップ</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>バックアップから復元…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>ショートカット ファイルをインポート…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>キーボード ショートカット</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal は引き続き実行中です</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>時計の近くのトレイ アイコンにあります。右クリックして終了できます。</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>AI アクションと Quick Run で使用する AI を選択します。キーはこの PC 上で暗号化して保存されます。</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>この PC 上 (無料でプライベート)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>この PC を確認しています…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>使用できます。無料でプライベートで、オフラインでも動作します。</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>この PC で利用できます。無料でプライベートで、オフラインでも動作します。</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows がオンデバイス AI を準備しています…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>使用できます。</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>オフです。</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>キーをここに貼り付け</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>キーを保存しました。</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>キーを削除しました。</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>デプロイ名</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>モデル (空のままにすると、下の 高速 / スマート / 最高 の選択を使用)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>この自動化はこの PC では実行できません。編集して別のトリガーを選択してください。</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>実行するショートカットが削除されました。自動化を編集して別のものを選択してください。</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>自動化を削除</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>この自動化を削除しますか? 実行するショートカットは削除されません。</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>テストが開始されませんでした</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>既に実行中です</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>テストは成功しました</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>テストはキャンセルされました</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>ショートカットを完了前に停止しました。</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>テストが完了しませんでした</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>ファイルを参照して管理します。</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>電源プランを切り替え、PC をスリープさせないようにします。</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Automation Portal と連携できる、同じ作者の他のアプリです。</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>実行内容</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>動作内容</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>不明な手順</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>ショートカットを追加</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>追加してスケジュール…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>緯度は 51.5 のような数値で入力してください。</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>経度は -0.12 のような数値で入力してください。</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>緯度は -90 から 90 の間で入力してください。</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>経度は -180 から 180 の間で入力してください。</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>最初の実行前</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>先に開く</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>フォルダーなし</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>デスクトップに追加</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>ショートカットの名前を変更</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>どこからでもこのショートカットを実行するキーを押してください。Ctrl、Alt、Win のいずれかを 1 つ以上使用してください。</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>まだ利用できません</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>ショートカットを削除</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>すべての実行</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>自分で停止</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>自動で停止</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>すべての実行元</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>リンクと他のアプリ</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>一致する実行がありません</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>まだ何も実行されていません</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>別の検索をお試しいただくか、すべての実行を表示してください。</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>ショートカットを実行すると、何が起きたかが手順ごとにここに表示されます。うまく動かなかった理由を簡単に調べられます。</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>もう一度実行…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>もう一度実行</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>このショートカットは存在しません。</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>完了しなかった手順を選択した状態でエディターを開きます。</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>失敗した手順で開く</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>ファイルの変更を元に戻す</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>この実行で作成、移動、名前変更、置換されたファイルを元に戻します。先に一覧が表示されます。</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>詳細をコピー</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>この実行の簡単な概要をコピーします。ファイル、パスワード、キーは含まれません。</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>変更されたファイル</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>この実行では失敗した手順が記録されていないため、手順は選択されません。</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>この実行以降にショートカットが変更され、その手順は含まれなくなりました。</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>実行履歴をクリア</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>実行履歴をすべて削除しますか? ショートカットには影響しません。</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>履歴をクリア</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows が Automation Portal による位置情報の使用を許可していません。Windows の設定の [プライバシーとセキュリティ] の [位置情報] でオンにするか、ここに数値を入力してください。</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>アプリはまだありません。</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>このショートカットのみ、確認なし</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>ライブラリをバックアップしました</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal はこの PC で OneDrive フォルダーを見つけられませんでした。先に OneDrive にサインインするか、[変更…] で任意のフォルダーを選択してください。</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>別のフォルダーを選択</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>そのフォルダーは現在のライブラリの中にあります。別の場所のフォルダーを選択してください。</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>空のフォルダーを選択</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>ライブラリの場所を変更</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal を再起動します</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>ショートカットは新しい場所に準備できました。最初からすべてが新しい場所を使うよう、Automation Portal を今すぐ再起動します。</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>スニペットを削除</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>日付の形式</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>形式 (例: yyyy-MM-dd、または dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>毎回尋ねる</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>新しいショートカット</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows が Automation Portal によるクリックや入力の検出を許可しませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>答え</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter で答えをコピー</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>選択したテキストについて</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>テスト用レコーダーからこんにちは</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Enter を押す</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>元に戻すものがありません</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>この実行によるファイルの変更は既に元に戻されています。</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>この実行では、Automation Portal が元に戻せるファイルは変更されていないか、記録が 1 週間より古くなっています。</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>この実行によるファイルの変更は、既に元に戻しています。</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>返信を入力</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>入力してください</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Ctrl または Shift キーを押しながらクリックすると、複数選択できます。</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>ファイルを選択</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>時刻 (省略可)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>12 や 3.5 のような数値を入力してください。</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Web アドレスではないようです。</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>自動化を再開</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>ショートカット名を入力</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>ショートカット名の数文字を入力</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>エディターを開きます</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run では実行できませんでした</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>問題が発生しました。もう一度お試しください。</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>パスワードは記録されません。</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>ピン留めをさらに表示…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal を開く</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>今すぐ再開</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>30 分間</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>1 時間</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>明日まで</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>再開するまで</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Automation Portal を終了</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>クリックして実行します。</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>連携アプリを更新</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>{0} を開く</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>Microsoft Store から {0} を入手</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>机で過ごす間の、休憩、集中、一時停止のリマインダー。</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Power Plan Manager を開けませんでした</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal はテスト用のサンプル ファイルを作成できませんでした。何も実行されておらず、ファイルは変更されていません。ディスクの空き領域を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>元に戻せませんでした</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>元に戻す途中で問題が発生しました。[実行履歴] で変更された内容を確認してください。</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>「{0}」という名前のものはありません。もっと短い言葉をお試しいただくか、ギャラリーで既成のショートカットを探してください。</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>手順 {0}/{1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0}/{1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>ここまで {0:N0}</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>"{0}" を実行中</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>{0} 個のショートカットを実行中</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" は完了しませんでした</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>次: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Enter キーで「{0}」という新しいショートカットを作成</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>実行 (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>この実行を停止</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>{0} を実行</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>{0} を停止</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>{0} を編集</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>{0} のその他のオプション</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>クリックで選択。Enter キーまたはダブルクリックで実行。Ctrl+E で編集。</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>ピン留め済み</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>1 回実行。最後: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>{0} 回実行。最後: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>今日 {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>昨日 {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>完了時と問題発生時に、それぞれ控えめな音を鳴らします。自動で開始されたショートカットは鳴らず、集中モードやフルスクリーン アプリの使用中はすべて鳴りません。</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus と Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>無料版</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>無料版をご利用中です。ショートカットは {0} 個まで作成できます。</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Plus をご利用中です。ショートカットは {0} 個まで作成できます。</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Pro をご利用中です。ショートカットを無制限に作成でき、自動で実行する自動化も利用できます。</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>ショートカットが {0} 個あります。すべて引き続き動作しますが、新しく作るには上限の引き上げが必要です。</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: ショートカットは {0} 個まで。</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: ショートカットが無制限になり、スケジュールや何かが起きたときに実行する自動化も使えます。</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Pro にアップグレード: ショートカットが無制限になり、自動化も使えます。今あるものはそのまま使えます。</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Plus を入手</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Pro を入手</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Pro にアップグレード</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{1} で {0}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>購入を復元</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>新しい PC などで、購入したものを Microsoft Store でもう一度確認します。</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Microsoft Store で確認しています…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Microsoft Store を開いています…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>ありがとうございます。{0} をご利用いただけます。</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store で購入を完了できませんでした。インターネット接続を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>購入内容は最新です。{0} をご利用中です。</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>購入内容を復元しました。{0} をご利用中です。</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Microsoft Store に接続できなかったため、何も変更されていません。インターネット接続を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>ショートカットをさらに作成</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>無料版で保存できるショートカットは {0} 個で、現在 {1} 個あります。すべて引き続き動作します。さらに作成するには、{2} 個まで作れる Plus、または無制限で自動化も使える Pro を入手してください。</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus で保存できるショートカットは {0} 個で、現在 {1} 個あります。すべて引き続き動作します。さらに作成するには、無制限で自動化も使える Pro にアップグレードしてください。</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>自動化は Pro に含まれます</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>自動化は、スケジュール、ファイルの到着、機器の接続などをきっかけに、ショートカットを自動で実行します。既にある自動化は引き続き実行されます。</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" を追加しました。スケジュールには Pro が必要なため、手動で開始したときのみ実行されます。</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>後で</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>14 日間の無料試用を開始(_S)</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>カードは不要です。ボタンを押したときに試用が始まり、それより前には始まりません。</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>14 日間の Pro 試用を開始しました。Pro のすべての機能をご利用いただけます。</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>試用を開始できませんでした。何も変更されていません。</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Pro 試用: 残り {0} 日</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Pro 試用: 残り 1 日</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>無料の Pro 試用中です。設定を開くとプランを確認できます。</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Pro の試用は明日終了します</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>作成したものはすべて残ります。試用終了後は、新しいショートカットと自動化がご利用のプランに従います。</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Pro の試用が終了しました</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>利用できなくなったもの: 新しい自動化の作成と、{0} 個を超える新しいショートカットの作成。</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>残るもの: 作成済みのショートカットと自動化はすべて残ります。引き続き実行でき、編集、実行、オン/オフの切り替え、削除も可能です。</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>ドロップした項目で "{0}" を実行しますか?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>ファイルを変更する、または他のアプリで動作する手順: {0}。</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>ドロップした項目:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (フォルダー)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…ほか {0} 件</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>"{0}" で受け取れないため除外:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" はドロップした項目をどれも受け取れないため、実行されませんでした。</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>{0} 回の実行で、見積もりでは {1} の節約になりました。</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>{0} 以降</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>M月d日</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>今月</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 分</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} 分</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 時間</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} 時間</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>ショートカットとギャラリーを検索</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>ショートカットとギャラリーを検索 (Ctrl+F)。Ctrl+K でコマンド パレットを開きます。</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>実行 (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>編集 (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>その他のオプション</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>その他のオプション</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>自動化</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>すべての自動化を一時停止</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>オフにするまで、すべての自動化の実行を停止します</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>新しい自動化(_N)</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>新しい自動化</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>すべての自動化が一時停止中です。オフにするまで、自動では何も実行されません。</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>詳細を表示(_D)</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>詳細を表示</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>自動で実行させましょう</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>自動化は、アプリを開いたとき、ヘッドホンを接続したとき、朝 8 時になったときなど、何かが起きたときにショートカットを実行します。</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>例: ヘッドホンを接続したら、音量を 40% にする。</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>新しい自動化(_A)</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>ギャラリーを見る(_B)</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>ギャラリーを見る</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>ギャラリー</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>既成のショートカットです。気に入ったものを追加して、自分好みにしましょう。</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>表示(_S)</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>既成のショートカットはまだありません</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Automation Portal と一緒にインストールされると、スターター用のショートカットがここに表示されます。それまでは、自分で作成するか、友人から受け取った .autoportal ファイルを開いてください。</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>ショートカットを作成(_C)</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>ショートカットを作成</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>.autoportal ファイルを開く(_O)…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>.autoportal ファイルを開く…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>すべてのショートカット</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>検索をクリア</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>最近削除した項目(_R)</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>最近削除した項目</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>過去 30 日間に削除したショートカットを復元します</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>新しいショートカット(_N)</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>新しいショートカット</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>新しいショートカットを作成 (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>元に戻す(_U)</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>ホットキーを設定</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>ホットキーを設定</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>詳細を表示(_D)</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>詳細を表示</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>ここから始める</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>ギャラリーを見る(_G)</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>ギャラリーを見る</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>非表示(_H)</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>非表示</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>この行を非表示にします。ギャラリーは常にサイドバーにあります。</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>新しいショートカットを作成</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>新しいショートカット</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>ギャラリーを見る(_B)</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>ギャラリーを見る</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>ショートカットを作成(_C)</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>ショートカットを作成</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>説明して作る(_S)</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>必要なショートカットを説明</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>やりたいことを一文で入力すると、下書きが作成されます</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>実行履歴</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>名前で検索</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>表示する実行の結果</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>表示する実行の開始元</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>その他: 履歴をクリア</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>まだ何も実行されていません</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>ショートカットを実行すると、何が起きたかが手順ごとにここに表示されます。うまく動かなかった理由を簡単に調べられます。</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>セクションへ移動</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>全般</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Windows 起動時に開始</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>サインイン時に Automation Portal をトレイで静かに開き、自動化をいつでも使える状態にします。</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Windows 起動時に開始</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>トレイで実行を続ける</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>ウィンドウを閉じても、Automation Portal はバックグラウンドで動作し続けます。オフにすると、閉じたときに終了します。</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>トレイで実行を続ける</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>ライトまたはダークを選ぶか、Windows の設定に従います。</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Windows の設定を使用</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>ショートカット タイル</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>色付きアイコンのニュートラルなカード、またはフルカラーのタイルから選べます。</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>ショートカット タイルのスタイル</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>ニュートラル</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>グラデーション</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>現在地</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>日の出と日没のトリガーや天気のアラートに使用します。空のままにすると、Windows が判断します。</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>都市 (省略可)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>自宅の都市</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>緯度</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>自宅の緯度 (-90 から 90)</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>経度</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>自宅の経度 (-180 から 180)</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>現在地を使用(_U)</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>現在地を使用</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>代わりに座標を入力(_E)</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>代わりに座標を入力</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>位置情報の問題</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>キーボード</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>どこからでもこれらのキーを押すと、ショートカットを検索して実行できます。</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>選択したテキストに対して実行</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>任意のアプリでテキストを選択し、これらのキーを押して、実行するショートカットを選びます。</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>マウス ポインターの位置にクイック パネルを表示</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>これらのキーを押すと、ピン留めしたショートカットがマウスの位置にポップアップします。</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>ライブラリとバックアップ</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>ショートカットの保存場所</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>開く(_O)</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>エクスプローラーでフォルダーを表示</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>変更(_H)…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>変更…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>ショートカットを OneDrive に保管</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>ライブラリを OneDrive にコピーして、すべての PC で同期された状態を保ちます。</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>OneDrive に移動(_M)</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>OneDrive に移動</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>ライブラリをバックアップ</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>ショートカット、フォルダー、自動化を 1 つの zip ファイルに保存します。ショートカットを戻すには、[バックアップから復元] を使います。現在あるものの隣に追加されます。</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>今すぐライブラリをバックアップ(_B)</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>今すぐライブラリをバックアップ</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>バックアップから復元(_R)…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>バックアップから復元…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>バックアップ内のショートカットを、現在あるものの隣に追加します。何も置き換えられません。</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>ホットキーで開始したショートカットが終了したときに通知する</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>キー操作で開始したショートカットの実行後に、小さな通知を表示します。</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>ホットキーで開始したショートカットが終了したときに通知する</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>自分で開始したショートカットが終了したときに音を鳴らす</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>自分で開始したショートカットが終了したときに音を鳴らす</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>スマートフォン通知のトピック</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>「自分のスマートフォンに送る」で使用します。推測されにくい非公開の名前を選び、スマートフォンの ntfy アプリでそれを購読してください。送信するメッセージは ntfy.sh サービスを経由するため、トピックを知っている人は誰でも読めます。</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>スマートフォン通知のトピック</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>例: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>その他のアプリとリンク</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal:// リンク</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Web ページや他のアプリは、これらのリンクでショートカットの実行を要求できます。ショートカットごとの設定: 詳細に「リンクから確認なしで実行」とあるショートカットを除き、リンクは先に確認します。ファイルや、ファイル パスのように見えるテキストを含むリンクは、常に確認します。</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>automationportal リンクに許可する操作</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>許可しない</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>毎回確認する</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>ショートカットごと</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>連携アプリ</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>ショートカットの実行を許可するアプリ</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>モデル</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>モデル レベル: 高速、スマート、最高</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>高速は費用が最も少なく、応答も最速です。最高は費用が最も高く、最も時間がかかります。モデル名を入力しない限り、すべてのプロバイダーで使用されます。</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>高速</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>スマート</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>最高</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>詳細設定</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>高度なアクションを表示</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>コマンドの実行など、上級者向けのアクションをアクション一覧に追加します。</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>高度なアクションを表示</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>問題の修正に役立てるためクラッシュ レポートを送信</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Automation Portal がクラッシュした場合にエラーの詳細を送信します。ショートカット、ファイル、クリップボード、入力したテキストは含まれず、ファイル パス、ユーザー名、PC 名は削除されます。</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>問題の修正に役立てるためクラッシュ レポートを送信</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal はお使いの PC 上で動作します。実行するショートカットが送信しない限り、何も外部に送信されません。</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>プライバシー ポリシー</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>データ フォルダーを開く(_D)</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>データ フォルダーを開く</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>ログ フォルダーを開く(_L)</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>ログ フォルダーを開く</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>ウェルカムをもう一度表示(_S)</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>ウェルカムをもう一度表示</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>スニペット</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>どこでも短いコードを入力すると、Automation Portal がより長いテキストに置き換えます。</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>新しいスニペット(_N)</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>新しいスニペット</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>スニペットを検索</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>スニペット</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>このスニペットをオンまたはオフにする</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>短いコード</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>短いコード</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>フォルダー (省略可)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>置換後のテキスト</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>表示するテキスト</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>置換後のテキスト</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>プレースホルダーを追加</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>今日の日付</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>日付の形式…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>yyyy-MM-dd など、選んだ形式での今日の日付</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>時刻</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>現在の時刻</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>クリップボード</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>最後にコピーしたもの</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>カーソル位置</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>テキストが表示された後にカーソルが置かれる位置</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>毎回尋ねる…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal が毎回質問し、その答えをここに入れます</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>大文字と小文字を区別する</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>オフの場合、;Hi と入力すると先頭が大文字に、;HI と入力するとすべて大文字になります。</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>スニペットを削除(_D)</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>スニペットを削除</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>入力の手間を省きましょう</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>;addr のような短いコードを作ると、入力するたびに住所全体に置き換わります。どのアプリでも使えます。</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>;date と ;addr を追加して始める</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>今日の日付用と住所用のスニペットを追加します</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>自分で作成(_C)</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>自分で作成</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal クイック パネル</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>ピン留め済み</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>自動化は一時停止中</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>ピン留めされたものはまだありません</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>お気に入りのショートカットをピン留めすると、ここに表示され、ワンクリックで実行できます。</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal を開く(_O)</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Automation Portal を開く</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>Quick Run(_Q)</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>記録(_R)</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>記録</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>クリックと入力から新しいショートカットを記録します</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>自動化を一時停止</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run 検索</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>ショートカット名を入力</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>見つかりませんでした。別の言葉をお試しいただくか、これを閉じてメイン ウィンドウの [新しいショートカット] または [ギャラリーを見る] を使ってください。</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>外観</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>アクセント カラー</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Windows のアクセント カラーに従うか、10 色から選びます。</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>アクセント カラー</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows のアクセント カラー</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>ウィンドウの背景</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>ウィンドウの背景の見た目を選びます。Windows のハイ コントラストでは、常に単色になります。</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>ウィンドウの背景</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (やわらかい、既定)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>アクリル (すりガラス)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>単色</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>角</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>ボタン、カード、タイルの丸みです。</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>角</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>丸め (既定)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>四角</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>より丸く</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>密度</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>テキストの周囲や行の間の余白の広さです。</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>密度</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>コンパクト</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>標準 (既定)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>ゆったり</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>文字サイズ</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Windows の文字サイズの設定に加えて、テキストを大きくまたは小さくします。</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>文字サイズ</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>動き</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>項目の表示や変化時に、アプリがどれだけ動くかを設定します。</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>動き</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Windows の設定に合わせる (既定)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>控えめ</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>ショートカット タイル</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>カードはゆとりのあるタイルで表示します。コンパクトは小さくして、画面により多く表示します。</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>ショートカット タイルのサイズ</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>カード (既定)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>コンパクト</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>外観をリセット</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>テーマ、アクセント カラー、背景、角、密度、文字サイズ、動き、タイルを既定に戻します。</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>外観を既定にリセット</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>ブルー</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>インディゴ</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>バイオレット</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>マゼンタ</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>レッド</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>オレンジ</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>アンバー</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>グリーン</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>ティール</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>スレート</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host がインストールされていません。</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal はまだ Portal AI Host で許可されていません。[許可] ボタンを使用してください。</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Automation Portal を一度許可すると、Portal AI Host が代わりに応答します。データが PC の外に出ることはありません。</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (この PC 上)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>再確認</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>許可</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>API キーを使用…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>ChatGPT、Claude、Gemini などのご自身のアカウントを使用します。</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>ご自身の AI アカウント</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>確認しています…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Portal AI Host を入手</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>無料でプライベート。この PC 上の 1 つの AI を、すべての Portal アプリで共有します。</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>この PC 上で AI を実行します。データがコンピューターの外に出ることはありません。</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>準備完了。データが PC の外に出ることはありません。</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>説明して作る機能や AI アクションには、対話する AI が必要です。準備する方法を 1 つ選んでください。</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Portal AI Host を起動</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Portal AI Host を起動しています…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>AI を準備</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Portal AI Host を使用</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Windows AI を使用</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Portal AI Host で許可されるのを待っています…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>この PC に組み込まれています。無料でプライベートです。</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows オンデバイス AI</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows がオンデバイス AI を準備しています…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>使用できます。データが PC の外に出ることはありません。モデル: {0}。一度に最大 {1} トークンを読み取ります。</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>使用できます。データが PC の外に出ることはありません。</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>意味が関連するもの</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>{0} に質問しています…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>関連</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Quick Run が質問に答える方法を選択します</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C コピー      Esc 閉じる</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>ショートカットを作成: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>AI を設定…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>AI に質問: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>確認用の下書きを開きます。何も保存や実行はされません。</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>質問</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>コピーしました</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>答えをコピー</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>AI の回答</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>意味が関連するもの {0} 件</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (関連)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>問題をすばやく修正できるよう、クラッシュ レポートを送信します。ファイルや入力した内容は含まれません。</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>送信される内容</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>プライバシー</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>クラッシュ レポート</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>アプリがクラッシュした場合、修正に役立てるためエラーの詳細を送信します。ショートカット、ファイル、クリップボード、入力したテキストは含まれず、パスや名前、PC 名は削除されます。オフにすると、すぐに送信が停止します。</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>クラッシュ レポートを送信(_C)</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>クラッシュ レポートを送信</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>送信される内容</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>こんにちは! 面倒な作業はおまかせください。</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal は、フォルダーの整理、天気の確認、メモの記録、ファイルの一括名前変更といった小さな作業を、ワンクリックまたはホットキー 1 つで実行できるようにします。</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>所要時間は 1 分ほどです。いつでもスキップできます。</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>色とりどりの点に囲まれた Automation Portal の稲妻</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>気に入ったものにチェックを付けてください。後から変更や削除ができます。</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>既成のショートカットは、いつでもギャラリーで見つかります。</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>今すぐ試してみる</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>ショートカットとは、依頼したときに実行される小さな作業です。これは下のテキストを変えるだけで、PC には何も影響しません。</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>大声にする</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>テキストを大文字に変換します</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>変更するテキスト</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>もう一度実行</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>実行中...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>完了しませんでした。</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal は時計の近くに常駐します。このウィンドウを閉じても、ホットキーは引き続き使えます。</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>今はスキップ</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>始めましょう</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>始める</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>手順 {0}/{1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>推奨設定で開始</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Automation Portal を使い始める</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>推奨</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>クラッシュ レポートを送信</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>問題をすばやく修正するためです。ファイルや入力した内容は含まれません。</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>これらはすべて、後で設定から変更できます。</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>お住まいの都市の天気を、ワンクリックで確認します。</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>ワンステップでメモを取ります。</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>今日の日付と天気を読み上げ、最初のアプリを開きます。</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>距離、重さ、温度などを変換します。</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>仕事用のアプリを閉じて、まとめて片付けます。</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>フォント、色、リンクなしでテキストを貼り付けます。</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Automation Portal の新しいバージョンが利用できます。</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Microsoft Store のページを開いて更新します</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>後で</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>より新しいバージョンが出るまで、これを非表示にします</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>新機能</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>このバージョンでの修正</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>このバージョンの新機能</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>了解</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>見てみる</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>これに関するアプリの部分を開きます</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>このウィンドウを閉じます</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>新機能(_W)</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>新機能</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>このバージョンでの変更点を確認します</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>新機能</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Automation Portal を見てみる</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>ツアーをスキップ</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Automation Portal を使い始める</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>見てみる</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>ツアーを閉じて、アプリのこの部分を開きます</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>前のステップに戻ります</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>次のステップに進みます</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>ツアーを閉じます。設定の [バージョン情報] からもう一度開けます。</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>ツアーを閉じて、アプリを使い始めます</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>ツアーを見る</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Automation Portal でできることを簡単にご紹介します</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>まず簡単なツアーを見る</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>ステップ {0}/{1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>スクリーンショットは利用できません</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Automation Portal を見てみる</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Automation Portal を見てみる</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>見てみる(_E)</value>
+  </data>
+</root>
