@@ -88,3 +88,19 @@ public class MenuMotionTests
         Assert.Equal(1.0, o.X);
     }
 }
+
+public class HoverOpenTests
+{
+    [Fact]
+    public void ClosesOnlyAHoverOpenedMenuThePointerNeverEntered()
+    {
+        Assert.True(HoverOpen.ShouldClose(true, false, false, false));
+        Assert.False(HoverOpen.ShouldClose(true, true, false, false));   // pointer went into the menu
+        Assert.False(HoverOpen.ShouldClose(false, false, false, false)); // opened by click or keyboard
+        Assert.False(HoverOpen.ShouldClose(true, false, true, false));   // still on the chevron
+        Assert.False(HoverOpen.ShouldClose(true, false, false, true));   // on the menu now
+    }
+
+    [Fact]
+    public void DelayIsAboutThreeHundredMilliseconds() => Assert.Equal(300, HoverOpen.DelayMs);
+}
