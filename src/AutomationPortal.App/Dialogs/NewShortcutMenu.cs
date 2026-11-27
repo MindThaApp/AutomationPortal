@@ -29,7 +29,9 @@ public static class NewShortcutMenu
     }
 
     /// <param name="describeFirst">Show only the description box (or its fallback), for the empty state's Describe it button.</param>
-    public static void Show(AppHost host, FrameworkElement anchor, Guid? folderId, bool describeFirst = false)
+    /// <param name="forAutomation">The description is for an automation ("every morning at 9 tidy Downloads"): the draft offers its automation first.</param>
+    /// <param name="onStart">Runs just before the draft opens (the wizard closes itself here).</param>
+    public static void Show(AppHost host, FrameworkElement anchor, Guid? folderId, bool describeFirst = false, bool forAutomation = false, Action? onStart = null)
     {
         var popup = new Popup
         {
@@ -72,9 +74,9 @@ public static class NewShortcutMenu
             stack.Children.Add(hint);
             var box = new Wpf.Ui.Controls.TextBox
             {
-                PlaceholderText = Strings.Get("NewShortcutMenu_EveryMorningTellMe"), AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 74,
+                PlaceholderText = Strings.Get(forAutomation ? "NewShortcutMenu_EveryMorningAt9" : "NewShortcutMenu_EveryMorningTellMe"), AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 74,
             };
-            AutomationProperties.SetName(box, "Describe the shortcut you want");
+            AutomationProperties.SetName(box, forAutomation ? Strings.Get("NewShortcutMenu_DescribeTheAutomationYou_Name") : "Describe the shortcut you want");
             stack.Children.Add(box);
             var create = new Wpf.Ui.Controls.Button
             {
@@ -86,7 +88,8 @@ public static class NewShortcutMenu
                 if (string.IsNullOrWhiteSpace(box.Text)) return;
                 var text = box.Text.Trim();
                 popup.IsOpen = false;
-                host.EditorLauncher.OpenNew(folderId, new EditorOpenOptions(Describe: text));
+                onStart?.Invoke();
+                host.EditorLauncher.OpenNew(folderId, new EditorOpenOptions(Describe: text, ForAutomation: forAutomation));
             }
             create.Click += (_, _) => Go();
             box.PreviewKeyDown += (_, e) => { if (e.Key == Key.Enter && Keyboard.Modifiers == ModifierKeys.Control) { e.Handled = true; Go(); } };

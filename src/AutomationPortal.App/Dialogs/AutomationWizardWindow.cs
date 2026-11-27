@@ -397,6 +397,15 @@ public sealed class AutomationWizardWindow : FluentWindow
         root.Children.Add(picker);
         root.Children.Add(create);
         root.Children.Add(nameBox);
+        var describe = new Wpf.Ui.Controls.Button
+        {
+            Content = Strings.Get("AutomationWizardWindow_DescribeWithAi"), Icon = new SymbolIcon(SymbolRegular.Sparkle20), Margin = new Thickness(28, 0, 0, 0),
+            ToolTip = Strings.Get("AutomationWizardWindow_DescribeWithAi_Tip"),
+        };
+        AutomationProperties.SetName(describe, Strings.Get("AutomationWizardWindow_DescribeWithAi"));
+        AutomationProperties.SetHelpText(describe, Strings.Get("AutomationWizardWindow_DescribeWithAi_Tip"));
+        describe.Click += (_, _) => NewShortcutMenu.Show(_host, describe, null, describeFirst: true, forAutomation: true, onStart: Close);
+        root.Children.Add(describe);
         Sync();
         return root;
     }

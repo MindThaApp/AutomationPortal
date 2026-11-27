@@ -12,7 +12,7 @@ namespace AutomationPortal.Editor;
 /// <param name="SampleMissing">Those of <paramref name="SampleFiles"/> that couldn't be found when the editor opened.</param>
 /// <param name="SampleFrom">The app that sent the files, shown in the note (null when unknown).</param>
 public sealed record EditorOpenOptions(string? Describe = null, bool Record = false, IReadOnlyList<string>? SampleFiles = null,
-    IReadOnlyList<string>? SampleMissing = null, string? SampleFrom = null, AiDraftResult? SuggestedFix = null);
+    IReadOnlyList<string>? SampleMissing = null, string? SampleFrom = null, AiDraftResult? SuggestedFix = null, bool ForAutomation = false);
 
 /// <summary>Entry point: opens the shortcut editor window.</summary>
 public static class ShortcutEditor
@@ -73,7 +73,7 @@ public static class ShortcutEditor
         EditorResources.Ensure();
         var vm = new EditorViewModel(context, working, isNew)
         {
-            AutoDescribe = options?.Describe, StartRecording = options?.Record ?? false,
+            AutoDescribe = options?.Describe, ForAutomation = options?.ForAutomation ?? false, StartRecording = options?.Record ?? false,
             SampleFiles = options?.SampleFiles is { Count: > 0 } sample ? sample : null,
             SampleMissing = options?.SampleMissing ?? Array.Empty<string>(), SampleFrom = options?.SampleFrom,
         };

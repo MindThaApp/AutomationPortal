@@ -71,6 +71,9 @@ internal sealed partial class EditorViewModel : ObservableObject
     public bool IsNew { get; }
     /// <summary>A description to turn into a draft as soon as the editor opens (the library's "Describe it").</summary>
     public string? AutoDescribe { get; set; }
+
+    /// <summary>The draft was asked for from the Automations page: the first suggested automation is the main choice.</summary>
+    public bool ForAutomation { get; set; }
     /// <summary>Start recording as soon as the editor opens ("Record a new shortcut").</summary>
     public bool StartRecording { get; set; }
     /// <summary>Files to try the shortcut on: Run here hands them to it as its input. Null for none (the input is empty, as before).</summary>

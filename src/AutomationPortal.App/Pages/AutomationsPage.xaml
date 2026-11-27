@@ -20,6 +20,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:ToggleSwitch x:Name="PauseToggle" Content="{local:Str AutomationsPage_PauseAllAutomations}" OffContent="Pause all automations" OnContent="Paused" Click="OnPauseToggle" Margin="0,0,16,0"
                                  ToolTip="{local:Str AutomationsPage_StopsEveryAutomationFrom_Tip}" />
+                <ui:Button Content="{local:Str AutomationsPage_DescribeIt}" Icon="{ui:SymbolIcon Sparkle24}" Click="OnDescribeIt" Margin="0,0,8,0"
+                           AutomationProperties.Name="{local:Str AutomationsPage_DescribeIt_Name}" AutomationProperties.HelpText="{local:Str AutomationsPage_DescribeIt_Tip}" ToolTip="{local:Str AutomationsPage_DescribeIt_Tip}" />
                 <ui:Button Content="{local:Str AutomationsPage_NewAutomation}" AutomationProperties.Name="{local:Str AutomationsPage_NewAutomation_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewAutomation" />
             </StackPanel>
         </Grid>

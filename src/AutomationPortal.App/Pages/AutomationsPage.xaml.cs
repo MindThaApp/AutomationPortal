@@ -229,6 +229,12 @@ public partial class AutomationsPage : UserControl, IAppPage
 
     private void OnNewAutomation(object sender, RoutedEventArgs e) => _ = AutomationWizardWindow.ShowAsync(_host, Owner);
 
+    private void OnDescribeIt(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement anchor) Dialogs.NewShortcutMenu.Show(_host, anchor, null, describeFirst: true, forAutomation: true);
+        else _host.EditorLauncher.OpenNew(null);
+    }
+
     private void OnBrowseGallery(object sender, RoutedEventArgs e) => (Owner as MainWindow)?.NavigateTo(new NavTarget(AppPage.Gallery));
 
     /// <summary>

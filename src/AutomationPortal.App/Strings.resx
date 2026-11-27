@@ -890,4 +890,11 @@
   <data name="MainWindow_Tour" xml:space="preserve"><value>Explore Automation Portal</value></data>
   <data name="SettingsPage_Tour_Name" xml:space="preserve"><value>Explore Automation Portal</value></data>
   <data name="SettingsPage_Tour" xml:space="preserve"><value>_Explore</value></data>
+  <data name="AutomationsPage_DescribeIt" xml:space="preserve"><value>De_scribe it</value></data>
+  <data name="AutomationsPage_DescribeIt_Name" xml:space="preserve"><value>Describe the automation you want</value></data>
+  <data name="AutomationsPage_DescribeIt_Tip" xml:space="preserve"><value>Say what should happen and when, like &quot;every morning at 9 tidy Downloads&quot;. You get a draft to check; nothing is saved or turned on until you say so.</value></data>
+  <data name="AutomationWizardWindow_DescribeWithAi" xml:space="preserve"><value>Describe it with AI</value></data>
+  <data name="AutomationWizardWindow_DescribeWithAi_Tip" xml:space="preserve"><value>Say what should happen and when, and get a draft shortcut with this automation to check. Nothing is saved or turned on until you say so.</value></data>
+  <data name="NewShortcutMenu_DescribeTheAutomationYou_Name" xml:space="preserve"><value>Describe the automation you want</value></data>
+  <data name="NewShortcutMenu_EveryMorningAt9" xml:space="preserve"><value>Every morning at 9, tidy my Downloads folder</value></data>
 </root>

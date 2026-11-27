@@ -79,9 +79,11 @@ internal sealed partial class ShortcutEditorWindow
             var ask = Ui.Text(Strings.Get("ShortcutEditorWindow_AddThisAutomation"), Ui.Primary, 13, FontWeights.SemiBold);
             ask.Margin = new Thickness(0, 0, 10, 0);
             row.Children.Add(ask);
-            foreach (var s in spec.Automations)
+            for (var i = 0; i < spec.Automations.Count; i++)
             {
-                var b = Ui.TextButton(s.Label, () => AddSuggested(s), SymbolRegular.Flash24);
+                var s = spec.Automations[i];
+                var b = Ui.TextButton(s.Label, () => AddSuggested(s), SymbolRegular.Flash24,
+                    SuggestionPicker.IsPrimary(i, _vm.ForAutomation) ? ControlAppearance.Primary : ControlAppearance.Secondary);
                 b.Margin = new Thickness(0, 0, 8, 4);
                 row.Children.Add(b);
             }
