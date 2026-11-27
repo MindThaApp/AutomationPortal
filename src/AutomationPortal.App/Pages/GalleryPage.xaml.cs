@@ -93,7 +93,7 @@ public partial class GalleryPage : UserControl, IAppPage
         footer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         if (GalleryCardInfo.NeededApp(s) is { } needed)
         {
-            var badge = Ui.Text("Needs " + needed, secondary: true, size: 13, weight: FontWeights.SemiBold, wrap: false);
+            var badge = Ui.Text(Strings.Get("GalleryPage_Needs") + needed, secondary: true, size: 13, weight: FontWeights.SemiBold, wrap: false);
             badge.VerticalAlignment = VerticalAlignment.Center;
             footer.Children.Add(badge);
         }
@@ -103,7 +103,7 @@ public partial class GalleryPage : UserControl, IAppPage
             var tick = Ui.Icon("Checkmark24", 14);
             tick.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "DsTextPrimaryBrush");
             added.Children.Add(tick);
-            var addedText = Ui.Text("Added", size: 13, weight: FontWeights.SemiBold);
+            var addedText = Ui.Text(Strings.Get("GalleryPage_Added"), size: 13, weight: FontWeights.SemiBold);
             addedText.Margin = new Thickness(4, 0, 0, 0);
             added.Children.Add(addedText);
             Grid.SetColumn(added, 1);
@@ -112,8 +112,8 @@ public partial class GalleryPage : UserControl, IAppPage
         else
         {
             var risky = ShortcutPackage.Inspect(s, _host.Actions).Count > 0;
-            var quick = new Wpf.Ui.Controls.Button { Content = risky ? "Add…" : "Add", Appearance = ControlAppearance.Secondary, Padding = new Thickness(12, 3, 12, 3), Opacity = 0 };
-            AutomationProperties.SetName(quick, "Add " + s.Name);
+            var quick = new Wpf.Ui.Controls.Button { Content = risky ? Strings.Get("GalleryPage_Add") : Strings.Get("GalleryPage_Add2"), Appearance = ControlAppearance.Secondary, Padding = new Thickness(12, 3, 12, 3), Opacity = 0 };
+            AutomationProperties.SetName(quick, Strings.Get("GalleryPage_Add3") + s.Name);
             quick.Click += (_, e) => { e.Handled = true; if (risky) _ = ShowDetailsAsync(item); else _ = AddAsync(item, withAutomation: false); };
             Grid.SetColumn(quick, 1);
             footer.Children.Add(quick);
@@ -183,7 +183,7 @@ public partial class GalleryPage : UserControl, IAppPage
             Content = t.ComingSoon ? Strings.Get("Templates_ComingSoon") : Strings.Get("GalleryPage_SetUp"), Appearance = t.ComingSoon ? ControlAppearance.Secondary : ControlAppearance.Primary,
             IsEnabled = !t.ComingSoon && item is not null, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 12, 0, 0),
         };
-        AutomationProperties.SetName(button, (t.ComingSoon ? "Coming soon: " : "Set up ") + t.Title);
+        AutomationProperties.SetName(button, (t.ComingSoon ? Strings.Get("GalleryPage_ComingSoon") : Strings.Get("GalleryPage_SetUp2")) + t.Title);
         if (item is not null) button.Click += (_, _) => _ = SetUpAsync(item, t);
         stack.Children.Add(button);
         card.Child = stack;
@@ -195,7 +195,7 @@ public partial class GalleryPage : UserControl, IAppPage
         var name = await TemplateSheet.ShowAsync(_host, Owner, item, t);
         if (name is null) return;
         _lastAddedName = name;
-        AddedText.Text = $"Added \"{name}\" to your shortcuts.";
+        AddedText.Text = Strings.Format("GalleryPage_Added0ToYour", name);
         AddedBar.Visibility = Visibility.Visible;
         Load();
     }
@@ -221,8 +221,8 @@ public partial class GalleryPage : UserControl, IAppPage
         var warnings = ShortcutPackage.Inspect(s, _host.Actions);
         if (warnings.Count > 0)
         {
-            var kinds = warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"{w.ActionId} (not available on this PC)" : w.Describe()).Distinct();
-            var warn = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(12, 10, 12, 10), CornerRadius = AutomationPortal.Editor.Radius.Card, Child = Ui.Text("Heads up: this shortcut includes " + string.Join(", ", kinds) + ".", size: 13) };
+            var kinds = warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? Strings.Format("GalleryPage_0NotAvailableOn", w.ActionId) : w.Describe()).Distinct();
+            var warn = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(12, 10, 12, 10), CornerRadius = AutomationPortal.Editor.Radius.Card, Child = Ui.Text(Strings.Get("GalleryPage_HeadsUpThisShortcut") + string.Join(", ", kinds) + ".", size: 13) };
             warn.SetResourceReference(Border.BackgroundProperty, "DsCautionBackgroundBrush");
             body.Children.Add(warn);
         }
@@ -231,7 +231,7 @@ public partial class GalleryPage : UserControl, IAppPage
         stepsHeading.Margin = new Thickness(0, 20, 0, 8);
         body.Children.Add(stepsHeading);
         var steps = s.Actions.Where(a => a.Flow is null or { Role: FlowRole.Start }).ToList();
-        if (steps.Count == 0) body.Children.Add(Ui.Text("This shortcut has no steps yet.", secondary: true));
+        if (steps.Count == 0) body.Children.Add(Ui.Text(Strings.Get("GalleryPage_ThisShortcutHasNo"), secondary: true));
         var n = 0;
         foreach (var a in steps)
         {
@@ -266,13 +266,13 @@ public partial class GalleryPage : UserControl, IAppPage
         if (copy.ImportQuestions.Count > 0 && !await AskImportQuestionsAsync(copy)) return;
         ImportResult result;
         try { result = _host.Library.Import(copy); }
-        catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't add it", ex.Message); return; }
+        catch (LibraryException ex) { await Prompts.MessageAsync(Owner, Strings.Get("GalleryPage_CouldnTAddIt"), ex.Message); return; }
 
         await _host.FinishImportAsync(result, Owner, warningsShown: true);   // the details sheet already listed any heads-up
         _lastAddedName = result.Shortcut.Name;
         AddedText.Text = result.RenamedFrom is null
-            ? $"Added \"{result.Shortcut.Name}\" to your shortcuts."
-            : $"Added \"{result.Shortcut.Name}\" to your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.";
+            ? Strings.Format("GalleryPage_Added0ToYour", result.Shortcut.Name)
+            : Strings.Format("GalleryPage_Added0ToYour2", result.Shortcut.Name, result.RenamedFrom);
         AddedBar.Visibility = Visibility.Visible;
         Load();   // the card now says Added
 
@@ -303,10 +303,10 @@ public partial class GalleryPage : UserControl, IAppPage
 
         var form = _host.ParameterForms.Create(parameters, values, _host.Services);
         var body = new StackPanel();
-        body.Children.Add(Ui.Text("A few quick questions so this shortcut works for you.", secondary: true, size: 13));
+        body.Children.Add(Ui.Text(Strings.Get("GalleryPage_AFewQuickQuestions"), secondary: true, size: 13));
         form.Element.Margin = new Thickness(0, 14, 0, 0);
         body.Children.Add(form.Element);
-        var dlg = new FlowDialog("Set up " + copy.Name, body, Strings.Get("GalleryPage_AddShortcut"), "Cancel", width: 520);
+        var dlg = new FlowDialog(Strings.Get("GalleryPage_SetUp2") + copy.Name, body, Strings.Get("GalleryPage_AddShortcut"), "Cancel", width: 520);
         if (!await dlg.ShowTopmostAsync(default, Owner)) return false;
 
         var answers = new List<ParamValue?>();
@@ -336,7 +336,7 @@ public partial class GalleryPage : UserControl, IAppPage
         }
         catch (Exception ex) when (ex is LibraryException or IOException)
         {
-            await Prompts.MessageAsync(Owner, "Couldn't open that file", ex.Message);
+            await Prompts.MessageAsync(Owner, Strings.Get("GalleryPage_CouldnTOpenThat"), ex.Message);
         }
     }
 }

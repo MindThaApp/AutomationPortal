@@ -46,7 +46,7 @@ public sealed class ShortcutQuickRunProvider : IQuickRunProvider
             var rest = query[(space + 1)..].Trim();
             var byAlias = shortcuts.FirstOrDefault(s => !string.IsNullOrWhiteSpace(s.Alias) && s.Alias!.Equals(first, StringComparison.CurrentCultureIgnoreCase));
             if (byAlias is not null && rest.Length > 0)
-                items.Add(Make(byAlias, 2000, $"Run with input: {rest}", context, rest, titleOverride: byAlias.Name));
+                items.Add(Make(byAlias, 2000, Strings.Format("ShortcutQuickRunProvider_RunWithInput0", rest), context, rest, titleOverride: byAlias.Name));
         }
 
         foreach (var s in shortcuts)
@@ -70,7 +70,7 @@ public sealed class ShortcutQuickRunProvider : IQuickRunProvider
 
     private QuickRunItem Make(Shortcut s, int score, string? subtitle, QuickRunContext context, string? presetFromAlias, string? titleOverride = null)
     {
-        var sub = subtitle ?? (!string.IsNullOrWhiteSpace(s.Alias) ? $"Quick Run name: {s.Alias}" : s.Description);
+        var sub = subtitle ?? (!string.IsNullOrWhiteSpace(s.Alias) ? Strings.Format("ShortcutQuickRunProvider_QuickRunName0", s.Alias) : s.Description);
         return new QuickRunItem
         {
             Id = "shortcut:" + s.Id,

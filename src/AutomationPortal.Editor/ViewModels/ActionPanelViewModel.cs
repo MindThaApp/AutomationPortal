@@ -196,7 +196,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
         if (q.Length > 0)
         {
             var results = ActionSearch.Search(_registry, q, advanced, _prefs.Favorites.ToHashSet(), _prefs.Recents);
-            list.Add(new PanelHeader { Title = results.Count == 0 ? "No actions match" : $"{results.Count} result{(results.Count == 1 ? "" : "s")}" });
+            list.Add(new PanelHeader { Title = results.Count == 0 ? Strings.Get("ActionPanelViewModel_NoActionsMatch") : $"{results.Count} result{(results.Count == 1 ? "" : "s")}" });
             list.AddRange(results.Select(d => new PanelAction(d, _prefs.Favorites.Contains(d.Id), showDescription: true, showGet: NeedsGet(d))));
         }
         else
@@ -204,26 +204,26 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
             var suggestions = ActionSearch.Suggest(_registry, _previousKind, _prefs.Recents, _prefs.Favorites.ToHashSet(), advanced, 6);
             if (suggestions.Count > 0)
             {
-                list.Add(new PanelHeader { Title = _previousKind is { } k && k != ContentKind.Any ? "Suggestions for what's next" : "Suggestions" });
+                list.Add(new PanelHeader { Title = _previousKind is { } k && k != ContentKind.Any ? Strings.Get("ActionPanelViewModel_SuggestionsForWhatS") : "Suggestions" });
                 list.AddRange(suggestions.Select(Wrap));
             }
             var favs = _prefs.Favorites.Select(_registry.Describe).Where(d => d is not null && (advanced || !d.IsAdvanced)).Select(d => d!).ToList();
             if (favs.Count > 0)
             {
-                list.Add(new PanelHeader { Title = "Favorites" });
+                list.Add(new PanelHeader { Title = Strings.Get("ActionPanelViewModel_Favorites") });
                 list.AddRange(favs.Select(Wrap));
             }
             var recents = _prefs.Recents.Select(_registry.Describe).Where(d => d is not null && (advanced || !d.IsAdvanced)).Select(d => d!).Take(5).ToList();
             if (recents.Count > 0)
             {
-                list.Add(new PanelHeader { Title = "Recent" });
+                list.Add(new PanelHeader { Title = Strings.Get("ActionPanelViewModel_Recent") });
                 list.AddRange(recents.Select(Wrap));
             }
             list.Add(new PanelHeader { Title = Strings.Get("ActionPanelViewModel_AllActions") });
             var logicShown = false;
             foreach (var cat in _registry.Categories(advanced))
             {
-                if (!logicShown && ActionCategories.IsLogic(cat)) { logicShown = true; list.Add(new PanelHeader { Title = "Logic" }); }
+                if (!logicShown && ActionCategories.IsLogic(cat)) { logicShown = true; list.Add(new PanelHeader { Title = Strings.Get("ActionPanelViewModel_Logic") }); }
                 var actions = OrderFlow(_registry.ByCategory(cat, advanced));
                 var expanded = _expanded.Contains(cat);
                 list.Add(new PanelCategory { Name = cat, ColorKey = ActionCategories.ColorOf(cat), Icon = CategoryIcon(cat), Count = actions.Count, Expanded = expanded });

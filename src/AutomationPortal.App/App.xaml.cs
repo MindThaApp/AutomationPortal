@@ -81,7 +81,7 @@ public partial class App : Application
         {
             AppLog.Write("Startup failed: " + ex);
             _ready.TrySetException(ex);
-            MessageBox.Show("Automation Portal couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Strings.Get("App_AutomationPortalCouldnT") + ex.Message + Strings.Get("App_DetailsWereSavedTo"), Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }
@@ -100,7 +100,7 @@ public partial class App : Application
         try
         {
             if (_host?.MainWindow is { IsVisible: true } w)
-                MessageBox.Show(w, "Something unexpected happened, but Automation Portal is still running.\n\n" + e.Exception.Message, Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(w, Strings.Get("App_SomethingUnexpectedHappenedBut") + e.Exception.Message, Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch { }
     }

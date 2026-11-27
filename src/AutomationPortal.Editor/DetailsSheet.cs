@@ -71,8 +71,8 @@ internal sealed class DetailsSheet : FluentWindow
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
         stack.Children.Add(Field("Description", desc));
 
-        var minutes = new Wpf.Ui.Controls.TextBox { Text = s.MinutesByHand?.ToString() ?? "", PlaceholderText = "Leave empty if you don't know", MaxLength = 4, Width = 220, HorizontalAlignment = HorizontalAlignment.Left };
-        System.Windows.Automation.AutomationProperties.SetName(minutes, "Minutes it takes by hand");
+        var minutes = new Wpf.Ui.Controls.TextBox { Text = s.MinutesByHand?.ToString() ?? "", PlaceholderText = Strings.Get("DetailsSheet_LeaveEmptyIfYou"), MaxLength = 4, Width = 220, HorizontalAlignment = HorizontalAlignment.Left };
+        System.Windows.Automation.AutomationProperties.SetName(minutes, Strings.Get("DetailsSheet_MinutesItTakesBy"));
         minutes.TextChanged += (_, _) =>
         {
             s.MinutesByHand = int.TryParse(minutes.Text.Trim(), out var n) && n is >= 1 and <= 1440 ? n : null;
@@ -86,11 +86,11 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_ShowInQuickRun"), Strings.Get("DetailsSheet_FindItByName"), s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
         // The saved flag stays in the library even though the Store package can't write to Send to.
         if (PackageCapabilities.UnvirtualizedWritesAllowed)
-        stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", Strings.Get("DetailsSheet_RunItOnFiles"), s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
+        stack.Children.Add(Toggle(Strings.Get("DetailsSheet_ShowInSendTo"), Strings.Get("DetailsSheet_RunItOnFiles"), s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
         // ---- advanced (collapsed) ----------------------------------------------------------
         var advanced = new StackPanel { Margin = new Thickness(0, 0, 0, 8) };
-        stack.Children.Add(new Expander { Header = "Advanced", Content = advanced, IsExpanded = false, Margin = new Thickness(0, 18, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch });
-        stack.Children.Add(Ui.Text("The hotkey and automations are in the \"When it runs\" card at the top of the editor.", Ui.Tertiary, 12, wrap: true));
+        stack.Children.Add(new Expander { Header = Strings.Get("DetailsSheet_Advanced"), Content = advanced, IsExpanded = false, Margin = new Thickness(0, 18, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch });
+        stack.Children.Add(Ui.Text(Strings.Get("DetailsSheet_TheHotkeyAndAutomations"), Ui.Tertiary, 12, wrap: true));
 
         // ---- input -------------------------------------------------------------------------
         advanced.Children.Add(Heading(Strings.Get("DetailsSheet_WhatItCanTake")));
@@ -172,13 +172,13 @@ internal sealed class DetailsSheet : FluentWindow
         share.Children.Add(HostButton(Strings.Get("DetailsSheet_AddToDesktop"), SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
         if (PackageCapabilities.UnvirtualizedWritesAllowed)
         share.Children.Add(HostButton(Strings.Get("DetailsSheet_AddToStartMenu"), SymbolRegular.Apps24, () => vm.Context.Host.AddToStartMenu(s)));
-        share.Children.Add(HostButton("Export…", SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
+        share.Children.Add(HostButton(Strings.Get("DetailsSheet_Export"), SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
         advanced.Children.Add(share);
         if (!PackageCapabilities.UnvirtualizedWritesAllowed)
             advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_StoreVersionNote"), Ui.Tertiary, 12, wrap: true));
 
         var footer = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(28, 8, 28, 18) };
-        var done = Ui.TextButton("Done", () => Close(), null, ControlAppearance.Primary);
+        var done = Ui.TextButton(Strings.Get("DetailsSheet_Done"), () => Close(), null, ControlAppearance.Primary);
         done.IsDefault = true;
         done.IsCancel = true;
         footer.Children.Add(done);
@@ -206,7 +206,7 @@ internal sealed class DetailsSheet : FluentWindow
         var copy = new Wpf.Ui.Controls.Button { Content = buttonText, Margin = new Thickness(8, 0, 0, 0) };
         copy.Click += (_, _) =>
         {
-            try { Clipboard.SetText(text); copy.Content = "Copied"; }
+            try { Clipboard.SetText(text); copy.Content = Strings.Get("DetailsSheet_Copied"); }
             catch (System.Runtime.InteropServices.COMException) { copy.Content = Strings.Get("DetailsSheet_CouldntCopy"); }
         };
         Grid.SetColumn(copy, 1);

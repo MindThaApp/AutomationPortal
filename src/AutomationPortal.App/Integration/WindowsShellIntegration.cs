@@ -249,15 +249,15 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     // ---- Desktop and Start menu --------------------------------------------------------------
 
-    public void AddToDesktop(Shortcut shortcut) { AddLink("desktop", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToYourDesktop"), $"\"{shortcut.Name}\" is now on your desktop."); }
+    public void AddToDesktop(Shortcut shortcut) { AddLink("desktop", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToYourDesktop"), Strings.Format("WindowsShellIntegration_0IsNowOn", shortcut.Name)); }
 
-    public void AddToStartMenu(Shortcut shortcut) { if (!_o.WriteStartAndSendTo) throw new NotSupportedException("Start menu links aren't available in the Microsoft Store version. Desktop links work here."); AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
+    public void AddToStartMenu(Shortcut shortcut) { if (!_o.WriteStartAndSendTo) throw new NotSupportedException(Strings.Get("WindowsShellIntegration_StartMenuLinksAren")); AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), Strings.Format("WindowsShellIntegration_0IsNowIn", shortcut.Name, ShellOptions.StartMenuFolderName)); }
 
     private bool _loggedNoStartSendTo;
 
     private void AddLink(string kind, Shortcut shortcut)
     {
-        if (!_o.Enabled) throw new NotSupportedException("This copy of Automation Portal is running in a test mode that doesn't change Windows.");
+        if (!_o.Enabled) throw new NotSupportedException(Strings.Get("WindowsShellIntegration_ThisCopyOfAutomation"));
         lock (_gate)
         {
             var state = LoadState();
@@ -303,7 +303,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         var args = RunArgs(s, kind) + (kind == "sendto" ? " --files" : "");
         try
         {
-            ShellLink.Create(path, _o.LauncherPath, args, _icons.Ensure(s.Icon, s.Color), s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\" with Automation Portal",
+            ShellLink.Create(path, _o.LauncherPath, args, _icons.Ensure(s.Icon, s.Color), s.Description is { Length: > 0 } d ? d : Strings.Format("WindowsShellIntegration_Run0WithAutomation", s.Name),
                 minimized: _o.Packaged);
         }
         catch (Exception ex) when (ex is COMException or IOException or UnauthorizedAccessException)
@@ -356,7 +356,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         if (_o.UseJumpList && JumpListSink is { } sink)
         {
             var pinned = shortcuts.Where(s => s.Pinned).Take(MaxJumpItems).Select(s =>
-                new JumpEntry(s.Name, s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\"", RunArgs(s, "jumplist"), SafeIcon(s))).ToList();
+                new JumpEntry(s.Name, s.Description is { Length: > 0 } d ? d : Strings.Format("WindowsShellIntegration_Run0", s.Name), RunArgs(s, "jumplist"), SafeIcon(s))).ToList();
             sink(pinned);
         }
     }
@@ -421,7 +421,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         }
         catch (Exception ex) when (ex is UnauthorizedAccessException or IOException or System.Security.SecurityException)
         {
-            failures.Add("right-click menu: " + ex.Message);
+            failures.Add(Strings.Get("WindowsShellIntegration_RightClickMenu") + ex.Message);
         }
     }
 

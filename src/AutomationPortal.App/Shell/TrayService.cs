@@ -199,7 +199,7 @@ public sealed class TrayService : IDisposable
         Add(menu, Strings.Get("AppHost_QuickRun"), SymbolRegular.Search24, () => _host.ShowQuickRun());
         Add(menu, Strings.Get("TrayService_OpenAutomationPortal"), SymbolRegular.Window24, () => _host.ShowMainWindow());
         // Hidden for now, as the record-and-repeat spec asks: recording starts from the editor and the New shortcut menu.
-        if (ShowRecordEntry) Add(menu, "Record a new shortcut", SymbolRegular.Record24, () => _host.RecordNewShortcut());
+        if (ShowRecordEntry) Add(menu, Strings.Get("TrayService_RecordANewShortcut"), SymbolRegular.Record24, () => _host.RecordNewShortcut());
 
         if (paused)
         {

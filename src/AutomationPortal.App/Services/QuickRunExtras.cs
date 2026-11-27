@@ -14,7 +14,7 @@ internal static class QuickRunText
     public static async Task CopyAsync(AppHost host, string text, string what)
     {
         await host.Services.Clipboard.SetAsync(ContentValue.Text(text));
-        host.Notifications.Show("Copied", $"{what} is on your clipboard.", null, null, silent: true);
+        host.Notifications.Show(Strings.Get("QuickRunExtras_Copied"), Strings.Format("QuickRunExtras_0IsOnYour", what), null, null, silent: true);
     }
 }
 
@@ -33,7 +33,7 @@ public sealed class CalculatorQuickRunProvider : IQuickRunProvider
         {
             new QuickRunItem
             {
-                Id = "calc", Title = "= " + text, Subtitle = q + "   (Enter copies the answer)", Icon = "Calculator24", Color = "orange", Score = 1500,
+                Id = "calc", Title = "= " + text, Subtitle = q + Strings.Get("QuickRunExtras_EnterCopiesTheAnswer2"), Icon = "Calculator24", Color = "orange", Score = 1500,
                 ActionLabel = "Copy", CopyText = text,
                 ExecuteAsync = _ => QuickRunText.CopyAsync(_host, text, Strings.Get("QuickRunExtras_TheAnswer")),
             },
@@ -87,7 +87,7 @@ public sealed class CurrencyQuickRunProvider : IQuickRunProvider
                 new QuickRunItem
                 {
                     Id = "currency", Title = $"{UnitConverter.FormatNumber(amount)} {from} = {result} {to}",
-                    Subtitle = r.Date is null ? Strings.Get("QuickRunExtras_EnterCopiesTheAnswer") : $"Rates from {r.Date}. Enter copies the answer", Icon = "Money24", Color = "green", Score = 1400,
+                    Subtitle = r.Date is null ? Strings.Get("QuickRunExtras_EnterCopiesTheAnswer") : Strings.Format("QuickRunExtras_RatesFrom0Enter", r.Date), Icon = "Money24", Color = "green", Score = 1400,
                     ActionLabel = "Copy", CopyText = result,
                     ExecuteAsync = _ => QuickRunText.CopyAsync(_host, result, Strings.Get("QuickRunExtras_TheAnswer")),
                 },
@@ -121,7 +121,7 @@ public sealed class DateQuickRunProvider : IQuickRunProvider
         {
             new QuickRunItem
             {
-                Id = "date", Title = text, Subtitle = q + "   (Enter copies the date)", Icon = "CalendarLtr24", Color = "red", Score = 1300,
+                Id = "date", Title = text, Subtitle = q + Strings.Get("QuickRunExtras_EnterCopiesTheDate"), Icon = "CalendarLtr24", Color = "red", Score = 1300,
                 ActionLabel = "Copy", CopyText = text,
                 ExecuteAsync = _ => QuickRunText.CopyAsync(_host, text, Strings.Get("QuickRunExtras_TheDate")),
             },
@@ -140,7 +140,7 @@ public sealed class WebSearchQuickRunProvider : IQuickRunProvider
         {
             new QuickRunItem
             {
-                Id = "web-search", Title = $"Search the web for \"{q}\"", Icon = "Search24", Color = "blue", Score = 10, ActionLabel = "Search",
+                Id = "web-search", Title = Strings.Format("QuickRunExtras_SearchTheWebFor", q), Icon = "Search24", Color = "blue", Score = 10, ActionLabel = "Search",
                 ExecuteAsync = _ =>
                 {
                     Process.Start(new ProcessStartInfo(SearchTheWebAction.BuildUrl("google", q).AbsoluteUri) { UseShellExecute = true })?.Dispose();
@@ -167,7 +167,7 @@ public sealed class AskAiQuickRunProvider : IQuickRunProvider
         {
             new QuickRunItem
             {
-                Id = "ask-ai", Title = $"Ask AI: \"{q}\"", Subtitle = hasSelection ? Strings.Get("QuickRunExtras_AboutTheSelectedText") : null, Icon = "Sparkle24", Color = "indigo", Score = 5,
+                Id = "ask-ai", Title = Strings.Format("QuickRunExtras_AskAI0", q), Subtitle = hasSelection ? Strings.Get("QuickRunExtras_AboutTheSelectedText") : null, Icon = "Sparkle24", Color = "indigo", Score = 5,
                 ActionLabel = "Ask", ExecuteAsync = inv => _host.AskAiAsync(q, inv.Input),
             },
         };

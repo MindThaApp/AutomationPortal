@@ -28,15 +28,15 @@ public static class ImportRestore
 
         IReadOnlyList<Shortcut> found;
         try { found = LibraryBackup.ReadShortcuts(backupFile); }
-        catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't open the backup", ex.Message); return; }
+        catch (LibraryException ex) { await Prompts.MessageAsync(owner, Strings.Get("ImportRestore_CouldnTOpenThe"), ex.Message); return; }
         if (found.Count == 0)
         {
-            await Prompts.MessageAsync(owner, Strings.Get("ImportRestore_NothingToRestore"), "That zip has no shortcuts in it. Choose a backup made with \"Back up library now\".");
+            await Prompts.MessageAsync(owner, Strings.Get("ImportRestore_NothingToRestore"), Strings.Get("ImportRestore_ThatZipHasNo"));
             return;
         }
 
         var body = new StackPanel();
-        body.Children.Add(Ui.Text("Ticked shortcuts are added next to the ones you have now. A name you already use gets a number, like \"Name (2)\". Nothing is replaced.", secondary: true, size: 13));
+        body.Children.Add(Ui.Text(Strings.Get("ImportRestore_TickedShortcutsAreAdded"), secondary: true, size: 13));
         var boxes = new List<(CheckBox Box, Shortcut Shortcut)>();
         var list = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
         foreach (var s in found.OrderBy(s => s.Name, StringComparer.CurrentCultureIgnoreCase))
@@ -59,9 +59,9 @@ public static class ImportRestore
                 await host.FinishImportAsync(result, owner, warningsShown: false);
                 added++;
             }
-            catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't add one", $"\"{shortcut.Name}\" wasn't added. {ex.Message}"); }
+            catch (LibraryException ex) { await Prompts.MessageAsync(owner, Strings.Get("ImportRestore_CouldnTAddOne"), Strings.Format("ImportRestore_0WasnTAdded", shortcut.Name, ex.Message)); }
         }
-        if (added > 0) host.Notifications.Show("Backup restored", added == 1 ? "1 shortcut was added to your library." : $"{added} shortcuts were added to your library.");
+        if (added > 0) host.Notifications.Show(Strings.Get("ImportRestore_BackupRestored"), added == 1 ? Strings.Get("ImportRestore_1ShortcutWasAdded") : Strings.Format("ImportRestore_0ShortcutsWereAdded", added));
     }
 
     private static string? ExistingFolder(string folder) => Directory.Exists(folder) ? folder : null;

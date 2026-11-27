@@ -18,7 +18,7 @@
                 <TextBlock x:Name="SubtitleText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <ui:ToggleSwitch x:Name="PauseToggle" Content="{local:Str AutomationsPage_PauseAllAutomations}" OffContent="Pause all automations" OnContent="Paused" Click="OnPauseToggle" Margin="0,0,16,0"
+                <ui:ToggleSwitch x:Name="PauseToggle" Content="{local:Str AutomationsPage_PauseAllAutomations}" OffContent="{local:Str AutomationsPage_PauseAllAutomations}" OnContent="{local:Str AutomationsPage_Paused}" Click="OnPauseToggle" Margin="0,0,16,0"
                                  ToolTip="{local:Str AutomationsPage_StopsEveryAutomationFrom_Tip}" />
                 <ui:Button Content="{local:Str AutomationsPage_NewAutomation}" AutomationProperties.Name="{local:Str AutomationsPage_NewAutomation_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewAutomation" />
             </StackPanel>

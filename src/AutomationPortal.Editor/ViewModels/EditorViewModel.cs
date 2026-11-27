@@ -369,9 +369,9 @@ internal sealed partial class EditorViewModel : ObservableObject
     public string? TryRename(string newName)
     {
         newName = newName.Trim();
-        if (newName.Length == 0) return "A shortcut needs a name.";
+        if (newName.Length == 0) return Strings.Get("EditorViewModel_AShortcutNeedsA");
         if (newName == Shortcut.Name) return null;
-        if (Context.Library.IsNameTaken(newName, Shortcut.Id)) return $"You already have a shortcut called \"{newName}\". Pick another name.";
+        if (Context.Library.IsNameTaken(newName, Shortcut.Id)) return Strings.Format("EditorViewModel_YouAlreadyHaveA", newName);
         Shortcut.Name = newName;
         MetadataEdited();
         return null;
@@ -399,8 +399,8 @@ internal sealed partial class EditorViewModel : ObservableObject
     private void MarkDirty()
     {
         _dirty = true;
-        if (DraftPending) { SaveStatus = "Draft, not saved yet"; return; }
-        SaveStatus = "Saving…";
+        if (DraftPending) { SaveStatus = Strings.Get("EditorViewModel_DraftNotSavedYet"); return; }
+        SaveStatus = Strings.Get("EditorViewModel_Saving");
         _saveTimer.Stop();
         _saveTimer.Start();
     }
@@ -424,7 +424,7 @@ internal sealed partial class EditorViewModel : ObservableObject
             return true;
         }
         catch (LibraryException ex) { SaveError = ex.Message; SaveStatus = Strings.Get("EditorViewModel_NotSaved"); return false; }
-        catch (Exception ex) { SaveError = "Couldn't save this shortcut: " + ex.Message; SaveStatus = Strings.Get("EditorViewModel_NotSaved"); return false; }
+        catch (Exception ex) { SaveError = Strings.Get("EditorViewModel_CouldnTSaveThis") + ex.Message; SaveStatus = Strings.Get("EditorViewModel_NotSaved"); return false; }
         finally { _saving = false; }
     }
 
@@ -556,16 +556,16 @@ internal sealed partial class EditorViewModel : ObservableObject
         string detail;
         if (isChange)
         {
-            headline ??= "Changed: check the changes before you run it";
+            headline ??= Strings.Get("EditorViewModel_ChangedCheckTheChanges");
             var counts = new List<string>();
-            if (added > 0) counts.Add(added == 1 ? "1 step added" : $"{added} steps added");
-            if (changed > 0) counts.Add(changed == 1 ? "1 step changed" : $"{changed} steps changed");
-            if (removed > 0) counts.Add(removed == 1 ? "1 step removed" : $"{removed} steps removed");
+            if (added > 0) counts.Add(added == 1 ? Strings.Get("EditorViewModel_1StepAdded") : Strings.Format("EditorViewModel_0StepsAdded", added));
+            if (changed > 0) counts.Add(changed == 1 ? Strings.Get("EditorViewModel_1StepChanged") : Strings.Format("EditorViewModel_0StepsChanged", changed));
+            if (removed > 0) counts.Add(removed == 1 ? Strings.Get("EditorViewModel_1StepRemoved") : Strings.Format("EditorViewModel_0StepsRemoved", removed));
             detail = string.Join(" ", new[] { result.Summary, counts.Count > 0 ? "(" + string.Join(", ", counts) + ")" : "" }.Where(s => s.Length > 0));
         }
         else
         {
-            headline ??= "Draft: check each step before you run it";
+            headline ??= Strings.Get("EditorViewModel_DraftCheckEachStep");
             detail = result.Summary;
         }
         AiNote = new AiNote(headline, detail, !isChange, isChange ? Array.Empty<SuggestedAutomation>() : result.Automations,
@@ -642,7 +642,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         SaveNow();
         var working = Doc.Shortcut.Clone();
         IsRunning = true;
-        StatusText = fromIndex is null ? "Running…" : Strings.Get("EditorViewModel_RunningFromHere");
+        StatusText = fromIndex is null ? Strings.Get("EditorViewModel_Running") : Strings.Get("EditorViewModel_RunningFromHere");
         _runTimer.Start();
         try { await Run.RunAsync(working, Context.Runner, fromIndex, input ?? SampleInput, previewPicks).ConfigureAwait(true); }
         finally
@@ -684,9 +684,9 @@ internal sealed partial class EditorViewModel : ObservableObject
         if (Run.IsPaused)
         {
             var title = Run.PausedUid is { } u && _rowByUid.TryGetValue(u, out var row) ? row.Descriptor?.Title : null;
-            StatusText = title is null ? "Paused. Press Next step to continue." : $"Paused before \"{title}\". Press Next step to continue.";
+            StatusText = title is null ? Strings.Get("EditorViewModel_PausedPressNextStep") : Strings.Format("EditorViewModel_PausedBefore0Press", title);
         }
-        else if (Run.IsRunning) StatusText = "Running…";
+        else if (Run.IsRunning) StatusText = Strings.Get("EditorViewModel_Running");
         FlushRunUpdates();
     }
 
@@ -699,13 +699,13 @@ internal sealed partial class EditorViewModel : ObservableObject
         var r = Run.LastResult;
         if (Run.IsRunning) return;
         LastResult = r;
-        if (r is null) { StatusText = "Ready"; return; }
+        if (r is null) { StatusText = Strings.Get("EditorViewModel_Ready"); return; }
         StatusText = r.Status switch
         {
-            RunStatus.Succeeded => $"Finished in {ActionRowViewModel.FormatDuration(r.Duration)}",
+            RunStatus.Succeeded => Strings.Format("EditorViewModel_FinishedIn0", ActionRowViewModel.FormatDuration(r.Duration)),
             RunStatus.Failed => r.ErrorMessage ?? Strings.Get("ResultsDrawer_SomethingWentWrong"),
-            RunStatus.Cancelled => "You stopped it",
-            RunStatus.Stopped => $"Stopped itself after {ActionRowViewModel.FormatDuration(r.Duration)}",
+            RunStatus.Cancelled => Strings.Get("EditorViewModel_YouStoppedIt"),
+            RunStatus.Stopped => Strings.Format("EditorViewModel_StoppedItselfAfter0", ActionRowViewModel.FormatDuration(r.Duration)),
             _ => "Done",
         };
     }
@@ -758,6 +758,6 @@ internal sealed partial class EditorViewModel : ObservableObject
         foreach (var r in Rows) r.SetRunState(null);
         Inspector.Clear();
         LastResult = null;
-        StatusText = "Ready";
+        StatusText = Strings.Get("EditorViewModel_Ready");
     }
 }

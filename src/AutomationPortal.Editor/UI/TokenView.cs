@@ -71,7 +71,7 @@ internal sealed class TokenView : Border
                     break;
             }
         }
-        ToolTip = missing ? $"{Param.Label} is needed. Click to set it." : $"{Param.Label}. Click to change.";
+        ToolTip = missing ? Strings.Format("TokenView_0IsNeededClick", Param.Label) : Strings.Format("TokenView_0ClickToChange", Param.Label);
         System.Windows.Automation.AutomationProperties.SetName(this, automation.ToString());
     }
 

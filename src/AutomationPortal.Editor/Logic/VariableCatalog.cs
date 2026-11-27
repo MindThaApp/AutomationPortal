@@ -56,9 +56,9 @@ public static class VariableCatalog
         result.Add(Special(VarRef.Clipboard, "Clipboard", "Clipboard24", "teal", ContentKind.Any));
         result.Add(Special(VarRef.CurrentDate, Strings.Get("VariableCatalog_CurrentDate"), "Calendar24", "red", ContentKind.Date));
         var kinds = open.Select(o => FlowIds.KindOf(o.Start.ActionId)).ToList();
-        if (kinds.Contains(FlowKind.RepeatEach)) result.Add(Special(VarRef.RepeatItem, "Repeat Item", "ArrowSync24", "orange", ContentKind.Any));
-        if (kinds.Contains(FlowKind.Repeat) || kinds.Contains(FlowKind.RepeatEach)) result.Add(Special(VarRef.RepeatIndex, "Repeat Index", "NumberSymbol24", "orange", ContentKind.Number));
-        if (kinds.Contains(FlowKind.Menu)) result.Add(Special(VarRef.MenuResult, "Menu Result", "AppsListDetail24", "blue", ContentKind.Text));
+        if (kinds.Contains(FlowKind.RepeatEach)) result.Add(Special(VarRef.RepeatItem, Strings.Get("VariableCatalog_RepeatItem"), "ArrowSync24", "orange", ContentKind.Any));
+        if (kinds.Contains(FlowKind.Repeat) || kinds.Contains(FlowKind.RepeatEach)) result.Add(Special(VarRef.RepeatIndex, Strings.Get("VariableCatalog_RepeatIndex"), "NumberSymbol24", "orange", ContentKind.Number));
+        if (kinds.Contains(FlowKind.Menu)) result.Add(Special(VarRef.MenuResult, Strings.Get("VariableCatalog_MenuResult"), "AppsListDetail24", "blue", ContentKind.Text));
         result.Add(Special(VarRef.Device, Strings.Get("VariableCatalog_DeviceDetails"), "Desktop24", "gray", ContentKind.Dictionary));
         result.AddRange(named);
         return result;
@@ -83,12 +83,12 @@ public static class VariableCatalog
                 else { label = a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName; icon = d.Icon; color = d.Color; kind = d.OutputKindOf(a); }
                 break;
             case VarKind.Named: label = r.Name ?? "Variable"; icon = "BracesVariable24"; color = "orange"; break;
-            case VarKind.Input: label = "Shortcut Input"; icon = "ArrowEnterLeft24"; color = "blue"; break;
+            case VarKind.Input: label = Strings.Get("VariableCatalog_ShortcutInput"); icon = "ArrowEnterLeft24"; color = "blue"; break;
             case VarKind.Clipboard: label = "Clipboard"; icon = "Clipboard24"; color = "teal"; break;
-            case VarKind.CurrentDate: label = "Current Date"; icon = "Calendar24"; color = "red"; kind = ContentKind.Date; break;
-            case VarKind.RepeatItem: label = "Repeat Item"; icon = "ArrowSync24"; color = "orange"; break;
-            case VarKind.RepeatIndex: label = "Repeat Index"; icon = "NumberSymbol24"; color = "orange"; kind = ContentKind.Number; break;
-            case VarKind.MenuResult: label = "Menu Result"; icon = "AppsListDetail24"; color = "blue"; kind = ContentKind.Text; break;
+            case VarKind.CurrentDate: label = Strings.Get("VariableCatalog_CurrentDate"); icon = "Calendar24"; color = "red"; kind = ContentKind.Date; break;
+            case VarKind.RepeatItem: label = Strings.Get("VariableCatalog_RepeatItem"); icon = "ArrowSync24"; color = "orange"; break;
+            case VarKind.RepeatIndex: label = Strings.Get("VariableCatalog_RepeatIndex"); icon = "NumberSymbol24"; color = "orange"; kind = ContentKind.Number; break;
+            case VarKind.MenuResult: label = Strings.Get("VariableCatalog_MenuResult"); icon = "AppsListDetail24"; color = "blue"; kind = ContentKind.Text; break;
             default: label = Strings.Get("VariableCatalog_DeviceDetails"); icon = "Desktop24"; color = "gray"; kind = ContentKind.Dictionary; break;
         }
         if (r.Property is { Length: > 0 } p) label += " › " + (p.StartsWith("key:", StringComparison.OrdinalIgnoreCase) ? p[4..] : p);

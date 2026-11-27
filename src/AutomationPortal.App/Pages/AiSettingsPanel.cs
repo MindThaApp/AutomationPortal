@@ -51,7 +51,7 @@ public sealed class AiSettingsPanel : UserControl
         var header = Text(Strings.Get("AiSettingsPanel_OnThisPCFree"), false, 14, FontWeights.SemiBold);
         header.Margin = new Thickness(0, 12, 0, 2);
         _root.Children.Add(header);
-        var hint = Text("Windows AI needs nothing to install on a Copilot+ PC. Otherwise install Ollama or LM Studio, start it, and download a model. Then turn it on here. Nothing leaves your PC.");
+        var hint = Text(Strings.Get("AiSettingsPanel_WindowsAINeedsNothing"));
         hint.Margin = new Thickness(0, 0, 0, 8);
         _root.Children.Add(hint);
         _root.Children.Add(HostCard(store, defaultId));
@@ -68,7 +68,7 @@ public sealed class AiSettingsPanel : UserControl
     private async Task RefreshHostAsync()
     {
         try { _hostState = await Store.Host.GetStateAsync(); }
-        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running"); }
+        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("AiSettingsPanel_PortalAIHostIsn")); }
         Rebuild();
     }
 
@@ -228,7 +228,7 @@ public sealed class AiSettingsPanel : UserControl
                 _windowsAiBusy = true;
                 _windowsAiProgress = Strings.Get("AiSettingsPanel_WindowsIsGettingOn");
                 Rebuild();
-                var progress = new Progress<double>(p => { _windowsAiProgress = $"Windows is getting on-device AI ready… {Math.Round(p * 100)}%"; Rebuild(); });
+                var progress = new Progress<double>(p => { _windowsAiProgress = Strings.Format("AiSettingsPanel_WindowsIsGettingOn2", Math.Round(p * 100)); Rebuild(); });
                 string? problem;
                 try { problem = await _windowsAi.EnsureReadyAsync(progress); }
                 catch (Exception ex) { problem = ex.Message; }
@@ -245,7 +245,7 @@ public sealed class AiSettingsPanel : UserControl
             right.Children.Add(make);
         }
         var toggle = new ToggleSwitch { IsEnabled = available, IsChecked = available && settings.Enabled, VerticalAlignment = VerticalAlignment.Center };
-        System.Windows.Automation.AutomationProperties.SetName(toggle, available ? "Turn on " + WindowsAiProvider.Info.Name : WindowsAiProvider.Info.Name + ", not available: " + state?.Reason);
+        System.Windows.Automation.AutomationProperties.SetName(toggle, available ? Strings.Get("AiSettingsPanel_TurnOn") + WindowsAiProvider.Info.Name : WindowsAiProvider.Info.Name + Strings.Get("AiSettingsPanel_NotAvailable") + state?.Reason);
         toggle.Click += (_, _) =>
         {
             var on = toggle.IsChecked == true;
@@ -270,10 +270,10 @@ public sealed class AiSettingsPanel : UserControl
         var isClaude = info.Id == AiProviderIds.Claude;
         if (!isClaude && !settings.Enabled) return Strings.Get("AiSettingsPanel_TurnedOff");
         var name = ShortName(info);
-        if (info.NeedsKey && !hasKey) return $"Add your key to start using {name}.";
-        if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(endpoint)) return $"Enter the address to start using {name}.";
-        if (info.UsesDeployment && string.IsNullOrWhiteSpace(settings.Deployment)) return $"Enter the deployment name to start using {name}.";
-        return $"Finish setting up {name} to start using it.";
+        if (info.NeedsKey && !hasKey) return Strings.Format("AiSettingsPanel_AddYourKeyTo", name);
+        if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(endpoint)) return Strings.Format("AiSettingsPanel_EnterTheAddressTo", name);
+        if (info.UsesDeployment && string.IsNullOrWhiteSpace(settings.Deployment)) return Strings.Format("AiSettingsPanel_EnterTheDeploymentName", name);
+        return Strings.Format("AiSettingsPanel_FinishSettingUp0", name);
     }
 
     /// <summary>"Claude (Anthropic)" becomes "Claude".</summary>
@@ -318,7 +318,7 @@ public sealed class AiSettingsPanel : UserControl
         if (!isClaude)
         {
             var toggle = new ToggleSwitch { IsChecked = settings.Enabled };
-            System.Windows.Automation.AutomationProperties.SetName(toggle, "Turn on " + info.Name);
+            System.Windows.Automation.AutomationProperties.SetName(toggle, Strings.Get("AiSettingsPanel_TurnOn") + info.Name);
             toggle.Click += (_, _) =>
             {
                 var on = toggle.IsChecked == true;
@@ -328,7 +328,7 @@ public sealed class AiSettingsPanel : UserControl
             };
             right.Children.Add(toggle);
         }
-        var expand = new Button { Content = _expanded.Contains(id) ? "Hide" : "Set up", Margin = new Thickness(8, 0, 0, 0) };
+        var expand = new Button { Content = _expanded.Contains(id) ? Strings.Get("AiSettingsPanel_Hide") : Strings.Get("AiSettingsPanel_SetUp"), Margin = new Thickness(8, 0, 0, 0) };
         expand.Click += (_, _) => { if (!_expanded.Remove(id)) _expanded.Add(id); Rebuild(); };
         right.Children.Add(expand);
         Grid.SetColumn(right, 1);
@@ -346,11 +346,11 @@ public sealed class AiSettingsPanel : UserControl
             var row = new Grid { Margin = new Thickness(0, 10, 0, 0) };
             row.ColumnDefinitions.Add(new ColumnDefinition());
             row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            var key = new Wpf.Ui.Controls.PasswordBox { PlaceholderText = store.GetKey(id) is null ? Strings.Get("AiSettingsPanel_PasteYourKeyHere") : "A key is saved. Paste a new one to replace it." };
-            System.Windows.Automation.AutomationProperties.SetName(key, info.Name + " key");
+            var key = new Wpf.Ui.Controls.PasswordBox { PlaceholderText = store.GetKey(id) is null ? Strings.Get("AiSettingsPanel_PasteYourKeyHere") : Strings.Get("AiSettingsPanel_AKeyIsSaved") };
+            System.Windows.Automation.AutomationProperties.SetName(key, info.Name + Strings.Get("AiSettingsPanel_Key"));
             row.Children.Add(key);
             var buttons = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(8, 0, 0, 0) };
-            var save = new Button { Content = "Save", Appearance = ControlAppearance.Primary };
+            var save = new Button { Content = Strings.Get("AiSettingsPanel_Save"), Appearance = ControlAppearance.Primary };
             save.Click += (_, _) =>
             {
                 if (key.Password.Trim().Length == 0) return;
@@ -362,7 +362,7 @@ public sealed class AiSettingsPanel : UserControl
             buttons.Children.Add(save);
             if (store.GetKey(id) is not null)
             {
-                var remove = new Button { Content = "Remove", Margin = new Thickness(8, 0, 0, 0) };
+                var remove = new Button { Content = Strings.Get("AiSettingsPanel_Remove"), Margin = new Thickness(8, 0, 0, 0) };
                 remove.Click += (_, _) => { Store.SetKey(id, null); _status[id] = Strings.Get("AiSettingsPanel_TheKeyWasRemoved"); Rebuild(); };
                 buttons.Children.Add(remove);
             }
@@ -374,7 +374,7 @@ public sealed class AiSettingsPanel : UserControl
         if (info.NeedsEndpoint || info.IsLocal)
         {
             var box = new TextBox { Text = store.EffectiveEndpoint(id), PlaceholderText = info.DefaultEndpoint ?? "https://", Margin = new Thickness(0, 10, 0, 0) };
-            System.Windows.Automation.AutomationProperties.SetName(box, info.Name + " address");
+            System.Windows.Automation.AutomationProperties.SetName(box, info.Name + Strings.Get("AiSettingsPanel_Address"));
             box.LostFocus += (_, _) => Store.Update(c => { var s = Store.Get(id); s.Endpoint = box.Text.Trim(); c.Providers[id] = s; });
             form.Children.Add(Text("Address", true, 12, FontWeights.SemiBold));
             ((TextBlock)form.Children[^1]).Margin = new Thickness(0, 10, 0, 0);
@@ -385,7 +385,7 @@ public sealed class AiSettingsPanel : UserControl
         if (info.UsesDeployment)
         {
             var box = new TextBox { Text = settings.Deployment ?? "", PlaceholderText = Strings.Get("AiSettingsPanel_ForExampleGpt4o") };
-            System.Windows.Automation.AutomationProperties.SetName(box, "Deployment name");
+            System.Windows.Automation.AutomationProperties.SetName(box, Strings.Get("AiSettingsPanel_DeploymentName"));
             box.LostFocus += (_, _) => Store.Update(c => { var s = Store.Get(id); s.Deployment = box.Text.Trim(); c.Providers[id] = s; });
             form.Children.Add(Text(Strings.Get("AiSettingsPanel_DeploymentName"), true, 12, FontWeights.SemiBold));
             ((TextBlock)form.Children[^1]).Margin = new Thickness(0, 10, 0, 4);
@@ -399,7 +399,7 @@ public sealed class AiSettingsPanel : UserControl
         modelRow.ColumnDefinitions.Add(new ColumnDefinition());
         modelRow.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         var model = new System.Windows.Controls.ComboBox { IsEditable = true, Text = settings.Model ?? "" };
-        System.Windows.Automation.AutomationProperties.SetName(model, info.Name + " model");
+        System.Windows.Automation.AutomationProperties.SetName(model, info.Name + Strings.Get("AiSettingsPanel_Model"));
         void SaveModel() => Store.Update(c => { var s = Store.Get(id); s.Model = string.IsNullOrWhiteSpace(model.Text) ? null : model.Text.Trim(); c.Providers[id] = s; });
         model.LostFocus += (_, _) => SaveModel();
         model.SelectionChanged += (_, _) => { if (model.SelectedItem is string) Dispatcher.BeginInvoke(SaveModel); };
@@ -416,9 +416,9 @@ public sealed class AiSettingsPanel : UserControl
                 var models = await Store.ListModelsAsync(id, default, refresh: true);
                 model.ItemsSource = models;
                 if (string.IsNullOrWhiteSpace(model.Text) && AiProviderStore.SuggestModel(models) is { } suggested) { model.Text = suggested; SaveModel(); }
-                modelNote.Text = models.Count == 0 ? "No models found. Download one first." : $"{models.Count} models found.";
+                modelNote.Text = models.Count == 0 ? Strings.Get("AiSettingsPanel_NoModelsFoundDownload") : Strings.Format("AiSettingsPanel_0ModelsFound", models.Count);
             }
-            catch (Exception ex) { modelNote.Text = ex is ActionException ? ex.Message : "Couldn't get the list of models. " + ex.Message; }
+            catch (Exception ex) { modelNote.Text = ex is ActionException ? ex.Message : Strings.Get("AiSettingsPanel_CouldnTGetThe") + ex.Message; }
             finally { refresh.IsEnabled = true; }
         };
         Grid.SetColumn(refresh, 1);
@@ -428,7 +428,7 @@ public sealed class AiSettingsPanel : UserControl
 
         // Test + default
         var actions = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 12, 0, 0) };
-        var test = new Button { Content = "Test" };
+        var test = new Button { Content = Strings.Get("AiSettingsPanel_Test") };
         var busy = new ProgressRing { IsIndeterminate = true, Width = 16, Height = 16, Visibility = Visibility.Collapsed, Margin = new Thickness(10, 0, 0, 0) };
         var result = Text(_status.GetValueOrDefault(id) ?? "");
         result.VerticalAlignment = VerticalAlignment.Center;
@@ -441,9 +441,9 @@ public sealed class AiSettingsPanel : UserControl
             try
             {
                 var r = await Store.TestConnectionAsync(id);
-                _status[id] = result.Text = (r.Ok ? "It works. " : "") + r.Message;
+                _status[id] = result.Text = (r.Ok ? Strings.Get("AiSettingsPanel_ItWorks") : "") + r.Message;
             }
-            catch (Exception ex) { result.Text = "Couldn't check. " + ex.Message; }
+            catch (Exception ex) { result.Text = Strings.Get("AiSettingsPanel_CouldnTCheck") + ex.Message; }
             finally { test.IsEnabled = true; busy.Visibility = Visibility.Collapsed; }
         };
         actions.Children.Add(test);

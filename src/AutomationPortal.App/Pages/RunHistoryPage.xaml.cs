@@ -45,22 +45,22 @@ public sealed class HistoryRowVm
 
     public static string SourceName(RunSource s) => s switch
     {
-        RunSource.Editor => "Run from the editor", RunSource.Library => "Run from your library", RunSource.Hotkey => "Run with a hotkey",
-        RunSource.Automation => "Run by an automation", RunSource.Cli => "Run from the command line", RunSource.SendTo => "Run from Explorer",
-        RunSource.QuickRun => "Run from Quick Run", RunSource.Link => "Run from a link", RunSource.Nested => "Run by another shortcut", _ => "Run by a reminder",
+        RunSource.Editor => Strings.Get("RunHistoryPage_RunFromTheEditor"), RunSource.Library => Strings.Get("RunHistoryPage_RunFromYourLibrary"), RunSource.Hotkey => Strings.Get("RunHistoryPage_RunWithAHotkey"),
+        RunSource.Automation => Strings.Get("RunHistoryPage_RunByAnAutomation"), RunSource.Cli => Strings.Get("RunHistoryPage_RunFromTheCommand"), RunSource.SendTo => Strings.Get("RunHistoryPage_RunFromExplorer"),
+        RunSource.QuickRun => Strings.Get("RunHistoryPage_RunFromQuickRun"), RunSource.Link => Strings.Get("RunHistoryPage_RunFromALink"), RunSource.Nested => Strings.Get("RunHistoryPage_RunByAnotherShortcut"), _ => Strings.Get("RunHistoryPage_RunByAReminder"),
     };
 
     public static string StatusName(RunStatus s) => s switch
     {
-        RunStatus.Succeeded => "Finished", RunStatus.Failed => "Didn't finish", RunStatus.Cancelled => "You stopped it", _ => "Stopped itself",
+        RunStatus.Succeeded => "Finished", RunStatus.Failed => "Didn't finish", RunStatus.Cancelled => Strings.Get("RunHistoryPage_YouStoppedIt"), _ => Strings.Get("RunHistoryPage_StoppedItself"),
     };
 
     public static string FriendlyTime(DateTimeOffset t)
     {
         var local = t.ToLocalTime();
         var today = DateTime.Now.Date;
-        if (local.Date == today) return "Today at " + local.ToString("t");
-        if (local.Date == today.AddDays(-1)) return "Yesterday at " + local.ToString("t");
+        if (local.Date == today) return Strings.Get("RunHistoryPage_TodayAt") + local.ToString("t");
+        if (local.Date == today.AddDays(-1)) return Strings.Get("RunHistoryPage_YesterdayAt") + local.ToString("t");
         return local.ToString("d") + " at " + local.ToString("t");
     }
 
@@ -177,8 +177,8 @@ public partial class RunHistoryPage : UserControl, IAppPage
         }
 
         // Steps
-        DetailsPanel.Children.Add(Heading(r.Steps.Count == 0 ? "Steps" : $"Steps ({r.Steps.Count})"));
-        if (r.Steps.Count == 0) DetailsPanel.Children.Add(Ui.Text("No steps were recorded for this run.", secondary: true, size: 13));
+        DetailsPanel.Children.Add(Heading(r.Steps.Count == 0 ? "Steps" : Strings.Format("RunHistoryPage_Steps0", r.Steps.Count)));
+        if (r.Steps.Count == 0) DetailsPanel.Children.Add(Ui.Text(Strings.Get("RunHistoryPage_NoStepsWereRecorded"), secondary: true, size: 13));
         var n = 0;
         foreach (var s in r.Steps)
         {
@@ -256,7 +256,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
             g.Children.Add(what);
             var path = row.Path;
             var show = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("ResultView_ShowInFolder"), Padding = new Thickness(0), IsEnabled = File.Exists(path) || Directory.Exists(path) };
-            AutomationProperties.SetName(show, "Show " + row.Name + " in its folder");
+            AutomationProperties.SetName(show, Strings.Get("RunHistoryPage_Show") + row.Name + Strings.Get("RunHistoryPage_InItsFolder"));
             show.Click += (_, _) => ShowInFolder(path);
             Grid.SetColumn(show, 2);
             g.Children.Add(show);
@@ -278,7 +278,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         ContentValue? input = null;
         if (askForFiles)
         {
-            var chosen = PickerHost.Current.Pick(new PickRequest(PickKind.OpenFiles, "Choose the files to run \"" + s.Name + "\" on", Owner: Window.GetWindow(this)));
+            var chosen = PickerHost.Current.Pick(new PickRequest(PickKind.OpenFiles, Strings.Get("RunHistoryPage_ChooseTheFilesTo") + s.Name + "\" on", Owner: Window.GetWindow(this)));
             if (chosen is not { Count: > 0 }) return;
             input = ContentValue.Files(chosen);
         }
@@ -305,7 +305,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var why = uid is null
             ? Strings.Get("RunHistoryPage_ThisRunDidntRecord")
             : Strings.Get("RunHistoryPage_TheShortcutHasChanged");
-        await Prompts.MessageAsync(Window.GetWindow(this), "Couldn't select the step", why);
+        await Prompts.MessageAsync(Window.GetWindow(this), Strings.Get("RunHistoryPage_CouldnTSelectThe"), why);
     }
 
     private void CopyDetails(RunRecord r)

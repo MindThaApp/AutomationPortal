@@ -85,14 +85,14 @@ public sealed class EditorHost : IEditorHost
             _ = AutomationWizardWindow.ShowAsync(_host, ActiveWindow(), null, automation);
     }
 
-    public void AddToDesktop(Shortcut shortcut) => Shell(() => _host.Shell.AddToDesktop(shortcut), "the desktop");
-    public void AddToStartMenu(Shortcut shortcut) => Shell(() => _host.Shell.AddToStartMenu(shortcut), "the Start menu");
+    public void AddToDesktop(Shortcut shortcut) => Shell(() => _host.Shell.AddToDesktop(shortcut), Strings.Get("EditorIntegration_TheDesktop"));
+    public void AddToStartMenu(Shortcut shortcut) => Shell(() => _host.Shell.AddToStartMenu(shortcut), Strings.Get("EditorIntegration_TheStartMenu"));
 
     private void Shell(Action add, string where)
     {
         try { add(); }
         catch (NotSupportedException ex) { _ = Prompts.MessageAsync(ActiveWindow(), Strings.Get("LibraryPage_NotAvailableYet"), ex.Message); }
-        catch (Exception ex) { _ = Prompts.MessageAsync(ActiveWindow(), $"Couldn't add it to {where}", ex.Message); }
+        catch (Exception ex) { _ = Prompts.MessageAsync(ActiveWindow(), Strings.Format("EditorIntegration_CouldnTAddIt", where), ex.Message); }
     }
 
     public void Export(Shortcut shortcut) => _host.ExportShortcut(shortcut, ActiveWindow());
@@ -156,7 +156,7 @@ public sealed class EditorHost : IEditorHost
             if (!session.Start())
             {
                 bar.Close();
-                await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? Strings.Get("EditorIntegration_WindowsWouldntLetAutomation"));
+                await Prompts.MessageAsync(editor, Strings.Get("EditorIntegration_CouldnTStartRecording"), session.StartError ?? Strings.Get("EditorIntegration_WindowsWouldntLetAutomation"));
                 return null;
             }
             steps = await session.Finished;

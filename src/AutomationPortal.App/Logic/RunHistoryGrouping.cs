@@ -40,13 +40,13 @@ public static class RunHistoryGrouping
             var folder = System.IO.Path.GetDirectoryName(c.Path.TrimEnd('\\', '/')) ?? "";
             var what = c.Kind switch
             {
-                FileChangeKind.Moved => "moved to " + folder,
-                FileChangeKind.Renamed => "renamed from " + (c.From is { Length: > 0 } f ? System.IO.Path.GetFileName(f) : "its old name"),
-                FileChangeKind.Created => "created in " + folder,
-                FileChangeKind.Recycled => "sent to the Recycle Bin",
+                FileChangeKind.Moved => Strings.Get("RunHistoryGrouping_MovedTo") + folder,
+                FileChangeKind.Renamed => Strings.Get("RunHistoryGrouping_RenamedFrom") + (c.From is { Length: > 0 } f ? System.IO.Path.GetFileName(f) : Strings.Get("RunHistoryGrouping_ItsOldName")),
+                FileChangeKind.Created => Strings.Get("RunHistoryGrouping_CreatedIn") + folder,
+                FileChangeKind.Recycled => Strings.Get("RunHistoryGrouping_SentToTheRecycle"),
                 FileChangeKind.Deleted => "deleted",
-                FileChangeKind.Replaced => "replaced in " + folder,
-                _ => "changed in " + folder,
+                FileChangeKind.Replaced => Strings.Get("RunHistoryGrouping_ReplacedIn") + folder,
+                _ => Strings.Get("RunHistoryGrouping_ChangedIn") + folder,
             };
             return new FileChangeRow(string.IsNullOrEmpty(name) ? c.Path : name, what, c.Path);
         }).ToList();

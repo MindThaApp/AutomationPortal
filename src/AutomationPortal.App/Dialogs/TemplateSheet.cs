@@ -65,7 +65,7 @@ public sealed class TemplateSheet
         body.Children.Add(head);
 
         var sentence = new WrapPanel { Margin = new Thickness(0, 18, 0, 0) };
-        AutomationProperties.SetName(sentence, "Set up " + _info.Title);
+        AutomationProperties.SetName(sentence, Strings.Get("TemplateSheet_SetUp") + _info.Title);
         foreach (var part in TemplateCatalog.Parse(_info.Sentence))
         {
             switch (part)
@@ -88,23 +88,23 @@ public sealed class TemplateSheet
         body.Children.Add(note);
 
         var scheduled = _info.Schedule is not null;
-        var dlg = _dialog = new FlowDialog("Set up " + _info.Title, body, PrimaryText(), "Cancel", width: 600);
+        var dlg = _dialog = new FlowDialog(Strings.Get("TemplateSheet_SetUp") + _info.Title, body, PrimaryText(), "Cancel", width: 600);
         var addUnscheduled = false;
         if (scheduled)
-            dlg.AddLeftButton("Add, don't schedule yet", () => { if (Missing() is null) { addUnscheduled = true; dlg.Accept(); } });
+            dlg.AddLeftButton(Strings.Get("TemplateSheet_AddDonTSchedule"), () => { if (Missing() is null) { addUnscheduled = true; dlg.Accept(); } });
         if (_info.ChangesFiles)
             dlg.AddLeftButton(Strings.Get("TemplateSheet_ShowWhatItWould"), () => _ = RefreshPreviewAsync(force: true));
         dlg.Validate = () => Missing() is null;
         UpdateState();
         if (!AsksForFiles) _ = RefreshPreviewAsync();
-        else _preview.Children.Add(Ui.Text("It works on the pictures you pick or send to it. Choose \"Show what it would do\" to pick some and see the new files it would make. Nothing is changed.", secondary: true, size: 13));
+        else _preview.Children.Add(Ui.Text(Strings.Get("TemplateSheet_ItWorksOnThe"), secondary: true, size: 13));
 
         if (!await dlg.ShowTopmostAsync(default, owner)) return null;
         _debounce.Stop();
         return await AddAsync(owner, schedule: !addUnscheduled);
     }
 
-    private string PrimaryText() => _repeat != TemplateRepeat.Off ? "Add and turn on" : "Add";
+    private string PrimaryText() => _repeat != TemplateRepeat.Off ? Strings.Get("TemplateSheet_AddAndTurnOn") : "Add";
 
     private static IEnumerable<string> Words(string text)
     {
@@ -137,8 +137,8 @@ public sealed class TemplateSheet
             case ParamType.Choice when param.Choices is { Count: > 0 } choices:
             {
                 var panel = new StackPanel { Orientation = Orientation.Horizontal };
-                var chosenButton = new Wpf.Ui.Controls.Button { Content = "Choose…", Margin = new Thickness(0, 4, 6, 4), Visibility = Visibility.Collapsed };
-                AutomationProperties.SetName(chosenButton, "Choose the folder");
+                var chosenButton = new Wpf.Ui.Controls.Button { Content = Strings.Get("TemplateSheet_Choose"), Margin = new Thickness(0, 4, 6, 4), Visibility = Visibility.Collapsed };
+                AutomationProperties.SetName(chosenButton, Strings.Get("TemplateSheet_ChooseTheFolder"));
                 var hasChosen = action!.ActionId == "file.getFolder" && choices.Any(c => c.Id == "chosen");
                 var combo = Combo(q.Question, choices.Select(c => (c.Id, c.Label)).ToList(), (current as ChoiceValue)?.Value ?? param.Default?.ToLiteralText() ?? "", v =>
                 {
@@ -159,7 +159,7 @@ public sealed class TemplateSheet
             case ParamType.Folder:
             {
                 var start = current?.ToLiteralText() ?? "";
-                var button = new Wpf.Ui.Controls.Button { Content = start.Length > 0 ? FolderLabel(start) : "choose a folder", Margin = new Thickness(0, 4, 6, 4) };
+                var button = new Wpf.Ui.Controls.Button { Content = start.Length > 0 ? FolderLabel(start) : Strings.Get("TemplateSheet_ChooseAFolder2"), Margin = new Thickness(0, 4, 6, 4) };
                 AutomationProperties.SetName(button, q.Question);
                 button.Click += (_, _) =>
                 {
@@ -208,7 +208,7 @@ public sealed class TemplateSheet
     {
         var panel = new StackPanel { Orientation = Orientation.Horizontal };
         var time = new Wpf.Ui.Controls.TextBox { Text = _time, Width = 72, Margin = new Thickness(0, 4, 6, 4), Visibility = _repeat == TemplateRepeat.Off ? Visibility.Collapsed : Visibility.Visible };
-        AutomationProperties.SetName(time, "At what time");
+        AutomationProperties.SetName(time, Strings.Get("TemplateSheet_AtWhatTime"));
         var at = Word("at");
         at.Visibility = time.Visibility;
         var combo = Combo(Strings.Get("TemplateSheet_WhenItRuns"), TemplateSchedule.Choices.Select(c => (c.Repeat.ToString(), c.Label)).ToList(), _repeat.ToString(), v =>
@@ -275,7 +275,7 @@ public sealed class TemplateSheet
     private string? Missing()
     {
         if (TemplateCatalog.Missing(_template, Answers()) is { } m) return m;
-        if (_repeat != TemplateRepeat.Off && TemplateSchedule.ParseTime(_time) is null) return "Type the time like 08:00.";
+        if (_repeat != TemplateRepeat.Off && TemplateSchedule.ParseTime(_time) is null) return Strings.Get("TemplateSheet_TypeTheTimeLike");
         foreach (var a in _template.Actions.Where(a => a.ActionId == "file.getFolder"))
         {
             var filled = Filled().FindAction(a.Uid);
@@ -299,7 +299,7 @@ public sealed class TemplateSheet
         await FilePlanView.ShowPreviewAsync(target, _host.Runner, Filled(), ContentValue.Empty);
         if (version != _previewVersion) return;   // a newer answer started another preview
         _preview.Children.Clear();
-        var label = Ui.Text("Preview, right now:", secondary: true, size: 12);
+        var label = Ui.Text(Strings.Get("TemplateSheet_PreviewRightNow"), secondary: true, size: 12);
         _preview.Children.Add(label);
         _preview.Children.Add(target);
     }
@@ -310,7 +310,7 @@ public sealed class TemplateSheet
         copy.ImportQuestions.Clear();   // answered here
         ImportResult result;
         try { result = _host.Library.Import(copy); }
-        catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't add it", ex.Message); return null; }
+        catch (LibraryException ex) { await Prompts.MessageAsync(owner, Strings.Get("TemplateSheet_CouldnTAddIt"), ex.Message); return null; }
         await _host.FinishImportAsync(result, owner, warningsShown: true);
 
         if (schedule && _repeat != TemplateRepeat.Off && TemplateSchedule.ParseTime(_time) is { } time
@@ -323,7 +323,7 @@ public sealed class TemplateSheet
                 return result.Shortcut.Name;
             }
             try { _host.Library.SaveAutomation(automation); }
-            catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Added, but couldn't turn on the schedule", ex.Message); }
+            catch (LibraryException ex) { await Prompts.MessageAsync(owner, Strings.Get("TemplateSheet_AddedButCouldnT"), ex.Message); }
         }
         return result.Shortcut.Name;
     }

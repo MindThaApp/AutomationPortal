@@ -13,12 +13,12 @@ public static class WhenSummary
 
     public static IReadOnlyList<PopularTrigger> Popular { get; } = new[]
     {
-        new PopularTrigger("time.daily", Strings.Get("WhenSummary_EveryDayAtA"), "Starts at 08:00, change it after"),
+        new PopularTrigger("time.daily", Strings.Get("WhenSummary_EveryDayAtA"), Strings.Get("WhenSummary_StartsAt0800")),
         new PopularTrigger("key.shortcut", Strings.Get("WhenSummary_WhenIPressA"), Strings.Get("WhenSummary_AnywhereInWindows")),
         new PopularTrigger("system.signIn", Strings.Get("WhenSummary_WhenISignIn"), Strings.Get("WhenSummary_EachTimeYouStart")),
         new PopularTrigger("file.changed", Strings.Get("WhenSummary_WhenAFileAppears"), Strings.Get("WhenSummary_SuchAsANew")),
         new PopularTrigger("app.opened", Strings.Get("WhenSummary_WhenAnAppOpens"), Strings.Get("WhenSummary_PickTheAppNext")),
-        new PopularTrigger("net.wifiJoined", "When I join Wi-Fi", "Any network, or one you pick"),
+        new PopularTrigger("net.wifiJoined", Strings.Get("WhenSummary_WhenIJoinWi"), Strings.Get("WhenSummary_AnyNetworkOrOne")),
         new PopularTrigger("device.usb", Strings.Get("WhenSummary_WhenAUSBDevice"), Strings.Get("WhenSummary_OrAnyDeviceThat")),
     };
 
@@ -33,9 +33,9 @@ public static class WhenSummary
         var set = new HashSet<string>(days.Select(d => d.ToLowerInvariant()));
         string[] week = { "mon", "tue", "wed", "thu", "fri" };
         string[] weekend = { "sat", "sun" };
-        if (set.Count == 0 || set.Count == 7) return "Every day at " + at;
-        if (set.SetEquals(week)) return "Every weekday at " + at;
-        if (set.SetEquals(weekend)) return "Every weekend day at " + at;
+        if (set.Count == 0 || set.Count == 7) return Strings.Get("WhenSummary_EveryDayAt") + at;
+        if (set.SetEquals(week)) return Strings.Get("WhenSummary_EveryWeekdayAt") + at;
+        if (set.SetEquals(weekend)) return Strings.Get("WhenSummary_EveryWeekendDayAt") + at;
         string[] order = { "mon", "tue", "wed", "thu", "fri", "sat", "sun" };
         var names = order.Where(set.Contains).Select(d => char.ToUpperInvariant(d[0]) + d.Substring(1));
         return "Every " + string.Join(", ", names) + " at " + at;

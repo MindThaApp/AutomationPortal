@@ -66,7 +66,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         var automations = _host.Library.Automations.OrderBy(a => a.CreatedAt).ToList();
         RowsHost.Children.Clear();
         EmptyState.Visibility = automations.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
-        SubtitleText.Text = automations.Count switch { 0 => "Run shortcuts automatically.", 1 => "1 automation", _ => $"{automations.Count} automations" };
+        SubtitleText.Text = automations.Count switch { 0 => Strings.Get("AutomationsPage_RunShortcutsAutomatically"), 1 => "1 automation", _ => $"{automations.Count} automations" };
         if (automations.Count == 0) return;
 
         var all = _host.History.Query(new RunHistoryFilter { Limit = JsonlRunHistory.MaxRecords }).Where(r => r.Source == RunSource.Automation).ToList();
@@ -110,7 +110,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         if (RanTimes.Text(ranCount, ranLast, DateTimeOffset.Now) is { } ranLine) text.Children.Add(Ui.Text(ranLine, secondary: true, size: 12));
         if (last is { Status: RunStatus.Failed, ErrorMessage: { Length: > 0 } err } && (a.LastRun is null || last.Started >= a.LastRun.Value.AddMinutes(-1)))
         {
-            var e = Ui.Text("The last run didn't finish: " + err, size: 12);
+            var e = Ui.Text(Strings.Get("AutomationsPage_TheLastRunDidn") + err, size: 12);
             e.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
             text.Children.Add(e);
             text.Children.Add(FixButton(Strings.Get("AutomationsPage_SeeWhatHappened"), SymbolRegular.History24, () => _host.OpenRunHistory(last.RunId)));
@@ -118,10 +118,10 @@ public partial class AutomationsPage : UserControl, IAppPage
         if (!a.Enabled && a.PausedReason is { Length: > 0 } paused)
         {
             var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 4, 0, 0) };
-            var p = Ui.Text("Paused: " + paused, size: 12);
+            var p = Ui.Text(Strings.Get("AutomationsPage_Paused2") + paused, size: 12);
             p.VerticalAlignment = VerticalAlignment.Center;
             p.SetResourceReference(TextBlock.ForegroundProperty, "DsCautionBrush");
-            var resume = new Wpf.Ui.Controls.Button { Content = "Resume", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(10, 0, 0, 0),
+            var resume = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationsPage_Resume"), Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(10, 0, 0, 0),
                 ToolTip = Strings.Get("AutomationsPage_TurnThisAutomationBack") };
             resume.Click += (_, _) => SetEnabled(a, true);
             row.Children.Add(p);
@@ -131,12 +131,12 @@ public partial class AutomationsPage : UserControl, IAppPage
         var status = _host.TriggerHost.Automations.GetStatus(a.Id);
         if (status.Error is { Length: > 0 })
         {
-            var err2 = Ui.Text("Problem: " + status.Error, size: 12);
+            var err2 = Ui.Text(Strings.Get("AutomationsPage_Problem") + status.Error, size: 12);
             err2.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
             text.Children.Add(err2);
             text.Children.Add(FixButton(Strings.Get("AutomationsPage_EditAutomation"), SymbolRegular.Edit24, () => _ = EditAsync(a, AutomationProblem.TriggerError)));
         }
-        else if (status.LastSkipReason is { Length: > 0 }) text.Children.Add(Ui.Text("Skipped last time: " + status.LastSkipReason, secondary: true, size: 12));
+        else if (status.LastSkipReason is { Length: > 0 }) text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_SkippedLastTime") + status.LastSkipReason, secondary: true, size: 12));
         if (model.TriggerMissing)
         {
             text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_ThisAutomationCantRun"), secondary: true, size: 12));
@@ -155,13 +155,13 @@ public partial class AutomationsPage : UserControl, IAppPage
         test.Click += (_, _) => _ = TestAsync(a);
         var more = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.MoreHorizontal24), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_MoreOptions") };
         System.Windows.Automation.AutomationProperties.SetName(more, Strings.Get("AutomationsPage_MoreOptions"));
-        AutomationProperties.SetName(more, "More options");
+        AutomationProperties.SetName(more, Strings.Get("AutomationsPage_MoreOptions"));
         more.Click += (_, _) => ShowMenu(a, more);
         var toggle = new ToggleSwitch { IsChecked = a.Enabled, Margin = new Thickness(10, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_TurnThisAutomationOn") };
-        AutomationProperties.SetName(toggle, "Enabled");
+        AutomationProperties.SetName(toggle, Strings.Get("AutomationsPage_Enabled"));
         toggle.Click += (_, _) => SetEnabled(a, toggle.IsChecked == true);
         var act = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationsPage_Activity"), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_SeeWhenThisAutomation") };
-        AutomationProperties.SetName(act, "Activity");
+        AutomationProperties.SetName(act, Strings.Get("AutomationsPage_Activity2"));
         act.Click += (_, _) => _ = AutomationActivityDialog.ShowAsync(Owner, _host.TriggerHost.Automations.Activity, a.Id, ActivityTitle(a));
         right.Children.Add(test);
         right.Children.Add(act);
@@ -197,18 +197,18 @@ public partial class AutomationsPage : UserControl, IAppPage
     private void ShowMenu(Automation a, FrameworkElement anchor)
     {
         var menu = new ContextMenu();
-        var edit = new Wpf.Ui.Controls.MenuItem { Header = "Edit", Icon = new SymbolIcon(SymbolRegular.Edit24) };
+        var edit = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("AutomationsPage_Edit"), Icon = new SymbolIcon(SymbolRegular.Edit24) };
         edit.Click += (_, _) => _ = EditAsync(a);
         var activity = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("AutomationsPage_Activity"), Icon = new SymbolIcon(SymbolRegular.History24) };
         activity.Click += (_, _) => _ = AutomationActivityDialog.ShowAsync(Owner, _host.TriggerHost.Automations.Activity, a.Id, ActivityTitle(a));
-        AutomationProperties.SetName(activity, "Activity");
+        AutomationProperties.SetName(activity, Strings.Get("AutomationsPage_Activity2"));
         var open = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("AutomationsPage_OpenTheShortcut"), Icon = new SymbolIcon(SymbolRegular.Open24) };
         open.Click += (_, _) => _host.EditorLauncher.Open(a.ShortcutId);
         open.IsEnabled = _host.Library.GetById(a.ShortcutId) is not null;
-        var delete = new Wpf.Ui.Controls.MenuItem { Header = "Delete", Icon = new SymbolIcon(SymbolRegular.Delete24) };
+        var delete = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("AutomationsPage_Delete"), Icon = new SymbolIcon(SymbolRegular.Delete24) };
         delete.Click += async (_, _) =>
         {
-            if (await Prompts.ConfirmAsync(Owner, Strings.Get("AutomationsPage_DeleteAutomation"), Strings.Get("AutomationsPage_DeleteThisAutomationThe"), "Delete", danger: true))
+            if (await Prompts.ConfirmAsync(Owner, Strings.Get("AutomationsPage_DeleteAutomation"), Strings.Get("AutomationsPage_DeleteThisAutomationThe"), Strings.Get("AutomationsPage_Delete"), danger: true))
                 _host.Library.DeleteAutomation(a.Id);
         };
         menu.Items.Add(edit);
@@ -243,8 +243,8 @@ public partial class AutomationsPage : UserControl, IAppPage
             .Where(x => x.Flow is not { Role: not FlowRole.Start })
             .Select(x => actions.Describe(x.ActionId) is { } d && d.IsDestructiveFor(x) ? d.Title : null)
             .OfType<string>().Distinct().ToList();
-        var text = $"This runs \"{shortcut.Name}\" once now. Only what the trigger hands over is a sample (files in a temporary folder); every step runs for real, so steps that use their own folders or files act on them.";
-        return risky.Count == 0 ? text : text + $"\n\nSteps that can change or delete things: {string.Join(", ", risky)}.";
+        var text = Strings.Format("AutomationsPage_ThisRuns0Once", shortcut.Name);
+        return risky.Count == 0 ? text : text + Strings.Format("AutomationsPage_StepsThatCanChange", string.Join(", ", risky));
     }
 
     private async Task TestAsync(Automation a)
@@ -262,17 +262,17 @@ public partial class AutomationsPage : UserControl, IAppPage
             return;
         }
         RunResult? result;
-        ShowTest("Testing…", $"Running \"{shortcut.Name}\" once on sample files.", null, SymbolRegular.Play24, running: true);
+        ShowTest(Strings.Get("AutomationsPage_Testing"), Strings.Format("AutomationsPage_Running0OnceOn", shortcut.Name), null, SymbolRegular.Play24, running: true);
         try { result = await _host.Runs.RunAsync(shortcut, SampleInputs.For(a, _host.Triggers, sandbox), RunSource.Automation); }
         finally { sandbox.Dispose(); }
-        var kept = sandbox.HasLeftovers ? $" Files it left in the test folder were kept: {sandbox.Folder}" : "";
+        var kept = sandbox.HasLeftovers ? Strings.Format("AutomationsPage_FilesItLeftIn", sandbox.Folder) : "";
 
         _testResult = result;
-        if (result is null) { ShowTest(Strings.Get("AutomationsPage_AlreadyRunning"), $"\"{shortcut.Name}\" is already running. Try again when it finishes.", null, SymbolRegular.Info24); return; }
+        if (result is null) { ShowTest(Strings.Get("AutomationsPage_AlreadyRunning"), Strings.Format("AutomationsPage_0IsAlreadyRunning", shortcut.Name), null, SymbolRegular.Info24); return; }
         switch (result.Status)
         {
             case RunStatus.Succeeded or RunStatus.Stopped:
-                ShowTest(Strings.Get("AutomationsPage_TheTestWorked"), $"\"{shortcut.Name}\" ran without problems." + kept, result, SymbolRegular.CheckmarkCircle24, success: true);
+                ShowTest(Strings.Get("AutomationsPage_TheTestWorked"), Strings.Format("AutomationsPage_0RanWithoutProblems", shortcut.Name) + kept, result, SymbolRegular.CheckmarkCircle24, success: true);
                 break;
             case RunStatus.Cancelled:
                 ShowTest(Strings.Get("AutomationsPage_TheTestWasCancelled"), Strings.Get("AutomationsPage_YouStoppedTheShortcut") + kept, null, SymbolRegular.DismissCircle24);

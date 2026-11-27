@@ -7,7 +7,7 @@ public static class SampleShortcut
 {
     public static readonly Guid SampleId = new("5a1e0c6e-3f0b-4d57-9a53-6a1f5c2e8d11");
 
-    public const string NotificationText = "It works. A shortcut is a small job Automation Portal does for you with one click.";
+    public static string NotificationText => Strings.Get("SampleShortcut_ItWorksAShortcut");
 
     public static Shortcut Create()
     {

@@ -81,7 +81,7 @@ public sealed class WelcomeWindow : FluentWindow
             _dots.Add(dot);
             _dotRow.Children.Add(dot);
         }
-        AutomationProperties.SetName(_dotRow, "Progress");
+        AutomationProperties.SetName(_dotRow, Strings.Get("WelcomeWindow_Progress"));
         AutomationProperties.SetAutomationId(_dotRow, "WelcomeProgress");
         Grid.SetRow(_dotRow, 1);
         root.Children.Add(_dotRow);

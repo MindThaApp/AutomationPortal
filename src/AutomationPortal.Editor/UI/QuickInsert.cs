@@ -37,7 +37,7 @@ internal static class QuickInsert
                 : ActionSearch.Search(vm.Context.Actions, q, advanced, vm.Prefs.Favorites.ToHashSet(), vm.Prefs.Recents).Take(30).ToList();
             if (q.Length == 0 && items.Count > 0)
             {
-                list.Items.Add(new ListBoxItem { Content = Ui.Text("Suggestions", Ui.Secondary, 12, FontWeights.SemiBold), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });
+                list.Items.Add(new ListBoxItem { Content = Ui.Text(Strings.Get("QuickInsert_Suggestions"), Ui.Secondary, 12, FontWeights.SemiBold), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });
             }
             if (q.Length > 0 && items.Count == 0)
                 list.Items.Add(new ListBoxItem { Content = Ui.Text(Strings.Get("QuickInsert_NoActionsMatch"), Ui.Secondary, 13), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });

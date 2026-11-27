@@ -162,14 +162,14 @@ public partial class LibraryPage : UserControl, IAppPage
 
         // Header
         var folder = _target.Page == AppPage.Folder ? _host.Library.Folders.FirstOrDefault(f => f.Id == _target.FolderId) : null;
-        TitleText.Text = searching ? "Search results" : _target.Page switch
+        TitleText.Text = searching ? Strings.Get("LibraryPage_SearchResults") : _target.Page switch
         {
             AppPage.Pinned => "Pinned",
             AppPage.Folder => folder?.Name ?? "Folder",
-            _ => "All Shortcuts",
+            _ => Strings.Get("LibraryPage_AllShortcuts"),
         };
         SubtitleText.Text = searching
-            ? (textMatches.Count == 1 ? $"1 shortcut matches \"{_target.Query}\"" : $"{textMatches.Count} shortcuts match \"{_target.Query}\"")
+            ? (textMatches.Count == 1 ? Strings.Format("LibraryPage_1ShortcutMatches0", _target.Query) : Strings.Format("LibraryPage_0ShortcutsMatch1", textMatches.Count, _target.Query))
               + (relatedMatches.Count > 0 ? ", " + string.Format(Strings.Get("LibraryPage_RelatedByMeaning"), relatedMatches.Count) : "")
             : (list.Count == 1 ? "1 shortcut" : $"{list.Count} shortcuts");
         ClearSearchButton.Visibility = searching ? Visibility.Visible : Visibility.Collapsed;
@@ -219,8 +219,8 @@ public partial class LibraryPage : UserControl, IAppPage
         var desc = Ui.Text(s.Description ?? "", secondary: true, size: 12);
         desc.MaxHeight = 34; desc.TextTrimming = TextTrimming.CharacterEllipsis; desc.Margin = new Thickness(0, 6, 0, 8);
         stack.Children.Add(desc);
-        var add = new Wpf.Ui.Controls.Button { Content = "Add", Icon = new SymbolIcon(SymbolRegular.Add16), Padding = new Thickness(12, 3, 12, 3), FontSize = 12 };
-        System.Windows.Automation.AutomationProperties.SetName(add, "Add " + s.Name);
+        var add = new Wpf.Ui.Controls.Button { Content = Strings.Get("LibraryPage_Add"), Icon = new SymbolIcon(SymbolRegular.Add16), Padding = new Thickness(12, 3, 12, 3), FontSize = 12 };
+        System.Windows.Automation.AutomationProperties.SetName(add, Strings.Get("LibraryPage_Add2") + s.Name);
         add.Click += (_, _) => _ = NewShortcutMenu.AddGalleryItemAsync(_host, item, Main);
         stack.Children.Add(add);
         card.Child = stack;
@@ -433,7 +433,7 @@ public partial class LibraryPage : UserControl, IAppPage
                     var failed = e.Result;
                     var partial = await Task.Run(() => _host.DescribeRun(failed));
                     ShowBar(BarLook.Problem, $"\"{e.ShortcutName}\" didn't finish",
-                        (failed.ErrorMessage ?? Strings.Get("UnattendedFailure_SomethingWentWrong")) + (partial is null ? "" : $" Before it stopped, it {partial.Summary}."),
+                        (failed.ErrorMessage ?? Strings.Get("UnattendedFailure_SomethingWentWrong")) + (partial is null ? "" : Strings.Format("LibraryPage_BeforeItStoppedIt", partial.Summary)),
                         partial is { CanUndo: true } ? () => UndoRunAsync(failed.RunId) : null, failed.RunId, failedShortcut: vm.Shortcut, failedRun: failed.ToRecord());
                 }
                 await Task.Delay(3000);
@@ -596,7 +596,7 @@ public partial class LibraryPage : UserControl, IAppPage
         int count;
         try { count = _host.LibraryStore.RecentlyDeleted.List().Count; }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException) { count = 0; }
-        RecentlyDeletedButton.Content = $"Recently deleted ({count})";
+        RecentlyDeletedButton.Content = Strings.Format("LibraryPage_RecentlyDeleted0", count);
         RecentlyDeletedButton.Visibility = count > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 
@@ -665,10 +665,10 @@ public partial class LibraryPage : UserControl, IAppPage
         foreach (var f in _host.Library.Folders) AddFolder(f.Name, f.Id);
         menu.Items.Add(move);
 
-        Add("Hotkey…", SymbolRegular.Keyboard24, () => _ = SetHotkeyAsync(s));
+        Add(Strings.Get("LibraryPage_Hotkey"), SymbolRegular.Keyboard24, () => _ = SetHotkeyAsync(s));
         menu.Items.Add(new Separator());
         Add(Strings.Get("LibraryPage_AddToDesktop"), SymbolRegular.Desktop24, () => _ = AddToDesktopAsync(s));
-        Add("Export…", SymbolRegular.ArrowExport24, () => Export(s));
+        Add(Strings.Get("LibraryPage_Export"), SymbolRegular.ArrowExport24, () => Export(s));
         menu.Items.Add(new Separator());
         Add("Delete", SymbolRegular.Delete24, () => _ = DeleteAsync(s), "Del");
         return menu;
@@ -679,7 +679,7 @@ public partial class LibraryPage : UserControl, IAppPage
         var copy = (_host.Library.GetById(s.Id) ?? s).Clone();
         change(copy);
         try { _host.Library.Save(copy); }
-        catch (LibraryException ex) { _ = Prompts.MessageAsync(Main, "Couldn't save", ex.Message); }
+        catch (LibraryException ex) { _ = Prompts.MessageAsync(Main, Strings.Get("LibraryPage_CouldnTSave"), ex.Message); }
     }
 
     private void Duplicate(Shortcut s)
@@ -696,13 +696,13 @@ public partial class LibraryPage : UserControl, IAppPage
         copy.Name = name;
         copy.SortOrder = _host.Library.All.Count == 0 ? 0 : _host.Library.All.Max(x => x.SortOrder) + 1;
         try { _host.Library.Save(copy); }
-        catch (LibraryException ex) { _ = Prompts.MessageAsync(Main, "Couldn't duplicate", ex.Message); }
+        catch (LibraryException ex) { _ = Prompts.MessageAsync(Main, Strings.Get("LibraryPage_CouldnTDuplicate"), ex.Message); }
     }
 
     private async Task RenameAsync(Shortcut s)
     {
-        var name = await Prompts.AskTextAsync(Main, Strings.Get("LibraryPage_RenameShortcut"), "Name", s.Name, "Rename",
-            n => _host.Library.IsNameTaken(n, s.Id) ? $"A shortcut named \"{n}\" already exists. Choose a different name." : null);
+        var name = await Prompts.AskTextAsync(Main, Strings.Get("LibraryPage_RenameShortcut"), Strings.Get("LibraryPage_Name"), s.Name, Strings.Get("LibraryPage_Rename"),
+            n => _host.Library.IsNameTaken(n, s.Id) ? Strings.Format("LibraryPage_AShortcutNamed0", n) : null);
         if (name is not null) Mutate(s, c => c.Name = name);
     }
 
@@ -731,7 +731,7 @@ public partial class LibraryPage : UserControl, IAppPage
     {
         try { _host.Shell.AddToDesktop(s); }
         catch (NotSupportedException ex) { await Prompts.MessageAsync(Main, Strings.Get("LibraryPage_NotAvailableYet"), ex.Message); }
-        catch (Exception ex) { await Prompts.MessageAsync(Main, "Couldn't add it to the desktop", ex.Message); }
+        catch (Exception ex) { await Prompts.MessageAsync(Main, Strings.Get("LibraryPage_CouldnTAddIt"), ex.Message); }
     }
 
     private void Export(Shortcut s)
@@ -739,7 +739,7 @@ public partial class LibraryPage : UserControl, IAppPage
         if (PickerHost.Current.PickPath(new PickRequest(PickKind.SaveFile, Strings.Get("LibraryPage_ExportShortcut"), "Automation Portal shortcut (*.autoportal)|*.autoportal", SuggestedName: Sanitize(s.Name) + ".autoportal", Owner: Main)) is not { } file) return;
         try { TestRootGuard.Check(file); File.WriteAllText(file, _host.Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
-        { _ = Prompts.MessageAsync(Main, "Couldn't export", $"Automation Portal couldn't save the file. {ex.Message}"); }
+        { _ = Prompts.MessageAsync(Main, Strings.Get("LibraryPage_CouldnTExport"), Strings.Format("LibraryPage_AutomationPortalCouldnT", ex.Message)); }
     }
 
     private static string Sanitize(string name)
@@ -754,13 +754,13 @@ public partial class LibraryPage : UserControl, IAppPage
         var automations = _host.Library.Automations.Count(a => a.ShortcutId == s.Id);
         if (automations > 0)
         {
-            var msg = $"Move \"{s.Name}\" to Recently deleted? It's kept on this PC for {RecentlyDeleted.KeepFor.Days} days, so you can restore it until then.";
-            msg += $"\n\n{(automations == 1 ? "An automation uses it. It stays in your list but won't run" : automations + " automations use it. They stay in your list but won't run")} while the shortcut is deleted. Restoring the shortcut makes {(automations == 1 ? "it" : "them")} work again.";
-            if (!await Prompts.ConfirmAsync(Main, Strings.Get("LibraryPage_DeleteShortcut"), msg, "Delete", danger: true)) return;
+            var msg = Strings.Format("LibraryPage_Move0ToRecently", s.Name, RecentlyDeleted.KeepFor.Days);
+            msg += Strings.Format("LibraryPage_0WhileTheShortcut", (automations == 1 ? Strings.Get("LibraryPage_OneAutomationUsesIt") : Strings.Format("LibraryPage_ManyAutomationsUseIt", automations)), (automations == 1 ? "it" : "them"));
+            if (!await Prompts.ConfirmAsync(Main, Strings.Get("LibraryPage_DeleteShortcut"), msg, Strings.Get("LibraryPage_Delete"), danger: true)) return;
         }
         var since = DateTimeOffset.Now;
         try { _host.Library.Delete(s.Id); }
-        catch (LibraryException ex) { await Prompts.MessageAsync(Main, "Couldn't delete the shortcut", ex.Message); return; }
+        catch (LibraryException ex) { await Prompts.MessageAsync(Main, Strings.Get("LibraryPage_CouldnTDeleteThe"), ex.Message); return; }
         RefreshRecentlyDeletedButton();
         var id = s.Id;
         var name = s.Name;
@@ -774,7 +774,7 @@ public partial class LibraryPage : UserControl, IAppPage
         };
         _undoDelete = undoDelete;
         _undoDeleteAt = DateTimeOffset.Now;
-        ShowBar(BarLook.Deleted, $"Deleted \"{name}\".", $"It stays in Recently deleted for {RecentlyDeleted.KeepFor.Days} days.", undoDelete, null, DeleteUndo.BarTime);
+        ShowBar(BarLook.Deleted, Strings.Format("LibraryPage_Deleted0", name), Strings.Format("LibraryPage_ItStaysInRecently", RecentlyDeleted.KeepFor.Days), undoDelete, null, DeleteUndo.BarTime);
     }
 
     private async void OnRecentlyDeleted(object sender, RoutedEventArgs e)

@@ -37,7 +37,7 @@ public static class DesignTokens
         var merged = app.Resources.MergedDictionaries;
         var set = CurrentSet;
         var current = merged.FirstOrDefault(d => d.Source is { } s && s.OriginalString.Contains("/Tokens.", StringComparison.Ordinal) && !IsNamed(d, "Tokens"));
-        if (current is null || !IsNamed(current, "Tokens." + set))
+        if (current is null || !IsNamed(current, Strings.Get("DesignTokens_Tokens") + set))
         {
             if (current is not null) merged.Remove(current);
             merged.Add(new ResourceDictionary { Source = new Uri(Folder + "Tokens." + set + ".xaml", UriKind.Absolute) });

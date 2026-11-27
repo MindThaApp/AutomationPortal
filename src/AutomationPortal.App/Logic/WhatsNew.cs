@@ -15,7 +15,7 @@ public sealed record WhatsNewPlan(bool Show, string? RecordVersion, bool Content
 public static class WhatsNew
 {
     /// <summary>Used when a release has no fix that is easy to explain.</summary>
-    public const string GeneralFixLine = "Thanks to your reports we fixed several behind-the-scenes problems and slowdowns.";
+    public static string GeneralFixLine => Strings.Get("WhatsNew_GeneralFixLine");
 
     /// <summary>
     /// Decides at start-up. A fresh install (welcome showing, or nothing recorded and no welcome ever shown) never gets it and just records the

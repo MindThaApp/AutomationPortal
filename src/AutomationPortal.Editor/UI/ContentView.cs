@@ -24,7 +24,7 @@ internal static class ContentView
         }
         if (value.Count > 1)
         {
-            var head = Ui.Text($"{value.Count} items", Ui.Secondary, 12, FontWeights.SemiBold);
+            var head = Ui.Text(Strings.Format("ContentView_0Items", value.Count), Ui.Secondary, 12, FontWeights.SemiBold);
             head.Margin = new Thickness(0, 0, 0, 6);
             root.Children.Add(head);
         }
@@ -33,7 +33,7 @@ internal static class ContentView
         {
             if (shown++ >= MaxItems)
             {
-                root.Children.Add(Ui.Text($"…and {value.Count - MaxItems} more", Ui.Secondary, 12));
+                root.Children.Add(Ui.Text(Strings.Format("ContentView_And0More", value.Count - MaxItems), Ui.Secondary, 12));
                 break;
             }
             var el = Item(item, maxImageHeight);
@@ -122,7 +122,7 @@ internal static class ContentView
         texts.Children.Add(Ui.Text(p.Path, Ui.Tertiary, 12));
         Grid.SetColumn(texts, 1);
         g.Children.Add(texts);
-        var show = Ui.TextButton("Show", () =>
+        var show = Ui.TextButton(Strings.Get("ContentView_Show"), () =>
         {
             try { Process.Start(new ProcessStartInfo("explorer.exe", p.Exists ? $"/select,\"{p.Path}\"" : $"\"{System.IO.Path.GetDirectoryName(p.Path)}\"") { UseShellExecute = true }); } catch { }
         });
@@ -168,7 +168,7 @@ internal static class ContentView
             row++;
             if (row >= 60) break;
         }
-        if (row == 0) return Ui.Text("(empty dictionary)", Ui.Secondary, 13);
+        if (row == 0) return Ui.Text(Strings.Get("ContentView_EmptyDictionary"), Ui.Secondary, 13);
         return grid;
     }
 }

@@ -36,7 +36,7 @@ public partial class SettingsPage : UserControl, IAppPage
         foreach (var info in SettingsLayout.Sections)
         {
             var b = new Wpf.Ui.Controls.Button { Content = info.Title, Appearance = Wpf.Ui.Controls.ControlAppearance.Transparent, Margin = new Thickness(0, 0, 4, 4), Tag = info.Anchor };
-            System.Windows.Automation.AutomationProperties.SetName(b, "Go to " + info.Title);
+            System.Windows.Automation.AutomationProperties.SetName(b, Strings.Get("SettingsPage_GoTo") + info.Title);
             b.Click += (_, _) => JumpTo(info.Anchor);
             SectionJump.Items.Add(b);
         }
@@ -116,7 +116,7 @@ public partial class SettingsPage : UserControl, IAppPage
         catch (Exception ex)
         {
             AppLog.Write("Use my location: " + ex.Message);
-            ShowHomeProblem("Couldn't find your location just now. Try again, or type the numbers here.");
+            ShowHomeProblem(Strings.Get("SettingsPage_CouldnTFindYour"));
         }
         finally { UseLocationButton.IsEnabled = true; }
     }
@@ -147,7 +147,7 @@ public partial class SettingsPage : UserControl, IAppPage
         ModelBest.IsChecked = s.AiModel == AiModelTier.Best;
         ModelDescription.Text = ModelText(s.AiModel);
         var version = Assembly.GetEntryAssembly()?.GetName().Version;
-        VersionText.Text = "Version " + (version is null ? "1.0.0" : $"{version.Major}.{version.Minor}.{version.Build}");
+        VersionText.Text = Strings.Get("SettingsPage_Version") + (version is null ? "1.0.0" : $"{version.Major}.{version.Minor}.{version.Build}");
         ShowTrialLine();
         ShowHotkeyProblems();
         ShowAllowedCallers(s.AllowedCallers ?? new List<string>(), s.AllowedCallerShortcuts ?? new List<string>());
@@ -171,7 +171,7 @@ public partial class SettingsPage : UserControl, IAppPage
     {
         AllowedCallersHost.Children.Clear();
         AllowedCallersHost.Children.Add(Infrastructure.Ui.Text(
-            "When another app asks to run one of your shortcuts, Automation Portal asks you first. When you tick \"Don't ask again\", that app runs that shortcut without asking.",
+            Strings.Get("SettingsPage_WhenAnotherAppAsks"),
             secondary: true, size: 12));
         if (callers.Count == 0 && pairs.Count == 0)
         {
@@ -190,8 +190,8 @@ public partial class SettingsPage : UserControl, IAppPage
             text.Children.Add(Infrastructure.Ui.Text(name, size: 14));
             if (name != id) text.Children.Add(Infrastructure.Ui.Text(id, secondary: true, size: 12));
             grid.Children.Add(text);
-            var remove = new Wpf.Ui.Controls.Button { Content = "Remove", VerticalAlignment = VerticalAlignment.Center };
-            System.Windows.Automation.AutomationProperties.SetName(remove, "Remove " + name + " from the apps allowed to run shortcuts");
+            var remove = new Wpf.Ui.Controls.Button { Content = Strings.Get("SettingsPage_Remove"), VerticalAlignment = VerticalAlignment.Center };
+            System.Windows.Automation.AutomationProperties.SetName(remove, Strings.Get("SettingsPage_Remove2") + name + Strings.Get("SettingsPage_FromTheAppsAllowed"));
             remove.Click += (_, _) => CallerConsent.Forget(_host.Settings, id);   // Settings.Changed reloads this list
             AddAllowedRow(grid, remove);
         }
@@ -203,13 +203,13 @@ public partial class SettingsPage : UserControl, IAppPage
             grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             var app = Callers.FriendlyName(callerId);
-            var shortcut = _host.Library.GetById(shortcutId)?.Name ?? "a deleted shortcut";
+            var shortcut = _host.Library.GetById(shortcutId)?.Name ?? Strings.Get("SettingsPage_ADeletedShortcut");
             var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
-            text.Children.Add(Infrastructure.Ui.Text($"{app} runs \"{shortcut}\"", size: 14));
+            text.Children.Add(Infrastructure.Ui.Text(Strings.Format("SettingsPage_0Runs1", app, shortcut), size: 14));
             text.Children.Add(Infrastructure.Ui.Text(Strings.Get("SettingsPage_OnlyThisShortcutWithout"), secondary: true, size: 12));
             grid.Children.Add(text);
-            var remove = new Wpf.Ui.Controls.Button { Content = "Remove", VerticalAlignment = VerticalAlignment.Center };
-            System.Windows.Automation.AutomationProperties.SetName(remove, $"Ask again when {app} runs {shortcut}");
+            var remove = new Wpf.Ui.Controls.Button { Content = Strings.Get("SettingsPage_Remove"), VerticalAlignment = VerticalAlignment.Center };
+            System.Windows.Automation.AutomationProperties.SetName(remove, Strings.Format("SettingsPage_AskAgainWhen0", app, shortcut));
             var k = key;
             remove.Click += (_, _) => CallerConsent.ForgetPair(_host.Settings, k);
             AddAllowedRow(grid, remove);
@@ -228,9 +228,9 @@ public partial class SettingsPage : UserControl, IAppPage
 
     private static string ModelText(AiModelTier t) => t switch
     {
-        AiModelTier.Fast => "Fast: quick answers at the lowest cost.",
-        AiModelTier.Best => "Best: the most capable answers, but slower and more costly.",
-        _ => "Smart: a good balance of quality and speed. Recommended.",
+        AiModelTier.Fast => Strings.Get("SettingsPage_FastQuickAnswersAt"),
+        AiModelTier.Best => Strings.Get("SettingsPage_BestTheMostCapable"),
+        _ => Strings.Get("SettingsPage_SmartAGoodBalance"),
     };
 
     // ---- general ---------------------------------------------------------------------------
@@ -240,7 +240,7 @@ public partial class SettingsPage : UserControl, IAppPage
         if (_loading) return;
         var on = StartToggle.IsChecked == true;
         try { _host.Shell.SetStartWithWindows(on); }
-        catch (Exception ex) { _ = Prompts.MessageAsync(Owner, "Couldn't change that", ex.Message); }
+        catch (Exception ex) { _ = Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_CouldnTChangeThat"), ex.Message); }
         _host.Settings.Update(s => s.StartWithWindows = on);
     }
 
@@ -331,9 +331,9 @@ public partial class SettingsPage : UserControl, IAppPage
         {
             TestRootGuard.Check(backupFolder);
             var zip = LibraryBackup.Create(_host.Paths, backupFolder, DateTime.Now);
-            await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_LibraryBackedUp"), $"Your library was saved to:\n{zip}\n\nTo bring shortcuts back later, use \"Restore from a backup\" in Settings.");
+            await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_LibraryBackedUp"), Strings.Format("SettingsPage_YourLibraryWasSaved", zip));
         }
-        catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't back up your library", ex.Message); }
+        catch (LibraryException ex) { await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_CouldnTBackUp"), ex.Message); }
     }
 
     private async void OnRestoreBackup(object sender, RoutedEventArgs e) => await ImportRestore.RestoreAsync(_host, Owner);
@@ -349,7 +349,7 @@ public partial class SettingsPage : UserControl, IAppPage
         var oneDrive = UserFolders.Map("onedrive") ?? Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
         if (string.IsNullOrWhiteSpace(oneDrive) || !Directory.Exists(oneDrive))
         {
-            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", Strings.Get("SettingsPage_AutomationPortalCouldntFind"));
+            await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_OneDriveWasnTFound"), Strings.Get("SettingsPage_AutomationPortalCouldntFind"));
             return;
         }
         await ChangeLibraryAsync(Path.Combine(oneDrive, "Automation Portal Library"));
@@ -359,7 +359,7 @@ public partial class SettingsPage : UserControl, IAppPage
     {
         if (!UserFolders.IsInsideRoot(target))
         {
-            await Prompts.MessageAsync(Owner, "Not allowed in a test run", "This run uses a test data root, so the library can only be moved to a folder inside it.");
+            await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_NotAllowedInA"), Strings.Get("SettingsPage_ThisRunUsesA"));
             return;
         }
         var current = Path.GetFullPath(_host.Paths.LibraryFolder).TrimEnd('\\');
@@ -374,14 +374,14 @@ public partial class SettingsPage : UserControl, IAppPage
             case LibraryTarget.NotEmpty:
                 // Copying into a folder that already holds other files could replace them. Only empty folders or existing libraries.
                 await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_ChooseAnEmptyFolder"),
-                    $"{next}\n\nalready has files in it. Choose an empty folder, or a folder that already holds an Automation Portal library.");
+                    Strings.Format("SettingsPage_0AlreadyHasFiles", next));
                 return;
         }
         var targetHasLibrary = kind == LibraryTarget.ExistingLibrary;
         var message = targetHasLibrary
-            ? $"Automation Portal will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are. Automations are paused until you turn them back on in Automations, so you can check that library's automations first."
-            : $"Automation Portal will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
-        if (!await Prompts.ConfirmAsync(Owner, Strings.Get("SettingsPage_ChangeLibraryLocation"), message, "Continue")) return;
+            ? Strings.Format("SettingsPage_AutomationPortalWillUse", next)
+            : Strings.Format("SettingsPage_AutomationPortalWillCopy", next);
+        if (!await Prompts.ConfirmAsync(Owner, Strings.Get("SettingsPage_ChangeLibraryLocation"), message, Strings.Get("SettingsPage_Continue"))) return;
         try
         {
             if (!targetHasLibrary && Directory.Exists(current)) CopyDirectory(current, next);
@@ -389,7 +389,7 @@ public partial class SettingsPage : UserControl, IAppPage
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            await Prompts.MessageAsync(Owner, "Couldn't copy your shortcuts", $"{ex.Message}\n\nAutomation Portal keeps using your current library.");
+            await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_CouldnTCopyYour"), Strings.Format("SettingsPage_0AutomationPortalKeeps", ex.Message));
             return;
         }
         _host.Settings.Update(s =>

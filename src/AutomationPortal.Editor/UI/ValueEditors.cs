@@ -39,7 +39,7 @@ internal static class ValueEditors
                     grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
                     grid.Children.Add(token);
                     var t = token;
-                    var browse = Ui.TextButton("Browse…", () =>
+                    var browse = Ui.TextButton(Strings.Get("ValueEditors_Browse"), () =>
                     {
                         if (PickerHost.Current.PickPath(new PickRequest(PickKind.SaveFile, a.Param.Label)) is { } file) { var v = ParamValue.Text(file); t.SetValue(v); a.Commit(v); }
                     });
@@ -85,7 +85,7 @@ internal static class ValueEditors
         add.Padding = new Thickness(8, 2, 8, 2);
         add.Opacity = 0;
         add.ToolTip = Strings.Get("ValueEditors_UseAResultFrom");
-        System.Windows.Automation.AutomationProperties.SetName(add, "Use a result from an earlier step");
+        System.Windows.Automation.AutomationProperties.SetName(add, Strings.Get("ValueEditors_UseAResultFrom"));
         grid.Children.Add(add);
         void Sync() => add.Opacity = grid.IsMouseOver || grid.IsKeyboardFocusWithin ? 1 : 0;
         grid.MouseEnter += (_, _) => Sync();
@@ -101,7 +101,7 @@ internal static class ValueEditors
         var multiline = a.Param.Type == ParamType.MultilineText || a.Param.Multiline;
         var tb = new TokenTextBox(a.Env, a.Variables, multiline, a.Param.AllowVariables)
         {
-            Placeholder = a.Param.Placeholder ?? (a.Param.Type == ParamType.Url ? "https://" : a.Param.Type == ParamType.Content ? "Type something or choose a variable" : ""),
+            Placeholder = a.Param.Placeholder ?? (a.Param.Type == ParamType.Url ? "https://" : a.Param.Type == ParamType.Content ? Strings.Get("ValueEditors_TypeSomethingOrChoose") : ""),
         };
         tb.SetValue(a.Value ?? a.Param.Default);
         tb.ValueEdited += v => a.Commit(v);
@@ -128,8 +128,8 @@ internal static class ValueEditors
             if (suppress) return;
             if (string.IsNullOrWhiteSpace(box.Text)) { hint.Visibility = Visibility.Collapsed; return; }
             if (!TryParse(box.Text, out var v)) { hint.Text = Strings.Get("ValueEditors_TypeANumberLike"); hint.Visibility = Visibility.Visible; return; }
-            if (p.Min is { } min && v < min) { hint.Text = $"The smallest allowed is {ContentFormat.Number(min)}."; hint.Visibility = Visibility.Visible; return; }
-            if (p.Max is { } max && v > max) { hint.Text = $"The largest allowed is {ContentFormat.Number(max)}."; hint.Visibility = Visibility.Visible; return; }
+            if (p.Min is { } min && v < min) { hint.Text = Strings.Format("ValueEditors_TheSmallestAllowedIs", ContentFormat.Number(min)); hint.Visibility = Visibility.Visible; return; }
+            if (p.Max is { } max && v > max) { hint.Text = Strings.Format("ValueEditors_TheLargestAllowedIs", ContentFormat.Number(max)); hint.Visibility = Visibility.Visible; return; }
             hint.Visibility = Visibility.Collapsed;
             a.Commit(ParamValue.Number(v));
         }
@@ -152,8 +152,8 @@ internal static class ValueEditors
 
         var row = new StackPanel { Orientation = Orientation.Horizontal };
         row.Children.Add(box);
-        row.Children.Add(Ui.IconButton(SymbolRegular.Subtract16, "Decrease", () => Nudge(-1), 30, 12));
-        row.Children.Add(Ui.IconButton(SymbolRegular.Add16, "Increase", () => Nudge(+1), 30, 12));
+        row.Children.Add(Ui.IconButton(SymbolRegular.Subtract16, Strings.Get("ValueEditors_Decrease"), () => Nudge(-1), 30, 12));
+        row.Children.Add(Ui.IconButton(SymbolRegular.Add16, Strings.Get("ValueEditors_Increase"), () => Nudge(+1), 30, 12));
         if (!string.IsNullOrEmpty(p.Unit))
         {
             var unit = Ui.Text(p.Unit!, Ui.Secondary, 13);
@@ -210,12 +210,12 @@ internal static class ValueEditors
         UiTextBox? filter = null;
         if (choices.Count > 10)
         {
-            filter = new UiTextBox { PlaceholderText = "Search", Margin = new Thickness(0, 0, 0, 6) };
+            filter = new UiTextBox { PlaceholderText = Strings.Get("ValueEditors_Search"), Margin = new Thickness(0, 0, 0, 6) };
             root.Children.Add(filter);
         }
         var list = new WpfListBox { MaxHeight = 260, Style = Application.Current?.TryFindResource("FmPlainListStyle") as Style };
         root.Children.Add(list);
-        if (choices.Count == 0) root.Children.Add(Ui.Text("There is nothing to choose from yet.", Ui.Secondary, 13));
+        if (choices.Count == 0) root.Children.Add(Ui.Text(Strings.Get("ValueEditors_ThereIsNothingTo"), Ui.Secondary, 13));
 
         void Fill()
         {
@@ -272,7 +272,7 @@ internal static class ValueEditors
         var current = (a.Value ?? a.Param.Default) is DateValue d ? d.Value.LocalDateTime : (DateTime?)null;
         var picker = new WpfDatePicker { SelectedDate = current?.Date, MinWidth = 160 };
         var time = new UiTextBox { PlaceholderText = "09:00", Width = 90, Text = current is { } c && withTime ? c.ToString("HH:mm", CultureInfo.InvariantCulture) : "", Margin = new Thickness(8, 0, 0, 0) };
-        var error = Ui.Text("Type a time like 09:30.", Ui.Critical, 12);
+        var error = Ui.Text(Strings.Get("ValueEditors_TypeATimeLike"), Ui.Critical, 12);
         error.Visibility = Visibility.Collapsed;
 
         void Push()
@@ -293,7 +293,7 @@ internal static class ValueEditors
         var row = new StackPanel { Orientation = Orientation.Horizontal };
         row.Children.Add(picker);
         if (withTime) row.Children.Add(time);
-        var today = Ui.TextButton("Today", () => { picker.SelectedDate = DateTime.Today; });
+        var today = Ui.TextButton(Strings.Get("ValueEditors_Today"), () => { picker.SelectedDate = DateTime.Today; });
         today.Margin = new Thickness(8, 0, 0, 0);
         row.Children.Add(today);
         var root = new StackPanel();
@@ -310,7 +310,7 @@ internal static class ValueEditors
     {
         var current = (a.Value ?? a.Param.Default) is TimeValue t ? t.Value : (TimeOnly?)null;
         var box = new UiTextBox { PlaceholderText = "07:30", Width = 110, Text = current?.ToString("HH:mm", CultureInfo.InvariantCulture) ?? "" };
-        var error = Ui.Text("Type a time like 07:30.", Ui.Critical, 12);
+        var error = Ui.Text(Strings.Get("ValueEditors_TypeATimeLike2"), Ui.Critical, 12);
         error.Visibility = Visibility.Collapsed;
         box.TextChanged += (_, _) =>
         {
@@ -355,7 +355,7 @@ internal static class ValueEditors
         var folder = a.Param.Type == ParamType.Folder;
         var box = new UiTextBox { PlaceholderText = a.Param.Placeholder ?? (folder ? Strings.Get("ValueEditors_ChooseAFolder") : Strings.Get("ValueEditors_ChooseAFile")), Text = current };
         box.TextChanged += (_, _) => a.Commit(string.IsNullOrWhiteSpace(box.Text) ? null : ParamValue.File(box.Text.Trim()));
-        var browse = Ui.TextButton("Browse…", () =>
+        var browse = Ui.TextButton(Strings.Get("ValueEditors_Browse"), () =>
         {
             if (folder)
             {
@@ -385,7 +385,7 @@ internal static class ValueEditors
             var text = box.Text.Trim();
             a.Commit(text.Length == 0 ? null : ParamValue.App(text, System.IO.Path.GetFileNameWithoutExtension(text) is { Length: > 0 } n ? n : text));
         };
-        var browse = Ui.TextButton("Browse…", () =>
+        var browse = Ui.TextButton(Strings.Get("ValueEditors_Browse"), () =>
         {
             if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, a.Param.Label, "Programs (*.exe)|*.exe|All files (*.*)|*.*")) is { } file) box.Text = file;
         });

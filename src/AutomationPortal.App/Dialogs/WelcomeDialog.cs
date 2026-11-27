@@ -32,7 +32,7 @@ public static class WelcomeDialog
                 var result = host.Library.Import(item.Shortcut.Clone());   // a name that's taken gets a new one; nothing is replaced
                 await host.FinishImportAsync(result, owner, warningsShown: false);
             }
-            catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't add it", ex.Message); }
+            catch (LibraryException ex) { await Prompts.MessageAsync(owner, Strings.Get("WelcomeDialog_CouldnTAddIt"), ex.Message); }
         }
         if (skipped > 0) host.AllowNewShortcut(owner, skipped);
     }

@@ -24,7 +24,7 @@ public static class UnattendedFailure
     {
         var reason = string.IsNullOrWhiteSpace(error) ? Strings.Get("UnattendedFailure_SomethingWentWrong") : error.Trim();
         if (IsUnattended(source) && LooksLikeBackup(shortcut))
-            return (Strings.Get("UnattendedFailure_BackupDidntRun"), $"Backup didn't run: {reason} (\"{shortcutName}\")");
+            return (Strings.Get("UnattendedFailure_BackupDidntRun"), Strings.Format("UnattendedFailure_BackupDidntRunBody", reason, shortcutName));
         return ($"\"{shortcutName}\" didn't finish", reason);
     }
 }

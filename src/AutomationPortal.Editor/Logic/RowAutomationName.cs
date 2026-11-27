@@ -11,11 +11,11 @@ internal static class RowAutomationName
     {
         var a = row.Action;
         var d = row.Descriptor;
-        if (d is null) return $"Unavailable action {a.ActionId}";
+        if (d is null) return Strings.Format("RowAutomationName_UnavailableAction0", a.ActionId);
         if (row.IsBar)
         {
-            if (row.Role == FlowRole.Middle) return row.FlowKind == FlowKind.Menu ? $"Menu option {a.Flow?.Label}" : "Otherwise";
-            return d.FlowKind switch { FlowKind.If => "End If", FlowKind.Menu => "End Menu", FlowKind.Repeat or FlowKind.RepeatEach => "End Repeat", _ => "End" };
+            if (row.Role == FlowRole.Middle) return row.FlowKind == FlowKind.Menu ? Strings.Format("RowAutomationName_MenuOption0", a.Flow?.Label) : "Otherwise";
+            return d.FlowKind switch { FlowKind.If => Strings.Get("RowAutomationName_EndIf"), FlowKind.Menu => Strings.Get("RowAutomationName_EndMenu"), FlowKind.Repeat or FlowKind.RepeatEach => Strings.Get("RowAutomationName_EndRepeat"), _ => "End" };
         }
 
         string? Current(string key) => (a.Parameters.TryGetValue(key, out var v) ? v : d.FindParameter(key)?.Default)?.ToLiteralText();
@@ -33,17 +33,17 @@ internal static class RowAutomationName
             : text.StartsWith(d.Title, StringComparison.OrdinalIgnoreCase) ? text : $"{d.Title}: {text}";
 
         var notes = new List<string>();
-        if (a.Disabled) notes.Add("turned off");
-        if (d.IsDestructiveFor(a)) notes.Add("can change or delete things");
+        if (a.Disabled) notes.Add(Strings.Get("RowAutomationName_TurnedOff"));
+        if (d.IsDestructiveFor(a)) notes.Add(Strings.Get("RowAutomationName_CanChangeOrDelete"));
         foreach (var issue in row.Issues.Take(2)) notes.Add((issue.Severity == IssueSeverity.Error ? "problem: " : "note: ") + issue.Message);
         switch (row.State)
         {
             case StepState.Running: notes.Add("running"); break;
-            case StepState.Paused: notes.Add("waiting for you"); break;
+            case StepState.Paused: notes.Add(Strings.Get("RowAutomationName_WaitingForYou")); break;
             case StepState.Succeeded: notes.Add("finished"); break;
             case StepState.Failed: notes.Add("failed" + (row.Error is { Length: > 0 } e ? ": " + e : "")); break;
         }
-        if (row.HasBreakpoint) notes.Add("pauses here when you run");
+        if (row.HasBreakpoint) notes.Add(Strings.Get("RowAutomationName_PausesHereWhenYou"));
         return notes.Count == 0 ? name : $"{name} ({string.Join("; ", notes)})";
     }
 }

@@ -22,7 +22,7 @@ public sealed partial class SnippetRow : ObservableObject
     [ObservableProperty] private bool _enabled;
 
     /// <summary>What a screen reader announces for the list entry ("gm, expands to Good morning, on").</summary>
-    public override string ToString() => $"{Abbreviation}, expands to {Preview}{(Enabled ? "" : ", turned off")}";
+    public override string ToString() => Strings.Format("SnippetsPage_0ExpandsTo1", Abbreviation, Preview, (Enabled ? "" : ", turned off"));
 
     public Visibility FolderVisibility => string.IsNullOrWhiteSpace(Folder) ? Visibility.Collapsed : Visibility.Visible;
 
@@ -33,7 +33,7 @@ public sealed partial class SnippetRow : ObservableObject
     {
         _refreshing = true;
         Snippet = s;
-        Abbreviation = s.Abbreviation.Length == 0 ? "(no short code yet)" : s.Abbreviation;
+        Abbreviation = s.Abbreviation.Length == 0 ? Strings.Get("SnippetsPage_NoShortCodeYet") : s.Abbreviation;
         var oneLine = s.Text.Replace("\r", " ").Replace("\n", " ");
         Preview = oneLine.Length == 0 ? "(empty)" : oneLine.Length > 70 ? oneLine[..70] + "…" : oneLine;
         Folder = s.Folder;
@@ -169,7 +169,7 @@ public partial class SnippetsPage : UserControl, IAppPage
     private async void OnDelete(object sender, RoutedEventArgs e)
     {
         if (_editing is not { } s) return;
-        if (!await Prompts.ConfirmAsync(Window.GetWindow(this), Strings.Get("SnippetsPage_DeleteSnippet"), $"Delete the snippet \"{s.Abbreviation}\"?", "Delete", danger: true)) return;
+        if (!await Prompts.ConfirmAsync(Window.GetWindow(this), Strings.Get("SnippetsPage_DeleteSnippet"), Strings.Format("SnippetsPage_DeleteTheSnippet0", s.Abbreviation), Strings.Get("SnippetsPage_Delete"), danger: true)) return;
         _saveTimer.Stop();
         _editing = null;
         _host.Library.DeleteSnippet(s.Id);
@@ -203,10 +203,10 @@ public partial class SnippetsPage : UserControl, IAppPage
         UpdatePreview();
         var abbr = AbbrBox.Text.Trim();
         string? problem = null;
-        if (abbr.Length == 0) problem = "Type the short code you want to use, like ;sig.";
-        else if (abbr.Any(char.IsWhiteSpace)) problem = "A short code can't contain spaces.";
+        if (abbr.Length == 0) problem = Strings.Get("SnippetsPage_TypeTheShortCode");
+        else if (abbr.Any(char.IsWhiteSpace)) problem = Strings.Get("SnippetsPage_AShortCodeCan");
         else if (_host.Library.Snippets.Any(x => x.Id != _editing.Id && x.Abbreviation.Equals(abbr, StringComparison.CurrentCultureIgnoreCase)))
-            problem = $"You already have a snippet with the short code {abbr}. Pick a different one.";
+            problem = Strings.Format("SnippetsPage_YouAlreadyHaveA", abbr);
         AbbrError.Text = problem ?? "";
         AbbrError.Visibility = problem is null ? Visibility.Collapsed : Visibility.Visible;
         if (problem is not null) { _saveTimer.Stop(); return; }
@@ -237,7 +237,7 @@ public partial class SnippetsPage : UserControl, IAppPage
         var text = BodyBox.Text;
         if (text.Length == 0) { PreviewText.Text = Strings.Get("SnippetsPage_YourTextWillShow"); return; }
         var fillIns = SnippetExpander.FillInLabels(text).ToDictionary(l => l, l => $"‹{l}›");
-        var (result, cursor) = SnippetExpander.Expand(text, DateTimeOffset.Now, "(whatever you copied last)", fillIns);
+        var (result, cursor) = SnippetExpander.Expand(text, DateTimeOffset.Now, Strings.Get("SnippetsPage_WhateverYouCopiedLast"), fillIns);
         if (cursor is { } fromEnd) result = result.Insert(result.Length - fromEnd, "▌");
         PreviewText.Text = result;
     }
@@ -261,13 +261,13 @@ public partial class SnippetsPage : UserControl, IAppPage
     private async void OnDateFormat(object sender, RoutedEventArgs e)
     {
         var owner = Window.GetWindow(this);
-        var format = await Prompts.AskTextAsync(owner, Strings.Get("SnippetsPage_DateFormat"), Strings.Get("SnippetsPage_FormatForExampleYyyy"), "yyyy-MM-dd", "Insert");
+        var format = await Prompts.AskTextAsync(owner, Strings.Get("SnippetsPage_DateFormat"), Strings.Get("SnippetsPage_FormatForExampleYyyy"), "yyyy-MM-dd", Strings.Get("SnippetsPage_Insert"));
         if (format is not null) InsertAtCaret("{date:" + format + "}");
     }
 
     private async void OnFillIn(object sender, RoutedEventArgs e)
     {
-        var label = await Prompts.AskTextAsync(Window.GetWindow(this), Strings.Get("SnippetsPage_AskMe"), "What should Automation Portal ask you? (for example: Name)", "", "Insert");
+        var label = await Prompts.AskTextAsync(Window.GetWindow(this), Strings.Get("SnippetsPage_AskMe"), Strings.Get("SnippetsPage_WhatShouldAutomationPortal"), "", Strings.Get("SnippetsPage_Insert"));
         if (label is not null) InsertAtCaret("{input:" + label + "}");
     }
 }

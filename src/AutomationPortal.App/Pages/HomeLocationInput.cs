@@ -9,7 +9,7 @@ internal static class HomeLocationInput
     {
         latText = latText.Trim(); lonText = lonText.Trim();
         if (latText.Length == 0 && lonText.Length == 0) return (null, null, null);
-        if (latText.Length == 0 || lonText.Length == 0) return (null, null, "Fill in both latitude and longitude, or leave both empty.");
+        if (latText.Length == 0 || lonText.Length == 0) return (null, null, Strings.Get("HomeLocationInput_FillInBothLatitude"));
         if (!TryParse(latText, out var lat)) return (null, null, Strings.Get("HomeLocationInput_LatitudeMustBeA"));
         if (!TryParse(lonText, out var lon)) return (null, null, Strings.Get("HomeLocationInput_LongitudeMustBeA"));
         if (lat is < -90 or > 90) return (null, null, Strings.Get("HomeLocationInput_LatitudeMustBeBetween"));

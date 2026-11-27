@@ -35,7 +35,7 @@ public static class RunUndo
             return false;
         }
         var plan = FileUndo.Plan(run!);
-        if (!await Prompts.ConfirmAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), RunHistoryActions.UndoConfirmText(plan), "Undo")) return false;
+        if (!await Prompts.ConfirmAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), RunHistoryActions.UndoConfirmText(plan), Strings.Get("RunUndo_Undo"))) return false;
         IReadOnlyList<UndoOutcome> results;
         try { results = await Task.Run(() => FileUndo.Execute(run!, store)); }
         catch (ActionException ex)
@@ -46,7 +46,7 @@ public static class RunUndo
         catch (Exception ex)
         {
             AppLog.Write("Undo file changes failed: " + ex.Message);
-            await Prompts.MessageAsync(owner, "Couldn't undo", "Something went wrong while undoing: " + ex.Message);
+            await Prompts.MessageAsync(owner, Strings.Get("RunUndo_CouldnTUndo"), Strings.Get("RunUndo_SomethingWentWrongWhile") + ex.Message);
             return true;
         }
         await Prompts.MessageAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), RunHistoryActions.UndoReportText(results));
@@ -90,7 +90,7 @@ public static class RunUndo
         catch (Exception ex)
         {
             AppLog.Write("Undo file changes failed: " + ex.Message);
-            return ("Couldn't undo", "Something went wrong while undoing: " + ex.Message + " See details for what was put back.");
+            return ("Couldn't undo", Strings.Get("RunUndo_SomethingWentWrongWhile") + ex.Message + Strings.Get("RunUndo_SeeDetailsForWhat"));
         }
     }
 }

@@ -151,7 +151,7 @@ public sealed class ToastNotificationService : INotificationService, IDisposable
 
     public async Task<bool> AskToRunAsync(string shortcutName, string reason, CancellationToken ct = default)
     {
-        var r = await ShowInteractiveAsync($"Run \"{shortcutName}\"?", reason, new[] { "Run", "Skip" }, false, null, TimeSpan.FromMinutes(2), ct).ConfigureAwait(false);
+        var r = await ShowInteractiveAsync(Strings.Format("ToastNotificationService_Run0", shortcutName), reason, new[] { "Run", "Skip" }, false, null, TimeSpan.FromMinutes(2), ct).ConfigureAwait(false);
         return r.ButtonLabel == "Run";
     }
 

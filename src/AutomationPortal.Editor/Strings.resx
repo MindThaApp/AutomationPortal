@@ -265,4 +265,215 @@
   <data name="DescribeIt_NoFileChanges" xml:space="preserve"><value>No file changes</value></data>
   <data name="DescribeIt_ControlsApps" xml:space="preserve"><value>Clicks and types in other apps</value></data>
   <data name="DetailsSheet_StoreVersionNote" xml:space="preserve"><value>The Microsoft Store version has no Start menu links or Send to, and the dark mode step opens Settings instead.</value></data>
+  <data name="DesignTokens_Tokens" xml:space="preserve"><value>Tokens.</value></data>
+  <data name="DetailsSheet_LeaveEmptyIfYou" xml:space="preserve"><value>Leave empty if you don't know</value></data>
+  <data name="DetailsSheet_MinutesItTakesBy" xml:space="preserve"><value>Minutes it takes by hand</value></data>
+  <data name="DetailsSheet_ShowInSendTo" xml:space="preserve"><value>Show in "Send to" and the right-click menu</value></data>
+  <data name="DetailsSheet_Advanced" xml:space="preserve"><value>Advanced</value></data>
+  <data name="DetailsSheet_TheHotkeyAndAutomations" xml:space="preserve"><value>The hotkey and automations are in the "When it runs" card at the top of the editor.</value></data>
+  <data name="DetailsSheet_Export" xml:space="preserve"><value>Export…</value></data>
+  <data name="DetailsSheet_Done" xml:space="preserve"><value>Done</value><comment>Short label; keep it brief</comment></data>
+  <data name="DetailsSheet_Copied" xml:space="preserve"><value>Copied</value><comment>Short label; keep it brief</comment></data>
+  <data name="EditorContext_AIIsnTAvailable" xml:space="preserve"><value>AI isn't available here.</value></data>
+  <data name="HotkeyRecorder_Hotkey" xml:space="preserve"><value>Hotkey</value><comment>Short label; keep it brief</comment></data>
+  <data name="HotkeyRecorder_None" xml:space="preserve"><value>None</value><comment>Short label; keep it brief</comment></data>
+  <data name="IconPickerDialog_Colour" xml:space="preserve"><value>Colour</value><comment>Short label; keep it brief</comment></data>
+  <data name="IconPickerDialog_Cancel" xml:space="preserve"><value>Cancel</value><comment>Short label; keep it brief</comment></data>
+  <data name="IconPickerDialog_Choose" xml:space="preserve"><value>Choose</value><comment>Short label; keep it brief</comment></data>
+  <data name="RowAutomationName_UnavailableAction0" xml:space="preserve"><value>Unavailable action {0}</value><comment>{0} = a.ActionId</comment></data>
+  <data name="RowAutomationName_MenuOption0" xml:space="preserve"><value>Menu option {0}</value><comment>{0} = a.Flow?.Label</comment></data>
+  <data name="RowAutomationName_EndIf" xml:space="preserve"><value>End If</value><comment>Short label; keep it brief</comment></data>
+  <data name="RowAutomationName_EndMenu" xml:space="preserve"><value>End Menu</value></data>
+  <data name="RowAutomationName_EndRepeat" xml:space="preserve"><value>End Repeat</value></data>
+  <data name="RowAutomationName_TurnedOff" xml:space="preserve"><value>turned off</value></data>
+  <data name="RowAutomationName_CanChangeOrDelete" xml:space="preserve"><value>can change or delete things</value></data>
+  <data name="RowAutomationName_WaitingForYou" xml:space="preserve"><value>waiting for you</value></data>
+  <data name="RowAutomationName_PausesHereWhenYou" xml:space="preserve"><value>pauses here when you run</value></data>
+  <data name="RunController_SomethingWentWrongWhile" xml:space="preserve"><value>Something went wrong while running: </value></data>
+  <data name="ValueFormat_AskEachTime" xml:space="preserve"><value>Ask each time</value></data>
+  <data name="VariableCatalog_RepeatItem" xml:space="preserve"><value>Repeat Item</value></data>
+  <data name="VariableCatalog_RepeatIndex" xml:space="preserve"><value>Repeat Index</value></data>
+  <data name="VariableCatalog_MenuResult" xml:space="preserve"><value>Menu Result</value></data>
+  <data name="ShortcutEditorWindowAi_CanChangeOrDelete" xml:space="preserve"><value>Can change or delete things: {0}. Those steps are marked below, so look at them before you run this.</value><comment>{0} = string.Join(", ", n.DestructiveTitles)</comment></data>
+  <data name="ShortcutEditorWindowAi_AutomationPortalNoticed" xml:space="preserve"><value>Automation Portal noticed: </value></data>
+  <data name="ShortcutEditorWindowAi_Undo" xml:space="preserve"><value>Undo</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindowAi_DescribeTheShortcutYou" xml:space="preserve"><value>Describe the shortcut you want</value></data>
+  <data name="ShortcutEditorWindowAi_WantToDescribeA" xml:space="preserve"><value>Want to describe a shortcut in a sentence? </value></data>
+  <data name="ShortcutEditorWindowAi_SetUpAIIn" xml:space="preserve"><value>Set up AI in Settings, AI page</value></data>
+  <data name="ShortcutEditorWindowAi_SayWhatToChange" xml:space="preserve"><value>Say what to change in plain words. It rewrites the steps for you; you can undo it with one click.</value></data>
+  <data name="ShortcutEditorWindowAi_ForExampleEveryFriday" xml:space="preserve"><value>For example: every Friday, zip my Downloads folder and email it to me</value></data>
+  <data name="ShortcutEditorWindowAi_ForExampleAlsoCopy" xml:space="preserve"><value>For example: also copy the result to the clipboard</value></data>
+  <data name="ShortcutEditorWindowAi_DescribeTheChangeYou" xml:space="preserve"><value>Describe the change you want</value></data>
+  <data name="ShortcutEditorWindowAi_Cancel" xml:space="preserve"><value>Cancel</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindowAi_CouldnTMakeA" xml:space="preserve"><value>Couldn't make a draft from that. Try other words, or start blank.</value></data>
+  <data name="ShortcutEditorWindowAi_CouldnTReachThe" xml:space="preserve"><value>Couldn't reach the AI: </value></data>
+  <data name="ShortcutEditorWindowWhen_WhenItRuns" xml:space="preserve"><value>When it runs</value></data>
+  <data name="ShortcutEditorWindowWhen_Hotkey" xml:space="preserve"><value>Hotkey</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindowWhen_On" xml:space="preserve"><value>On</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindowWhen_Off" xml:space="preserve"><value>Off</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindowWhen_Edit" xml:space="preserve"><value>Edit</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindowWhen_TestItNowRun" xml:space="preserve"><value>Test it now: run this shortcut once</value></data>
+  <data name="ShortcutEditorWindow_RunTriesThisOn" xml:space="preserve"><value>Run tries this on 1 file</value></data>
+  <data name="ShortcutEditorWindow_RunTriesThisOn2" xml:space="preserve"><value>Run tries this on {0} files</value><comment>{0} = files.Count</comment></data>
+  <data name="ShortcutEditorWindow_DonTUseThem" xml:space="preserve"><value>Don't use them</value></data>
+  <data name="ShortcutEditorWindow_OneOfThemCouldn" xml:space="preserve"><value> One of them couldn't be found.</value></data>
+  <data name="ShortcutEditorWindow_0OfThemCouldn" xml:space="preserve"><value> {0} of them couldn't be found.</value><comment>{0} = _vm.SampleMissing.Count</comment></data>
+  <data name="ShortcutEditorWindow_Run" xml:space="preserve"><value>Run</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_CouldnTMakeThe" xml:space="preserve"><value>Couldn't make the preview: </value></data>
+  <data name="ShortcutEditorWindow_NothingHasBeenChanged" xml:space="preserve"><value>
+
+Nothing has been changed.</value></data>
+  <data name="ShortcutEditorWindow_RunForReal" xml:space="preserve"><value>Run for real</value></data>
+  <data name="ShortcutEditorWindow_Close" xml:space="preserve"><value>Close</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_Undo" xml:space="preserve"><value>Undo</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_Redo" xml:space="preserve"><value>Redo</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_DescribeAChangeSet" xml:space="preserve"><value>Describe a change… (set up AI in Settings › AI)</value></data>
+  <data name="ShortcutEditorWindow_Export" xml:space="preserve"><value>Export…</value></data>
+  <data name="ShortcutEditorWindow_DiscardYourUnsavedChanges" xml:space="preserve"><value>Discard your unsaved changes and load the restored version?
+
+If you keep your changes, they stay here and are saved over the restored version. The restored version stays in Version history.</value></data>
+  <data name="ShortcutEditorWindow_Stop" xml:space="preserve"><value>_Stop</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_Run2" xml:space="preserve"><value>_Run</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_CouldnTSaveThis" xml:space="preserve"><value>Couldn't save this shortcut</value></data>
+  <data name="ShortcutEditorWindow_CloseAnywayAndLose" xml:space="preserve"><value>
+
+Close anyway and lose your latest changes?</value></data>
+  <data name="ActionRowView_Off" xml:space="preserve"><value>Off</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionRowView_AutomationPortalDoesnT" xml:space="preserve"><value>Automation Portal doesn't know "{0}". Its settings are kept, so it works again if the action comes back. You can also delete it.</value><comment>{0} = vm.Action.ActionId</comment></data>
+  <data name="ActionRowView_Option" xml:space="preserve"><value>Option</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionRowView_MenuOptionText" xml:space="preserve"><value>Menu option text</value></data>
+  <data name="ActionRowView_EndIf" xml:space="preserve"><value>End If</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionRowView_EndMenu" xml:space="preserve"><value>End Menu</value></data>
+  <data name="ActionRowView_EndRepeat" xml:space="preserve"><value>End Repeat</value></data>
+  <data name="ActionRowView_RemoveThisMenuOption" xml:space="preserve"><value>Remove this menu option and its actions</value></data>
+  <data name="ActionRowView_RemoveOtherwiseAndIts" xml:space="preserve"><value>Remove Otherwise and its actions</value></data>
+  <data name="ActionRowView_AddStepBelow" xml:space="preserve"><value>Add step below</value></data>
+  <data name="ActionRowView_Running" xml:space="preserve"><value>Running</value></data>
+  <data name="ActionRowView_ShowLess" xml:space="preserve"><value>Show Less ▴</value></data>
+  <data name="ActionRowView_ShowMore" xml:space="preserve"><value>Show more ▾</value></data>
+  <data name="ActionRowView_RemoveOption" xml:space="preserve"><value>Remove option</value></data>
+  <data name="ActionRowView_RemoveOtherwise" xml:space="preserve"><value>Remove Otherwise</value></data>
+  <data name="ActionRowView_Duplicate" xml:space="preserve"><value>Duplicate</value></data>
+  <data name="ActionRowView_StopTheShortcut" xml:space="preserve"><value>Stop the shortcut</value></data>
+  <data name="ActionRowView_CarryOn" xml:space="preserve"><value>Carry on</value></data>
+  <data name="ActionRowView_TryAgain2More" xml:space="preserve"><value>Try again (2 more times)</value></data>
+  <data name="ActionRowView_DonTPauseHere" xml:space="preserve"><value>Don't pause here</value></data>
+  <data name="ActionRowView_Copy" xml:space="preserve"><value>Copy</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionRowView_Help" xml:space="preserve"><value>Help</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionRowView_Delete" xml:space="preserve"><value>Delete</value><comment>Short label; keep it brief</comment></data>
+  <data name="ConditionsEditor_Match" xml:space="preserve"><value>Match </value><comment>Short label; keep it brief</comment></data>
+  <data name="ConditionsEditor_OfTheseConditions" xml:space="preserve"><value> of these conditions</value></data>
+  <data name="ConditionsEditor_Value" xml:space="preserve"><value>Value</value><comment>Short label; keep it brief</comment></data>
+  <data name="ContentView_0Items" xml:space="preserve"><value>{0} items</value><comment>{0} = value.Count</comment></data>
+  <data name="ContentView_And0More" xml:space="preserve"><value>…and {0} more</value><comment>{0} = value.Count - MaxItems</comment></data>
+  <data name="ContentView_Show" xml:space="preserve"><value>Show</value><comment>Short label; keep it brief</comment></data>
+  <data name="ContentView_EmptyDictionary" xml:space="preserve"><value>(empty dictionary)</value></data>
+  <data name="HelpCard_WorksWith" xml:space="preserve"><value>Works with</value></data>
+  <data name="HelpCard_GivesYou" xml:space="preserve"><value>Gives you</value></data>
+  <data name="HelpCard_GoodToKnow" xml:space="preserve"><value>Good to know</value></data>
+  <data name="KeySheet_CommandPaletteFindA" xml:space="preserve"><value>Command palette: find a shortcut, a setting or a command</value></data>
+  <data name="KeySheet_CopyCutOrPaste" xml:space="preserve"><value>Copy, cut or paste steps</value></data>
+  <data name="ParamEditorView_Variable" xml:space="preserve"><value>Variable</value></data>
+  <data name="ParamEditorView_YouLlBeAsked" xml:space="preserve"><value>You'll be asked each time it runs.</value></data>
+  <data name="ParamEditorView_IsUsedForThis" xml:space="preserve"><value>is used for this value.</value></data>
+  <data name="QuickInsert_Suggestions" xml:space="preserve"><value>Suggestions</value></data>
+  <data name="ResultsDrawer_Ready" xml:space="preserve"><value>Ready</value><comment>Short label; keep it brief</comment></data>
+  <data name="ResultsDrawer_Variables0" xml:space="preserve"><value>Variables ({0})</value><comment>{0} = _vm.Inspector.Count</comment></data>
+  <data name="ResultsDrawer_RunningTheResultAppears" xml:space="preserve"><value>Running… the result appears here when it's done.</value></data>
+  <data name="ResultsDrawer_Copy" xml:space="preserve"><value>Copy</value><comment>Short label; keep it brief</comment></data>
+  <data name="ResultsDrawer_Result" xml:space="preserve"><value>Result</value><comment>Short label; keep it brief</comment></data>
+  <data name="ResultsDrawer_YouStoppedItBefore" xml:space="preserve"><value>You stopped it before it finished.</value></data>
+  <data name="ResultsDrawer_ItFinishedWithoutA" xml:space="preserve"><value>It finished without a result. Add "Show Result" at the end to see something here.</value></data>
+  <data name="ResultsDrawer_ClickTo" xml:space="preserve"><value>Click to </value></data>
+  <data name="ResultsDrawer_SeeTheFullValue" xml:space="preserve"><value>see the full value</value></data>
+  <data name="TokenView_0IsNeededClick" xml:space="preserve"><value>{0} is needed. Click to set it.</value><comment>{0} = Param.Label</comment></data>
+  <data name="TokenView_0ClickToChange" xml:space="preserve"><value>{0}. Click to change.</value><comment>{0} = Param.Label</comment></data>
+  <data name="ValueEditors_Browse" xml:space="preserve"><value>Browse…</value></data>
+  <data name="ValueEditors_TypeSomethingOrChoose" xml:space="preserve"><value>Type something or choose a variable</value></data>
+  <data name="ValueEditors_TheSmallestAllowedIs" xml:space="preserve"><value>The smallest allowed is {0}.</value><comment>{0} = ContentFormat.Number(min)</comment></data>
+  <data name="ValueEditors_TheLargestAllowedIs" xml:space="preserve"><value>The largest allowed is {0}.</value><comment>{0} = ContentFormat.Number(max)</comment></data>
+  <data name="ValueEditors_Decrease" xml:space="preserve"><value>Decrease</value></data>
+  <data name="ValueEditors_Increase" xml:space="preserve"><value>Increase</value></data>
+  <data name="ValueEditors_Search" xml:space="preserve"><value>Search</value><comment>Short label; keep it brief</comment></data>
+  <data name="ValueEditors_ThereIsNothingTo" xml:space="preserve"><value>There is nothing to choose from yet.</value></data>
+  <data name="ValueEditors_TypeATimeLike" xml:space="preserve"><value>Type a time like 09:30.</value></data>
+  <data name="ValueEditors_Today" xml:space="preserve"><value>Today</value><comment>Short label; keep it brief</comment></data>
+  <data name="ValueEditors_TypeATimeLike2" xml:space="preserve"><value>Type a time like 07:30.</value></data>
+  <data name="VariablePicker_Back" xml:space="preserve"><value>Back</value><comment>Short label; keep it brief</comment></data>
+  <data name="VariablePicker_FromEarlierSteps" xml:space="preserve"><value>From earlier steps</value></data>
+  <data name="VariablePicker_BuiltIn" xml:space="preserve"><value>Built in</value></data>
+  <data name="VariablePicker_NamedValues" xml:space="preserve"><value>Named values</value></data>
+  <data name="VariablePicker_AskEachTime" xml:space="preserve"><value>Ask each time</value></data>
+  <data name="VersionHistoryWindow_EarlierVersionsOf0" xml:space="preserve"><value>Earlier versions of "{0}". A version is kept when you change it (changes made within </value><comment>{0} = name</comment></data>
+  <data name="VersionHistoryWindow_00MinutesCount" xml:space="preserve"><value>{0:0} minutes count as one), on this PC only, for {1} days </value><comment>{0} = ShortcutVersions.MergeWithin.TotalMinutes; {1} = ShortcutVersions.KeepFor.Days</comment></data>
+  <data name="VersionHistoryWindow_TheNewest0" xml:space="preserve"><value>(the newest {0}).</value><comment>{0} = ShortcutVersions.MaxPerShortcut</comment></data>
+  <data name="VersionHistoryWindow_Close" xml:space="preserve"><value>Close</value><comment>Short label; keep it brief</comment></data>
+  <data name="VersionHistoryWindow_Named0" xml:space="preserve"><value>Named "{0}"</value><comment>{0} = v.Name</comment></data>
+  <data name="VersionHistoryWindow_RestoreTheVersionFrom" xml:space="preserve"><value>Restore the version from {0}?
+
+The shortcut as it is now is kept in Version history first, so you can go back to it.</value><comment>{0} = When(v.EditedAt)</comment></data>
+  <data name="VersionHistoryWindow_Restore" xml:space="preserve"><value>Restore</value></data>
+  <data name="VersionHistoryWindow_Cancel" xml:space="preserve"><value>Cancel</value><comment>Short label; keep it brief</comment></data>
+  <data name="VersionHistoryWindow_AnotherShortcutIsCalled" xml:space="preserve"><value>Another shortcut is called "{0}", so it kept its current name.</value><comment>{0} = old</comment></data>
+  <data name="VersionHistoryWindow_ItsOldHotkey0" xml:space="preserve"><value>Its old hotkey {0} is used by another shortcut, so it was left off.</value><comment>{0} = hk</comment></data>
+  <data name="VersionHistoryWindow_ItsOldQuickRun" xml:space="preserve"><value>Its old Quick Run name "{0}" is used by another shortcut, so it was left off.</value><comment>{0} = alias</comment></data>
+  <data name="VersionHistoryWindow_VersionRestored" xml:space="preserve"><value>Version restored</value></data>
+  <data name="VersionHistoryWindow_ThatDidnTWork" xml:space="preserve"><value>That didn't work. {0}</value><comment>{0} = ex.Message</comment></data>
+  <data name="ActionPanelViewModel_NoActionsMatch" xml:space="preserve"><value>No actions match</value></data>
+  <data name="ActionPanelViewModel_SuggestionsForWhatS" xml:space="preserve"><value>Suggestions for what's next</value></data>
+  <data name="ActionPanelViewModel_Favorites" xml:space="preserve"><value>Favorites</value></data>
+  <data name="ActionPanelViewModel_Recent" xml:space="preserve"><value>Recent</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionPanelViewModel_Logic" xml:space="preserve"><value>Logic</value><comment>Short label; keep it brief</comment></data>
+  <data name="EditorViewModel_AShortcutNeedsA" xml:space="preserve"><value>A shortcut needs a name.</value></data>
+  <data name="EditorViewModel_YouAlreadyHaveA" xml:space="preserve"><value>You already have a shortcut called "{0}". Pick another name.</value><comment>{0} = newName</comment></data>
+  <data name="EditorViewModel_DraftNotSavedYet" xml:space="preserve"><value>Draft, not saved yet</value></data>
+  <data name="EditorViewModel_Saving" xml:space="preserve"><value>Saving…</value></data>
+  <data name="EditorViewModel_CouldnTSaveThis" xml:space="preserve"><value>Couldn't save this shortcut: </value></data>
+  <data name="EditorViewModel_ChangedCheckTheChanges" xml:space="preserve"><value>Changed: check the changes before you run it</value></data>
+  <data name="EditorViewModel_1StepAdded" xml:space="preserve"><value>1 step added</value></data>
+  <data name="EditorViewModel_0StepsAdded" xml:space="preserve"><value>{0} steps added</value><comment>{0} = added</comment></data>
+  <data name="EditorViewModel_1StepChanged" xml:space="preserve"><value>1 step changed</value></data>
+  <data name="EditorViewModel_0StepsChanged" xml:space="preserve"><value>{0} steps changed</value><comment>{0} = changed</comment></data>
+  <data name="EditorViewModel_1StepRemoved" xml:space="preserve"><value>1 step removed</value></data>
+  <data name="EditorViewModel_0StepsRemoved" xml:space="preserve"><value>{0} steps removed</value><comment>{0} = removed</comment></data>
+  <data name="EditorViewModel_DraftCheckEachStep" xml:space="preserve"><value>Draft: check each step before you run it</value></data>
+  <data name="EditorViewModel_Running" xml:space="preserve"><value>Running…</value></data>
+  <data name="EditorViewModel_PausedPressNextStep" xml:space="preserve"><value>Paused. Press Next step to continue.</value></data>
+  <data name="EditorViewModel_PausedBefore0Press" xml:space="preserve"><value>Paused before "{0}". Press Next step to continue.</value><comment>{0} = title</comment></data>
+  <data name="EditorViewModel_Ready" xml:space="preserve"><value>Ready</value><comment>Short label; keep it brief</comment></data>
+  <data name="EditorViewModel_FinishedIn0" xml:space="preserve"><value>Finished in {0}</value><comment>{0} = ActionRowViewModel.FormatDuration(r.Duration)</comment></data>
+  <data name="EditorViewModel_YouStoppedIt" xml:space="preserve"><value>You stopped it</value></data>
+  <data name="EditorViewModel_StoppedItselfAfter0" xml:space="preserve"><value>Stopped itself after {0}</value><comment>{0} = ActionRowViewModel.FormatDuration(r.Duration)</comment></data>
+  <data name="ShortcutEditorWindow_Shortcut" xml:space="preserve"><value>Shortcut</value></data>
+  <data name="ShortcutEditorWindow_ChangeTheIconAnd" xml:space="preserve"><value>Change the icon and color</value></data>
+  <data name="ShortcutEditorWindow_ChangeIconAndColor" xml:space="preserve"><value>Change icon and color</value></data>
+  <data name="ShortcutEditorWindow_ShortcutName" xml:space="preserve"><value>Shortcut name</value></data>
+  <data name="ShortcutEditorWindow_ClickToRename" xml:space="preserve"><value>Click to rename</value></data>
+  <data name="ShortcutEditorWindow_MoreWaysToRun" xml:space="preserve"><value>More ways to run</value></data>
+  <data name="ShortcutEditorWindow_NextStep" xml:space="preserve"><value>_Next step</value></data>
+  <data name="ShortcutEditorWindow_RunThisStepThen" xml:space="preserve"><value>Run this step, then pause before the next one</value></data>
+  <data name="ShortcutEditorWindow_NextStep2" xml:space="preserve"><value>Next step</value></data>
+  <data name="ShortcutEditorWindow_RunToEnd" xml:space="preserve"><value>Run _to end</value></data>
+  <data name="ShortcutEditorWindow_StopPausingAndRun" xml:space="preserve"><value>Stop pausing and run the rest (still pauses at steps marked Pause here)</value></data>
+  <data name="ShortcutEditorWindow_RunToEnd2" xml:space="preserve"><value>Run to end</value></data>
+  <data name="ShortcutEditorWindow_Details" xml:space="preserve"><value>_Details</value></data>
+  <data name="ShortcutEditorWindow_Details2" xml:space="preserve"><value>Details</value></data>
+  <data name="ShortcutEditorWindow_NameHotkeyAutomationsAnd" xml:space="preserve"><value>Name, hotkey, automations and more</value></data>
+  <data name="ShortcutEditorWindow_More" xml:space="preserve"><value>More</value><comment>Short label; keep it brief</comment></data>
+  <data name="ShortcutEditorWindow_MoreOptions" xml:space="preserve"><value>More options</value></data>
+  <data name="ShortcutEditorWindow_ActionsInThisShortcut" xml:space="preserve"><value>Actions in this shortcut</value></data>
+  <data name="ShortcutEditorWindow_AddStep" xml:space="preserve"><value>_Add step</value></data>
+  <data name="ShortcutEditorWindow_AddStep2" xml:space="preserve"><value>Add step</value></data>
+  <data name="ShortcutEditorWindow_SearchForAnAction" xml:space="preserve"><value>Search for an action to add at the end</value></data>
+  <data name="ShortcutEditorWindow_ReCordWhatYou" xml:space="preserve"><value>Re_cord what you do</value></data>
+  <data name="ShortcutEditorWindow_RecordWhatYouDo" xml:space="preserve"><value>Record what you do</value></data>
+  <data name="ShortcutEditorWindow_RecordClicksAndTyping" xml:space="preserve"><value>Record clicks and typing into new steps</value></data>
+  <data name="ActionPanelView_Actions" xml:space="preserve"><value>Actions</value></data>
+  <data name="ActionPanelView_SearchActions" xml:space="preserve"><value>Search actions</value></data>
+  <data name="ActionPanelView_ShowAdvancedSteps" xml:space="preserve"><value>Show advanced steps</value></data>
+  <data name="ActionPanelView_AlsoListStepsFor" xml:space="preserve"><value>Also list steps for experts, such as running a command.</value></data>
+  <data name="ActionPanelView_Get" xml:space="preserve"><value>Get</value><comment>Short label; keep it brief</comment></data>
+  <data name="ActionPanelView_PowerPlanManagerIsn" xml:space="preserve"><value>Power Plan Manager isn't installed. Get it from the Microsoft Store.</value></data>
+  <data name="ActionPanelView_GetPowerPlanManager" xml:space="preserve"><value>Get Power Plan Manager from the Microsoft Store</value></data>
+  <data name="ActionPanelView_Favourite" xml:space="preserve"><value>Favourite</value></data>
 </root>

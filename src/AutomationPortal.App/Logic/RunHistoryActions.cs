@@ -45,18 +45,18 @@ public static class RunHistoryActions
     public static string Summary(RunRecord r, string sourceText, string statusText)
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"Shortcut: {r.ShortcutName}");
-        sb.AppendLine($"Started: {r.Started.ToLocalTime():f}");
-        sb.AppendLine($"Duration: {FormatDuration(r.DurationMs)}");
-        sb.AppendLine($"Result: {statusText}");
-        sb.AppendLine($"Source: {sourceText}");
-        if (!string.IsNullOrWhiteSpace(r.ErrorMessage)) sb.AppendLine($"Problem: {Redact(r.ErrorMessage!)}");
+        sb.AppendLine(Strings.Format("RunHistoryActions_Shortcut0", r.ShortcutName));
+        sb.AppendLine(Strings.Format("RunHistoryActions_Started0F", r.Started.ToLocalTime()));
+        sb.AppendLine(Strings.Format("RunHistoryActions_Duration0", FormatDuration(r.DurationMs)));
+        sb.AppendLine(Strings.Format("RunHistoryActions_Result0", statusText));
+        sb.AppendLine(Strings.Format("RunHistoryActions_Source0", sourceText));
+        if (!string.IsNullOrWhiteSpace(r.ErrorMessage)) sb.AppendLine(Strings.Format("RunHistoryActions_Problem0", Redact(r.ErrorMessage!)));
         if (FailedStep(r) is { } step)
         {
             var n = r.Steps.IndexOf(step) + 1;
             var title = string.IsNullOrWhiteSpace(step.Title) ? step.ActionId : step.Title;
-            sb.AppendLine($"Step that didn't finish: {n}. {Redact(title)}");
-            if (!string.IsNullOrWhiteSpace(step.Error) && step.Error != r.ErrorMessage) sb.AppendLine($"Step problem: {Redact(step.Error!)}");
+            sb.AppendLine(Strings.Format("RunHistoryActions_StepThatDidnT", n, Redact(title)));
+            if (!string.IsNullOrWhiteSpace(step.Error) && step.Error != r.ErrorMessage) sb.AppendLine(Strings.Format("RunHistoryActions_StepProblem0", Redact(step.Error!)));
         }
         return sb.ToString().TrimEnd();
     }
@@ -69,17 +69,17 @@ public static class RunHistoryActions
         var manual = plan.Where(s => !s.Automatic).ToList();
         if (auto.Count > 0)
         {
-            sb.AppendLine("Automation Portal will:");
+            sb.AppendLine(Strings.Get("RunHistoryActions_AutomationPortalWill"));
             foreach (var s in auto) sb.AppendLine("• " + s.Description);
         }
         if (manual.Count > 0)
         {
             if (sb.Length > 0) sb.AppendLine();
-            sb.AppendLine("Not undone automatically:");
+            sb.AppendLine(Strings.Get("RunHistoryActions_NotUndoneAutomatically"));
             foreach (var s in manual) sb.AppendLine("• " + s.Description);
         }
         sb.AppendLine();
-        sb.AppendLine("Nothing is overwritten. Items are only sent to the Recycle Bin, and only on drives that have one; anything on other drives is left for you. Anything that changed since the run is left as it is.");
+        sb.AppendLine(Strings.Get("RunHistoryActions_NothingIsOverwrittenItems"));
         sb.Append(Strings.Get("RunHistoryActions_IfWindowsSaysAn"));
         return sb.ToString();
     }
@@ -88,9 +88,9 @@ public static class RunHistoryActions
     {
         var done = results.Count(r => r.Done);
         var sb = new StringBuilder();
-        sb.AppendLine(results.Count > 0 && done == results.Count ? "Everything was undone." : $"{done} of {results.Count} changes were undone.");
+        sb.AppendLine(results.Count > 0 && done == results.Count ? Strings.Get("RunHistoryActions_EverythingWasUndone") : Strings.Format("RunHistoryActions_0Of1Changes", done, results.Count));
         foreach (var r in results.Where(r => !r.Done && r.Step.Automatic))
-            sb.AppendLine($"• Skipped: {r.Step.Description} {r.Problem}");
+            sb.AppendLine(Strings.Format("RunHistoryActions_Skipped01", r.Step.Description, r.Problem));
         foreach (var r in results.Where(r => !r.Step.Automatic))
             sb.AppendLine("• " + r.Step.Description);
         return sb.ToString().TrimEnd();

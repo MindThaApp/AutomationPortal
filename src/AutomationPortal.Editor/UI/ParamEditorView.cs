@@ -71,7 +71,7 @@ internal sealed class ParamEditorView : StackPanel
             var footer = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 10, 0, 0) };
             if (CanUseVariables)
             {
-                var b = Ui.TextButton("Variable", PickVariable, SymbolRegular.Braces24);
+                var b = Ui.TextButton(Strings.Get("ParamEditorView_Variable"), PickVariable, SymbolRegular.Braces24);
                 b.ToolTip = Strings.Get("ParamEditorView_UseTheResultOf");
                 footer.Children.Add(b);
             }
@@ -92,7 +92,7 @@ internal sealed class ParamEditorView : StackPanel
         {
             var row = new StackPanel { Orientation = Orientation.Horizontal };
             row.Children.Add(Pills.Ask(13));
-            var t = Ui.Text("You'll be asked each time it runs.", Ui.Secondary, 13);
+            var t = Ui.Text(Strings.Get("ParamEditorView_YouLlBeAsked"), Ui.Secondary, 13);
             t.Margin = new Thickness(10, 0, 0, 0);
             row.Children.Add(t);
             var back = Ui.TextButton(Strings.Get("ParamEditorView_TypeAValueInstead"), () => SetValue(null, true));
@@ -120,7 +120,7 @@ internal sealed class ParamEditorView : StackPanel
                 }, () => SetValue(null, true));
             };
             row.Children.Add(pill);
-            var t = Ui.Text("is used for this value.", Ui.Secondary, 13);
+            var t = Ui.Text(Strings.Get("ParamEditorView_IsUsedForThis"), Ui.Secondary, 13);
             t.Margin = new Thickness(10, 0, 0, 0);
             row.Children.Add(t);
             panel.Children.Add(row);

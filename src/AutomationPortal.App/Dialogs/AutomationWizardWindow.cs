@@ -94,7 +94,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         _message.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         footer.Children.Add(_message);
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
-        var cancel = new Wpf.Ui.Controls.Button { Content = "Cancel", MinWidth = 90, IsCancel = true };
+        var cancel = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationWizardWindow_Cancel"), MinWidth = 90, IsCancel = true };
         cancel.Click += (_, _) => Close();
         _turnOn = new Wpf.Ui.Controls.Button
         {
@@ -192,7 +192,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         string whenText = "";
         if (_state.TriggerId is { } id) whenText = WhenSummary.Text(id, _state.TriggerValues, _host.Triggers);
         var runText = _state.CreateNewShortcut
-            ? (string.IsNullOrWhiteSpace(_state.NewShortcutName) ? "a new shortcut" : _state.NewShortcutName.Trim())
+            ? (string.IsNullOrWhiteSpace(_state.NewShortcutName) ? Strings.Get("AutomationWizardWindow_ANewShortcut") : _state.NewShortcutName.Trim())
             : _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId)?.Name ?? "";
         void Token(string text, string placeholder)
         {
@@ -203,9 +203,9 @@ public sealed class AutomationWizardWindow : FluentWindow
             tb.Inlines.Add(run);
         }
         tb.Inlines.Add(new System.Windows.Documents.Run("When: "));
-        Token(whenText, "choose what starts it");
+        Token(whenText, Strings.Get("AutomationWizardWindow_ChooseWhatStartsIt"));
         tb.Inlines.Add(new System.Windows.Documents.Run(",  run: "));
-        Token(runText, "choose a shortcut");
+        Token(runText, Strings.Get("AutomationWizardWindow_ChooseAShortcut"));
         return tb;
     }
 
@@ -230,9 +230,9 @@ public sealed class AutomationWizardWindow : FluentWindow
         titles.Children.Add(Ui.Text(trigger.Description, secondary: true, size: 12));
         Grid.SetColumn(titles, 1);
         head.Children.Add(titles);
-        var change = new Wpf.Ui.Controls.Button { Content = "Change", VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(10, 0, 0, 0) };
+        var change = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationWizardWindow_Change"), VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(10, 0, 0, 0) };
         change.Click += (_, _) => { _showAll = false; _state.ClearTrigger(); Rebuild(); };
-        AutomationProperties.SetName(change, "Change what starts it");
+        AutomationProperties.SetName(change, Strings.Get("AutomationWizardWindow_ChangeWhatStartsIt"));
         Grid.SetColumn(change, 2);
         head.Children.Add(change);
         root.Children.Add(head);
@@ -254,7 +254,7 @@ public sealed class AutomationWizardWindow : FluentWindow
                     Content = sc.Label, Margin = new Thickness(0, 0, 6, 6), Padding = new Thickness(12, 4, 12, 4),
                     Appearance = sc.IsOn(_state.TriggerValues) ? ControlAppearance.Primary : ControlAppearance.Secondary,
                 };
-                AutomationProperties.SetName(b, sc.Days is null ? "Set the time to " + sc.Label : "Set the days to " + sc.Label.ToLowerInvariant());
+                AutomationProperties.SetName(b, sc.Days is null ? Strings.Get("AutomationWizardWindow_SetTheTimeTo") + sc.Label : Strings.Get("AutomationWizardWindow_SetTheDaysTo") + sc.Label.ToLowerInvariant());
                 var picked = sc;
                 b.Click += (_, _) => { picked.Apply(_state.TriggerValues); Rebuild(); };
                 chips.Children.Add(b);
@@ -266,12 +266,12 @@ public sealed class AutomationWizardWindow : FluentWindow
         if (!_state.CreateNewShortcut && _state.ExistingShortcutId is { } testId && _host.Library.GetById(testId) is { } testShortcut)
         {
             var test = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationWizardWindow_TestItNow"), Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(0, 8, 0, 0) };
-            AutomationProperties.SetName(test, "Test it now: run this shortcut once");
+            AutomationProperties.SetName(test, Strings.Get("AutomationWizardWindow_TestItNowRun"));
             test.Click += (_, _) => _ = _host.Runs.RunAsync(testShortcut, null, RunSource.Library);
             root.Children.Add(test);
         }
         if (!string.IsNullOrWhiteSpace(trigger.OutputDescription))
-            root.Children.Add(Ui.Text("Your shortcut receives: " + trigger.OutputDescription, secondary: true, size: 12));
+            root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_YourShortcutReceives") + trigger.OutputDescription, secondary: true, size: 12));
         return root;
     }
 
@@ -285,7 +285,7 @@ public sealed class AutomationWizardWindow : FluentWindow
 
         if (popular.Count > 0)
         {
-            var pop = Ui.Text("Popular", secondary: true, size: 12);
+            var pop = Ui.Text(Strings.Get("AutomationWizardWindow_Popular"), secondary: true, size: 12);
             pop.Margin = new Thickness(0, 0, 0, 6);
             root.Children.Add(pop);
             var row = new WrapPanel();
@@ -297,7 +297,7 @@ public sealed class AutomationWizardWindow : FluentWindow
             root.Children.Add(row);
         }
 
-        var moreButton = new Wpf.Ui.Controls.Button { Content = _showAll || popular.Count == 0 ? "All ways to start" : "More…", Icon = new SymbolIcon(SymbolRegular.ChevronDown20), Margin = new Thickness(0, 4, 0, 0) };
+        var moreButton = new Wpf.Ui.Controls.Button { Content = _showAll || popular.Count == 0 ? Strings.Get("AutomationWizardWindow_AllWaysToStart") : Strings.Get("AutomationWizardWindow_More"), Icon = new SymbolIcon(SymbolRegular.ChevronDown20), Margin = new Thickness(0, 4, 0, 0) };
         moreButton.Click += (_, _) => { _showAll = true; Rebuild(); };
         if (!_showAll && popular.Count > 0) root.Children.Add(moreButton);
         else if (popular.Count == 0) _showAll = true;
@@ -319,8 +319,8 @@ public sealed class AutomationWizardWindow : FluentWindow
                     Content = cat, Margin = new Thickness(0, 0, 8, 8), Padding = new Thickness(14, 6, 14, 6),
                     Appearance = cat == _category ? ControlAppearance.Primary : ControlAppearance.Secondary,
                 };
-                AutomationProperties.SetName(pill, cat == _category ? cat + ", selected" : cat);
-                AutomationProperties.SetItemStatus(pill, cat == _category ? "Selected" : "");
+                AutomationProperties.SetName(pill, cat == _category ? cat + Strings.Get("AutomationWizardWindow_Selected") : cat);
+                AutomationProperties.SetItemStatus(pill, cat == _category ? Strings.Get("AutomationWizardWindow_Selected2") : "");
                 pill.Click += (_, _) => { _category = cat; Fill(); };
                 pills.Children.Add(pill);
             }
@@ -374,7 +374,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         var picker = new System.Windows.Controls.ComboBox { Margin = new Thickness(28, 0, 0, 12), HorizontalAlignment = HorizontalAlignment.Left, Width = 380, DisplayMemberPath = nameof(Shortcut.Name) };
         picker.ItemsSource = _host.Library.All;
         picker.SelectedItem = _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId);
-        AutomationProperties.SetName(picker, "Shortcut to run");
+        AutomationProperties.SetName(picker, Strings.Get("AutomationWizardWindow_ShortcutToRun"));
         var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("AutomationWizardWindow_NameTheNewShortcut"), Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), Width = 380, HorizontalAlignment = HorizontalAlignment.Left };
 
         void Sync()
@@ -407,9 +407,9 @@ public sealed class AutomationWizardWindow : FluentWindow
     {
         var expander = new Expander
         {
-            Header = "Options", IsExpanded = _optionsOpen, Margin = new Thickness(0, 22, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch,
+            Header = Strings.Get("AutomationWizardWindow_Options"), IsExpanded = _optionsOpen, Margin = new Thickness(0, 22, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch,
         };
-        AutomationProperties.SetName(expander, "Options");
+        AutomationProperties.SetName(expander, Strings.Get("AutomationWizardWindow_Options"));
         expander.Expanded += (_, _) => _optionsOpen = true;
         expander.Collapsed += (_, _) => _optionsOpen = false;
         var root = new StackPanel { Margin = new Thickness(4, 4, 4, 4) };
@@ -444,7 +444,7 @@ public sealed class AutomationWizardWindow : FluentWindow
                 var remove = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.Dismiss16), Appearance = ControlAppearance.Transparent, ToolTip = Strings.Get("AutomationWizardWindow_RemoveThisCondition") };
         System.Windows.Automation.AutomationProperties.SetName(remove, Strings.Get("AutomationWizardWindow_RemoveThisCondition"));
                 remove.Click += (_, _) => { _state.Conditions.Remove(draft); FillConditions(); RefreshFooter(); };
-                AutomationProperties.SetName(remove, "Remove condition");
+                AutomationProperties.SetName(remove, Strings.Get("AutomationWizardWindow_RemoveCondition"));
                 Grid.SetColumn(remove, 2);
                 top.Children.Add(remove);
                 inner.Children.Add(top);
@@ -497,13 +497,13 @@ public sealed class AutomationWizardWindow : FluentWindow
         cool.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         cool.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         cool.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-        var l1 = Ui.Text("Don't run more than once every", wrap: false);
+        var l1 = Ui.Text(Strings.Get("AutomationWizardWindow_DonTRunMore"), wrap: false);
         l1.VerticalAlignment = VerticalAlignment.Center;
         var minutes = new NumberBox { Minimum = 0, Maximum = 1440, SmallChange = 1, Value = _state.CooldownMinutes, Width = 110, Margin = new Thickness(10, 0, 10, 0), MaxDecimalPlaces = 0, SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Inline };
         var l2 = Ui.Text("minutes", wrap: false);
         l2.VerticalAlignment = VerticalAlignment.Center;
         minutes.ValueChanged += (_, _) => _state.CooldownMinutes = (int)(minutes.Value ?? 0);
-        AutomationProperties.SetName(minutes, "Minutes between runs");
+        AutomationProperties.SetName(minutes, Strings.Get("AutomationWizardWindow_MinutesBetweenRuns"));
         cool.Children.Add(l1);
         Grid.SetColumn(minutes, 1); cool.Children.Add(minutes);
         Grid.SetColumn(l2, 2); cool.Children.Add(l2);
@@ -519,7 +519,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         {
             var missed = new ToggleSwitch { Content = Strings.Get("AutomationWizardWindow_IfMissedRunWhen"), IsChecked = _state.RunIfMissed, Margin = new Thickness(0, 14, 0, 0) };
             missed.Click += (_, _) => _state.RunIfMissed = missed.IsChecked == true;
-            AutomationProperties.SetName(missed, "If missed, run when Automation Portal next starts or the PC wakes");
+            AutomationProperties.SetName(missed, Strings.Get("AutomationWizardWindow_IfMissedRunWhen"));
             root.Children.Add(missed);
             root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_IfThePCWas"), secondary: true, size: 12));
         }
@@ -547,7 +547,7 @@ public sealed class AutomationWizardWindow : FluentWindow
                 shortcutId = s.Id;
                 createdId = s.Id;
             }
-            else shortcutId = _state.ExistingShortcutId ?? throw new LibraryException("Choose a shortcut to run.");
+            else shortcutId = _state.ExistingShortcutId ?? throw new LibraryException(Strings.Get("AutomationWizardWindow_ChooseAShortcutTo"));
 
             var automation = _state.Build(shortcutId);
             if (_editing is not null)
@@ -564,7 +564,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         }
         catch (LibraryException ex)
         {
-            await Prompts.MessageAsync(this, "Couldn't save the automation", ex.Message);
+            await Prompts.MessageAsync(this, Strings.Get("AutomationWizardWindow_CouldnTSaveThe"), ex.Message);
         }
     }
 }

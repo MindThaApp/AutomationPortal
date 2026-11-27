@@ -62,7 +62,7 @@ public static class RunCounts
         var by = finished.Count(r => r.Source is RunSource.Automation or RunSource.Reminder);
         var period = since.Date == now.Date ? Strings.Get("RunCounts_Today") : string.Format(Strings.Get("RunCounts_Since"), since.ToString("d MMMM", System.Globalization.CultureInfo.CurrentCulture));
         var runs = finished.Count == 1 ? "1 run" : $"{finished.Count} runs";
-        return $"{period}: {runs}, {by} by themselves.";
+        return Strings.Format("DelightMoments_012By", period, runs, by);
     }
 }
 

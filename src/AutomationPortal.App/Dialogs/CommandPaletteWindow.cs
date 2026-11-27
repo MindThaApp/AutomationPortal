@@ -49,7 +49,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         root.Children.Add(new TitleBar { Title = Strings.Get("CommandPaletteWindow_CommandPalette"), ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
 
         _box = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("CommandPaletteWindow_TypeAShortcutA"), Margin = new Thickness(16, 4, 16, 8), FontSize = 16 };
-        AutomationProperties.SetName(_box, "Command palette search");
+        AutomationProperties.SetName(_box, Strings.Get("CommandPaletteWindow_CommandPaletteSearch"));
         _box.TextChanged += (_, _) => Refresh();
         _box.PreviewKeyDown += OnKeyDown;
         Grid.SetRow(_box, 1);

@@ -42,7 +42,7 @@ public static class RunResultText
         var parts = changes.GroupBy(c => c.Kind).Select(g => Phrase(g.Key, g.Count())).ToList();
         return parts.Count switch
         {
-            0 => "didn't change any files",
+            0 => Strings.Get("RunResultText_DidnTChangeAny"),
             1 => parts[0],
             _ => string.Join(", ", parts.Take(parts.Count - 1)) + " and " + parts[^1],
         };
@@ -55,8 +55,8 @@ public static class RunResultText
         FileChangeKind.Created => $"made {Files(n)}",
         FileChangeKind.Moved => $"moved {Files(n)}",
         FileChangeKind.Renamed => $"renamed {Files(n)}",
-        FileChangeKind.Recycled => $"sent {Files(n)} to the Recycle Bin",
-        FileChangeKind.Deleted => $"deleted {Files(n)} for good",
+        FileChangeKind.Recycled => Strings.Format("RunResultText_Sent0ToThe", Files(n)),
+        FileChangeKind.Deleted => Strings.Format("RunResultText_Deleted0ForGood", Files(n)),
         FileChangeKind.Replaced => $"replaced {Files(n)}",
         _ => $"changed {Files(n)}",
     };
@@ -71,14 +71,14 @@ public static class RunResultText
     {
         var done = results.Count(r => r.Done);
         if (results.Count > 0 && done == results.Count)
-            return ("Undone", results.Count == 1 ? "The change was put back." : $"All {results.Count} changes were put back.");
+            return ("Undone", results.Count == 1 ? Strings.Get("RunResultText_TheChangeWasPut") : Strings.Format("RunResultText_All0ChangesWere", results.Count));
 
-        var title = done == 0 ? "Nothing was put back" : $"Put back {done} of {results.Count} changes";
+        var title = done == 0 ? Strings.Get("RunResultText_NothingWasPutBack") : Strings.Format("RunResultText_PutBack0Of", done, results.Count);
         var missed = results.Where(r => !r.Done).ToList();
-        var lines = new List<string> { "Not put back:" };
+        var lines = new List<string> { Strings.Get("RunResultText_NotPutBack") };
         foreach (var r in missed.Take(MaxListed))
             lines.Add("• " + (r.Step.Automatic ? $"{ItemName(r.Step.Change)}: {r.Problem}" : r.Step.Description));
-        if (missed.Count > MaxListed) lines.Add($"…and {missed.Count - MaxListed} more. See details for the full list.");
+        if (missed.Count > MaxListed) lines.Add(Strings.Format("RunResultText_And0MoreSee", missed.Count - MaxListed));
         lines.Add(Strings.Get("RunResultText_NothingWasOverwritten"));
         return (title, string.Join("\n", lines));
     }

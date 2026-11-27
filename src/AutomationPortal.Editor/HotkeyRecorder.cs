@@ -74,7 +74,7 @@ public sealed class HotkeyRecorder : Border
         Cursor = Cursors.IBeam;
         FocusVisualStyle = null;
         this.Dyn(BackgroundProperty, Ui.ControlFill).Dyn(BorderBrushProperty, Ui.ControlStroke);
-        System.Windows.Automation.AutomationProperties.SetName(this, "Hotkey");
+        System.Windows.Automation.AutomationProperties.SetName(this, Strings.Get("HotkeyRecorder_Hotkey"));
         _clear = Ui.IconButton(SymbolRegular.Dismiss16, Strings.Get("HotkeyRecorder_ClearHotkey"), () => Set(null, true), 24, 12);
         var grid = new Grid();
         grid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -114,7 +114,7 @@ public sealed class HotkeyRecorder : Border
         }
         else
         {
-            _text.Text = _value ?? "None";
+            _text.Text = _value ?? Strings.Get("HotkeyRecorder_None");
             _text.SetResourceReference(TextBlock.ForegroundProperty, _value is null ? Ui.Tertiary : Ui.Primary);
             SetResourceReference(BorderBrushProperty, Ui.ControlStroke);
         }

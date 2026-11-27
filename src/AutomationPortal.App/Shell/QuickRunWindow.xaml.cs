@@ -56,8 +56,8 @@ public partial class QuickRunWindow : FluentWindow
     private QuickRunItem? _locked;
     private DateTime _openedAt;
 
-    private const string NormalHints = "Enter run      Tab give it text      Ctrl+Enter edit      Esc close";
-    private const string LockedHints = "Type the input, then press Enter      Backspace go back      Esc close";
+    private static string NormalHints => Strings.Get("QuickRunWindow_NormalHints");
+    private static string LockedHints => Strings.Get("QuickRunWindow_LockedHints");
 
     public QuickRunWindow(AppHost host)
     {
@@ -174,7 +174,7 @@ public partial class QuickRunWindow : FluentWindow
         _rows.Clear();
         _rows.Add(new QuickRunRow(new QuickRunItem
         {
-            Id = item.Id, Title = "Run with input: " + (typed.Length == 0 ? "…" : typed), Subtitle = item.Title,
+            Id = item.Id, Title = Strings.Get("QuickRunWindow_RunWithInput") + (typed.Length == 0 ? "…" : typed), Subtitle = item.Title,
             Icon = item.Icon, Color = item.Color, Score = item.Score, ActionLabel = "Run", ShortcutId = item.ShortcutId,
             AcceptsInput = true, ExecuteAsync = item.ExecuteAsync,
         }));
@@ -198,9 +198,9 @@ public partial class QuickRunWindow : FluentWindow
         {
             Chip.Visibility = Visibility.Visible;
             var oneLine = _preset.Replace('\r', ' ').Replace('\n', ' ');
-            ChipText.Text = "Selected text: " + (oneLine.Length > 28 ? oneLine[..28] + "…" : oneLine);
+            ChipText.Text = Strings.Get("QuickRunWindow_SelectedText") + (oneLine.Length > 28 ? oneLine[..28] + "…" : oneLine);
             Placeholder.Text = Strings.Get("QuickRunWindow_ChooseAShortcutTo");
-            Hints.Text = NormalHints.Replace("Tab give it text", "Tab type other text");
+            Hints.Text = Strings.Get("QuickRunWindow_NormalHintsSelected");
         }
         else
         {

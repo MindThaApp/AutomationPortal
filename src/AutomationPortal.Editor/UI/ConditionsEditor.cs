@@ -43,9 +43,9 @@ internal sealed class ConditionsEditor : StackPanel
             var match = new WpfComboBox { Width = 90, ItemsSource = new[] { "all", "any" }, SelectedIndex = _value.Match == ConditionMatch.All ? 0 : 1 };
             match.SelectionChanged += (_, _) => Commit(ConditionModel.WithMatch(_value, match.SelectedIndex == 0 ? ConditionMatch.All : ConditionMatch.Any), false);
             var head = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 0, 8) };
-            head.Children.Add(Ui.Text("Match ", Ui.Primary, 14));
+            head.Children.Add(Ui.Text(Strings.Get("ConditionsEditor_Match"), Ui.Primary, 14));
             head.Children.Add(match);
-            head.Children.Add(Ui.Text(" of these conditions", Ui.Primary, 14));
+            head.Children.Add(Ui.Text(Strings.Get("ConditionsEditor_OfTheseConditions"), Ui.Primary, 14));
             Children.Add(head);
         }
         for (var i = 0; i < _value.Items.Count; i++) Children.Add(RowView(i));
@@ -132,7 +132,7 @@ internal sealed class ConditionsEditor : StackPanel
         var type = group switch { "Date" => ParamType.Date, "Number" => ParamType.Number, _ => ParamType.Text };
         var descriptor = new ParameterDescriptor
         {
-            Key = second ? "right2" : "right", Label = "Value", Type = type, Placeholder = group switch { "Number" => "Number", "Date" => "Date", _ => "Type a value" },
+            Key = second ? "right2" : "right", Label = Strings.Get("ConditionsEditor_Value"), Type = type, Placeholder = group switch { "Number" => "Number", "Date" => "Date", _ => "Type a value" },
         };
         var view = new ParamEditorView(descriptor, value, _a.Env, _a.Variables, v =>
         {

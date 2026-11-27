@@ -47,9 +47,9 @@ internal sealed class VersionHistoryWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.Children.Add(new TitleBar { Title = Strings.Get("VersionHistoryWindow_VersionHistory"), ShowMaximize = false, ShowMinimize = false });
 
-        var intro = Ui.Text($"Earlier versions of \"{name}\". A version is kept when you change it (changes made within "
-            + $"{ShortcutVersions.MergeWithin.TotalMinutes:0} minutes count as one), on this PC only, for {ShortcutVersions.KeepFor.Days} days "
-            + $"(the newest {ShortcutVersions.MaxPerShortcut}).", Ui.Secondary, 13, wrap: true);
+        var intro = Ui.Text(Strings.Format("VersionHistoryWindow_EarlierVersionsOf0", name)
+            + Strings.Format("VersionHistoryWindow_00MinutesCount", ShortcutVersions.MergeWithin.TotalMinutes, ShortcutVersions.KeepFor.Days)
+            + Strings.Format("VersionHistoryWindow_TheNewest0", ShortcutVersions.MaxPerShortcut), Ui.Secondary, 13, wrap: true);
         intro.Margin = new Thickness(24, 8, 24, 12);
         Grid.SetRow(intro, 1);
         root.Children.Add(intro);
@@ -69,7 +69,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         _error.Margin = new Thickness(0, 8, 0, 0);
         _error.Visibility = Visibility.Collapsed;
         bottom.Children.Add(_error);
-        var close = Ui.TextButton("Close", Close);
+        var close = Ui.TextButton(Strings.Get("VersionHistoryWindow_Close"), Close);
         close.HorizontalAlignment = HorizontalAlignment.Right;
         close.Margin = new Thickness(0, 12, 0, 0);
         close.IsCancel = true;
@@ -107,7 +107,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         text.Children.Add(Ui.Text(When(v.EditedAt), Ui.Primary, 14, FontWeights.SemiBold));
         var detail = v.CanOpen ? $"{v.StepCount} step{(v.StepCount == 1 ? "" : "s")} · {v.Changes}" : v.Changes;
         text.Children.Add(Ui.Text(detail, Ui.Secondary, 12.5));
-        if (v.CanOpen) text.Children.Add(Ui.Text($"Named \"{v.Name}\"", Ui.Tertiary, 12));
+        if (v.CanOpen) text.Children.Add(Ui.Text(Strings.Format("VersionHistoryWindow_Named0", v.Name), Ui.Tertiary, 12));
         grid.Children.Add(text);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 0, 0, 0) };
@@ -142,19 +142,19 @@ internal sealed class VersionHistoryWindow : FluentWindow
     private void Restore(ShortcutVersion v)
     {
         var answer = EditorDialog.Ask(this, Strings.Get("VersionHistoryWindow_RestoreThisVersion2"),
-            $"Restore the version from {When(v.EditedAt)}?\n\nThe shortcut as it is now is kept in Version history first, so you can go back to it.",
-            "Restore", "Cancel");
+            Strings.Format("VersionHistoryWindow_RestoreTheVersionFrom", When(v.EditedAt)),
+            Strings.Get("VersionHistoryWindow_Restore"), Strings.Get("VersionHistoryWindow_Cancel"));
         if (answer != DialogChoice.Primary) return;
         try
         {
             var result = _library.RestoreVersion(v, _keepSettings.IsChecked == true);
             Restored = true;
             var notes = new List<string>();
-            if (result.RenamedFrom is { } old) notes.Add($"Another shortcut is called \"{old}\", so it kept its current name.");
-            if (result.ClearedHotkey is { } hk) notes.Add($"Its old hotkey {hk} is used by another shortcut, so it was left off.");
-            if (result.ClearedAlias is { } alias) notes.Add($"Its old Quick Run name \"{alias}\" is used by another shortcut, so it was left off.");
+            if (result.RenamedFrom is { } old) notes.Add(Strings.Format("VersionHistoryWindow_AnotherShortcutIsCalled", old));
+            if (result.ClearedHotkey is { } hk) notes.Add(Strings.Format("VersionHistoryWindow_ItsOldHotkey0", hk));
+            if (result.ClearedAlias is { } alias) notes.Add(Strings.Format("VersionHistoryWindow_ItsOldQuickRun", alias));
             if (notes.Count > 0)
-                EditorDialog.Tell(this, "Version restored", string.Join("\n\n", notes));
+                EditorDialog.Tell(this, Strings.Get("VersionHistoryWindow_VersionRestored"), string.Join("\n\n", notes));
             Close();
         }
         catch (Exception ex) when (IsExpected(ex)) { ShowError(Message(ex)); }
@@ -163,7 +163,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
     private static bool IsExpected(Exception ex) => ex is LibraryException or System.IO.IOException or UnauthorizedAccessException
         or System.Security.SecurityException or System.Text.Json.JsonException or InvalidOperationException or ArgumentException or NotSupportedException;
 
-    private static string Message(Exception ex) => ex is LibraryException ? ex.Message : $"That didn't work. {ex.Message}";
+    private static string Message(Exception ex) => ex is LibraryException ? ex.Message : Strings.Format("VersionHistoryWindow_ThatDidnTWork", ex.Message);
 
     private void ShowError(string message)
     {

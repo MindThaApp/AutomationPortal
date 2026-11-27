@@ -43,7 +43,7 @@ public sealed class GetAiReadySheet
     private async Task RefreshAsync()
     {
         try { _hostState = await Store.Host.GetStateAsync(); }
-        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running"); }
+        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("GetAiReadySheet_PortalAIHostIsn")); }
         if (AiProviderRegistry.Get(AiProviderIds.WindowsAi) is not null)
         {
             try { _windowsState = await _windows.IsAvailableAsync(); }
@@ -154,7 +154,7 @@ public sealed class GetAiReadySheet
     {
         _busy = true; _note = Strings.Get("GetAiReady_Starting"); Rebuild();
         try { _hostState = await Store.Host.StartAsync(); }
-        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running"); }
+        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("GetAiReadySheet_PortalAIHostIsn")); }
         _busy = false; _note = null; Rebuild();
     }
 

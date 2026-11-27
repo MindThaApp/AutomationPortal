@@ -36,8 +36,8 @@ public sealed class HotkeyRecorderBox : Border
         Padding = new Thickness(10, 6, 10, 6);
         Cursor = Cursors.Hand;
         FocusVisualStyle = null;
-        ToolTip = "Click, then press the keys you want to use";
-        AutomationProperties.SetName(this, "Hotkey");
+        ToolTip = Strings.Get("HotkeyRecorderBox_ClickThenPressThe");
+        AutomationProperties.SetName(this, Strings.Get("HotkeyRecorderBox_Hotkey"));
         SetResourceReference(BackgroundProperty, "ControlFillColorDefaultBrush");
         SetResourceReference(BorderBrushProperty, "DsStrokeBrush");
         _icon.SetResourceReference(Control.ForegroundProperty, "DsTextSecondaryBrush");
@@ -68,12 +68,12 @@ public sealed class HotkeyRecorderBox : Border
     {
         if (IsKeyboardFocused)
         {
-            _text.Text = _hint ?? (_value.Length == 0 ? "Press the keys…" : _value + "   (press new keys to change)");
+            _text.Text = _hint ?? (_value.Length == 0 ? Strings.Get("HotkeyRecorderBox_PressTheKeys") : _value + Strings.Get("HotkeyRecorderBox_PressNewKeysTo"));
             _text.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
         }
         else
         {
-            _text.Text = _value.Length == 0 ? "Click to set" : _value;
+            _text.Text = _value.Length == 0 ? Strings.Get("HotkeyRecorderBox_ClickToSet") : _value;
             _text.SetResourceReference(TextBlock.ForegroundProperty, _value.Length == 0 ? "DsTextTertiaryBrush" : "DsTextPrimaryBrush");
         }
     }

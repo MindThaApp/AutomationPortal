@@ -45,7 +45,7 @@ internal sealed class ResultsDrawer : Border
         header.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         _statusIcon.Margin = new Thickness(16, 0, 8, 0);
         header.Children.Add(_statusIcon);
-        _status = Ui.Text("Ready", Ui.Primary, 13.5);
+        _status = Ui.Text(Strings.Get("ResultsDrawer_Ready"), Ui.Primary, 13.5);
         Grid.SetColumn(_status, 1);
         header.Children.Add(_status);
         var right = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 10, 0) };
@@ -158,7 +158,7 @@ internal sealed class ResultsDrawer : Border
     {
         _resultTab.IsChecked = !_showVars;
         _varsTab.IsChecked = _showVars;
-        _varsTab.Content = _vm.Inspector.Count > 0 ? $"Variables ({_vm.Inspector.Count})" : "Variables";
+        _varsTab.Content = _vm.Inspector.Count > 0 ? Strings.Format("ResultsDrawer_Variables0", _vm.Inspector.Count) : "Variables";
     }
 
     private void Render()
@@ -173,7 +173,7 @@ internal sealed class ResultsDrawer : Border
         var stack = new StackPanel();
         if (r is null)
         {
-            stack.Children.Add(Ui.Text(_vm.IsRunning ? "Running… the result appears here when it's done." : Strings.Get("ResultsDrawer_RunTheShortcutTo"), Ui.Secondary, 13.5, wrap: true));
+            stack.Children.Add(Ui.Text(_vm.IsRunning ? Strings.Get("ResultsDrawer_RunningTheResultAppears") : Strings.Get("ResultsDrawer_RunTheShortcutTo"), Ui.Secondary, 13.5, wrap: true));
         }
         else
         {
@@ -191,18 +191,18 @@ internal sealed class ResultsDrawer : Border
             if (r.Output.Count > 0)
             {
                 var head = new DockPanel { Margin = new Thickness(0, 0, 0, 6) };
-                var copy = Ui.TextButton("Copy", () =>
+                var copy = Ui.TextButton(Strings.Get("ResultsDrawer_Copy"), () =>
                 {
                     try { Clipboard.SetText(r.Output.AsText()); } catch { }
                 }, SymbolRegular.Copy20);
                 DockPanel.SetDock(copy, Dock.Right);
                 head.Children.Add(copy);
-                head.Children.Add(Ui.Text("Result", Ui.Secondary, 12, FontWeights.SemiBold));
+                head.Children.Add(Ui.Text(Strings.Get("ResultsDrawer_Result"), Ui.Secondary, 12, FontWeights.SemiBold));
                 stack.Children.Add(head);
                 stack.Children.Add(ContentView.Build(r.Output));
             }
             else if (r.Status != RunStatus.Failed)
-                stack.Children.Add(Ui.Text(r.Status == RunStatus.Cancelled ? "You stopped it before it finished." : "It finished without a result. Add \"Show Result\" at the end to see something here.", Ui.Secondary, 13.5, wrap: true));
+                stack.Children.Add(Ui.Text(r.Status == RunStatus.Cancelled ? Strings.Get("ResultsDrawer_YouStoppedItBefore") : Strings.Get("ResultsDrawer_ItFinishedWithoutA"), Ui.Secondary, 13.5, wrap: true));
         }
         _content.Content = stack;
     }
@@ -277,7 +277,7 @@ internal sealed class ResultsDrawer : Border
                 if (!_expandedVars.Remove(item.Name)) _expandedVars.Add(item.Name);
                 RenderVariables();
             };
-            card.ToolTip = "Click to " + (expanded ? "collapse" : "see the full value");
+            card.ToolTip = Strings.Get("ResultsDrawer_ClickTo") + (expanded ? "collapse" : Strings.Get("ResultsDrawer_SeeTheFullValue"));
             stack.Children.Add(card);
         }
         _content.Content = stack;

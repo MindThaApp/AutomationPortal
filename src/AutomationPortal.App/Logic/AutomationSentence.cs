@@ -40,7 +40,7 @@ public static class AutomationSentence
         Agree(parts);
         var shortcut = library.GetById(a.ShortcutId);
         parts.Add(new("  →  Run ", SentencePartKind.Plain));
-        parts.Add(new(shortcut?.Name ?? "a deleted shortcut", SentencePartKind.Shortcut));
+        parts.Add(new(shortcut?.Name ?? Strings.Get("AutomationSentence_ADeletedShortcut"), SentencePartKind.Shortcut));
 
         var phrases = new List<string>();
         foreach (var c in a.Conditions)
@@ -52,7 +52,7 @@ public static class AutomationSentence
         return new AutomationSentenceModel
         {
             Parts = parts,
-            ConditionsText = phrases.Count == 0 ? "" : "Only if " + string.Join(" and ", phrases),
+            ConditionsText = phrases.Count == 0 ? "" : Strings.Get("AutomationSentence_OnlyIf") + string.Join(" and ", phrases),
             TriggerMissing = trigger is null,
             ShortcutMissing = shortcut is null,
         };
@@ -85,13 +85,13 @@ public static class AutomationSentence
 
     public static string LastRunText(DateTimeOffset? lastRun, DateTimeOffset now)
     {
-        if (lastRun is null) return "Hasn't run yet";
+        if (lastRun is null) return Strings.Get("AutomationSentence_HasnTRunYet");
         var local = lastRun.Value.ToLocalTime();
         var span = now - lastRun.Value;
         if (span < TimeSpan.FromMinutes(1)) return Strings.Get("AutomationSentence_RanJustNow");
-        if (span < TimeSpan.FromHours(1)) return $"Ran {(int)span.TotalMinutes} min ago";
-        if (local.Date == now.ToLocalTime().Date) return "Ran today at " + local.ToString("t");
-        if (local.Date == now.ToLocalTime().Date.AddDays(-1)) return "Ran yesterday at " + local.ToString("t");
+        if (span < TimeSpan.FromHours(1)) return Strings.Format("AutomationSentence_Ran0MinAgo", (int)span.TotalMinutes);
+        if (local.Date == now.ToLocalTime().Date) return Strings.Get("AutomationSentence_RanTodayAt") + local.ToString("t");
+        if (local.Date == now.ToLocalTime().Date.AddDays(-1)) return Strings.Get("AutomationSentence_RanYesterdayAt") + local.ToString("t");
         return "Ran " + local.ToString("d");
     }
 }

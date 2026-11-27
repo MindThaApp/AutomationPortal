@@ -25,7 +25,7 @@ public static class NewShortcutMenu
             var result = host.Library.Import(item.Shortcut.Clone());
             await host.FinishImportAsync(result, owner, warningsShown: false);
         }
-        catch (AutomationPortal.Core.LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't add it", ex.Message); }
+        catch (AutomationPortal.Core.LibraryException ex) { await Prompts.MessageAsync(owner, Strings.Get("NewShortcutMenu_CouldnTAddIt"), ex.Message); }
     }
 
     /// <param name="describeFirst">Show only the description box (or its fallback), for the empty state's Describe it button.</param>
@@ -43,7 +43,7 @@ public static class NewShortcutMenu
         card.Child = stack;
         popup.Child = card;
         AutomationPortal.Editor.MenuMotion.Attach(popup);
-        AutomationProperties.SetName(card, "New shortcut");
+        AutomationProperties.SetName(card, Strings.Get("NewShortcutMenu_NewShortcut"));
 
         TextBlock Label(string text, double size, bool secondary, FontWeight? weight = null)
         {
@@ -67,14 +67,14 @@ public static class NewShortcutMenu
         stack.Children.Add(Label(ready ? Strings.Get("NewShortcutMenu_DescribeIt") : Strings.Get("NewShortcutMenu_StartFromAReady"), 14, false, FontWeights.SemiBold));
         if (ready)
         {
-            var hint = Label("Say what you want in a sentence. You get a draft to check; nothing runs by itself.", 12.5, true);
+            var hint = Label(Strings.Get("NewShortcutMenu_SayWhatYouWant"), 12.5, true);
             hint.Margin = new Thickness(0, 2, 0, 8);
             stack.Children.Add(hint);
             var box = new Wpf.Ui.Controls.TextBox
             {
                 PlaceholderText = Strings.Get("NewShortcutMenu_EveryMorningTellMe"), AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 74,
             };
-            AutomationProperties.SetName(box, "Describe the shortcut you want");
+            AutomationProperties.SetName(box, Strings.Get("NewShortcutMenu_DescribeTheShortcutYou"));
             stack.Children.Add(box);
             var create = new Wpf.Ui.Controls.Button
             {

@@ -26,9 +26,9 @@ internal sealed partial class ShortcutEditorWindow
         if (_vm.AiNote is not { } n) { NoteHost.Content = null; return; }
         var extras = new List<(string, string)>();
         if (n.DestructiveTitles.Count > 0)
-            extras.Add(($"Can change or delete things: {string.Join(", ", n.DestructiveTitles)}. Those steps are marked below, so look at them before you run this.", Ui.Caution));
+            extras.Add((Strings.Format("ShortcutEditorWindowAi_CanChangeOrDelete", string.Join(", ", n.DestructiveTitles)), Ui.Caution));
         if (n.Warnings.Count > 0)
-            extras.Add(("Automation Portal noticed: " + string.Join(" ", n.Warnings.Take(3)), Ui.Secondary));
+            extras.Add((Strings.Get("ShortcutEditorWindowAi_AutomationPortalNoticed") + string.Join(" ", n.Warnings.Take(3)), Ui.Secondary));
         ShowNote(new NoteSpec(SymbolRegular.Sparkle24, n.Headline, n.Detail, extras, n.Automations,
             () => _vm.UndoAiResult(), n.IsDraft ? () => _vm.KeepDraft() : null, n.IsDraft ? "Keep" : "Dismiss", () => _vm.DismissAiNote()));
     }
@@ -52,7 +52,7 @@ internal sealed partial class ShortcutEditorWindow
         Grid.SetColumn(title, 1);
         head.Children.Add(title);
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(10, 0, 0, 0) };
-        buttons.Children.Add(Ui.TextButton("Undo", spec.Undo, SymbolRegular.ArrowUndo24));
+        buttons.Children.Add(Ui.TextButton(Strings.Get("ShortcutEditorWindowAi_Undo"), spec.Undo, SymbolRegular.ArrowUndo24));
         var dismiss = Ui.TextButton(spec.DismissText, () => { if (spec.Keep is { } keep) keep(); else spec.Dismiss(); }, null,
             spec.Keep is null ? ControlAppearance.Transparent : ControlAppearance.Primary);
         dismiss.Margin = new Thickness(6, 0, 0, 0);
@@ -115,7 +115,7 @@ internal sealed partial class ShortcutEditorWindow
             PlaceholderText = Strings.Get("ShortcutEditorWindow_ForExampleEveryMorning"),
             AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 80, Margin = new Thickness(0, 0, 0, 10),
         };
-        System.Windows.Automation.AutomationProperties.SetName(describe, "Describe the shortcut you want");
+        System.Windows.Automation.AutomationProperties.SetName(describe, Strings.Get("ShortcutEditorWindowAi_DescribeTheShortcutYou"));
         var status = Ui.Text("", Ui.Critical, 12.5, wrap: true);
         status.Margin = new Thickness(0, 0, 0, 8);
         var busy = new ProgressRing { IsIndeterminate = true, Width = 22, Height = 22, Visibility = Visibility.Collapsed, Margin = new Thickness(0, 0, 0, 8) };
@@ -163,12 +163,12 @@ internal sealed partial class ShortcutEditorWindow
     private FrameworkElement BuildAiHint()
     {
         var row = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 22, 0, 0) };
-        row.Children.Add(Ui.Text("Want to describe a shortcut in a sentence? ", Ui.Secondary, 13));
+        row.Children.Add(Ui.Text(Strings.Get("ShortcutEditorWindowAi_WantToDescribeA"), Ui.Secondary, 13));
         var link = new TextBlock { Text = Strings.Get("ShortcutEditorWindow_SetUpAIIn"), FontSize = 13, Cursor = System.Windows.Input.Cursors.Hand, VerticalAlignment = VerticalAlignment.Center, TextDecorations = TextDecorations.Underline, Focusable = true };
         link.SetResourceReference(TextBlock.ForegroundProperty, Ui.Accent);
         link.MouseLeftButtonUp += (_, _) => _vm.Context.Host.OpenAiSettings();
         link.KeyDown += (_, e) => { if (e.Key is System.Windows.Input.Key.Enter or System.Windows.Input.Key.Space) _vm.Context.Host.OpenAiSettings(); };
-        System.Windows.Automation.AutomationProperties.SetName(link, "Set up AI in Settings, AI page");
+        System.Windows.Automation.AutomationProperties.SetName(link, Strings.Get("ShortcutEditorWindowAi_SetUpAIIn"));
         row.Children.Add(link);
         return row;
     }
@@ -195,15 +195,15 @@ internal sealed partial class ShortcutEditorWindow
         var stack = new StackPanel { Margin = new Thickness(24, 20, 24, 20) };
         stack.Children.Add(Ui.Text(isEmpty ? Strings.Get("ShortcutEditorWindow_DescribeTheShortcut") : Strings.Get("ShortcutEditorWindow_WhatShouldChange"), Ui.Primary, 20, FontWeights.SemiBold));
         var hint = Ui.Text(isEmpty ? Strings.Get("ShortcutEditorWindow_SayWhatItShould")
-                                   : "Say what to change in plain words. It rewrites the steps for you; you can undo it with one click.", Ui.Secondary, 13, wrap: true);
+                                   : Strings.Get("ShortcutEditorWindowAi_SayWhatToChange"), Ui.Secondary, 13, wrap: true);
         hint.Margin = new Thickness(0, 6, 0, 12);
         stack.Children.Add(hint);
         var box = new Wpf.Ui.Controls.TextBox
         {
-            PlaceholderText = isEmpty ? "For example: every Friday, zip my Downloads folder and email it to me" : "For example: also copy the result to the clipboard",
+            PlaceholderText = isEmpty ? Strings.Get("ShortcutEditorWindowAi_ForExampleEveryFriday") : Strings.Get("ShortcutEditorWindowAi_ForExampleAlsoCopy"),
             AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 90,
         };
-        System.Windows.Automation.AutomationProperties.SetName(box, isEmpty ? "Describe the shortcut you want" : "Describe the change you want");
+        System.Windows.Automation.AutomationProperties.SetName(box, isEmpty ? Strings.Get("ShortcutEditorWindowAi_DescribeTheShortcutYou") : Strings.Get("ShortcutEditorWindowAi_DescribeTheChangeYou"));
         stack.Children.Add(box);
         var status = Ui.Text("", Ui.Critical, 12.5, wrap: true);
         status.Margin = new Thickness(0, 10, 0, 0);
@@ -217,7 +217,7 @@ internal sealed partial class ShortcutEditorWindow
 
         var go = Ui.TextButton(Strings.Get("ShortcutEditorWindow_MakeTheChange"), () => { }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
         if (isEmpty) go.Content = Strings.Get("ShortcutEditorWindow_CreateDraft");
-        var cancel = Ui.TextButton("Cancel", () => { }, null);
+        var cancel = Ui.TextButton(Strings.Get("ShortcutEditorWindowAi_Cancel"), () => { }, null);
         cancel.IsCancel = true;
         var row = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 16, 0, 0) };
         cancel.Margin = new Thickness(0, 0, 8, 0);
@@ -239,10 +239,10 @@ internal sealed partial class ShortcutEditorWindow
             {
                 var result = await _vm.Context.Host.DescribeWithAiAsync(box.Text.Trim(), isEmpty ? null : _vm.Shortcut.Clone(), cts.Token);
                 if (result.Success) { outcome = result; dialog.Close(); return; }
-                status.Text = result.Error ?? "Couldn't make a draft from that. Try other words, or start blank.";
+                status.Text = result.Error ?? Strings.Get("ShortcutEditorWindowAi_CouldnTMakeA");
             }
             catch (OperationCanceledException) { return; }
-            catch (Exception ex) { status.Text = "Couldn't reach the AI: " + ex.Message; }
+            catch (Exception ex) { status.Text = Strings.Get("ShortcutEditorWindowAi_CouldnTReachThe") + ex.Message; }
             running = false; go.IsEnabled = true; box.IsEnabled = true; busy.Visibility = Visibility.Collapsed;
         };
         dialog.Loaded += (_, _) => box.Focus();
@@ -367,7 +367,7 @@ internal sealed partial class ShortcutEditorWindow
             // The first run of a recording is the one to watch: offer to go one step at a time (Next step / Stop).
             if (!_vm.IsRunning
                 && EditorDialog.Ask(this, Strings.Get("ShortcutEditorWindow_RunOneStepTitle"), Strings.Get("ShortcutEditorWindow_RunOneStepBody"),
-                    Strings.Get("ShortcutEditorWindow_RunOneStepButton"), Strings.Get("ShortcutEditorWindow_NotNow"), "Cancel", enter: DialogChoice.Primary) == DialogChoice.Primary)
+                    Strings.Get("ShortcutEditorWindow_RunOneStepButton"), Strings.Get("ShortcutEditorWindow_NotNow"), Strings.Get("ShortcutEditorWindowAi_Cancel"), enter: DialogChoice.Primary) == DialogChoice.Primary)
                 _ = _vm.RunStepByStepAsync();
         }
         finally { _recording = false; RecordButton.IsEnabled = true; }
@@ -380,7 +380,7 @@ internal sealed partial class ShortcutEditorWindow
     {
         if (!_vm.HasUnkeptDraft) return true;
         var answer = EditorDialog.Ask(this, Strings.Get("ShortcutEditorWindow_SaveThisDraft"), Strings.Get("ShortcutEditorWindow_YourDraftHasntBeen"),
-            Strings.Get("ShortcutEditorWindow_SaveDraft"), Strings.Get("ShortcutEditorWindow_DiscardDraft"), "Cancel", enter: DialogChoice.Primary);
+            Strings.Get("ShortcutEditorWindow_SaveDraft"), Strings.Get("ShortcutEditorWindow_DiscardDraft"), Strings.Get("ShortcutEditorWindowAi_Cancel"), enter: DialogChoice.Primary);
         if (answer == DialogChoice.Cancel) return false;
         if (answer == DialogChoice.Secondary) _vm.DiscardDraft();
         return true;

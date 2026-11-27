@@ -24,7 +24,7 @@ internal sealed partial class ShortcutEditorWindow
 
         var card = new Border { CornerRadius = Radius.Card, Padding = new Thickness(14, 10, 10, 10), BorderThickness = new Thickness(1) };
         card.Dyn(Border.BorderBrushProperty, Ui.CardStroke).Dyn(Border.BackgroundProperty, Ui.CardFill);
-        System.Windows.Automation.AutomationProperties.SetName(card, "When it runs");
+        System.Windows.Automation.AutomationProperties.SetName(card, Strings.Get("ShortcutEditorWindowWhen_WhenItRuns"));
         var stack = new StackPanel();
         card.Child = stack;
 
@@ -54,7 +54,7 @@ internal sealed partial class ShortcutEditorWindow
         if (!string.IsNullOrWhiteSpace(s.Hotkey) || _addingHotkey)
         {
             var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 8, 0, 0) };
-            row.Children.Add(Ui.Text("Hotkey", Ui.Secondary, 13));
+            row.Children.Add(Ui.Text(Strings.Get("ShortcutEditorWindowWhen_Hotkey"), Ui.Secondary, 13));
             ((TextBlock)row.Children[0]).VerticalAlignment = VerticalAlignment.Center;
             ((TextBlock)row.Children[0]).Margin = new Thickness(0, 0, 12, 0);
             var recorder = new HotkeyRecorder { Value = s.Hotkey };
@@ -94,12 +94,12 @@ internal sealed partial class ShortcutEditorWindow
             var text = Ui.Text(a.Sentence, Ui.Primary, 13.5, wrap: true);
             text.VerticalAlignment = VerticalAlignment.Center;
             g.Children.Add(text);
-            var state = Ui.Text(a.Enabled ? "On" : "Off", a.Enabled ? Ui.Success : Ui.Tertiary, 12);
+            var state = Ui.Text(a.Enabled ? Strings.Get("ShortcutEditorWindowWhen_On") : Strings.Get("ShortcutEditorWindowWhen_Off"), a.Enabled ? Ui.Success : Ui.Tertiary, 12);
             state.Margin = new Thickness(10, 0, 10, 0);
             state.VerticalAlignment = VerticalAlignment.Center;
             Grid.SetColumn(state, 1);
             g.Children.Add(state);
-            var edit = Ui.TextButton("Edit", () => _vm.Context.Host.EditAutomation(a.Id));
+            var edit = Ui.TextButton(Strings.Get("ShortcutEditorWindowWhen_Edit"), () => _vm.Context.Host.EditAutomation(a.Id));
             Grid.SetColumn(edit, 2);
             g.Children.Add(edit);
             stack.Children.Add(g);
@@ -115,7 +115,7 @@ internal sealed partial class ShortcutEditorWindow
             var test = Ui.TextButton(Strings.Get("ShortcutEditorWindow_TestItNow"), () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, SymbolRegular.Play24);
             test.HorizontalAlignment = HorizontalAlignment.Left;
             test.Margin = new Thickness(0, 8, 0, 0);
-            System.Windows.Automation.AutomationProperties.SetName(test, "Test it now: run this shortcut once");
+            System.Windows.Automation.AutomationProperties.SetName(test, Strings.Get("ShortcutEditorWindowWhen_TestItNowRun"));
             stack.Children.Add(test);
         }
         WhenHost.Content = card;

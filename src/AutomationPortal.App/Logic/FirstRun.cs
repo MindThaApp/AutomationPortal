@@ -77,17 +77,17 @@ public static class ConnectedApps
 
     public static string StatusText(SiblingStatus s) => s switch
     {
-        SiblingStatus.NotInstalled => "Not installed",
+        SiblingStatus.NotInstalled => Strings.Get("FirstRun_NotInstalled"),
         SiblingStatus.Installed => "Installed",
         SiblingStatus.Running => "Running",
-        SiblingStatus.ControlOff => "Control off",
-        _ => "Coming soon",
+        SiblingStatus.ControlOff => Strings.Get("FirstRun_ControlOff"),
+        _ => Strings.Get("FirstRun_ComingSoon"),
     };
 
     public static string? FixText(SiblingStatus s, string app = "Power Plan Manager") => s != SiblingStatus.ControlOff ? null : app switch
     {
-        "Desk Pal" => "Turn on \"Allow Automation Portal and other apps to control Desk Pal\" in Desk Pal Settings.",
-        _ => "Turn on \"Allow links from other apps\" in Power Plan Manager.",
+        "Desk Pal" => Strings.Get("FirstRun_TurnOnAllowAutomation"),
+        _ => Strings.Get("FirstRun_TurnOnAllowLinks"),
     };
 
     /// <summary>The Store page link, or null when the product id isn't known yet.</summary>

@@ -42,13 +42,13 @@ public interface IEditorHost
     string AiFixPrivacyLine => "";
     /// <summary>Plain-language explanation of why a run failed. Never throws for AI trouble. Nothing is saved or run.</summary>
     Task<AiExplanation> ExplainRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default) =>
-        Task.FromResult(new AiExplanation(null, "AI isn't available here."));
+        Task.FromResult(new AiExplanation(null, Strings.Get("EditorContext_AIIsnTAvailable")));
     /// <summary>A corrected draft of a shortcut whose run failed. Nothing is saved or run.</summary>
     Task<AiDraftResult> FixRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default) =>
-        Task.FromResult(AiDraftResult.Failed("AI isn't available here."));
+        Task.FromResult(AiDraftResult.Failed(Strings.Get("EditorContext_AIIsnTAvailable")));
     /// <summary>A short step-by-step description of the shortcut, including which steps change files.</summary>
     Task<AiExplanation> ExplainShortcutAsync(Shortcut shortcut, CancellationToken ct = default) =>
-        Task.FromResult(new AiExplanation(null, "AI isn't available here."));
+        Task.FromResult(new AiExplanation(null, Strings.Get("EditorContext_AIIsnTAvailable")));
     /// <summary>The user accepted an automation the AI suggested: open the new-automation wizard prefilled. The shortcut is saved before this is called.</summary>
     void AddSuggestedAutomation(Guid shortcutId, SuggestedAutomation suggestion) { }
     /// <summary>True when "Record" can be offered (the host owns the recorder and its floating bar).</summary>
@@ -91,7 +91,7 @@ public sealed class NullEditorHost : IEditorHost
     public void Export(Shortcut shortcut) { }
     public bool CanDescribeWithAi => false;
     public Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default) =>
-        Task.FromResult(AiDraftResult.Failed("AI isn't available here."));
+        Task.FromResult(AiDraftResult.Failed(Strings.Get("EditorContext_AIIsnTAvailable")));
     public void ShowRunDetails(string runId) { }
 }
 

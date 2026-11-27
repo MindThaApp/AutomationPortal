@@ -60,7 +60,7 @@ internal sealed class IconPickerWindow : FluentWindow
         _preview = new Border { Width = 76, Height = 76, CornerRadius = new CornerRadius(18), Margin = new Thickness(0, 0, 20, 0), VerticalAlignment = VerticalAlignment.Top };
         top.Children.Add(_preview);
         var colors = new StackPanel();
-        colors.Children.Add(Ui.Text("Colour", Ui.Secondary, 12, FontWeights.SemiBold));
+        colors.Children.Add(Ui.Text(Strings.Get("IconPickerDialog_Colour"), Ui.Secondary, 12, FontWeights.SemiBold));
         colors.Children.Add(_swatches);
         Grid.SetColumn(colors, 1);
         top.Children.Add(colors);
@@ -86,9 +86,9 @@ internal sealed class IconPickerWindow : FluentWindow
 
         // buttons
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(24, 14, 24, 18) };
-        var cancel = Ui.TextButton("Cancel", () => { DialogResult = false; });
+        var cancel = Ui.TextButton(Strings.Get("IconPickerDialog_Cancel"), () => { DialogResult = false; });
         cancel.IsCancel = true;
-        var ok = Ui.TextButton("Choose", () => { DialogResult = true; }, null, ControlAppearance.Primary);
+        var ok = Ui.TextButton(Strings.Get("IconPickerDialog_Choose"), () => { DialogResult = true; }, null, ControlAppearance.Primary);
         ok.IsDefault = true;
         ok.Margin = new Thickness(8, 0, 0, 0);
         buttons.Children.Add(cancel);

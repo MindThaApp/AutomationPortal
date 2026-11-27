@@ -95,7 +95,7 @@ public sealed class ConnectedAppsPanel : StackPanel
         var text = new StackPanel();
         text.Children.Add(Ui.Text(row.Name, size: 14));
         var statusLine = ConnectedApps.StatusText(status);
-        text.Children.Add(Ui.Text(statusLine == "Control off" ? statusLine + ". " + ConnectedApps.FixText(status, row.Name) : $"{statusLine}. {row.Blurb}", secondary: true, size: 12));
+        text.Children.Add(Ui.Text(statusLine == Strings.Get("FirstRun_ControlOff") ? statusLine + ". " + ConnectedApps.FixText(status, row.Name) : $"{statusLine}. {row.Blurb}", secondary: true, size: 12));
         grid.Children.Add(text);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };

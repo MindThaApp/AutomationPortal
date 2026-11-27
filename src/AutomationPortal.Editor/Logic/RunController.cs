@@ -165,7 +165,7 @@ public sealed class RunController : IRunObserver
             result = new RunResult
             {
                 Status = RunStatus.Failed, ShortcutId = working.Id, ShortcutName = working.Name,
-                ErrorMessage = "Something went wrong while running: " + ex.Message, Started = DateTimeOffset.Now,
+                ErrorMessage = Strings.Get("RunController_SomethingWentWrongWhile") + ex.Message, Started = DateTimeOffset.Now,
             };
         }
         finally

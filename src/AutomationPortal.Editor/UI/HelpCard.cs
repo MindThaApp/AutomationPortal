@@ -28,13 +28,13 @@ internal static class HelpCard
             root.Children.Add(row);
         }
 
-        if (d.InputKinds.Count > 0) Line("Works with", string.Join(", ", d.InputKinds.Select(Kind)));
-        if (d.HasOutput && d.FlowKind != FlowKind.Menu) Line("Gives you", $"{d.EffectiveOutputName} ({Kind(d.OutputKind)})");
+        if (d.InputKinds.Count > 0) Line(Strings.Get("HelpCard_WorksWith"), string.Join(", ", d.InputKinds.Select(Kind)));
+        if (d.HasOutput && d.FlowKind != FlowKind.Menu) Line(Strings.Get("HelpCard_GivesYou"), $"{d.EffectiveOutputName} ({Kind(d.OutputKind)})");
         var notes = new List<string>();
         if (d.NeedsInternet) notes.Add(ActionNotes.PrivacyNote?.Invoke(d) ?? Strings.Get("HelpCard_NeedsAnInternetConnection"));
         if (d.IsDestructive) notes.Add(Strings.Get("HelpCard_CanChangeOrDelete"));
         if (d.IsAdvanced) notes.Add(Strings.Get("HelpCard_AdvancedAction"));
-        if (notes.Count > 0) Line("Good to know", string.Join(". ", notes));
+        if (notes.Count > 0) Line(Strings.Get("HelpCard_GoodToKnow"), string.Join(". ", notes));
         return root;
     }
 

@@ -11,10 +11,10 @@ public sealed record TemplateSchedule(TemplateRepeat Repeat, TimeOnly Time)
 {
     public static IReadOnlyList<(TemplateRepeat Repeat, string Label)> Choices { get; } = new[]
     {
-        (TemplateRepeat.Off, "when I run it"),
-        (TemplateRepeat.Daily, "every day"),
-        (TemplateRepeat.Weekdays, "on weekdays"),
-        (TemplateRepeat.Weekly, "every Monday"),
+        (TemplateRepeat.Off, Strings.Get("Templates_WhenIRunIt")),
+        (TemplateRepeat.Daily, Strings.Get("Templates_EveryDay")),
+        (TemplateRepeat.Weekdays, Strings.Get("Templates_OnWeekdays")),
+        (TemplateRepeat.Weekly, Strings.Get("Templates_EveryMonday")),
     };
 
     public static string LabelOf(TemplateRepeat r) => Choices.First(c => c.Repeat == r).Label;
@@ -79,29 +79,29 @@ public static class TemplateCatalog
         new TemplateInfo("template-tidy-downloads.autoportal", Strings.Get("Templates_TidyDownloads"),
             Strings.Get("Templates_SortsFilesYouDownloaded"), "FolderArrowRight24", "cyan", Strings.Get("Templates_ChangesFiles"), true,
             new[] { Strings.Get("Templates_FindFilesInThe"), Strings.Get("Templates_MoveThemIntoFolders"), Strings.Get("Templates_TellYouHowMany") },
-            "Tidy {0} into folders by {1}, for files older than {2} days, {when}.",
+            Strings.Get("Templates_Tidy0IntoFolders"),
             new TemplateSchedule(TemplateRepeat.Daily, new TimeOnly(8, 0)),
             Options: new Dictionary<int, IReadOnlyList<TemplateOption>>
             {
-                [1] = new[] { new TemplateOption("{kind}", "type"), new TemplateOption("{year}-{month}", "month"), new TemplateOption("{year}", "year"), new TemplateOption("{ext}", "file extension") },
+                [1] = new[] { new TemplateOption("{kind}", "type"), new TemplateOption("{year}-{month}", "month"), new TemplateOption("{year}", "year"), new TemplateOption("{ext}", Strings.Get("Templates_FileExtension")) },
             }),
         new TemplateInfo("template-convert-pictures.autoportal", Strings.Get("Templates_ConvertPictures"),
             Strings.Get("Templates_SavesThePicturesYou"), "ImageArrowBack24", "purple", Strings.Get("Templates_MakesCopies"), true,
             new[] { Strings.Get("Templates_TakeThePicturesYou"), Strings.Get("Templates_SaveEachOneIn"), Strings.Get("Templates_NextToTheOriginals") },
-            "Convert the pictures I pick to {0}, as new files next to the originals."),
+            Strings.Get("Templates_ConvertThePicturesI")),
         new TemplateInfo("template-work-setup.autoportal", Strings.Get("Templates_SetUpMyWorkspace"),
             Strings.Get("Templates_OpensYourWorkApp"), "Briefcase24", "blue", Strings.Get("Templates_NoFileChanges"), false,
             new[] { Strings.Get("Templates_OpenTheAppYou"), Strings.Get("Templates_OpenAFolderIn"), Strings.Get("Templates_OpenAWebPage") },
-            "Open {0}, the {1} folder and {2}, {when}.",
+            Strings.Get("Templates_Open0The1"),
             new TemplateSchedule(TemplateRepeat.Off, new TimeOnly(9, 0))),
         new TemplateInfo("template-folder-backup.autoportal", Strings.Get("Templates_BackUpAFolder"),
             Strings.Get("Templates_CopiesAFolderInto"), "Shield24", "green", Strings.Get("Templates_CopyOnly"), true,
             new[] { Strings.Get("Templates_AtTheTimeYou"), Strings.Get("Templates_CopyTheFolderInto"), Strings.Get("Templates_NeverDeleteOrReplace") },
-            "Copy {0} into a new dated folder in {1}, {when}.",
+            Strings.Get("Templates_Copy0IntoA"),
             new TemplateSchedule(TemplateRepeat.Daily, new TimeOnly(18, 0)), RunIfMissed: true),
         new TemplateInfo("", Strings.Get("Templates_FillAFormFrom"),
             Strings.Get("Templates_TypesEachRowOf"), "Table24", "orange", Strings.Get("Templates_ComingSoon"), false,
-            new[] { Strings.Get("Templates_YouFillInThe"), Strings.Get("Templates_ItRepeatsRow1"), "Then the other rows; it stops at the first row that doesn't fit" },
+            new[] { Strings.Get("Templates_YouFillInThe"), Strings.Get("Templates_ItRepeatsRow1"), Strings.Get("Templates_ThenTheOtherRows") },
             "", ComingSoon: true),
     };
 
@@ -160,7 +160,7 @@ public static class TemplateCatalog
             var value = i < answers.Count ? answers[i] : null;
             value ??= template.ImportQuestions[i].DefaultValue;
             if (value is null || value is TextValue { IsBlank: true } || value is TextValue t && string.IsNullOrWhiteSpace(t.ToLiteralText()) && !t.VarRefs().Any())
-                return $"Choose {template.ImportQuestions[i].Question.TrimEnd('?').ToLower(CultureInfo.CurrentCulture)} first.";
+                return Strings.Format("Templates_Choose0First", template.ImportQuestions[i].Question.TrimEnd('?').ToLower(CultureInfo.CurrentCulture));
         }
         return null;
     }

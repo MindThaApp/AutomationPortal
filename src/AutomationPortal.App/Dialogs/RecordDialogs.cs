@@ -21,7 +21,7 @@ public static class RecordAppPicker
         catch { windows = Array.Empty<RecordableWindow>(); }
 
         var body = new StackPanel();
-        body.Children.Add(Ui.Text("Open the app first, then choose it here. Only that app is recorded: your clicks and typing anywhere else are left out.", secondary: true, size: 13));
+        body.Children.Add(Ui.Text(Strings.Get("RecordDialogs_OpenTheAppFirst"), secondary: true, size: 13));
         RecordableWindow? chosen = null;
         var grid = new UniformGrid { Columns = 3, Margin = new Thickness(0, 12, 0, 0) };
         var tiles = new List<ToggleButton>();
@@ -52,7 +52,7 @@ public static class RecordAppPicker
             body.Children.Add(Ui.Text(Strings.Get("RecordDialogs_NoAppWindowsAre"), size: 13));
         else
             body.Children.Add(new ScrollViewer { Content = grid, MaxHeight = 360, VerticalScrollBarVisibility = ScrollBarVisibility.Auto });
-        var note = Ui.Text("Starts after a 3, 2, 1 countdown. Stop with the bar's Stop button or Ctrl+Alt+S. Passwords are never recorded.", secondary: true, size: 12);
+        var note = Ui.Text(Strings.Get("RecordDialogs_StartsAfterA3"), secondary: true, size: 12);
         note.Margin = new Thickness(0, 8, 0, 0);
         body.Children.Add(note);
 
@@ -80,7 +80,7 @@ public static class RecordingReviewDialog
         body.Children.Add(new ScrollViewer { Content = rows, MaxHeight = 440, VerticalScrollBarVisibility = ScrollBarVisibility.Auto });
         if (review.LeftOut.Count > 0)
         {
-            var left = Ui.Text("Not recorded: " + string.Join("; ", review.LeftOut) + ". These can't be repeated without pressing keys or moving the mouse. "
+            var left = Ui.Text(Strings.Format("RecordDialogs_NotRecordedList", string.Join("; ", review.LeftOut))
                                + Strings.Get("RecordDialogs_AddAClickOn"), secondary: true, size: 12);
             left.Margin = new Thickness(0, 10, 0, 0);
             body.Children.Add(left);
@@ -90,10 +90,10 @@ public static class RecordingReviewDialog
         void Rebuild()
         {
             var seconds = Math.Max(1, (int)Math.Round(took.TotalSeconds));
-            head.Text = $"Recorded in {appName} · {(review.Count == 1 ? "1 step" : $"{review.Count} steps")} · {seconds} seconds";
+            head.Text = Strings.Format("RecordDialogs_RecordedIn01", appName, (review.Count == 1 ? "1 step" : $"{review.Count} steps"), seconds);
             rows.Children.Clear();
             for (var i = 0; i < review.Count; i++) rows.Children.Add(Row(review, i, Rebuild));
-            if (review.Count == 0) rows.Children.Add(Ui.Text("No steps left. Discard, or record again.", secondary: true, size: 13));
+            if (review.Count == 0) rows.Children.Add(Ui.Text(Strings.Get("RecordDialogs_NoStepsLeftDiscard"), secondary: true, size: 13));
             dlg?.SetPrimaryEnabled(review.Result().Count > 0);
         }
 
@@ -120,9 +120,9 @@ public static class RecordingReviewDialog
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
         DockPanel.SetDock(buttons, Dock.Right);
-        buttons.Children.Add(IconButton(SymbolRegular.ArrowUp24, $"Move step {i + 1} up", i > 0, () => { review.Move(i, i - 1); rebuild(); }));
-        buttons.Children.Add(IconButton(SymbolRegular.ArrowDown24, $"Move step {i + 1} down", i < review.Count - 1, () => { review.Move(i, i + 1); rebuild(); }));
-        buttons.Children.Add(IconButton(SymbolRegular.Dismiss24, $"Remove step {i + 1}", true, () => { review.Delete(i); rebuild(); }));
+        buttons.Children.Add(IconButton(SymbolRegular.ArrowUp24, Strings.Format("RecordDialogs_MoveStep0Up", i + 1), i > 0, () => { review.Move(i, i - 1); rebuild(); }));
+        buttons.Children.Add(IconButton(SymbolRegular.ArrowDown24, Strings.Format("RecordDialogs_MoveStep0Down", i + 1), i < review.Count - 1, () => { review.Move(i, i + 1); rebuild(); }));
+        buttons.Children.Add(IconButton(SymbolRegular.Dismiss24, Strings.Format("RecordDialogs_RemoveStep0", i + 1), true, () => { review.Delete(i); rebuild(); }));
         top.Children.Add(buttons);
 
         var sentence = Ui.Text(review.Describe(i), size: 14);
@@ -133,12 +133,12 @@ public static class RecordingReviewDialog
         var details = new WrapPanel { Margin = new Thickness(24, 6, 0, 0) };
         var kind = UiSteps.KindOf(step);
         if (kind.Length > 0) details.Children.Add(Chip(kind, caution: false));
-        if (UiSteps.IsWeak(step)) details.Children.Add(Chip("Found by its place in the window: may break if the app changes", caution: true));
+        if (UiSteps.IsWeak(step)) details.Children.Add(Chip(Strings.Get("RecordDialogs_FoundByItsPlace"), caution: true));
 
         if (step.ActionId == AppControlIds.Type && !UiSteps.IsSecret(step))
         {
             var box = new System.Windows.Controls.TextBox { Text = review.TextOf(i), MinWidth = 220, IsEnabled = !review.AsksEachTime(i), Margin = new Thickness(0, 0, 10, 0) };
-            AutomationProperties.SetName(box, $"Text typed in step {i + 1}");
+            AutomationProperties.SetName(box, Strings.Format("RecordDialogs_TextTypedInStep", i + 1));
             box.LostKeyboardFocus += (_, _) =>
             {
                 if (!review.AsksEachTime(i) && box.Text != review.TextOf(i)) { review.SetText(i, box.Text); sentence.Text = review.Describe(i); }
@@ -154,17 +154,17 @@ public static class RecordingReviewDialog
             details.Children.Add(ask);
         }
         else if (UiSteps.IsSecret(step))
-            details.Children.Add(Chip("Password box: asks each time, never recorded", caution: false));
+            details.Children.Add(Chip(Strings.Get("RecordDialogs_PasswordBoxAsksEach"), caution: false));
 
         var wait = new System.Windows.Controls.TextBox { Text = review.TimeoutOf(i).ToString("0.#", CultureInfo.CurrentCulture), Width = 56, Margin = new Thickness(6, 0, 6, 0) };
-        AutomationProperties.SetName(wait, $"Seconds step {i + 1} waits");
+        AutomationProperties.SetName(wait, Strings.Format("RecordDialogs_SecondsStep0Waits", i + 1));
         wait.LostKeyboardFocus += (_, _) =>
         {
             if (double.TryParse(wait.Text, NumberStyles.Float, CultureInfo.CurrentCulture, out var s)) review.SetTimeout(i, s);
             wait.Text = review.TimeoutOf(i).ToString("0.#", CultureInfo.CurrentCulture);
         };
         var waitRow = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
-        waitRow.Children.Add(Ui.Text(step.ActionId == AppControlIds.WaitWindow ? "Wait up to" : "Wait for it up to", secondary: true, size: 12, wrap: false));
+        waitRow.Children.Add(Ui.Text(step.ActionId == AppControlIds.WaitWindow ? Strings.Get("RecordDialogs_WaitUpTo") : Strings.Get("RecordDialogs_WaitForItUp"), secondary: true, size: 12, wrap: false));
         waitRow.Children.Add(wait);
         waitRow.Children.Add(Ui.Text("seconds", secondary: true, size: 12, wrap: false));
         foreach (var t in waitRow.Children.OfType<System.Windows.Controls.TextBlock>()) t.VerticalAlignment = VerticalAlignment.Center;

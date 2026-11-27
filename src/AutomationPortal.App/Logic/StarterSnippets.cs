@@ -14,7 +14,7 @@ public static class StarterSnippets
         var used = existing.Select(s => s.Abbreviation).ToHashSet(StringComparer.CurrentCultureIgnoreCase);
         var list = new List<Snippet>();
         if (!used.Contains(";date")) list.Add(new Snippet { Abbreviation = ";date", Text = "{date:yyyy-MM-dd}", Enabled = true });
-        if (!used.Contains(";addr")) list.Add(new Snippet { Abbreviation = ";addr", Text = "{input:My address}", Enabled = true });
+        if (!used.Contains(";addr")) list.Add(new Snippet { Abbreviation = ";addr", Text = Strings.Get("StarterSnippets_InputMyAddress"), Enabled = true });
         return list;
     }
 }

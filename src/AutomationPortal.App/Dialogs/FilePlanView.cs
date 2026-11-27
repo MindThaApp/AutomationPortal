@@ -21,10 +21,10 @@ public static class FilePlanView
             line.Margin = new Thickness(0, 0, 0, 4);
             lines.Children.Add(line);
         }
-        if (changes.Count > MaxLines) lines.Children.Add(Ui.Text($"… and {changes.Count - MaxLines} more", secondary: true, size: 13));
-        if (changes.Count == 0) lines.Children.Add(Ui.Text("Nothing would change right now.", secondary: true, size: 13));
+        if (changes.Count > MaxLines) lines.Children.Add(Ui.Text(Strings.Format("FilePlanView_And0More", changes.Count - MaxLines), secondary: true, size: 13));
+        if (changes.Count == 0) lines.Children.Add(Ui.Text(Strings.Get("FilePlanView_NothingWouldChangeRight"), secondary: true, size: 13));
         var scroll = new ScrollViewer { Content = lines, MaxHeight = maxHeight, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Focusable = true };
-        AutomationProperties.SetName(scroll, "Planned file changes");
+        AutomationProperties.SetName(scroll, Strings.Get("FilePlanView_PlannedFileChanges"));
         return new Border
         {
             Child = scroll, Padding = new Thickness(12, 10, 12, 10), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1),
@@ -52,11 +52,11 @@ public static class FilePlanView
         catch (Exception ex) when (ex is not OutOfMemoryException)
         {
             host.Children.Clear();
-            host.Children.Add(Ui.Text("Couldn't make the preview: " + ex.Message, size: 13));
+            host.Children.Add(Ui.Text(Strings.Get("FilePlanView_CouldnTMakeThe") + ex.Message, size: 13));
             return null;
         }
         host.Children.Clear();
-        var summary = Ui.Text(plan.Summary() + " Nothing has been changed.", size: 13, weight: FontWeights.SemiBold);
+        var summary = Ui.Text(plan.Summary() + Strings.Get("FilePlanView_NothingHasBeenChanged"), size: 13, weight: FontWeights.SemiBold);
         AutomationProperties.SetLiveSetting(summary, AutomationLiveSetting.Polite);
         host.Children.Add(summary);
         host.Children.Add(Build(plan));

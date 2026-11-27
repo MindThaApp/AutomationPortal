@@ -38,11 +38,11 @@ public static class FileChangeCheck
         steps.Count > 0 && settings.AskBeforeFileChangingRuns && !settings.FileChangeCheckedShortcutIds.Contains(shortcutId);
 
     public static string Message(string name, IReadOnlyCollection<string> steps) =>
-        $"\"{name}\" changes files on this PC. Steps that do: {string.Join(", ", steps)}.\n\nCheck its steps first if you are not sure which folders it works on.";
+        Strings.Format("FileChangeCheck_0ChangesFilesOn", name, string.Join(", ", steps));
 
     /// <summary>The check's text, also covering steps that click and type in other apps.</summary>
     public static string Message(string name, IReadOnlyCollection<string> steps, bool controlsApps, bool changesFiles) =>
         !controlsApps ? Message(name, steps)
-        : $"\"{name}\" {(changesFiles ? "changes files and clicks and types in other apps" : "clicks and types in other apps")} on this PC. Steps that do: {string.Join(", ", steps)}.\n\n"
+        : Strings.Format("FileChangeCheck_01OnThis", name, Strings.Get(changesFiles ? "FileChangeCheck_ChangesFilesAndControlsApps" : "FileChangeCheck_ControlsApps"), string.Join(", ", steps))
           + Strings.Get("FileChangeCheck_CheckItsStepsFirst");
 }

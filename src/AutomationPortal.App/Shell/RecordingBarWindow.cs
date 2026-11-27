@@ -41,7 +41,7 @@ public sealed class RecordingBarWindow : Window
         ShowActivated = false;
         SizeToContent = SizeToContent.WidthAndHeight;
         FontFamily = (FontFamily)Application.Current.FindResource("FlowFont");
-        AutomationProperties.SetName(this, "Automation Portal recording bar");
+        AutomationProperties.SetName(this, Strings.Get("RecordingBarWindow_AutomationPortalRecordingBar"));
 
         var card = new Border { CornerRadius = new CornerRadius(14), BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 10), Margin = new Thickness(12) };
         card.SetResourceReference(Border.BackgroundProperty, "SolidBackgroundFillColorBaseBrush");
@@ -53,7 +53,7 @@ public sealed class RecordingBarWindow : Window
 
         _dot.Width = 14; _dot.Height = 14; _dot.CornerRadius = new CornerRadius(7); _dot.Background = AutomationPortal.Editor.HighContrast.Active ? SystemColors.WindowTextBrush : new SolidColorBrush(Color.FromRgb(0xE0, 0x2E, 0x2E));
         _dot.VerticalAlignment = VerticalAlignment.Center; _dot.Margin = new Thickness(0, 0, 10, 0);
-        AutomationProperties.SetName(_dot, "Recording");
+        AutomationProperties.SetName(_dot, Strings.Get("RecordingBarWindow_Recording"));
         StartPulse();
         row.Children.Add(_dot);
 
@@ -63,19 +63,19 @@ public sealed class RecordingBarWindow : Window
 
         _time.Text = "0:00"; _time.FontSize = 14; _time.Margin = new Thickness(10, 0, 16, 0); _time.VerticalAlignment = VerticalAlignment.Center; _time.MinWidth = 40;
         _time.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
-        AutomationProperties.SetName(_time, "Elapsed time");
+        AutomationProperties.SetName(_time, Strings.Get("RecordingBarWindow_ElapsedTime"));
         row.Children.Add(_time);
         _count.FontSize = 13; _count.Margin = new Thickness(0, 0, 16, 0); _count.VerticalAlignment = VerticalAlignment.Center;
         _count.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
-        AutomationProperties.SetName(_count, "Steps recorded");
+        AutomationProperties.SetName(_count, Strings.Get("RecordingBarWindow_StepsRecorded"));
         row.Children.Add(_count);
 
-        _pause.Content = "Pause"; _pause.Icon = new SymbolIcon(SymbolRegular.Pause24); _pause.Margin = new Thickness(0, 0, 8, 0);
+        _pause.Content = Strings.Get("RecordingBarWindow_Pause"); _pause.Icon = new SymbolIcon(SymbolRegular.Pause24); _pause.Margin = new Thickness(0, 0, 8, 0);
         _pause.Focusable = false;
         _pause.Click += (_, _) => { _session.TogglePause(); Refresh(); };
         row.Children.Add(_pause);
 
-        var stop = new Wpf.Ui.Controls.Button { Content = $"Stop ({session.StopHotkey})", Icon = new SymbolIcon(SymbolRegular.Stop24), Appearance = ControlAppearance.Danger, Margin = new Thickness(0, 0, 14, 0), Focusable = false };
+        var stop = new Wpf.Ui.Controls.Button { Content = Strings.Format("RecordingBarWindow_Stop0", session.StopHotkey), Icon = new SymbolIcon(SymbolRegular.Stop24), Appearance = ControlAppearance.Danger, Margin = new Thickness(0, 0, 14, 0), Focusable = false };
         stop.Click += (_, _) => _session.Stop();
         row.Children.Add(stop);
 
@@ -104,7 +104,7 @@ public sealed class RecordingBarWindow : Window
 
     private void Refresh()
     {
-        if (_countdown > 0) { _label.Text = $"Starting in {_countdown}…"; return; }
+        if (_countdown > 0) { _label.Text = Strings.Format("RecordingBarWindow_StartingIn0", _countdown); return; }
         _time.Text = RecordingSession.FormatElapsed(_session.Elapsed);
         _count.Text = _session.StepCount == 1 ? "1 step" : $"{_session.StepCount} steps";
         var recent = _session.RecentSteps();
@@ -120,7 +120,7 @@ public sealed class RecordingBarWindow : Window
         }
         var paused = _session.IsPaused;
         _label.Text = LabelText(paused);
-        _pause.Content = paused ? "Resume" : "Pause";
+        _pause.Content = paused ? Strings.Get("RecordingBarWindow_Resume") : Strings.Get("RecordingBarWindow_Pause");
         _pause.Icon = new SymbolIcon(paused ? SymbolRegular.Record24 : SymbolRegular.Pause24);
         if (_wasPaused == paused) return;
         _wasPaused = paused;

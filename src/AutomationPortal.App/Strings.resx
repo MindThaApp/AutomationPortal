@@ -890,4 +890,501 @@
   <data name="MainWindow_Tour" xml:space="preserve"><value>Explore Automation Portal</value></data>
   <data name="SettingsPage_Tour_Name" xml:space="preserve"><value>Explore Automation Portal</value></data>
   <data name="SettingsPage_Tour" xml:space="preserve"><value>_Explore</value></data>
+  <data name="AutomationsPage_Paused" xml:space="preserve"><value>Paused</value><comment>Short label; keep it brief</comment></data>
+  <data name="App_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't start.
+
+</value></data>
+  <data name="App_DetailsWereSavedTo" xml:space="preserve"><value>
+
+Details were saved to the log file.</value></data>
+  <data name="App_SomethingUnexpectedHappenedBut" xml:space="preserve"><value>Something unexpected happened, but Automation Portal is still running.
+
+</value></data>
+  <data name="AppHostLaunch_0ShortcutFile1" xml:space="preserve"><value>{0} shortcut file{1} left untouched because Automation Portal couldn't read {2}. Details are in the log.</value><comment>{0} = LibraryStore.LoadErrors.Count; {1} = (LibraryStore.LoadErrors.Count == 1 ? " was" : "s were"); {2} = (LibraryStore.LoadErrors.Count == 1 ? "it" : "them")</comment></data>
+  <data name="AppHostLaunch_AppsAllowedToRun" xml:space="preserve"><value>Apps allowed to run shortcuts: {0} app(s) allowed for every shortcut now cover only the shortcuts there are.</value><comment>{0} = n</comment></data>
+  <data name="AppHostLaunch_ShellIntegration0Start" xml:space="preserve"><value>shell integration {0}; start with Windows {1}</value><comment>{0} = (real ? "on" : "off"); {1} = (actual ? "on" : "off")</comment></data>
+  <data name="AppHostLaunch_CouldnTRunThat" xml:space="preserve"><value>Couldn't run that shortcut</value></data>
+  <data name="AppHostLaunch_CouldnTFindThat" xml:space="preserve"><value>Couldn't find that shortcut</value></data>
+  <data name="AppHostLaunch_AutomationPortalDoesnT" xml:space="preserve"><value>Automation Portal doesn't have a shortcut called "{0}". It may have been renamed or deleted.</value><comment>{0} = target</comment></data>
+  <data name="AppHostLaunch_ALinkAskedTo" xml:space="preserve"><value>A link asked to run "{0}". Links are turned off in Settings › Links, so it didn't run.</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="AppHostLaunch_ALinkOrAnother" xml:space="preserve"><value>A link or another app wants to run your shortcut "{0}"{1}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from.</value><comment>{0} = shortcut.Name; {1} = DescribeLinkInput(launch)</comment></data>
+  <data name="AppHostLaunch_0SoThisTime" xml:space="preserve"><value>
+
+{0} So this time you're asked first.</value><comment>{0} = tooOften</comment></data>
+  <data name="AppHostLaunch_TheTextLooksLike" xml:space="preserve"><value>
+
+The text looks like a file or folder on this PC. Steps that work on files would use it.</value></data>
+  <data name="AppHostLaunch_ThisShortcutClicksAnd" xml:space="preserve"><value>
+
+This shortcut clicks and types in other apps.</value></data>
+  <data name="AppHostLaunch_0DidnTRun" xml:space="preserve"><value>"{0}" didn't run</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="AppHostLaunch_0YouChoseNot" xml:space="preserve"><value>{0} You chose not to run it again.</value><comment>{0} = tooOften</comment></data>
+  <data name="AppHostLaunch_0DidnTStart" xml:space="preserve"><value>"{0}" didn't start: {1}</value><comment>{0} = target; {1} = ex.Message</comment></data>
+  <data name="AppHostLaunch_WithThisText0" xml:space="preserve"><value> with this text:
+
+{0}
+</value><comment>{0} = text</comment></data>
+  <data name="AppHostLaunch_CouldnTAddThe" xml:space="preserve"><value>Couldn't add the shortcut</value></data>
+  <data name="AppHostLaunch_ALinkOrAnother2" xml:space="preserve"><value>A link or another app wants to add a shortcut from this file:
+
+{0}
+
+Automation Portal will open it and show you what the shortcut does before anything is added. Only continue if you trust where it came from.</value><comment>{0} = path</comment></data>
+  <data name="AppHostLaunch_OpenIt" xml:space="preserve"><value>Open it</value></data>
+  <data name="AppHostLaunch_CouldnTOpenThe" xml:space="preserve"><value>Couldn't open the file</value></data>
+  <data name="AppHostLaunch_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't read "{0}". Check the file still exists.</value><comment>{0} = path</comment></data>
+  <data name="AppHostLaunch_0Has1Step" xml:space="preserve"><value>"{0}" has {1} step{2}. Add it to your shortcuts?</value><comment>{0} = preview.Name; {1} = steps; {2} = (steps == 1 ? "" : "s")</comment></data>
+  <data name="AppHostLaunch_HeadsUpItIncludes" xml:space="preserve"><value>
+
+Heads up: it includes {0}.</value><comment>{0} = string.Join(", ", warnings)</comment></data>
+  <data name="AppHostLaunch_Add" xml:space="preserve"><value>Add</value><comment>Short label; keep it brief</comment></data>
+  <data name="AppHostLaunch_0IsNowIn" xml:space="preserve"><value>"{0}" is now in your shortcuts.</value><comment>{0} = result.Shortcut.Name</comment></data>
+  <data name="AppHostLaunch_0IsNowIn2" xml:space="preserve"><value>"{0}" is now in your shortcuts. You already had one called "{1}", so this one got a new name.</value><comment>{0} = result.Shortcut.Name; {1} = result.RenamedFrom</comment></data>
+  <data name="AppHostLaunch_0Includes1Only" xml:space="preserve"><value>"{0}" includes {1}. Only keep it if you trust where it came from.</value><comment>{0} = result.Shortcut.Name; {1} = what</comment></data>
+  <data name="AppHostLaunch_TheHotkey0" xml:space="preserve"><value>the hotkey {0}</value><comment>{0} = hk</comment></data>
+  <data name="AppHostLaunch_TheQuickRunName" xml:space="preserve"><value>the Quick Run name "{0}"</value><comment>{0} = al</comment></data>
+  <data name="AppHostLaunch_AnEntryInThe" xml:space="preserve"><value>an entry in the Send to and right-click menus</value></data>
+  <data name="AppHostLaunch_TurnOnTheExtras" xml:space="preserve"><value>Turn on the extras?</value></data>
+  <data name="AppHostLaunch_0CameWith1" xml:space="preserve"><value>"{0}" came with {1}. These are off for now. Turn them on?</value><comment>{0} = result.Shortcut.Name; {1} = string.Join(", ", extras)</comment></data>
+  <data name="AppHostLaunch_TurnOn" xml:space="preserve"><value>Turn on</value></data>
+  <data name="AppHostLaunch_LeaveOff" xml:space="preserve"><value>Leave off</value></data>
+  <data name="AppHostLaunch_TheQuickRunName2" xml:space="preserve"><value>The Quick Run name "{0}" is already used by another shortcut.</value><comment>{0} = alias</comment></data>
+  <data name="AppHostLaunch_SomeExtrasStayedOff" xml:space="preserve"><value>Some extras stayed off</value></data>
+  <data name="AppHost_TheQuickPanel" xml:space="preserve"><value>the Quick Panel</value></data>
+  <data name="AppHost_0IsnTA" xml:space="preserve"><value>"{0}" isn't a hotkey Automation Portal understands.</value><comment>{0} = hotkey</comment></data>
+  <data name="AppHost_0IsAlreadyUsed" xml:space="preserve"><value>{0} is already used by {1}. Choose a different hotkey.</value><comment>{0} = chord; {1} = name</comment></data>
+  <data name="AppHost_0IsAlreadyUsed2" xml:space="preserve"><value>{0} is already used by the shortcut "{1}". Choose a different hotkey.</value><comment>{0} = chord; {1} = other.Name</comment></data>
+  <data name="AppHost_CouldnTReadThe" xml:space="preserve"><value>Couldn't read the selected text</value></data>
+  <data name="AppHost_SelectSomeTextFirst" xml:space="preserve"><value>Select some text first.</value></data>
+  <data name="AppHost_AskAIDidnT" xml:space="preserve"><value>Ask AI didn't work</value></data>
+  <data name="AppHost_SomethingWentWrong" xml:space="preserve"><value>Something went wrong.</value></data>
+  <data name="AppHost_CouldnTExport" xml:space="preserve"><value>Couldn't export</value></data>
+  <data name="AppHost_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't save the file. {0}</value><comment>{0} = ex.Message</comment></data>
+  <data name="AppHost_0Finished" xml:space="preserve"><value>"{0}" finished</value><comment>{0} = bar.ShortcutName</comment></data>
+  <data name="HotkeyRecorderBox_ClickThenPressThe" xml:space="preserve"><value>Click, then press the keys you want to use</value></data>
+  <data name="HotkeyRecorderBox_Hotkey" xml:space="preserve"><value>Hotkey</value><comment>Short label; keep it brief</comment></data>
+  <data name="HotkeyRecorderBox_PressTheKeys" xml:space="preserve"><value>Press the keys…</value></data>
+  <data name="HotkeyRecorderBox_PressNewKeysTo" xml:space="preserve"><value>   (press new keys to change)</value></data>
+  <data name="HotkeyRecorderBox_ClickToSet" xml:space="preserve"><value>Click to set</value></data>
+  <data name="AutomationActivityDialog_ActivityList" xml:space="preserve"><value>Activity list</value></data>
+  <data name="AutomationWizardWindow_Cancel" xml:space="preserve"><value>Cancel</value><comment>Short label; keep it brief</comment></data>
+  <data name="AutomationWizardWindow_ANewShortcut" xml:space="preserve"><value>a new shortcut</value></data>
+  <data name="AutomationWizardWindow_ChooseWhatStartsIt" xml:space="preserve"><value>choose what starts it</value></data>
+  <data name="AutomationWizardWindow_ChooseAShortcut" xml:space="preserve"><value>choose a shortcut</value></data>
+  <data name="AutomationWizardWindow_Change" xml:space="preserve"><value>Change</value><comment>Short label; keep it brief</comment></data>
+  <data name="AutomationWizardWindow_ChangeWhatStartsIt" xml:space="preserve"><value>Change what starts it</value></data>
+  <data name="AutomationWizardWindow_SetTheTimeTo" xml:space="preserve"><value>Set the time to </value></data>
+  <data name="AutomationWizardWindow_SetTheDaysTo" xml:space="preserve"><value>Set the days to </value></data>
+  <data name="AutomationWizardWindow_TestItNowRun" xml:space="preserve"><value>Test it now: run this shortcut once</value></data>
+  <data name="AutomationWizardWindow_YourShortcutReceives" xml:space="preserve"><value>Your shortcut receives: </value></data>
+  <data name="AutomationWizardWindow_Popular" xml:space="preserve"><value>Popular</value></data>
+  <data name="AutomationWizardWindow_AllWaysToStart" xml:space="preserve"><value>All ways to start</value></data>
+  <data name="AutomationWizardWindow_More" xml:space="preserve"><value>More…</value><comment>Short label; keep it brief</comment></data>
+  <data name="AutomationWizardWindow_Selected" xml:space="preserve"><value>, selected</value></data>
+  <data name="AutomationWizardWindow_Selected2" xml:space="preserve"><value>Selected</value></data>
+  <data name="AutomationWizardWindow_ShortcutToRun" xml:space="preserve"><value>Shortcut to run</value></data>
+  <data name="AutomationWizardWindow_Options" xml:space="preserve"><value>Options</value></data>
+  <data name="AutomationWizardWindow_RemoveCondition" xml:space="preserve"><value>Remove condition</value></data>
+  <data name="AutomationWizardWindow_DonTRunMore" xml:space="preserve"><value>Don't run more than once every</value></data>
+  <data name="AutomationWizardWindow_MinutesBetweenRuns" xml:space="preserve"><value>Minutes between runs</value></data>
+  <data name="AutomationWizardWindow_ChooseAShortcutTo" xml:space="preserve"><value>Choose a shortcut to run.</value></data>
+  <data name="AutomationWizardWindow_CouldnTSaveThe" xml:space="preserve"><value>Couldn't save the automation</value></data>
+  <data name="CommandPaletteWindow_CommandPaletteSearch" xml:space="preserve"><value>Command palette search</value></data>
+  <data name="FilePlanView_And0More" xml:space="preserve"><value>… and {0} more</value><comment>{0} = changes.Count - MaxLines</comment></data>
+  <data name="FilePlanView_NothingWouldChangeRight" xml:space="preserve"><value>Nothing would change right now.</value></data>
+  <data name="FilePlanView_PlannedFileChanges" xml:space="preserve"><value>Planned file changes</value></data>
+  <data name="FilePlanView_CouldnTMakeThe" xml:space="preserve"><value>Couldn't make the preview: </value></data>
+  <data name="FilePlanView_NothingHasBeenChanged" xml:space="preserve"><value> Nothing has been changed.</value></data>
+  <data name="GetAiReadySheet_PortalAIHostIsn" xml:space="preserve"><value>Portal AI Host isn't running</value></data>
+  <data name="ImportRestore_CouldnTOpenThe" xml:space="preserve"><value>Couldn't open the backup</value></data>
+  <data name="ImportRestore_ThatZipHasNo" xml:space="preserve"><value>That zip has no shortcuts in it. Choose a backup made with "Back up library now".</value></data>
+  <data name="ImportRestore_TickedShortcutsAreAdded" xml:space="preserve"><value>Ticked shortcuts are added next to the ones you have now. A name you already use gets a number, like "Name (2)". Nothing is replaced.</value></data>
+  <data name="ImportRestore_CouldnTAddOne" xml:space="preserve"><value>Couldn't add one</value></data>
+  <data name="ImportRestore_0WasnTAdded" xml:space="preserve"><value>"{0}" wasn't added. {1}</value><comment>{0} = shortcut.Name; {1} = ex.Message</comment></data>
+  <data name="ImportRestore_BackupRestored" xml:space="preserve"><value>Backup restored</value></data>
+  <data name="ImportRestore_1ShortcutWasAdded" xml:space="preserve"><value>1 shortcut was added to your library.</value></data>
+  <data name="ImportRestore_0ShortcutsWereAdded" xml:space="preserve"><value>{0} shortcuts were added to your library.</value><comment>{0} = added</comment></data>
+  <data name="NewShortcutMenu_CouldnTAddIt" xml:space="preserve"><value>Couldn't add it</value></data>
+  <data name="NewShortcutMenu_NewShortcut" xml:space="preserve"><value>New shortcut</value></data>
+  <data name="NewShortcutMenu_SayWhatYouWant" xml:space="preserve"><value>Say what you want in a sentence. You get a draft to check; nothing runs by itself.</value></data>
+  <data name="NewShortcutMenu_DescribeTheShortcutYou" xml:space="preserve"><value>Describe the shortcut you want</value></data>
+  <data name="PickShortcutDialog_ALinkOrAnother" xml:space="preserve"><value>A link or another app wants to run one of your shortcuts on these files and folders. Nothing runs until you choose one.</value></data>
+  <data name="PickShortcutDialog_YouDonTHave" xml:space="preserve"><value>You don't have any shortcuts yet.</value></data>
+  <data name="Prompts_TypeANameFirst" xml:space="preserve"><value>Type a name first.</value></data>
+  <data name="Prompts_ItWouldGetThis" xml:space="preserve"><value>It would get this item:</value></data>
+  <data name="Prompts_ItWouldGetThese" xml:space="preserve"><value>It would get these {0} items:</value><comment>{0} = prompt.Files.Count</comment></data>
+  <data name="Prompts_ItWouldGetThis2" xml:space="preserve"><value>It would get this text:</value></data>
+  <data name="Prompts_WhatItWouldDo" xml:space="preserve"><value>What it would do:</value></data>
+  <data name="RecentlyDeletedDialog_ShortcutsYouDeleteAre" xml:space="preserve"><value>Shortcuts you delete are kept on this PC for {0} days. After that they're removed for good. If your library is synced, other PCs don't have these copies.</value><comment>{0} = days</comment></data>
+  <data name="RecentlyDeletedDialog_ThereSNothingHere" xml:space="preserve"><value>There's nothing here.</value></data>
+  <data name="RecentlyDeletedDialog_ItsDetailsAreDamaged" xml:space="preserve"><value>Its details are damaged ({0}), so it's never removed automatically.</value><comment>{0} = item.Key</comment></data>
+  <data name="RecentlyDeletedDialog_ItsSavedCopyCan" xml:space="preserve"><value> Its saved copy can't be read as a shortcut, so it can't be restored.</value></data>
+  <data name="RecentlyDeletedDialog_Deleted0GRemoved" xml:space="preserve"><value>Deleted {0:g}. Removed for good after {1:d}.</value><comment>{0} = item.DeletedAt.LocalDateTime; {1} = item.RemovedAt.LocalDateTime</comment></data>
+  <data name="RecentlyDeletedDialog_Restore" xml:space="preserve"><value>Restore</value></data>
+  <data name="RecentlyDeletedDialog_CouldnTRestoreThe" xml:space="preserve"><value>Couldn't restore the shortcut</value></data>
+  <data name="RecentlyDeletedDialog_AShortcutWithThe" xml:space="preserve"><value>A shortcut with the same ID is already in your library, so "{0}" came back as a copy. Its hotkey, Quick Run name and Send To entry were left off. Automations that used the deleted shortcut stay linked to the one already in your library.</value><comment>{0} = r.Shortcut.Name</comment></data>
+  <data name="RecentlyDeletedDialog_AnotherShortcutNowUses" xml:space="preserve"><value>Another shortcut now uses the hotkey {0}, so it was left off the restored one.</value><comment>{0} = r.ClearedHotkey</comment></data>
+  <data name="RecentlyDeletedDialog_AnotherShortcutNowUses2" xml:space="preserve"><value>Another shortcut now uses the Quick Run name "{0}", so it was left off the restored one.</value><comment>{0} = r.ClearedAlias</comment></data>
+  <data name="RecentlyDeletedDialog_AShortcutNamed0" xml:space="preserve"><value>A shortcut named "{0}" already exists, so the restored one is called "{1}".</value><comment>{0} = r.RenamedFrom; {1} = r.Shortcut.Name</comment></data>
+  <data name="RecentlyDeletedDialog_0IsBack" xml:space="preserve"><value>"{0}" is back</value><comment>{0} = r.Shortcut.Name</comment></data>
+  <data name="RecentlyDeletedDialog_Delete0Permanently1" xml:space="preserve"><value>Delete "{0}" permanently? 1 shortcut will be removed for good. This can't be undone.</value><comment>{0} = item.Name</comment></data>
+  <data name="RecentlyDeletedDialog_CouldnTDeleteIt" xml:space="preserve"><value>Couldn't delete it</value></data>
+  <data name="RecentlyDeletedDialog_Delete0Permanently12" xml:space="preserve"><value>Delete {0} permanently? {1} will be removed for good. This can't be undone.</value><comment>{0} = what; {1} = (count == 1 ? "It" : "They")</comment></data>
+  <data name="RecentlyDeletedDialog_Empty" xml:space="preserve"><value>Empty</value><comment>Short label; keep it brief</comment></data>
+  <data name="RecentlyDeletedDialog_0CouldnTBe" xml:space="preserve"><value>{0} couldn't be removed. They may be open in another program, or changed since you confirmed. Try again in a moment.</value><comment>{0} = count - removed</comment></data>
+  <data name="RecentlyDeletedDialog_CouldnTEmptyRecently" xml:space="preserve"><value>Couldn't empty Recently deleted</value></data>
+  <data name="RecordDialogs_OpenTheAppFirst" xml:space="preserve"><value>Open the app first, then choose it here. Only that app is recorded: your clicks and typing anywhere else are left out.</value></data>
+  <data name="RecordDialogs_StartsAfterA3" xml:space="preserve"><value>Starts after a 3, 2, 1 countdown. Stop with the bar's Stop button or Ctrl+Alt+S. Passwords are never recorded.</value></data>
+  <data name="RecordDialogs_RecordedIn01" xml:space="preserve"><value>Recorded in {0} · {1} · {2} seconds</value><comment>{0} = appName; {1} = (review.Count == 1 ? "1 step" : $"{review.Count} steps"); {2} = seconds</comment></data>
+  <data name="RecordDialogs_NoStepsLeftDiscard" xml:space="preserve"><value>No steps left. Discard, or record again.</value></data>
+  <data name="RecordDialogs_MoveStep0Up" xml:space="preserve"><value>Move step {0} up</value><comment>{0} = i + 1</comment></data>
+  <data name="RecordDialogs_MoveStep0Down" xml:space="preserve"><value>Move step {0} down</value><comment>{0} = i + 1</comment></data>
+  <data name="RecordDialogs_RemoveStep0" xml:space="preserve"><value>Remove step {0}</value><comment>{0} = i + 1</comment></data>
+  <data name="RecordDialogs_FoundByItsPlace" xml:space="preserve"><value>Found by its place in the window: may break if the app changes</value></data>
+  <data name="RecordDialogs_TextTypedInStep" xml:space="preserve"><value>Text typed in step {0}</value><comment>{0} = i + 1</comment></data>
+  <data name="RecordDialogs_PasswordBoxAsksEach" xml:space="preserve"><value>Password box: asks each time, never recorded</value></data>
+  <data name="RecordDialogs_SecondsStep0Waits" xml:space="preserve"><value>Seconds step {0} waits</value><comment>{0} = i + 1</comment></data>
+  <data name="RecordDialogs_WaitUpTo" xml:space="preserve"><value>Wait up to</value></data>
+  <data name="RecordDialogs_WaitForItUp" xml:space="preserve"><value>Wait for it up to</value></data>
+  <data name="ResultView_ThereSNothingTo" xml:space="preserve"><value>There's nothing to show.</value></data>
+  <data name="ResultView_And0More" xml:space="preserve"><value>…and {0} more</value><comment>{0} = value.Count - 200</comment></data>
+  <data name="ResultView_Open" xml:space="preserve"><value>Open</value><comment>Short label; keep it brief</comment></data>
+  <data name="ResultView_Empty" xml:space="preserve"><value>(empty)</value></data>
+  <data name="TemplateSheet_SetUp" xml:space="preserve"><value>Set up </value></data>
+  <data name="TemplateSheet_AddDonTSchedule" xml:space="preserve"><value>Add, don't schedule yet</value></data>
+  <data name="TemplateSheet_ItWorksOnThe" xml:space="preserve"><value>It works on the pictures you pick or send to it. Choose "Show what it would do" to pick some and see the new files it would make. Nothing is changed.</value></data>
+  <data name="TemplateSheet_AddAndTurnOn" xml:space="preserve"><value>Add and turn on</value></data>
+  <data name="TemplateSheet_Choose" xml:space="preserve"><value>Choose…</value></data>
+  <data name="TemplateSheet_ChooseTheFolder" xml:space="preserve"><value>Choose the folder</value></data>
+  <data name="TemplateSheet_ChooseAFolder2" xml:space="preserve"><value>choose a folder</value></data>
+  <data name="TemplateSheet_AtWhatTime" xml:space="preserve"><value>At what time</value></data>
+  <data name="TemplateSheet_TypeTheTimeLike" xml:space="preserve"><value>Type the time like 08:00.</value></data>
+  <data name="TemplateSheet_PreviewRightNow" xml:space="preserve"><value>Preview, right now:</value></data>
+  <data name="TemplateSheet_CouldnTAddIt" xml:space="preserve"><value>Couldn't add it</value></data>
+  <data name="TemplateSheet_AddedButCouldnT" xml:space="preserve"><value>Added, but couldn't turn on the schedule</value></data>
+  <data name="WelcomeDialog_CouldnTAddIt" xml:space="preserve"><value>Couldn't add it</value></data>
+  <data name="WelcomeWindow_Progress" xml:space="preserve"><value>Progress</value></data>
+  <data name="WindowsShellIntegration_0IsNowOn" xml:space="preserve"><value>"{0}" is now on your desktop.</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="WindowsShellIntegration_StartMenuLinksAren" xml:space="preserve"><value>Start menu links aren't available in the Microsoft Store version. Desktop links work here.</value></data>
+  <data name="WindowsShellIntegration_0IsNowIn" xml:space="preserve"><value>"{0}" is now in the Start menu, in the folder "{1}".</value><comment>{0} = shortcut.Name; {1} = ShellOptions.StartMenuFolderName</comment></data>
+  <data name="WindowsShellIntegration_ThisCopyOfAutomation" xml:space="preserve"><value>This copy of Automation Portal is running in a test mode that doesn't change Windows.</value></data>
+  <data name="WindowsShellIntegration_Run0WithAutomation" xml:space="preserve"><value>Run "{0}" with Automation Portal</value><comment>{0} = s.Name</comment></data>
+  <data name="WindowsShellIntegration_Run0" xml:space="preserve"><value>Run "{0}"</value><comment>{0} = s.Name</comment></data>
+  <data name="WindowsShellIntegration_RightClickMenu" xml:space="preserve"><value>right-click menu: </value></data>
+  <data name="AutomationSentence_ADeletedShortcut" xml:space="preserve"><value>a deleted shortcut</value></data>
+  <data name="AutomationSentence_OnlyIf" xml:space="preserve"><value>Only if </value></data>
+  <data name="AutomationSentence_HasnTRunYet" xml:space="preserve"><value>Hasn't run yet</value></data>
+  <data name="AutomationSentence_Ran0MinAgo" xml:space="preserve"><value>Ran {0} min ago</value><comment>{0} = (int)span.TotalMinutes</comment></data>
+  <data name="AutomationSentence_RanTodayAt" xml:space="preserve"><value>Ran today at </value></data>
+  <data name="AutomationSentence_RanYesterdayAt" xml:space="preserve"><value>Ran yesterday at </value></data>
+  <data name="AutomationWizardState_FillIn" xml:space="preserve"><value>Fill in: </value></data>
+  <data name="AutomationWizardState_AShortcutWithThat" xml:space="preserve"><value>A shortcut with that name already exists. Pick another name.</value></data>
+  <data name="DeleteUndo_0IsnTIn" xml:space="preserve"><value>"{0}" isn't in Recently deleted any more.</value><comment>{0} = name</comment></data>
+  <data name="DeleteUndo_CouldnTRestoreThe" xml:space="preserve"><value>Couldn't restore the shortcut</value></data>
+  <data name="DeleteUndo_Restored0" xml:space="preserve"><value>Restored "{0}".</value><comment>{0} = r.Shortcut.Name</comment></data>
+  <data name="DeleteUndo_AShortcutWithThe" xml:space="preserve"><value>A shortcut with the same ID is already in your library, so it came back as a copy without its hotkey, Quick Run name or Send To entry.</value></data>
+  <data name="DeleteUndo_AnotherShortcutIsCalled" xml:space="preserve"><value>Another shortcut is called "{0}", so it got a number.</value><comment>{0} = old</comment></data>
+  <data name="DeleteUndo_AnotherShortcutNowUses" xml:space="preserve"><value>Another shortcut now uses the hotkey {0}, so it was left off.</value><comment>{0} = r.ClearedHotkey</comment></data>
+  <data name="DeleteUndo_AnotherShortcutNowUses2" xml:space="preserve"><value>Another shortcut now uses the Quick Run name "{0}", so it was left off.</value><comment>{0} = r.ClearedAlias</comment></data>
+  <data name="DelightMoments_012By" xml:space="preserve"><value>{0}: {1}, {2} by themselves.</value><comment>{0} = period; {1} = runs; {2} = by</comment></data>
+  <data name="FileChangeCheck_0ChangesFilesOn" xml:space="preserve"><value>"{0}" changes files on this PC. Steps that do: {1}.
+
+Check its steps first if you are not sure which folders it works on.</value><comment>{0} = name; {1} = string.Join(", ", steps)</comment></data>
+  <data name="FileChangeCheck_01OnThis" xml:space="preserve"><value>"{0}" {1} on this PC. Steps that do: {2}.
+
+</value><comment>{0} = name; {1} = (changesFiles ? "changes files and clicks and types in other apps" : "clicks and types in other apps"); {2} = string.Join(", ", steps)</comment></data>
+  <data name="FirstRun_NotInstalled" xml:space="preserve"><value>Not installed</value></data>
+  <data name="FirstRun_ControlOff" xml:space="preserve"><value>Control off</value></data>
+  <data name="FirstRun_ComingSoon" xml:space="preserve"><value>Coming soon</value></data>
+  <data name="FirstRun_TurnOnAllowAutomation" xml:space="preserve"><value>Turn on "Allow Automation Portal and other apps to control Desk Pal" in Desk Pal Settings.</value></data>
+  <data name="FirstRun_TurnOnAllowLinks" xml:space="preserve"><value>Turn on "Allow links from other apps" in Power Plan Manager.</value></data>
+  <data name="GalleryIndex_AllShortcuts" xml:space="preserve"><value>All shortcuts</value></data>
+  <data name="NextRunText_NextRun" xml:space="preserve"><value>Next run: </value></data>
+  <data name="NextRunText_TodayAt" xml:space="preserve"><value>today at </value></data>
+  <data name="NextRunText_TomorrowAt" xml:space="preserve"><value>tomorrow at </value></data>
+  <data name="NextRunText_Weekdays" xml:space="preserve"><value>Weekdays</value></data>
+  <data name="RunHistoryActions_Shortcut0" xml:space="preserve"><value>Shortcut: {0}</value><comment>{0} = r.ShortcutName</comment></data>
+  <data name="RunHistoryActions_Started0F" xml:space="preserve"><value>Started: {0:f}</value><comment>{0} = r.Started.ToLocalTime()</comment></data>
+  <data name="RunHistoryActions_Duration0" xml:space="preserve"><value>Duration: {0}</value><comment>{0} = FormatDuration(r.DurationMs)</comment></data>
+  <data name="RunHistoryActions_Result0" xml:space="preserve"><value>Result: {0}</value><comment>{0} = statusText</comment></data>
+  <data name="RunHistoryActions_Source0" xml:space="preserve"><value>Source: {0}</value><comment>{0} = sourceText</comment></data>
+  <data name="RunHistoryActions_Problem0" xml:space="preserve"><value>Problem: {0}</value><comment>{0} = Redact(r.ErrorMessage!)</comment></data>
+  <data name="RunHistoryActions_StepThatDidnT" xml:space="preserve"><value>Step that didn't finish: {0}. {1}</value><comment>{0} = n; {1} = Redact(title)</comment></data>
+  <data name="RunHistoryActions_StepProblem0" xml:space="preserve"><value>Step problem: {0}</value><comment>{0} = Redact(step.Error!)</comment></data>
+  <data name="RunHistoryActions_AutomationPortalWill" xml:space="preserve"><value>Automation Portal will:</value></data>
+  <data name="RunHistoryActions_NotUndoneAutomatically" xml:space="preserve"><value>Not undone automatically:</value></data>
+  <data name="RunHistoryActions_NothingIsOverwrittenItems" xml:space="preserve"><value>Nothing is overwritten. Items are only sent to the Recycle Bin, and only on drives that have one; anything on other drives is left for you. Anything that changed since the run is left as it is.</value></data>
+  <data name="RunHistoryActions_EverythingWasUndone" xml:space="preserve"><value>Everything was undone.</value></data>
+  <data name="RunHistoryActions_0Of1Changes" xml:space="preserve"><value>{0} of {1} changes were undone.</value><comment>{0} = done; {1} = results.Count</comment></data>
+  <data name="RunHistoryActions_Skipped01" xml:space="preserve"><value>• Skipped: {0} {1}</value><comment>{0} = r.Step.Description; {1} = r.Problem</comment></data>
+  <data name="RunHistoryGrouping_MovedTo" xml:space="preserve"><value>moved to </value></data>
+  <data name="RunHistoryGrouping_RenamedFrom" xml:space="preserve"><value>renamed from </value></data>
+  <data name="RunHistoryGrouping_ItsOldName" xml:space="preserve"><value>its old name</value></data>
+  <data name="RunHistoryGrouping_CreatedIn" xml:space="preserve"><value>created in </value></data>
+  <data name="RunHistoryGrouping_SentToTheRecycle" xml:space="preserve"><value>sent to the Recycle Bin</value></data>
+  <data name="RunHistoryGrouping_ReplacedIn" xml:space="preserve"><value>replaced in </value></data>
+  <data name="RunHistoryGrouping_ChangedIn" xml:space="preserve"><value>changed in </value></data>
+  <data name="RunResultText_DidnTChangeAny" xml:space="preserve"><value>didn't change any files</value></data>
+  <data name="RunResultText_Sent0ToThe" xml:space="preserve"><value>sent {0} to the Recycle Bin</value><comment>{0} = Files(n)</comment></data>
+  <data name="RunResultText_Deleted0ForGood" xml:space="preserve"><value>deleted {0} for good</value><comment>{0} = Files(n)</comment></data>
+  <data name="RunResultText_TheChangeWasPut" xml:space="preserve"><value>The change was put back.</value></data>
+  <data name="RunResultText_All0ChangesWere" xml:space="preserve"><value>All {0} changes were put back.</value><comment>{0} = results.Count</comment></data>
+  <data name="RunResultText_NothingWasPutBack" xml:space="preserve"><value>Nothing was put back</value></data>
+  <data name="RunResultText_PutBack0Of" xml:space="preserve"><value>Put back {0} of {1} changes</value><comment>{0} = done; {1} = results.Count</comment></data>
+  <data name="RunResultText_NotPutBack" xml:space="preserve"><value>Not put back:</value></data>
+  <data name="RunResultText_And0MoreSee" xml:space="preserve"><value>…and {0} more. See details for the full list.</value><comment>{0} = missed.Count - MaxListed</comment></data>
+  <data name="SampleShortcut_ItWorksAShortcut" xml:space="preserve"><value>It works. A shortcut is a small job Automation Portal does for you with one click.</value></data>
+  <data name="SettingsLayout_ModelLevelFastSmart" xml:space="preserve"><value>Model level: Fast, Smart or Best</value></data>
+  <data name="StarterSnippets_InputMyAddress" xml:space="preserve"><value>{input:My address}</value></data>
+  <data name="Templates_WhenIRunIt" xml:space="preserve"><value>when I run it</value></data>
+  <data name="Templates_EveryDay" xml:space="preserve"><value>every day</value></data>
+  <data name="Templates_OnWeekdays" xml:space="preserve"><value>on weekdays</value></data>
+  <data name="Templates_EveryMonday" xml:space="preserve"><value>every Monday</value></data>
+  <data name="Templates_Tidy0IntoFolders" xml:space="preserve"><value>Tidy {0} into folders by {1}, for files older than {2} days, {when}.</value></data>
+  <data name="Templates_FileExtension" xml:space="preserve"><value>file extension</value></data>
+  <data name="Templates_ConvertThePicturesI" xml:space="preserve"><value>Convert the pictures I pick to {0}, as new files next to the originals.</value></data>
+  <data name="Templates_Open0The1" xml:space="preserve"><value>Open {0}, the {1} folder and {2}, {when}.</value></data>
+  <data name="Templates_Copy0IntoA" xml:space="preserve"><value>Copy {0} into a new dated folder in {1}, {when}.</value></data>
+  <data name="Templates_ThenTheOtherRows" xml:space="preserve"><value>Then the other rows; it stops at the first row that doesn't fit</value></data>
+  <data name="Templates_Choose0First" xml:space="preserve"><value>Choose {0} first.</value><comment>{0} = template.ImportQuestions[i].Question.TrimEnd('?').ToLower(CultureInfo.CurrentCulture)</comment></data>
+  <data name="TrayMenuModel_PausedUntil" xml:space="preserve"><value>Paused until </value></data>
+  <data name="TrayMenuModel_StopRunningShortcuts0" xml:space="preserve"><value>Stop running shortcuts ({0})</value><comment>{0} = running</comment></data>
+  <data name="TrayMenuModel_AutomationPortal" xml:space="preserve"><value>Automation Portal - </value></data>
+  <data name="UnattendedFailure_BackupDidntRunBody" xml:space="preserve"><value>Backup didn't run: {0} ("{1}")</value><comment>{0} = reason; {1} = shortcutName</comment></data>
+  <data name="WhenSummary_StartsAt0800" xml:space="preserve"><value>Starts at 08:00, change it after</value></data>
+  <data name="WhenSummary_WhenIJoinWi" xml:space="preserve"><value>When I join Wi-Fi</value></data>
+  <data name="WhenSummary_AnyNetworkOrOne" xml:space="preserve"><value>Any network, or one you pick</value></data>
+  <data name="WhenSummary_EveryDayAt" xml:space="preserve"><value>Every day at </value></data>
+  <data name="WhenSummary_EveryWeekdayAt" xml:space="preserve"><value>Every weekday at </value></data>
+  <data name="WhenSummary_EveryWeekendDayAt" xml:space="preserve"><value>Every weekend day at </value></data>
+  <data name="MainWindow_Folders" xml:space="preserve"><value>Folders</value></data>
+  <data name="MainWindow_Separator" xml:space="preserve"><value>Separator</value></data>
+  <data name="MainWindow_Rename" xml:space="preserve"><value>Rename</value><comment>Short label; keep it brief</comment></data>
+  <data name="MainWindow_Create" xml:space="preserve"><value>Create</value><comment>Short label; keep it brief</comment></data>
+  <data name="MainWindow_YouAlreadyHaveA" xml:space="preserve"><value>You already have a folder with that name.</value></data>
+  <data name="MainWindow_ForExampleWork" xml:space="preserve"><value>For example: Work</value></data>
+  <data name="MainWindow_DeleteTheFolder0" xml:space="preserve"><value>Delete the folder "{0}"?</value><comment>{0} = folder.Name</comment></data>
+  <data name="MainWindow_DeleteTheFolder02" xml:space="preserve"><value>Delete the folder "{0}"? Its {1} shortcut{2} won't be deleted. They move back to All Shortcuts.</value><comment>{0} = folder.Name; {1} = count; {2} = (count == 1 ? "" : "s")</comment></data>
+  <data name="MainWindow_Delete" xml:space="preserve"><value>Delete</value><comment>Short label; keep it brief</comment></data>
+  <data name="MainWindow_CommandCtrlN" xml:space="preserve"><value>Command · Ctrl+N</value></data>
+  <data name="MainWindow_CommandRunAShortcut" xml:space="preserve"><value>Command · run a shortcut by itself</value></data>
+  <data name="MainWindow_PageCtrl1" xml:space="preserve"><value>Page · Ctrl+1</value></data>
+  <data name="MainWindow_Pinned" xml:space="preserve"><value>Pinned</value><comment>Short label; keep it brief</comment></data>
+  <data name="MainWindow_PageCtrl2" xml:space="preserve"><value>Page · Ctrl+2</value></data>
+  <data name="MainWindow_Automations" xml:space="preserve"><value>Automations</value></data>
+  <data name="MainWindow_PageCtrl3" xml:space="preserve"><value>Page · Ctrl+3</value></data>
+  <data name="MainWindow_Snippets" xml:space="preserve"><value>Snippets</value></data>
+  <data name="MainWindow_PageCtrl4" xml:space="preserve"><value>Page · Ctrl+4</value></data>
+  <data name="MainWindow_Gallery" xml:space="preserve"><value>Gallery</value></data>
+  <data name="MainWindow_PageCtrl5" xml:space="preserve"><value>Page · Ctrl+5</value></data>
+  <data name="MainWindow_PageCtrl6" xml:space="preserve"><value>Page · Ctrl+6</value></data>
+  <data name="MainWindow_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="MainWindow_PageCtrl" xml:space="preserve"><value>Page · Ctrl+,</value></data>
+  <data name="MainWindow_SettingsAI" xml:space="preserve"><value>Settings: AI</value></data>
+  <data name="MainWindow_Page" xml:space="preserve"><value>Page</value><comment>Short label; keep it brief</comment></data>
+  <data name="MainWindow_CommandInSettings" xml:space="preserve"><value>Command · in Settings</value></data>
+  <data name="MainWindow_CommandAddsTheShortcuts" xml:space="preserve"><value>Command · adds the shortcuts, replaces nothing</value></data>
+  <data name="MainWindow_CommandAutoportal" xml:space="preserve"><value>Command · .autoportal</value></data>
+  <data name="MainWindow_CommandBringAShortcut" xml:space="preserve"><value>Command · bring a shortcut back</value></data>
+  <data name="MainWindow_CommandCtrlOrF1" xml:space="preserve"><value>Command · Ctrl+/ or F1</value></data>
+  <data name="MainWindow_CheatSheet" xml:space="preserve"><value>cheat sheet</value></data>
+  <data name="MainWindow_CommandWhatChangedIn" xml:space="preserve"><value>Command · what changed in this version</value></data>
+  <data name="MainWindow_CommandAShortLook" xml:space="preserve"><value>Command · a short look at the app</value></data>
+  <data name="MainWindow_ShortcutEnterRunsCtrl" xml:space="preserve"><value>Shortcut · Enter runs, Ctrl+Enter edits</value></data>
+  <data name="MainWindow_GalleryReadyMadeShortcut" xml:space="preserve"><value>Gallery · ready-made shortcut</value></data>
+  <data name="AiSettingsPanel_WindowsAINeedsNothing" xml:space="preserve"><value>Windows AI needs nothing to install on a Copilot+ PC. Otherwise install Ollama or LM Studio, start it, and download a model. Then turn it on here. Nothing leaves your PC.</value></data>
+  <data name="AiSettingsPanel_PortalAIHostIsn" xml:space="preserve"><value>Portal AI Host isn't running</value></data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn2" xml:space="preserve"><value>Windows is getting on-device AI ready… {0}%</value><comment>{0} = Math.Round(p * 100)</comment></data>
+  <data name="AiSettingsPanel_TurnOn" xml:space="preserve"><value>Turn on </value></data>
+  <data name="AiSettingsPanel_NotAvailable" xml:space="preserve"><value>, not available: </value></data>
+  <data name="AiSettingsPanel_AddYourKeyTo" xml:space="preserve"><value>Add your key to start using {0}.</value><comment>{0} = name</comment></data>
+  <data name="AiSettingsPanel_EnterTheAddressTo" xml:space="preserve"><value>Enter the address to start using {0}.</value><comment>{0} = name</comment></data>
+  <data name="AiSettingsPanel_EnterTheDeploymentName" xml:space="preserve"><value>Enter the deployment name to start using {0}.</value><comment>{0} = name</comment></data>
+  <data name="AiSettingsPanel_FinishSettingUp0" xml:space="preserve"><value>Finish setting up {0} to start using it.</value><comment>{0} = name</comment></data>
+  <data name="AiSettingsPanel_Hide" xml:space="preserve"><value>Hide</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_SetUp" xml:space="preserve"><value>Set up</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_AKeyIsSaved" xml:space="preserve"><value>A key is saved. Paste a new one to replace it.</value></data>
+  <data name="AiSettingsPanel_Key" xml:space="preserve"><value> key</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_Save" xml:space="preserve"><value>Save</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_Remove" xml:space="preserve"><value>Remove</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_Address" xml:space="preserve"><value> address</value></data>
+  <data name="AiSettingsPanel_Model" xml:space="preserve"><value> model</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_NoModelsFoundDownload" xml:space="preserve"><value>No models found. Download one first.</value></data>
+  <data name="AiSettingsPanel_0ModelsFound" xml:space="preserve"><value>{0} models found.</value><comment>{0} = models.Count</comment></data>
+  <data name="AiSettingsPanel_CouldnTGetThe" xml:space="preserve"><value>Couldn't get the list of models. </value></data>
+  <data name="AiSettingsPanel_Test" xml:space="preserve"><value>Test</value><comment>Short label; keep it brief</comment></data>
+  <data name="AiSettingsPanel_ItWorks" xml:space="preserve"><value>It works. </value></data>
+  <data name="AiSettingsPanel_CouldnTCheck" xml:space="preserve"><value>Couldn't check. </value></data>
+  <data name="AutomationsPage_RunShortcutsAutomatically" xml:space="preserve"><value>Run shortcuts automatically.</value></data>
+  <data name="AutomationsPage_TheLastRunDidn" xml:space="preserve"><value>The last run didn't finish: </value></data>
+  <data name="AutomationsPage_Paused2" xml:space="preserve"><value>Paused: </value></data>
+  <data name="AutomationsPage_Resume" xml:space="preserve"><value>Resume</value><comment>Short label; keep it brief</comment></data>
+  <data name="AutomationsPage_Problem" xml:space="preserve"><value>Problem: </value></data>
+  <data name="AutomationsPage_SkippedLastTime" xml:space="preserve"><value>Skipped last time: </value></data>
+  <data name="AutomationsPage_Enabled" xml:space="preserve"><value>Enabled</value></data>
+  <data name="AutomationsPage_Activity2" xml:space="preserve"><value>Activity</value></data>
+  <data name="AutomationsPage_Edit" xml:space="preserve"><value>Edit</value><comment>Short label; keep it brief</comment></data>
+  <data name="AutomationsPage_Delete" xml:space="preserve"><value>Delete</value><comment>Short label; keep it brief</comment></data>
+  <data name="AutomationsPage_ThisRuns0Once" xml:space="preserve"><value>This runs "{0}" once now. Only what the trigger hands over is a sample (files in a temporary folder); every step runs for real, so steps that use their own folders or files act on them.</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="AutomationsPage_StepsThatCanChange" xml:space="preserve"><value>
+
+Steps that can change or delete things: {0}.</value><comment>{0} = string.Join(", ", risky)</comment></data>
+  <data name="AutomationsPage_Testing" xml:space="preserve"><value>Testing…</value></data>
+  <data name="AutomationsPage_Running0OnceOn" xml:space="preserve"><value>Running "{0}" once on sample files.</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="AutomationsPage_FilesItLeftIn" xml:space="preserve"><value> Files it left in the test folder were kept: {0}</value><comment>{0} = sandbox.Folder</comment></data>
+  <data name="AutomationsPage_0IsAlreadyRunning" xml:space="preserve"><value>"{0}" is already running. Try again when it finishes.</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="AutomationsPage_0RanWithoutProblems" xml:space="preserve"><value>"{0}" ran without problems.</value><comment>{0} = shortcut.Name</comment></data>
+  <data name="GalleryPage_Needs" xml:space="preserve"><value>Needs </value><comment>Short label; keep it brief</comment></data>
+  <data name="GalleryPage_Added" xml:space="preserve"><value>Added</value><comment>Short label; keep it brief</comment></data>
+  <data name="GalleryPage_Add" xml:space="preserve"><value>Add…</value><comment>Short label; keep it brief</comment></data>
+  <data name="GalleryPage_Add2" xml:space="preserve"><value>Add</value><comment>Short label; keep it brief</comment></data>
+  <data name="GalleryPage_Add3" xml:space="preserve"><value>Add </value><comment>Short label; keep it brief</comment></data>
+  <data name="GalleryPage_ComingSoon" xml:space="preserve"><value>Coming soon: </value></data>
+  <data name="GalleryPage_SetUp2" xml:space="preserve"><value>Set up </value></data>
+  <data name="GalleryPage_Added0ToYour" xml:space="preserve"><value>Added "{0}" to your shortcuts.</value><comment>{0} = name</comment></data>
+  <data name="GalleryPage_0NotAvailableOn" xml:space="preserve"><value>{0} (not available on this PC)</value><comment>{0} = w.ActionId</comment></data>
+  <data name="GalleryPage_HeadsUpThisShortcut" xml:space="preserve"><value>Heads up: this shortcut includes </value></data>
+  <data name="GalleryPage_ThisShortcutHasNo" xml:space="preserve"><value>This shortcut has no steps yet.</value></data>
+  <data name="GalleryPage_CouldnTAddIt" xml:space="preserve"><value>Couldn't add it</value></data>
+  <data name="GalleryPage_Added0ToYour2" xml:space="preserve"><value>Added "{0}" to your shortcuts. You already had one called "{1}", so this one got a new name.</value><comment>{0} = result.Shortcut.Name; {1} = result.RenamedFrom</comment></data>
+  <data name="GalleryPage_AFewQuickQuestions" xml:space="preserve"><value>A few quick questions so this shortcut works for you.</value></data>
+  <data name="GalleryPage_CouldnTOpenThat" xml:space="preserve"><value>Couldn't open that file</value></data>
+  <data name="HomeLocationInput_FillInBothLatitude" xml:space="preserve"><value>Fill in both latitude and longitude, or leave both empty.</value></data>
+  <data name="LibraryPage_SearchResults" xml:space="preserve"><value>Search results</value></data>
+  <data name="LibraryPage_1ShortcutMatches0" xml:space="preserve"><value>1 shortcut matches "{0}"</value><comment>{0} = _target.Query</comment></data>
+  <data name="LibraryPage_0ShortcutsMatch1" xml:space="preserve"><value>{0} shortcuts match "{1}"</value><comment>{0} = textMatches.Count; {1} = _target.Query</comment></data>
+  <data name="LibraryPage_Add" xml:space="preserve"><value>Add</value><comment>Short label; keep it brief</comment></data>
+  <data name="LibraryPage_Add2" xml:space="preserve"><value>Add </value><comment>Short label; keep it brief</comment></data>
+  <data name="LibraryPage_BeforeItStoppedIt" xml:space="preserve"><value> Before it stopped, it {0}.</value><comment>{0} = partial.Summary</comment></data>
+  <data name="LibraryPage_RecentlyDeleted0" xml:space="preserve"><value>Recently deleted ({0})</value><comment>{0} = count</comment></data>
+  <data name="LibraryPage_Hotkey" xml:space="preserve"><value>Hotkey…</value></data>
+  <data name="LibraryPage_Export" xml:space="preserve"><value>Export…</value></data>
+  <data name="LibraryPage_CouldnTSave" xml:space="preserve"><value>Couldn't save</value></data>
+  <data name="LibraryPage_CouldnTDuplicate" xml:space="preserve"><value>Couldn't duplicate</value></data>
+  <data name="LibraryPage_Name" xml:space="preserve"><value>Name</value><comment>Short label; keep it brief</comment></data>
+  <data name="LibraryPage_Rename" xml:space="preserve"><value>Rename</value><comment>Short label; keep it brief</comment></data>
+  <data name="LibraryPage_AShortcutNamed0" xml:space="preserve"><value>A shortcut named "{0}" already exists. Choose a different name.</value><comment>{0} = n</comment></data>
+  <data name="LibraryPage_CouldnTAddIt" xml:space="preserve"><value>Couldn't add it to the desktop</value></data>
+  <data name="LibraryPage_CouldnTExport" xml:space="preserve"><value>Couldn't export</value></data>
+  <data name="LibraryPage_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't save the file. {0}</value><comment>{0} = ex.Message</comment></data>
+  <data name="LibraryPage_Move0ToRecently" xml:space="preserve"><value>Move "{0}" to Recently deleted? It's kept on this PC for {1} days, so you can restore it until then.</value><comment>{0} = s.Name; {1} = RecentlyDeleted.KeepFor.Days</comment></data>
+  <data name="LibraryPage_0WhileTheShortcut" xml:space="preserve"><value>
+
+{0} while the shortcut is deleted. Restoring the shortcut makes {1} work again.</value><comment>{0} = (automations == 1 ? "An automation uses it. It stays in your list but won't run" : automations + " automations use it. They stay in your list but won't run"); {1} = (automations == 1 ? "it" : "them")</comment></data>
+  <data name="LibraryPage_Delete" xml:space="preserve"><value>Delete</value><comment>Short label; keep it brief</comment></data>
+  <data name="LibraryPage_CouldnTDeleteThe" xml:space="preserve"><value>Couldn't delete the shortcut</value></data>
+  <data name="LibraryPage_Deleted0" xml:space="preserve"><value>Deleted "{0}".</value><comment>{0} = name</comment></data>
+  <data name="LibraryPage_ItStaysInRecently" xml:space="preserve"><value>It stays in Recently deleted for {0} days.</value><comment>{0} = RecentlyDeleted.KeepFor.Days</comment></data>
+  <data name="RunHistoryPage_RunFromTheEditor" xml:space="preserve"><value>Run from the editor</value></data>
+  <data name="RunHistoryPage_RunFromYourLibrary" xml:space="preserve"><value>Run from your library</value></data>
+  <data name="RunHistoryPage_RunWithAHotkey" xml:space="preserve"><value>Run with a hotkey</value></data>
+  <data name="RunHistoryPage_RunByAnAutomation" xml:space="preserve"><value>Run by an automation</value></data>
+  <data name="RunHistoryPage_RunFromTheCommand" xml:space="preserve"><value>Run from the command line</value></data>
+  <data name="RunHistoryPage_RunFromExplorer" xml:space="preserve"><value>Run from Explorer</value></data>
+  <data name="RunHistoryPage_RunFromQuickRun" xml:space="preserve"><value>Run from Quick Run</value></data>
+  <data name="RunHistoryPage_RunFromALink" xml:space="preserve"><value>Run from a link</value></data>
+  <data name="RunHistoryPage_RunByAnotherShortcut" xml:space="preserve"><value>Run by another shortcut</value></data>
+  <data name="RunHistoryPage_RunByAReminder" xml:space="preserve"><value>Run by a reminder</value></data>
+  <data name="RunHistoryPage_TodayAt" xml:space="preserve"><value>Today at </value></data>
+  <data name="RunHistoryPage_YesterdayAt" xml:space="preserve"><value>Yesterday at </value></data>
+  <data name="RunHistoryPage_Steps0" xml:space="preserve"><value>Steps ({0})</value><comment>{0} = r.Steps.Count</comment></data>
+  <data name="RunHistoryPage_NoStepsWereRecorded" xml:space="preserve"><value>No steps were recorded for this run.</value></data>
+  <data name="RunHistoryPage_Show" xml:space="preserve"><value>Show </value><comment>Short label; keep it brief</comment></data>
+  <data name="RunHistoryPage_InItsFolder" xml:space="preserve"><value> in its folder</value></data>
+  <data name="RunHistoryPage_ChooseTheFilesTo" xml:space="preserve"><value>Choose the files to run "</value></data>
+  <data name="RunHistoryPage_CouldnTSelectThe" xml:space="preserve"><value>Couldn't select the step</value></data>
+  <data name="SettingsPage_GoTo" xml:space="preserve"><value>Go to </value><comment>Short label; keep it brief</comment></data>
+  <data name="SettingsPage_CouldnTFindYour" xml:space="preserve"><value>Couldn't find your location just now. Try again, or type the numbers here.</value></data>
+  <data name="SettingsPage_Version" xml:space="preserve"><value>Version </value></data>
+  <data name="SettingsPage_WhenAnotherAppAsks" xml:space="preserve"><value>When another app asks to run one of your shortcuts, Automation Portal asks you first. When you tick "Don't ask again", that app runs that shortcut without asking.</value></data>
+  <data name="SettingsPage_Remove" xml:space="preserve"><value>Remove</value><comment>Short label; keep it brief</comment></data>
+  <data name="SettingsPage_Remove2" xml:space="preserve"><value>Remove </value></data>
+  <data name="SettingsPage_FromTheAppsAllowed" xml:space="preserve"><value> from the apps allowed to run shortcuts</value></data>
+  <data name="SettingsPage_ADeletedShortcut" xml:space="preserve"><value>a deleted shortcut</value></data>
+  <data name="SettingsPage_0Runs1" xml:space="preserve"><value>{0} runs "{1}"</value><comment>{0} = app; {1} = shortcut</comment></data>
+  <data name="SettingsPage_AskAgainWhen0" xml:space="preserve"><value>Ask again when {0} runs {1}</value><comment>{0} = app; {1} = shortcut</comment></data>
+  <data name="SettingsPage_FastQuickAnswersAt" xml:space="preserve"><value>Fast: quick answers at the lowest cost.</value></data>
+  <data name="SettingsPage_BestTheMostCapable" xml:space="preserve"><value>Best: the most capable answers, but slower and more costly.</value></data>
+  <data name="SettingsPage_SmartAGoodBalance" xml:space="preserve"><value>Smart: a good balance of quality and speed. Recommended.</value></data>
+  <data name="SettingsPage_CouldnTChangeThat" xml:space="preserve"><value>Couldn't change that</value></data>
+  <data name="SettingsPage_YourLibraryWasSaved" xml:space="preserve"><value>Your library was saved to:
+{0}
+
+To bring shortcuts back later, use "Restore from a backup" in Settings.</value><comment>{0} = zip</comment></data>
+  <data name="SettingsPage_CouldnTBackUp" xml:space="preserve"><value>Couldn't back up your library</value></data>
+  <data name="SettingsPage_OneDriveWasnTFound" xml:space="preserve"><value>OneDrive wasn't found</value></data>
+  <data name="SettingsPage_NotAllowedInA" xml:space="preserve"><value>Not allowed in a test run</value></data>
+  <data name="SettingsPage_ThisRunUsesA" xml:space="preserve"><value>This run uses a test data root, so the library can only be moved to a folder inside it.</value></data>
+  <data name="SettingsPage_0AlreadyHasFiles" xml:space="preserve"><value>{0}
+
+already has files in it. Choose an empty folder, or a folder that already holds an Automation Portal library.</value><comment>{0} = next</comment></data>
+  <data name="SettingsPage_AutomationPortalWillUse" xml:space="preserve"><value>Automation Portal will use the shortcuts already in
+{0}
+
+Your current shortcuts stay where they are. Automations are paused until you turn them back on in Automations, so you can check that library's automations first.</value><comment>{0} = next</comment></data>
+  <data name="SettingsPage_AutomationPortalWillCopy" xml:space="preserve"><value>Automation Portal will copy your shortcuts to
+{0}
+
+and use that folder from now on. Your current copy stays where it is as a backup.</value><comment>{0} = next</comment></data>
+  <data name="SettingsPage_Continue" xml:space="preserve"><value>Continue</value></data>
+  <data name="SettingsPage_CouldnTCopyYour" xml:space="preserve"><value>Couldn't copy your shortcuts</value></data>
+  <data name="SettingsPage_0AutomationPortalKeeps" xml:space="preserve"><value>{0}
+
+Automation Portal keeps using your current library.</value><comment>{0} = ex.Message</comment></data>
+  <data name="SnippetsPage_0ExpandsTo1" xml:space="preserve"><value>{0}, expands to {1}{2}</value><comment>{0} = Abbreviation; {1} = Preview; {2} = (Enabled ? "" : ", turned off")</comment></data>
+  <data name="SnippetsPage_NoShortCodeYet" xml:space="preserve"><value>(no short code yet)</value></data>
+  <data name="SnippetsPage_DeleteTheSnippet0" xml:space="preserve"><value>Delete the snippet "{0}"?</value><comment>{0} = s.Abbreviation</comment></data>
+  <data name="SnippetsPage_Delete" xml:space="preserve"><value>Delete</value><comment>Short label; keep it brief</comment></data>
+  <data name="SnippetsPage_TypeTheShortCode" xml:space="preserve"><value>Type the short code you want to use, like ;sig.</value></data>
+  <data name="SnippetsPage_AShortCodeCan" xml:space="preserve"><value>A short code can't contain spaces.</value></data>
+  <data name="SnippetsPage_YouAlreadyHaveA" xml:space="preserve"><value>You already have a snippet with the short code {0}. Pick a different one.</value><comment>{0} = abbr</comment></data>
+  <data name="SnippetsPage_WhateverYouCopiedLast" xml:space="preserve"><value>(whatever you copied last)</value></data>
+  <data name="SnippetsPage_Insert" xml:space="preserve"><value>Insert</value><comment>Short label; keep it brief</comment></data>
+  <data name="SnippetsPage_WhatShouldAutomationPortal" xml:space="preserve"><value>What should Automation Portal ask you? (for example: Name)</value></data>
+  <data name="EditorIntegration_TheDesktop" xml:space="preserve"><value>the desktop</value></data>
+  <data name="EditorIntegration_TheStartMenu" xml:space="preserve"><value>the Start menu</value></data>
+  <data name="EditorIntegration_CouldnTAddIt" xml:space="preserve"><value>Couldn't add it to {0}</value><comment>{0} = where</comment></data>
+  <data name="EditorIntegration_CouldnTStartRecording" xml:space="preserve"><value>Couldn't start recording</value></data>
+  <data name="QuickRunExtras_Copied" xml:space="preserve"><value>Copied</value><comment>Short label; keep it brief</comment></data>
+  <data name="QuickRunExtras_0IsOnYour" xml:space="preserve"><value>{0} is on your clipboard.</value><comment>{0} = what</comment></data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer2" xml:space="preserve"><value>   (Enter copies the answer)</value></data>
+  <data name="QuickRunExtras_RatesFrom0Enter" xml:space="preserve"><value>Rates from {0}. Enter copies the answer</value><comment>{0} = r.Date</comment></data>
+  <data name="QuickRunExtras_EnterCopiesTheDate" xml:space="preserve"><value>   (Enter copies the date)</value></data>
+  <data name="QuickRunExtras_SearchTheWebFor" xml:space="preserve"><value>Search the web for "{0}"</value><comment>{0} = q</comment></data>
+  <data name="QuickRunExtras_AskAI0" xml:space="preserve"><value>Ask AI: "{0}"</value><comment>{0} = q</comment></data>
+  <data name="RunUndo_Undo" xml:space="preserve"><value>Undo</value><comment>Short label; keep it brief</comment></data>
+  <data name="RunUndo_CouldnTUndo" xml:space="preserve"><value>Couldn't undo</value></data>
+  <data name="RunUndo_SomethingWentWrongWhile" xml:space="preserve"><value>Something went wrong while undoing: </value></data>
+  <data name="RunUndo_SeeDetailsForWhat" xml:space="preserve"><value> See details for what was put back.</value></data>
+  <data name="ShortcutQuickRunProvider_RunWithInput0" xml:space="preserve"><value>Run with input: {0}</value><comment>{0} = rest</comment></data>
+  <data name="ShortcutQuickRunProvider_QuickRunName0" xml:space="preserve"><value>Quick Run name: {0}</value><comment>{0} = s.Alias</comment></data>
+  <data name="ShortcutRunService_SomethingWentWrongWhile" xml:space="preserve"><value>Something went wrong while running this shortcut. </value></data>
+  <data name="ShortcutRunService_SomethingWentWrong" xml:space="preserve"><value>Something went wrong.</value></data>
+  <data name="ShortcutRunService_ItRanWithoutProblems" xml:space="preserve"><value>It ran without problems.</value></data>
+  <data name="ToastNotificationService_Run0" xml:space="preserve"><value>Run "{0}"?</value><comment>{0} = shortcutName</comment></data>
+  <data name="UserInteraction_AutomationPortal" xml:space="preserve"><value>Automation Portal</value></data>
+  <data name="UserInteraction_TypeANumber" xml:space="preserve"><value>Type a number</value></data>
+  <data name="QuickRunHints_Try127Or" xml:space="preserve"><value>Try 12*7, or 5 km in miles</value></data>
+  <data name="QuickRunHints_TryAShortcutS" xml:space="preserve"><value>Try: a shortcut's short name, if you gave it one</value></data>
+  <data name="QuickRunWindow_RunWithInput" xml:space="preserve"><value>Run with input: </value></data>
+  <data name="QuickRunWindow_SelectedText" xml:space="preserve"><value>Selected text: </value></data>
+  <data name="RecordingBarWindow_AutomationPortalRecordingBar" xml:space="preserve"><value>Automation Portal recording bar</value></data>
+  <data name="RecordingBarWindow_Recording" xml:space="preserve"><value>Recording</value></data>
+  <data name="RecordingBarWindow_ElapsedTime" xml:space="preserve"><value>Elapsed time</value></data>
+  <data name="RecordingBarWindow_StepsRecorded" xml:space="preserve"><value>Steps recorded</value></data>
+  <data name="RecordingBarWindow_Pause" xml:space="preserve"><value>Pause</value><comment>Short label; keep it brief</comment></data>
+  <data name="RecordingBarWindow_Stop0" xml:space="preserve"><value>Stop ({0})</value><comment>{0} = session.StopHotkey</comment></data>
+  <data name="RecordingBarWindow_StartingIn0" xml:space="preserve"><value>Starting in {0}…</value><comment>{0} = _countdown</comment></data>
+  <data name="RecordingBarWindow_Resume" xml:space="preserve"><value>Resume</value><comment>Short label; keep it brief</comment></data>
+  <data name="TrayService_RecordANewShortcut" xml:space="preserve"><value>Record a new shortcut</value></data>
+  <data name="QuickRunWindow_NormalHints" xml:space="preserve"><value>Enter run      Tab give it text      Ctrl+Enter edit      Esc close</value></data>
+  <data name="QuickRunWindow_LockedHints" xml:space="preserve"><value>Type the input, then press Enter      Backspace go back      Esc close</value></data>
+  <data name="QuickRunWindow_NormalHintsSelected" xml:space="preserve"><value>Enter run      Tab type other text      Ctrl+Enter edit      Esc close</value></data>
+  <data name="GalleryIndex_MoreShortcuts" xml:space="preserve"><value>More shortcuts</value></data>
+  <data name="WhatsNew_GeneralFixLine" xml:space="preserve"><value>Thanks to your reports we fixed several behind-the-scenes problems and slowdowns.</value></data>
+  <data name="FileChangeCheck_ChangesFilesAndControlsApps" xml:space="preserve"><value>changes files and clicks and types in other apps</value><comment>Verb phrase inserted into the file-change check; follows the shortcut name</comment></data>
+  <data name="FileChangeCheck_ControlsApps" xml:space="preserve"><value>clicks and types in other apps</value><comment>Verb phrase inserted into the file-change check; follows the shortcut name</comment></data>
+  <data name="LibraryPage_OneAutomationUsesIt" xml:space="preserve"><value>An automation uses it. It stays in your list but won't run</value><comment>Start of a sentence about one automation that uses a deleted shortcut</comment></data>
+  <data name="LibraryPage_ManyAutomationsUseIt" xml:space="preserve"><value>{0} automations use it. They stay in your list but won't run</value><comment>{0} = number of automations (2 or more)</comment></data>
+  <data name="RecordDialogs_NotRecordedList" xml:space="preserve"><value>Not recorded: {0}. These can't be repeated without pressing keys or moving the mouse. </value><comment>{0} = list of things that were left out, separated by semicolons</comment></data>
 </root>

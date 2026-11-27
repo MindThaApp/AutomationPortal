@@ -42,7 +42,7 @@ internal static class VariablePicker
         var header = new DockPanel { Margin = new Thickness(0, 0, 0, 8) };
         if (back is not null)
         {
-            var b = Ui.IconButton(SymbolRegular.ArrowLeft24, "Back", back, 28, 14);
+            var b = Ui.IconButton(SymbolRegular.ArrowLeft24, Strings.Get("VariablePicker_Back"), back, 28, 14);
             DockPanel.SetDock(b, Dock.Left);
             b.Margin = new Thickness(0, 0, 6, 0);
             header.Children.Add(b);
@@ -69,9 +69,9 @@ internal static class VariablePicker
             bool Match(string s) => q.Length == 0 || s.Contains(q, StringComparison.CurrentCultureIgnoreCase);
 
             if (allowAsk && Match(Strings.Get("ParamEditorView_AskEachTime"))) list.Items.Add(Row(null, true, pick));
-            Section(list, "From earlier steps", options.Where(o => o.Group == VariableGroup.Actions && (Match(o.Name) || Match(o.Detail ?? ""))), pick);
-            Section(list, "Built in", options.Where(o => o.Group == VariableGroup.Special && Match(o.Name)), pick);
-            Section(list, "Named values", options.Where(o => o.Group == VariableGroup.Named && Match(o.Name)), pick);
+            Section(list, Strings.Get("VariablePicker_FromEarlierSteps"), options.Where(o => o.Group == VariableGroup.Actions && (Match(o.Name) || Match(o.Detail ?? ""))), pick);
+            Section(list, Strings.Get("VariablePicker_BuiltIn"), options.Where(o => o.Group == VariableGroup.Special && Match(o.Name)), pick);
+            Section(list, Strings.Get("VariablePicker_NamedValues"), options.Where(o => o.Group == VariableGroup.Named && Match(o.Name)), pick);
             empty.Visibility = list.Items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
             SelectFirst(list);
         }
@@ -136,7 +136,7 @@ internal static class VariablePicker
         }
         var result = new PickResult(option, ask);
         var item = new ListBoxItem { Content = grid, Tag = result };
-        System.Windows.Automation.AutomationProperties.SetName(item, ask ? "Ask each time" : option!.Name + (string.IsNullOrEmpty(option.Detail) ? "" : ", " + option.Detail));
+        System.Windows.Automation.AutomationProperties.SetName(item, ask ? Strings.Get("VariablePicker_AskEachTime") : option!.Name + (string.IsNullOrEmpty(option.Detail) ? "" : ", " + option.Detail));
         item.MouseLeftButtonUp += (_, e) => { e.Handled = true; pick(result); };
         return item;
     }

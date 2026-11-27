@@ -52,7 +52,7 @@ public sealed class UserInteraction : IUserInteraction
             body.Children.Add(field.Element);
             body.Children.Add(error);
 
-            var dlg = new FlowDialog("Automation Portal", body, "OK", "Cancel", width: kind == InputKind.Multiline ? 560 : 460);
+            var dlg = new FlowDialog(Strings.Get("UserInteraction_AutomationPortal"), body, "OK", "Cancel", width: kind == InputKind.Multiline ? 560 : 460);
             dlg.Validate = () =>
             {
                 var msg = field.Validate();
@@ -311,7 +311,7 @@ public sealed class UserInteraction : IUserInteraction
                     {
                         tb.SetValue(Wpf.Ui.Controls.TextBox.PlaceholderTextProperty, kind switch
                         {
-                            InputKind.Number => "Type a number", InputKind.Url => "https://", _ => "",
+                            InputKind.Number => Strings.Get("UserInteraction_TypeANumber"), InputKind.Url => "https://", _ => "",
                         });
                     }
                     Element = _text; FocusTarget = _text;

@@ -72,11 +72,11 @@ public sealed class AutomationWizardState
             var cd = conditions.Get(c.ConditionId)?.Descriptor;
             if (cd is not null) missing.AddRange(LiteralFormatter.MissingRequired(cd.Parameters, c.Values));
         }
-        if (missing.Count > 0) return "Fill in: " + string.Join(", ", missing.Distinct()) + ".";
+        if (missing.Count > 0) return Strings.Get("AutomationWizardState_FillIn") + string.Join(", ", missing.Distinct()) + ".";
         if (CreateNewShortcut)
         {
             if (string.IsNullOrWhiteSpace(NewShortcutName)) return Strings.Get("AutomationWizardState_GiveTheNewShortcut");
-            if (library?.IsNameTaken(NewShortcutName) == true) return "A shortcut with that name already exists. Pick another name.";
+            if (library?.IsNameTaken(NewShortcutName) == true) return Strings.Get("AutomationWizardState_AShortcutWithThat");
             return null;
         }
         return ExistingShortcutId is null ? Strings.Get("AutomationWizardState_ChooseAShortcutTo") : null;
@@ -106,13 +106,13 @@ public sealed class AutomationWizardState
                     var cd = conditions.Get(c.ConditionId)?.Descriptor;
                     if (cd is not null) missing.AddRange(LiteralFormatter.MissingRequired(cd.Parameters, c.Values));
                 }
-                return missing.Count == 0 ? null : "Fill in: " + string.Join(", ", missing.Distinct()) + ".";
+                return missing.Count == 0 ? null : Strings.Get("AutomationWizardState_FillIn") + string.Join(", ", missing.Distinct()) + ".";
             }
             case WizardStep.Shortcut:
                 if (CreateNewShortcut)
                 {
                     if (string.IsNullOrWhiteSpace(NewShortcutName)) return Strings.Get("AutomationWizardState_GiveTheNewShortcut");
-                    if (library?.IsNameTaken(NewShortcutName) == true) return "A shortcut with that name already exists. Pick another name.";
+                    if (library?.IsNameTaken(NewShortcutName) == true) return Strings.Get("AutomationWizardState_AShortcutWithThat");
                     return null;
                 }
                 return ExistingShortcutId is null ? Strings.Get("AutomationWizardState_ChooseAShortcutTo") : null;

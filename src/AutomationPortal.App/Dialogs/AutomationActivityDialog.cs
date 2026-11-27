@@ -14,7 +14,7 @@ public static class AutomationActivityDialog
         body.Children.Add(Ui.Text(Strings.Get("AutomationActivityDialog_WhatThisAutomationDid"), secondary: true));
         var list = new StackPanel { Margin = new Thickness(0, 12, 0, 0) };
         var scroll = new ScrollViewer { MaxHeight = 420, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Content = list };
-        AutomationProperties.SetName(scroll, "Activity list");
+        AutomationProperties.SetName(scroll, Strings.Get("AutomationActivityDialog_ActivityList"));
         body.Children.Add(scroll);
 
         var dlg = new FlowDialog("Activity: " + title, body, "Close", null, width: 600);

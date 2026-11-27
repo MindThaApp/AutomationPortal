@@ -66,7 +66,7 @@ public sealed class DataSafetyFixTests
     {
         Assert.False(AutomationPortal.App.Shell.TrayService.ShowRecordEntry);
         var source = File.ReadAllText(Path.Combine(RepoRoot(), "src", "AutomationPortal.App", "Shell", "TrayService.cs"));
-        Assert.Contains("if (ShowRecordEntry) Add(menu, \"Record a new shortcut\"", source);
+        Assert.Contains("if (ShowRecordEntry) Add(menu, Strings.Get(\"TrayService_RecordANewShortcut\")", source);
     }
 
     private static string RepoRoot()

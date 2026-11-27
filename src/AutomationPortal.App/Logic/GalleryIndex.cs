@@ -10,7 +10,7 @@ public sealed record GallerySectionPlan(string Title, IReadOnlyList<string> File
 /// </summary>
 public static class GalleryIndex
 {
-    public const string FallbackSectionTitle = "More shortcuts";
+    public static string FallbackSectionTitle => Strings.Get("GalleryIndex_MoreShortcuts");
 
     /// <summary>Tolerant: bad or missing JSON gives an empty plan so the gallery still shows every file.</summary>
     public static IReadOnlyList<GallerySectionPlan> Parse(string? indexJson)
@@ -68,7 +68,7 @@ public static class GalleryIndex
 
         var rest = byKey.Values.Where(p => !used.Contains(p)).ToList();
         if (rest.Count > 0)
-            result.Add(new GallerySectionPlan(result.Count == 0 ? "All shortcuts" : FallbackSectionTitle, rest));
+            result.Add(new GallerySectionPlan(result.Count == 0 ? Strings.Get("GalleryIndex_AllShortcuts") : FallbackSectionTitle, rest));
         return result;
     }
 

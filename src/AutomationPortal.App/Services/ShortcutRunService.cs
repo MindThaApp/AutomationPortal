@@ -112,7 +112,7 @@ public sealed class ShortcutRunService
             result = new RunResult
             {
                 ShortcutId = shortcut.Id, ShortcutName = shortcut.Name, Source = source, Status = RunStatus.Failed, Started = DateTimeOffset.Now,
-                ErrorMessage = "Something went wrong while running this shortcut. " + ex.Message,
+                ErrorMessage = Strings.Get("ShortcutRunService_SomethingWentWrongWhile") + ex.Message,
             };
         }
         finally
@@ -133,7 +133,7 @@ public sealed class ShortcutRunService
             try
             {
                 _notifications().Show(state == TileRunState.Failed ? $"\"{shortcut.Name}\" didn't finish" : $"\"{shortcut.Name}\" finished",
-                    state == TileRunState.Failed ? result.ErrorMessage ?? "Something went wrong." : "It ran without problems.");
+                    state == TileRunState.Failed ? result.ErrorMessage ?? Strings.Get("ShortcutRunService_SomethingWentWrong") : Strings.Get("ShortcutRunService_ItRanWithoutProblems"));
             }
             catch (ActionException) { }
         }

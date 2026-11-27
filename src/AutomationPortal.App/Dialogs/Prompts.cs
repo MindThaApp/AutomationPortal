@@ -26,7 +26,7 @@ public static class Prompts
         dlg.Validate = () =>
         {
             var text = box.Text.Trim();
-            var msg = text.Length == 0 ? "Type a name first." : validate?.Invoke(text);
+            var msg = text.Length == 0 ? Strings.Get("Prompts_TypeANameFirst") : validate?.Invoke(text);
             error.Text = msg ?? "";
             error.Visibility = msg is null ? Visibility.Collapsed : Visibility.Visible;
             return msg is null;
@@ -78,17 +78,17 @@ public static class Prompts
         if (prompt.ChangesFilesLine is { } changes) Line(changes);
         if (prompt.Files.Count > 0)
         {
-            Line(prompt.Files.Count == 1 ? "It would get this item:" : $"It would get these {prompt.Files.Count} items:", 10);
+            Line(prompt.Files.Count == 1 ? Strings.Get("Prompts_ItWouldGetThis") : Strings.Format("Prompts_ItWouldGetThese", prompt.Files.Count), 10);
             Box(string.Join("\n", prompt.Files));
         }
         if (prompt.InputText is { } input)
         {
-            Line("It would get this text:", 10);
+            Line(Strings.Get("Prompts_ItWouldGetThis2"), 10);
             Box(input.Length > 2000 ? input[..2000] + "…" : input);
         }
         if (prompt.PreviewText is { } preview)
         {
-            Line("What it would do:", 10);
+            Line(Strings.Get("Prompts_WhatItWouldDo"), 10);
             Box(preview);
         }
         var dontAsk = new CheckBox { Content = prompt.DontAskAgainText, Margin = new Thickness(0, 14, 0, 0) };

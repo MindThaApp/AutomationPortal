@@ -158,7 +158,7 @@ public partial class MainWindow : FluentWindow
     /// <summary>The "Folders" heading with a small + button that starts a new folder.</summary>
     private NavigationViewItemHeader BuildFoldersHeader()
     {
-        var title = new System.Windows.Controls.TextBlock { Text = "Folders", FontWeight = FontWeights.SemiBold, VerticalAlignment = VerticalAlignment.Center };
+        var title = new System.Windows.Controls.TextBlock { Text = Strings.Get("MainWindow_Folders"), FontWeight = FontWeights.SemiBold, VerticalAlignment = VerticalAlignment.Center };
         title.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         var add = new Wpf.Ui.Controls.Button
         {
@@ -166,7 +166,7 @@ public partial class MainWindow : FluentWindow
             Width = 28, Height = 28, Padding = new Thickness(0), Background = System.Windows.Media.Brushes.Transparent,
             BorderThickness = new Thickness(0), ToolTip = Strings.Get("MainWindow_NewFolder2"), HorizontalAlignment = HorizontalAlignment.Right,
         };
-        System.Windows.Automation.AutomationProperties.SetName(add, "New folder");
+        System.Windows.Automation.AutomationProperties.SetName(add, Strings.Get("MainWindow_NewFolder2"));
         add.Click += async (_, _) => await CreateFolderAsync();
         var row = new System.Windows.Controls.Grid { Margin = new Thickness(14, 4, 6, 0) };
         row.ColumnDefinitions.Add(new System.Windows.Controls.ColumnDefinition());
@@ -174,17 +174,17 @@ public partial class MainWindow : FluentWindow
         row.Children.Add(title);
         System.Windows.Controls.Grid.SetColumn(add, 1);
         row.Children.Add(add);
-        var header = new NavigationViewItemHeader { Text = "Folders", Tag = row };
+        var header = new NavigationViewItemHeader { Text = Strings.Get("MainWindow_Folders"), Tag = row };
         header.Template = (System.Windows.Controls.ControlTemplate)System.Windows.Markup.XamlReader.Parse(
             "<ControlTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" TargetType=\"Control\"><ContentPresenter Content=\"{TemplateBinding Tag}\" /></ControlTemplate>");
-        System.Windows.Automation.AutomationProperties.SetName(header, "Folders");
+        System.Windows.Automation.AutomationProperties.SetName(header, Strings.Get("MainWindow_Folders"));
         return header;
     }
 
     private static NavigationViewItemSeparator Separator()
     {
         var s = new NavigationViewItemSeparator();
-        System.Windows.Automation.AutomationProperties.SetName(s, "Separator");
+        System.Windows.Automation.AutomationProperties.SetName(s, Strings.Get("MainWindow_Separator"));
         return s;
     }
 
@@ -312,7 +312,7 @@ public partial class MainWindow : FluentWindow
     private ContextMenu BuildFolderMenu(ShortcutFolder f)
     {
         var menu = new ContextMenu();
-        var rename = new Wpf.Ui.Controls.MenuItem { Header = "Rename", Icon = new SymbolIcon(SymbolRegular.Rename24) };
+        var rename = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("MainWindow_Rename"), Icon = new SymbolIcon(SymbolRegular.Rename24) };
         rename.Click += async (_, _) => await RenameFolderAsync(f.Id);
         var icon = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("MainWindow_ChangeIcon"), Icon = new SymbolIcon(SymbolRegular.Emoji24) };
         icon.Click += async (_, _) => await ChangeFolderIconAsync(f.Id);
@@ -328,8 +328,8 @@ public partial class MainWindow : FluentWindow
     public async Task CreateFolderAsync()
     {
         var previous = _current;
-        var name = await Prompts.AskTextAsync(this, Strings.Get("MainWindow_NewFolder2"), Strings.Get("MainWindow_FolderName"), "", "Create", n =>
-            _host.Library.Folders.Any(f => f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? "You already have a folder with that name." : null, "For example: Work");
+        var name = await Prompts.AskTextAsync(this, Strings.Get("MainWindow_NewFolder2"), Strings.Get("MainWindow_FolderName"), "", Strings.Get("MainWindow_Create"), n =>
+            _host.Library.Folders.Any(f => f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? Strings.Get("MainWindow_YouAlreadyHaveA") : null, Strings.Get("MainWindow_ForExampleWork"));
         if (name is null) { NavigateTo(previous); return; }
         var folder = new ShortcutFolder { Name = name, SortOrder = _host.Library.Folders.Count == 0 ? 0 : _host.Library.Folders.Max(f => f.SortOrder) + 1 };
         _host.Library.SaveFolder(folder);
@@ -340,8 +340,8 @@ public partial class MainWindow : FluentWindow
     private async Task RenameFolderAsync(Guid id)
     {
         if (_host.Library.Folders.FirstOrDefault(f => f.Id == id) is not { } folder) return;
-        var name = await Prompts.AskTextAsync(this, Strings.Get("MainWindow_RenameFolder"), Strings.Get("MainWindow_FolderName"), folder.Name, "Rename", n =>
-            _host.Library.Folders.Any(f => f.Id != id && f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? "You already have a folder with that name." : null);
+        var name = await Prompts.AskTextAsync(this, Strings.Get("MainWindow_RenameFolder"), Strings.Get("MainWindow_FolderName"), folder.Name, Strings.Get("MainWindow_Rename"), n =>
+            _host.Library.Folders.Any(f => f.Id != id && f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? Strings.Get("MainWindow_YouAlreadyHaveA") : null);
         if (name is null) return;
         folder = AutomationPortalJson.Clone(folder);
         folder.Name = name;
@@ -363,9 +363,9 @@ public partial class MainWindow : FluentWindow
         if (_host.Library.Folders.FirstOrDefault(f => f.Id == id) is not { } folder) return;
         var count = _host.Library.All.Count(s => s.FolderId == id);
         var msg = count == 0
-            ? $"Delete the folder \"{folder.Name}\"?"
-            : $"Delete the folder \"{folder.Name}\"? Its {count} shortcut{(count == 1 ? "" : "s")} won't be deleted. They move back to All Shortcuts.";
-        if (await Prompts.ConfirmAsync(this, Strings.Get("MainWindow_DeleteFolder"), msg, "Delete", danger: true))
+            ? Strings.Format("MainWindow_DeleteTheFolder0", folder.Name)
+            : Strings.Format("MainWindow_DeleteTheFolder02", folder.Name, count, (count == 1 ? "" : "s"));
+        if (await Prompts.ConfirmAsync(this, Strings.Get("MainWindow_DeleteFolder"), msg, Strings.Get("MainWindow_Delete"), danger: true))
             _host.Library.DeleteFolder(id);
     }
 
@@ -525,30 +525,30 @@ public partial class MainWindow : FluentWindow
         var entries = new List<Logic.PaletteEntry>();
         void Command(string key, string title, string detail, params string[] words) =>
             entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Command, title, detail, key, null, words));
-        Command("new", Strings.Get("MainWindow_NewShortcut"), "Command · Ctrl+N", "create", "add");
-        Command("automation", Strings.Get("AutomationWizardWindow_NewAutomation"), "Command · run a shortcut by itself", "trigger", "schedule", "when");
-        Command("page:library", Strings.Get("MainWindow_AllShortcuts"), "Page · Ctrl+1", "library", "home");
-        Command("page:pinned", "Pinned", "Page · Ctrl+2", "favourites");
-        Command("page:automations", "Automations", "Page · Ctrl+3");
-        Command("page:snippets", "Snippets", "Page · Ctrl+4", "text");
-        Command("page:gallery", "Gallery", "Page · Ctrl+5", "ready-made", "starter");
-        Command("page:history", Strings.Get("MainWindow_RunHistory"), "Page · Ctrl+6", "past", "log", "results");
-        Command("settings", "Settings", "Page · Ctrl+,", "options", "preferences", "links", "hotkeys");
-        Command("ai", "Settings: AI", "Page", "model", "describe", "provider");
-        Command("backup", Strings.Get("MainWindow_BackUpLibraryNow"), "Command · in Settings", "export", "save", "zip");
-        Command("restore", Strings.Get("MainWindow_RestoreFromABackup"), "Command · adds the shortcuts, replaces nothing", "backup", "import");
-        Command("import", Strings.Get("MainWindow_ImportAShortcutFile"), "Command · .autoportal", "open", "add");
-        Command("deleted", Strings.Get("RecentlyDeletedDialog_RecentlyDeleted"), "Command · bring a shortcut back", "trash", "undo", "restore");
-        Command("keys", Strings.Get("MainWindow_KeyboardShortcuts"), "Command · Ctrl+/ or F1", "keys", "help", "cheat sheet");
-        Command("whatsnew", Strings.Get("MainWindow_WhatsNew"), "Command · what changed in this version", "release", "update", "changes", "new");
-        Command("tour", Strings.Get("MainWindow_Tour"), "Command · a short look at the app", "explore", "tour", "intro", "help", "learn", "welcome");
+        Command("new", Strings.Get("MainWindow_NewShortcut"), Strings.Get("MainWindow_CommandCtrlN"), "create", "add");
+        Command("automation", Strings.Get("AutomationWizardWindow_NewAutomation"), Strings.Get("MainWindow_CommandRunAShortcut"), "trigger", "schedule", "when");
+        Command("page:library", Strings.Get("MainWindow_AllShortcuts"), Strings.Get("MainWindow_PageCtrl1"), "library", "home");
+        Command("page:pinned", Strings.Get("MainWindow_Pinned"), Strings.Get("MainWindow_PageCtrl2"), "favourites");
+        Command("page:automations", Strings.Get("MainWindow_Automations"), Strings.Get("MainWindow_PageCtrl3"));
+        Command("page:snippets", Strings.Get("MainWindow_Snippets"), Strings.Get("MainWindow_PageCtrl4"), "text");
+        Command("page:gallery", Strings.Get("MainWindow_Gallery"), Strings.Get("MainWindow_PageCtrl5"), "ready-made", "starter");
+        Command("page:history", Strings.Get("MainWindow_RunHistory"), Strings.Get("MainWindow_PageCtrl6"), "past", "log", "results");
+        Command("settings", Strings.Get("MainWindow_Settings"), Strings.Get("MainWindow_PageCtrl"), "options", "preferences", "links", "hotkeys");
+        Command("ai", Strings.Get("MainWindow_SettingsAI"), Strings.Get("MainWindow_Page"), "model", "describe", "provider");
+        Command("backup", Strings.Get("MainWindow_BackUpLibraryNow"), Strings.Get("MainWindow_CommandInSettings"), "export", "save", "zip");
+        Command("restore", Strings.Get("MainWindow_RestoreFromABackup"), Strings.Get("MainWindow_CommandAddsTheShortcuts"), "backup", "import");
+        Command("import", Strings.Get("MainWindow_ImportAShortcutFile"), Strings.Get("MainWindow_CommandAutoportal"), "open", "add");
+        Command("deleted", Strings.Get("RecentlyDeletedDialog_RecentlyDeleted"), Strings.Get("MainWindow_CommandBringAShortcut"), "trash", "undo", "restore");
+        Command("keys", Strings.Get("MainWindow_KeyboardShortcuts"), Strings.Get("MainWindow_CommandCtrlOrF1"), "keys", "help", Strings.Get("MainWindow_CheatSheet"));
+        Command("whatsnew", Strings.Get("MainWindow_WhatsNew"), Strings.Get("MainWindow_CommandWhatChangedIn"), "release", "update", "changes", "new");
+        Command("tour", Strings.Get("MainWindow_Tour"), Strings.Get("MainWindow_CommandAShortLook"), "explore", "tour", "intro", "help", "learn", "welcome");
         foreach (var s in _host.Library.All.OrderBy(s => s.SortOrder))
-            entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Shortcut, s.Name, "Shortcut · Enter runs, Ctrl+Enter edits", s.Id.ToString(), s.Alias));
+            entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Shortcut, s.Name, Strings.Get("MainWindow_ShortcutEnterRunsCtrl"), s.Id.ToString(), s.Alias));
         try
         {
             foreach (var section in _host.GallerySections())
                 foreach (var g in section.Items)
-                    entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Gallery, g.Shortcut.Name, "Gallery · ready-made shortcut", Path.GetFileName(g.FilePath)));
+                    entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Gallery, g.Shortcut.Name, Strings.Get("MainWindow_GalleryReadyMadeShortcut"), Path.GetFileName(g.FilePath)));
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
         return entries;

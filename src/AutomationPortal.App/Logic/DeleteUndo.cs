@@ -21,15 +21,15 @@ public static class DeleteUndo
     public static (bool Ok, string Title, string? Message) Undo(JsonShortcutLibrary library, Guid shortcutId, string name, DateTimeOffset since)
     {
         var entry = FindEntry(library.RecentlyDeleted.List(), shortcutId, since);
-        if (entry is null) return (false, "Couldn't undo", $"\"{name}\" isn't in Recently deleted any more.");
+        if (entry is null) return (false, "Couldn't undo", Strings.Format("DeleteUndo_0IsnTIn", name));
         RestoreResult r;
         try { r = library.Restore(entry); }
         catch (Exception ex) when (ex is LibraryException or IOException or UnauthorizedAccessException)
         {
-            return (false, "Couldn't restore the shortcut", ex.Message);
+            return (false, Strings.Get("DeleteUndo_CouldnTRestoreThe"), ex.Message);
         }
         var notes = Notes(r, library.Automations.Any(a => a.ShortcutId == r.Shortcut.Id));
-        return (true, $"Restored \"{r.Shortcut.Name}\".", notes.Count == 0 ? null : string.Join(" ", notes));
+        return (true, Strings.Format("DeleteUndo_Restored0", r.Shortcut.Name), notes.Count == 0 ? null : string.Join(" ", notes));
     }
 
     /// <summary>What the restore had to change so that nothing was overwritten.</summary>
@@ -37,12 +37,12 @@ public static class DeleteUndo
     {
         var notes = new List<string>();
         if (r.AsCopy)
-            notes.Add("A shortcut with the same ID is already in your library, so it came back as a copy without its hotkey, Quick Run name or Send To entry.");
+            notes.Add(Strings.Get("DeleteUndo_AShortcutWithThe"));
         else if (automationsUseIt)
             notes.Add(Strings.Get("DeleteUndo_AutomationsThatUseIt"));
-        if (r.RenamedFrom is { } old) notes.Add($"Another shortcut is called \"{old}\", so it got a number.");
-        if (r.ClearedHotkey is not null) notes.Add($"Another shortcut now uses the hotkey {r.ClearedHotkey}, so it was left off.");
-        if (r.ClearedAlias is not null) notes.Add($"Another shortcut now uses the Quick Run name \"{r.ClearedAlias}\", so it was left off.");
+        if (r.RenamedFrom is { } old) notes.Add(Strings.Format("DeleteUndo_AnotherShortcutIsCalled", old));
+        if (r.ClearedHotkey is not null) notes.Add(Strings.Format("DeleteUndo_AnotherShortcutNowUses", r.ClearedHotkey));
+        if (r.ClearedAlias is not null) notes.Add(Strings.Format("DeleteUndo_AnotherShortcutNowUses2", r.ClearedAlias));
         return notes;
     }
 }

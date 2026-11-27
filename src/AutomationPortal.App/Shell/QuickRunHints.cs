@@ -6,8 +6,8 @@ internal static class QuickRunHints
     public static readonly string[] All =
     [
         Strings.Get("QuickRunHints_TypeAShortcutName"),
-        "Try 12*7, or 5 km in miles",
-        "Try: a shortcut's short name, if you gave it one",
+        Strings.Get("QuickRunHints_Try127Or"),
+        Strings.Get("QuickRunHints_TryAShortcutS"),
         Strings.Get("QuickRunHints_TypeAFewLetters"),
     ];
 

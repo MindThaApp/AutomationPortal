@@ -15,7 +15,7 @@ public static class KeySheet
     [
         new(Strings.Get("KeySheet_AnywhereInTheApp"),
         [
-            ("Ctrl+K", "Command palette: find a shortcut, a setting or a command"),
+            ("Ctrl+K", Strings.Get("KeySheet_CommandPaletteFindA")),
             ("Ctrl+/ or F1", Strings.Get("KeySheet_ShowThisSheet")),
             ("Ctrl+F", Strings.Get("KeySheet_SearchShortcutsAndThe")),
             ("Ctrl+N", Strings.Get("KeySheet_NewShortcut")),
@@ -36,7 +36,7 @@ public static class KeySheet
             ("F5", Strings.Get("KeySheet_RunTheShortcut")),
             ("Shift+F5", Strings.Get("KeySheet_StopIt")),
             ("Ctrl+F", Strings.Get("KeySheet_SearchTheActions")),
-            ("Ctrl+C, Ctrl+X, Ctrl+V", "Copy, cut or paste steps"),
+            ("Ctrl+C, Ctrl+X, Ctrl+V", Strings.Get("KeySheet_CopyCutOrPaste")),
             ("Ctrl+D", Strings.Get("KeySheet_DuplicateTheSelectedSteps")),
             ("Ctrl+A", Strings.Get("KeySheet_SelectAllSteps")),
             ("Ctrl+Z, Ctrl+Y", "Undo, redo"),

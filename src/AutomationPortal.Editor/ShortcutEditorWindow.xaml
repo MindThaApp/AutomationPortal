@@ -52,7 +52,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar x:Name="TitleBar" Grid.Row="0" Title="Shortcut" />
+        <ui:TitleBar x:Name="TitleBar" Grid.Row="0" Title="{local:Str ShortcutEditorWindow_Shortcut}" />
 
         <!-- header -->
         <Grid Grid.Row="1" Margin="22,4,20,12">
@@ -63,7 +63,7 @@
             </Grid.ColumnDefinitions>
 
             <Button x:Name="IconButton" Grid.Column="0" Padding="0" Margin="0,0,14,0" Width="52" Height="52" Background="Transparent" BorderThickness="0"
-                    ToolTip="Change the icon and color" AutomationProperties.Name="Change icon and color" Cursor="Hand" Focusable="True">
+                    ToolTip="{local:Str ShortcutEditorWindow_ChangeTheIconAnd}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_ChangeIconAndColor}" Cursor="Hand" Focusable="True">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -84,23 +84,23 @@
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                 <TextBox x:Name="NameBox" Style="{StaticResource FmTitleBoxStyle}" MaxLength="80"
-                         AutomationProperties.Name="Shortcut name" ToolTip="Click to rename" />
+                         AutomationProperties.Name="{local:Str ShortcutEditorWindow_ShortcutName}" ToolTip="{local:Str ShortcutEditorWindow_ClickToRename}" />
                 <TextBlock x:Name="SaveText" FontSize="{DynamicResource DsFontSizeReadable}" Margin="6,2,0,0" Foreground="{DynamicResource DsTextSecondaryBrush}" />
             </StackPanel>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <ui:Button x:Name="RunButton" Appearance="Primary" Content="_Run" AutomationProperties.Name="Run" Icon="{ui:SymbolIcon Play24}" Margin="0,0,1,0" Padding="16,7"
-                           ToolTip="Run this shortcut (F5)" />
+                <ui:Button x:Name="RunButton" Appearance="Primary" Content="{local:Str ShortcutEditorWindow_Run2}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_Run}" Icon="{ui:SymbolIcon Play24}" Margin="0,0,1,0" Padding="16,7"
+                           ToolTip="{local:Str ShortcutEditorWindow_RunThisShortcutF5}" />
                 <ui:Button x:Name="RunMenuButton" Appearance="Primary" Icon="{ui:SymbolIcon ChevronDown20}" Margin="0,0,8,0" Padding="8,7" Width="32"
-                           ToolTip="More ways to run" AutomationProperties.Name="More ways to run" />
-                <ui:Button x:Name="NextStepButton" Appearance="Primary" Content="_Next step" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
-                           ToolTip="Run this step, then pause before the next one" AutomationProperties.Name="Next step" />
-                <ui:Button x:Name="RunToEndButton" Appearance="Secondary" Content="Run _to end" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
-                           ToolTip="Stop pausing and run the rest (still pauses at steps marked Pause here)" AutomationProperties.Name="Run to end" />
-                <ui:Button x:Name="DetailsButton" Appearance="Secondary" Content="_Details" AutomationProperties.Name="Details" Icon="{ui:SymbolIcon Info24}" Margin="0,0,8,0" Padding="14,7"
-                           ToolTip="Name, hotkey, automations and more" />
+                           ToolTip="{local:Str ShortcutEditorWindow_MoreWaysToRun}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_MoreWaysToRun}" />
+                <ui:Button x:Name="NextStepButton" Appearance="Primary" Content="{local:Str ShortcutEditorWindow_NextStep}" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
+                           ToolTip="{local:Str ShortcutEditorWindow_RunThisStepThen}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_NextStep2}" />
+                <ui:Button x:Name="RunToEndButton" Appearance="Secondary" Content="{local:Str ShortcutEditorWindow_RunToEnd}" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
+                           ToolTip="{local:Str ShortcutEditorWindow_StopPausingAndRun}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_RunToEnd2}" />
+                <ui:Button x:Name="DetailsButton" Appearance="Secondary" Content="{local:Str ShortcutEditorWindow_Details}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_Details2}" Icon="{ui:SymbolIcon Info24}" Margin="0,0,8,0" Padding="14,7"
+                           ToolTip="{local:Str ShortcutEditorWindow_NameHotkeyAutomationsAnd}" />
                 <ui:Button x:Name="MoreButton" Appearance="Transparent" Icon="{ui:SymbolIcon MoreHorizontal24}" Width="38" Height="36" Padding="0"
-                           ToolTip="More" AutomationProperties.Name="More options" />
+                           ToolTip="{local:Str ShortcutEditorWindow_More}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_MoreOptions}" />
             </StackPanel>
         </Grid>
 
@@ -137,7 +137,7 @@
                              VirtualizingPanel.ScrollUnit="Pixel"
                              VirtualizingPanel.VirtualizationMode="Standard"
                              KeyboardNavigation.TabNavigation="Once"
-                             AutomationProperties.Name="Actions in this shortcut">
+                             AutomationProperties.Name="{local:Str ShortcutEditorWindow_ActionsInThisShortcut}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <views:ActionRowView />
@@ -153,10 +153,10 @@
                     <StackPanel x:Name="EmptyState" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,40,60" MaxWidth="420" Visibility="Collapsed" />
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,12">
-                        <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="_Add step" AutomationProperties.Name="Add step" Icon="{ui:SymbolIcon Add24}" Padding="18,8"
-                                   ToolTip="Search for an action to add at the end" />
-                        <ui:Button x:Name="RecordButton" Appearance="Secondary" Content="Re_cord what you do" AutomationProperties.Name="Record what you do" Icon="{ui:SymbolIcon Record24}" Margin="8,0,0,0" Padding="14,8"
-                                   ToolTip="Record clicks and typing into new steps" Visibility="Collapsed" />
+                        <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="{local:Str ShortcutEditorWindow_AddStep}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_AddStep2}" Icon="{ui:SymbolIcon Add24}" Padding="18,8"
+                                   ToolTip="{local:Str ShortcutEditorWindow_SearchForAnAction}" />
+                        <ui:Button x:Name="RecordButton" Appearance="Secondary" Content="{local:Str ShortcutEditorWindow_ReCordWhatYou}" AutomationProperties.Name="{local:Str ShortcutEditorWindow_RecordWhatYouDo}" Icon="{ui:SymbolIcon Record24}" Margin="8,0,0,0" Padding="14,8"
+                                   ToolTip="{local:Str ShortcutEditorWindow_RecordClicksAndTyping}" Visibility="Collapsed" />
                     </StackPanel>
                 </Grid>
 

@@ -52,7 +52,7 @@ public static class SettingsLayout
         new SettingsItem("ConnectedHost", SettingsSection.AppsAndLinks),
         new SettingsItem("AllowedCallersHost", SettingsSection.AppsAndLinks),
         new SettingsItem("AiHost", SettingsSection.Models),
-        new SettingsItem("Model level: Fast, Smart or Best", SettingsSection.Models),
+        new SettingsItem(Strings.Get("SettingsLayout_ModelLevelFastSmart"), SettingsSection.Models),
         new SettingsItem(Strings.Get("SettingsLayout_ShowAdvancedActions"), SettingsSection.Advanced),
         new SettingsItem(Strings.Get("SettingsPage_CrashReportsTitle"), SettingsSection.Privacy),
         new SettingsItem("VersionText", SettingsSection.About),

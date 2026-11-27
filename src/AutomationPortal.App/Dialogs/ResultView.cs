@@ -15,7 +15,7 @@ public static class ResultView
     public static FrameworkElement Build(ContentValue value)
     {
         if (value.IsEmpty)
-            return Ui.Text("There's nothing to show.", secondary: true);
+            return Ui.Text(Strings.Get("ResultView_ThereSNothingTo"), secondary: true);
 
         // One block of text: show it large and selectable.
         if (value.Count == 1 && value[0] is TextItem or NumberItem or BooleanItem or DateItem or UrlItem)
@@ -38,7 +38,7 @@ public static class ResultView
             stack.Children.Add(row);
         }
         if (value.Count > 200)
-            stack.Children.Add(Ui.Text($"…and {value.Count - 200} more", secondary: true));
+            stack.Children.Add(Ui.Text(Strings.Format("ResultView_And0More", value.Count - 200), secondary: true));
         return new ScrollViewer { Content = stack, MaxHeight = 460, VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
     }
 
@@ -101,7 +101,7 @@ public static class ResultView
         grid.Children.Add(names);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
-        var open = new Wpf.Ui.Controls.Button { Content = "Open", Margin = new Thickness(8, 0, 0, 0), ToolTip = Strings.Get("ResultView_OpenItWithThe") };
+        var open = new Wpf.Ui.Controls.Button { Content = Strings.Get("ResultView_Open"), Margin = new Thickness(8, 0, 0, 0), ToolTip = Strings.Get("ResultView_OpenItWithThe") };
         open.Click += (_, _) => Launch(p.Path);
         var show = new Wpf.Ui.Controls.Button { Content = Strings.Get("ResultView_ShowInFolder"), Margin = new Thickness(8, 0, 0, 0) };
         show.Click += (_, _) => Reveal(p);
@@ -131,7 +131,7 @@ public static class ResultView
             grid.Children.Add(key); grid.Children.Add(val);
             r++;
         }
-        if (d.Count == 0) return Ui.Text("(empty)", secondary: true);
+        if (d.Count == 0) return Ui.Text(Strings.Get("ResultView_Empty"), secondary: true);
         return grid;
     }
 

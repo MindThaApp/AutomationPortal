@@ -22,10 +22,10 @@ public static class PickShortcutDialog
     {
         var list = shortcuts.OrderBy(s => s.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
         var body = new StackPanel();
-        body.Children.Add(Ui.Text("A link or another app wants to run one of your shortcuts on these files and folders. Nothing runs until you choose one."));
+        body.Children.Add(Ui.Text(Strings.Get("PickShortcutDialog_ALinkOrAnother")));
         body.Children.Add(Ui.Text(Describe(items), secondary: true, size: 12));
         var box = new ListBox { MaxHeight = 280, Margin = new Thickness(0, 12, 0, 0), DisplayMemberPath = nameof(Shortcut.Name), ItemsSource = list };
-        if (list.Count == 0) body.Children.Add(Ui.Text("You don't have any shortcuts yet.", secondary: true));
+        if (list.Count == 0) body.Children.Add(Ui.Text(Strings.Get("PickShortcutDialog_YouDonTHave"), secondary: true));
         else { body.Children.Add(box); box.SelectedIndex = 0; }
 
         var dlg = new FlowDialog(Strings.Get("PickShortcutDialog_RunAShortcutOn"), body, "Run", "Cancel", width: 460);
